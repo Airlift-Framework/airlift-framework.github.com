@@ -32,7 +32,7 @@ permalink: /
     
     <p class="answer">
       First create a Dictation file that describes your applications resources ...
-      
+    </p>
 <pre>
 <code data-language="javascript" class="rainbow">
 A Person
@@ -47,18 +47,18 @@ has a type
 belongs to a Person
 </code>
 </pre>
+    <p class="answer">
     From this description Airlift will generate the JavaScript meta objects that describe your application.  Using Airlift libraries you can manipulate these objects.  So to create a new person at URI http://your.app.domain.com/a/person, create a file called person/POST.js and in that file write ...
-    
+    </p>
  <pre>
 <code data-language="javascript" class="rainbow">
 require('post').post();
 </code>
 </pre>
-    
+    <p class="answer">
 That's it.  Whenever a form is submitted to http://your.app.domain.com/a/person, the person data in the form will be validated and persisted into your application's App Engine datastore.  It is really that simple.<br>
-    
+    </p>
 Have a look at the API to learn more about Airlift for Google App Engine.
-  </p>
 
   </div>
 </div>
