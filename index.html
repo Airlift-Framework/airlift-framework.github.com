@@ -25,16 +25,17 @@ permalink: /
     </p>
     
     <p class="answer">
-      In Airlift, your application's interface is defined by resources.  Resources are described using a simple domain specific language call Dictation.  Dictation sounds and writes like plain English.  From your Dictation description the Airlift framework will create JavaScript meta objects that are used by the framework to process your web requests.
+      In Airlift, your application's interface is defined by resources.  Resources are described using a simple domain specific language call Dictation.  Dictation sounds and writes like plain English.  From your Dictation description the Airlift framework will create JavaScript meta objects that are used by the framework to process your web requests.  With these meta objects Airlift will provide you with the ability to convert, validate, encrypt, retrieve, persist, search and audit these defined resources.
     </p>
 
-    <h1>How does this work?</h1>
+    <h1>Sounds great! How does it work?</h1>
     
     <p class="answer">
-      It is much easier than it sounds.  First create a Dictation file that describes your applications resources ...
+      First create a Dictation file that describes your applications resources ...
       
-      <pre>
-		<code data-language="javascript" class="rainbow">A Person
+<pre>
+<code data-language="javascript" class="rainbow">
+A Person
 has a full name
 has a short name
 has an age which has type whole number
@@ -46,7 +47,18 @@ has a type
 belongs to a Person
 </code>
 </pre>
-    </p>
+    From this description Airlift will generate the JavaScript meta objects that describe your application.  Using Airlift libraries you can manipulate these objects.  So to create a new person at URI http://your.app.domain.com/a/person, create a file called person/POST.js and in that file write ...
+    
+ <pre>
+<code data-language="javascript" class="rainbow">
+require('post').post();
+</code>
+</pre>
+    
+That's it.  Whenever a form is submitted to http://your.app.domain.com/a/person, the person data in the form will be validated and persisted into your application's App Engine datastore.  It is really that simple.<br>
+    
+Have a look at the API to learn more about Airlift for Google App Engine.
+  </p>
 
   </div>
 </div>
