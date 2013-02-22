@@ -530,7 +530,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   background: #86a2a9;
 }
 
-#main .modules #menu {
+#main .api #menu {
   background: #b16649;
 }
 
@@ -547,7 +547,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   background: #86a2a9;
 }
 
-.modules .article-navigation .article-link.active {
+.api .article-navigation .article-link.active {
   background: #b16649;
 }
 
@@ -562,7 +562,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   /*border-bottom: 1px solid #ccc;*/
 }
 
-#main .modules {
+#main .api {
   background: #E9EAE5;
   /*border-bottom: 1px solid #ccc;*/
 }
