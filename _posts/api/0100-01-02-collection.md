@@ -7,7 +7,7 @@ author: Michael Aufreiter
 links:
   demo: http://substance.io
 prose_link:
-  http://prose.io/#substance/substance.github.com/edit/master/_posts/modules/0100-01-02-hub.md
+  http://prose.io/#substance/substance.github.com/edit/master/_posts/api/0100-01-02-hub.md
 version: not yet released
 progress: 0
 contributors:
@@ -18,7 +18,7 @@ contributors:
   user: yuchi
   avatar: https://secure.gravatar.com/avatar/fc40b1fe79ea6b10825141d86f767354?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png
 categories:
-- modules
+- api
 published: true
 ---
 
