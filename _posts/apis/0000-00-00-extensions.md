@@ -1,7 +1,7 @@
 ---
 layout: api
-title: Resource
-abstract: The resource module contains functions that allow you to iterate over the attributes of your application's resources.
+title: Extensions
+abstract: Extensions to JavaSctipt standard objects to facilitate Airlift package functions.
 author: Bediako George
 categories:
 - apis
