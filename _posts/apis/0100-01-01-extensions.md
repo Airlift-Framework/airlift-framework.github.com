@@ -9,127 +9,34 @@ published: true
 ---
 
 # Introduction
-Airlift is a restful framework.  Resources are the center of Airlift application development.  When designing an application, developers are encouraged to create as many resources as they like.  The resource.js module contains functions that allow developers to traverse the application resources' attributes.  In Airlift a resource is represented as a simple JavaScript object ({}).
+Airlift is built on Rhino and App Engine.  Rhino is a fantastic JavaScript interpreter library written for Java.  App Engine is a fantastic platform as a service cloud environment that offers support for web applications programmed in Go, Python, and Java.
 
-Whenever a iterative function is executed in resource, the iterator function that you provide is executed within a context that governs the traversal of that resource.  This context is set as the 'this' for the iterator function.  It makes available following:
+In order for Airlift to support server side JavaScript programming on App Engine we applied Rhino's capabilities to the App Engine environment.  To accomplish this we extended some of Rhino's libraries, and we added additional functionality to JavaScript's standard objects.  The following outlines the adaptations and improvements we made.
 
-* resourceName - the name of the resource being traversed.
-* resourceMetadata - metadata describing the resource being traversed.  It contains a list of attributes this resource holds.
-* attributesMetadata - metadata describing each individual attribute this resource holds.
-* foreignKeys - a list of names of all the foreign keys in this resource.
-* attributes - a list of names of all the attributes in this resource.
-* web - a web object that gives access to the web context.  The web context contains information about the current request.
-* report - a function used to report errors.
-* allErrors - a function that returns all errors reported so far.
-* getErrors - a function that returns all errors reported for a given attribute of this resource.
+## - Function.prototype.partial (argument-1, argument-2, ..., argument-n)
+Returns a wrapper function that wraps the function refered to by 'this'. The arguments passed into partial are stored to be applied when the wrapper function is invoked. When the wrapper function is invoked, its arguments are tacked on to the stored arguments.  If any of stored arguments are undefined, they will be filled in in the order of presentation of the wrapper function arguments.
 
-All iterative functions in resource.js allow for the replacement of any of the attributes of the context object by optionally providing an object at invocation time.
+ 	var f0 = function(a1, a2)
+	{
+		return a1 + a2;
+	};
 
-The functions available in this module are described below.
+	var f1 = f0.partial(undefined, ' Bediako');	
 
-## - Each (resourceName, resource, iterator, \[context\])
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata).
+	util.println(f1('Hello')); //Hello Bediako
+    
+    
+## - String.prototype.equalsIgnoreCase (String|java.lang.String _string)
+Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string.    Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
 
-    var person = {fullName: 'Kwame Mtume', shortName: 'Kwame', age: 27};
-    var lightPerson = {};
-    var res = require('resource');
-    var context = {attributes: ['shortName', 'age']}; //optional - set to limit iteration
+	var string1 = 'bediako';
+    var string2 = new Packages.java.lang.String("Bediako");
     
-    res.each('person', person, function(_value, _name, _resource, _metadata)
-    {
-       lightPerson[_name] = _value;
-    } , context);
-	
-    util.println(JSON.stringify(lightPerson)); // {shortName: 'Kwame', age: 27 }
+    util.println(string1.equalsIgnoreCase(string2)); //true
 
-## - Map (resourceName, resource, iterator, \[context\])
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata).  The result of each iterator invocation is saved to a new resource object.
+## - String.prototype.replaceAll (String|java.lang.String _string1, String|java.lang.String _string2)
+Replaces every occurrence of _string1 in 'this' with _string2.  Added as a convenience method, replaceAll is merely a wrapper for java.lang.String.replaceAll.
 
-    var person = {fullName: 'Kwame Mtume', shortName: 'Kwame', age: 27};
-    var res = require('resource');
-    var context = {attributes: ['shortName', 'age']}; //optional - set to limit iteration
+	var string1 = 'banana';
     
-    var lightPerson = res.map('person', person, function(_value, _name, _resource, _metadata)
-    {
-       return _value;
-    } , context);
-    
-    util.println(JSON.stringify(lightPerson)); // {shortName: 'Kwame', age: 27 }
-
-## - Reduce (base, resourceName, resource, iterator, \[context\])
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with five arguments: (base, value, attributeName, resource, metadata).  The result of each iterator invocation replaces the base value.  Reduce returns the value of base at the end.
-
-    var person = {fullName: 'Kwame Mtume', shortName: 'Kwame', age: 27};
-    var res = require('resource');
-    var context = {attributes: ['shortName', 'age']}; //optional - set to limit iteration
-    var base = '<ul>';
-    
-    var lightPerson = res.reduce(base, 'person', person, function(_value, _name, _resource, _metadata)
-    {
-       return '<li>' + _value + '</li>';
-    } , context);
-    
-    util.println(lightPerson); // <ul><li>Kwame</li><li>27</li>
-    
-## - Sequence (function1, function2, ..., functionN)
-Returns a function that is the composition of the passed function arguments.  The functions are executed in the order they are passed into sequence.  Sequence's returned function can be used in a iterative manner on a resource or executed as a standalone.  Sequence returns the value of the last function's execution. 
-
-    var person = {fullName: 'Kwame Mtume', shortName: 'Kwame', age: 27};
-    var res = require('resource');
-    
-    var checkStringType = function(_value, _name, _resource, _metadata) {
-       if ("java.lang.String".equals(_metadata.type) === false) throw 'error';
-    }
-    
-    var checkAttributeHasValue = function(_value)
-    {
-       if (util.hasValue(_value) === false) throw 'error';
-    }
-    
-    var sequence = res.sequence(checkStringType, checkAttributeHasValue);
-    var context = {attributes: ['shortName', 'age']}; //optional - set to limit iteration
-    
-    var lightPerson = res.each('person', person, sequence, context);  //no errors
-    
-## - Compose (function1, function2, ..., functionN)
-Returns a function that is the composition of the passed function arguments.  The functions are executed in the order they are passed in to Compose.  Compose's returned function can be used in a iterative manner on a resource or executed as a standalone.  On execution, the function returned by Compose passes its arguments to the first function executed.  Each function after that will get the return value of the previous function as a replacement for the first argument of the original arguments.  Compose returns the value of the last function's execution. 
-
-    var person = {fullName: 'Kwame Mtume', shortName: 'Kwame', age: 27};
-    var res = require('resource');
-    
-    var returnOK = function(_value, _name, _resource, _metadata) {
-       return 'OK';
-    }
-    
-    var checkOK = function(_value)
-    {
-       if ("OK".equals(_value) === false) throw 'error';
-    }
-    
-    var composition = res.compose(returnOK, checkOK);
-    var context = {attributes: ['shortName', 'age']}; //optional - set to limit iteration
-    
-    var lightPerson = res.each('person', person, composition, context);  //no errors
-    
-## - Watch (\[name1, ..., name2\]|\[nameList\], function)
-Returns a function that will only be executed once and only once when the all the attributes in the argument list of nameList are visited by the iterative function.  If an attribute list is not passed as arguments or as an array, watch will execute once and only once all the attributes of the iterative context are visited. 
-
-    var person = {fullName: 'Kwame Mtume', shortName: 'Kwame', age: 27};
-    var res = require('resource');
-    
-    var closeUlTag = function(_base, _value, _attributeName, _resource, _metadata) {
-       return _base + '</ul>';
-    }
-    
-    var liTag = function(_base, _value, _attributeName, _resource, _metadata)
-    {
-       return _base + '<li>' + _value + '</li>';
-    }
-    
-    var context = {attributes: ['shortName', 'age']}; //optional - set to limit iteration
-    var watch1 = res.watch(closeUlTag); //watch1 will execute once and only once ... 
-    var composition = res.compose(liTag, watch1);
-    
-    var lightPerson = res.reduce('<ul>', 'person', person, composition, context); //.. when 'shortName' and 'age' are visited at least once.
-    
-    util.println(lightPerson); // <ul><li>Kwame</li><li>27</li></ul>
+    util.println(string1.replaceAll("na", '')); //ba
