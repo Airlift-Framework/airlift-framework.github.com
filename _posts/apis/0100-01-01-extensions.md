@@ -1,6 +1,6 @@
 ---
 layout: api
-title: Extension
+title: Extensions
 abstract: JavaScript module extensions that support Airlift utility modules.
 author: Bediako George
 categories:
