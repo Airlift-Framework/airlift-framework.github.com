@@ -26,7 +26,7 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
 	util.println(f1('Hello')); //Hello Bediako
     
     
-## - String.prototype.equalsIgnoreCase (String|java.lang.String _string)
+## - String.prototype.equalsIgnoreCase (String|java.lang.String string)
 Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string.    Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
 
 	var string1 = 'bediako';
@@ -34,8 +34,8 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
     
     util.println(string1.equalsIgnoreCase(string2)); //true
 
-## - String.prototype.replaceAll (String|java.lang.String _string1, String|java.lang.String _string2)
-Replaces every occurrence of _string1 in 'this' with _string2.  Added as a convenience method, replaceAll is merely a wrapper for java.lang.String.replaceAll.
+## - String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)
+Replaces every occurrence of string1 in 'this' with string2.  Added as a convenience method, replaceAll is merely a wrapper for java.lang.String.replaceAll.
 
 	var string1 = 'banana';
     
