@@ -1,7 +1,7 @@
 ---
 layout: api
 title: Extension
-abstract: The resource module contains functions that allow you to iterate over the attributes of your application's resources.
+abstract: JavaScript module extensions that support Airlift utility modules.
 author: Bediako George
 categories:
 - apis
