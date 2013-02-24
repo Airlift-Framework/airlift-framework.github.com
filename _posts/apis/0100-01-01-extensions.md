@@ -1,6 +1,6 @@
 ---
 layout: api
-title: Resource
+title: Extensions
 abstract: The resource module contains functions that allow you to iterate over the attributes of your application's resources.
 author: Bediako George
 categories:
