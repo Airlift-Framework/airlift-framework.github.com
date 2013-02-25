@@ -74,6 +74,6 @@ Returns a value list (java.util.List or Javascript array) and a map (java.util.M
     
     var users = \[{name: "Bediako"}, {name: "Dave"}, {name: "Loki"}, {name: "Bediako"}\];
     var r = require('collection').partition(users, 'name');
-    util.println(util.json(r)); //{keys: \["Bediako", "Dave", "Loki"\], partition: {"Bediako" : \[{name: "Bediako"}\], "Dave": \[{name: "Dave"}\], "Loki": \[{name: Loki}\]}}
+    util.println(util.json(r)); //{keys: \["Bediako", "Dave", "Loki"\], partition: {"Bediako" : \[{name: "Bediako"}, {name: "Bediako"}\], "Dave": \[{name: "Dave"}\], "Loki": \[{name: Loki}\]}}
 
 
