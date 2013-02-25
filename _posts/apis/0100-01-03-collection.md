@@ -57,6 +57,15 @@ Produces a new collection of values by mapping each value in the collection thro
     var users = ["Bediako", "Dave", "Loki"], c = require('collection');
     var r = c.map(users, function(_item, _index, _collection) { return 'Hello ' + _item; });
     util.println(util.json(r)); //["Hello Bediako", "Hello Dave", "Hello Loki"]
+
+## - Reduce (collection, iterator, memo, \[context\])
+Reduce boils down a collection of values into a single value. Memo is the initial state of the reduction, and each successive step of it should be returned by iterator. The iterator is passed four arguments: the memo, then the value and the index of the iteration, and finally a reference to the entire list.  Reduce defers to the native implementation for JavaScript arrays.
+
+    var util = require('airlift/util');
+    
+    var users = ['Bediako', 'Dave', 'Loki'], c = require('collection');
+    var r = c.reduce(users, function(_memo, _item, _index, _collection) { return _memo + _item.length; }, 0);
+    util.println(r); //15
     
 ## - Split (collection, iterator, \[context\])
 Returns two collections.  The first collection contains the items for which _function returned true, the second collection contains the items for which the function returned false.
