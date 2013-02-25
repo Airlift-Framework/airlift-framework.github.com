@@ -10,18 +10,28 @@ categories:
 published: true
 ---
 
-## Less noise
+# Introduction
 The Collection module contains handy functions developers can use to traverse a JavaScript array, or a Java ArrayList or Java Set in a similar manner.
 
-# Substance API
+## - Every (collection, iterator, \[context\])
+Returns true if all of the values in the list pass the iterator truth test. Delegates to the native method every, if present.
 
-Substance is exposing a simple API so you can process Substance documents in your own application.
+    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
+    var success = c.every(users, function(_item, _index, _collection) { return true; });
+    util.println(success); //true
 
-Here's what you can do:
+## - ForEach (collection, iterator, \[context\]) ... alias Each
+Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function if it exists.
 
-- Create a publication programatically: The document will show up at Substance.io
-- Update an existing publication with new content
-- Search for documents
-- Delete a document or specific version
-- Create a new user at Substance.io
-- Update user details
+    var count = 0;
+    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
+    c.forEach(users, function(_item, _index, _collection) { count++; });
+    util.println(count); //3
+    
+## - Filter (collection, iterator, \[context\])
+Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method, if it exists.
+
+    var count = 0;
+    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
+    var r = c.filter(users, function(_item, _index, _collection) { return (_index === 0); });
+    util.println(r); //["Bediako"]
