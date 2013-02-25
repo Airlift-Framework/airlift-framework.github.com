@@ -14,24 +14,40 @@ published: true
 The Collection module contains handy functions developers can use to traverse a JavaScript array, or a Java ArrayList or Java Set in a similar manner.
 
 ## - Every (collection, iterator, \[context\])
-Returns true if all of the values in the list pass the iterator truth test. Delegates to the native method every, if present.
+Returns true if all of the values in the list pass the iterator truth test. For JavaScript arrays, this function delegates to the native every function.
 
+    var util = require('airlift/util');
+    
     var users = ["Bediako", "Dave", "Loki"], c = require('collection');
     var success = c.every(users, function(_item, _index, _collection) { return true; });
     util.println(success); //true
 
 ## - ForEach (collection, iterator, \[context\]) ... alias Each
-Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function if it exists.
+Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function.
 
-    var count = 0;
+    var util = require('airlift/util'), count = 0;
+    
     var users = ["Bediako", "Dave", "Loki"], c = require('collection');
     c.forEach(users, function(_item, _index, _collection) { count++; });
     util.println(count); //3
     
 ## - Filter (collection, iterator, \[context\])
-Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method, if it exists.
+Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method.
 
-    var count = 0;
+    var util = require('airlift/util');
+    
     var users = ["Bediako", "Dave", "Loki"], c = require('collection');
     var r = c.filter(users, function(_item, _index, _collection) { return (_index === 0); });
-    util.println(r); //["Bediako"]
+    util.println(util.json(r)); //["Bediako"]
+
+## - Map (collection, iterator, \[context\])
+Produces a new collection of values by mapping each value in the collection through a transformation function (iterator). For JavaScript arrays, the native map method is used.
+
+    var util = require('airlift/util');
+    
+    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
+    var r = c.map(users, function(_item, _index, _collection) { return 'Hello ' + _item; });
+    util.println(util.json(r)); //["Hello Bediako", "Hello Dave", "Hello Loki"]
+    
+
+    
