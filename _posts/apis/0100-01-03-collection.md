@@ -1,7 +1,7 @@
 ---
 layout: api
 title: Collection
-abstract: Collection module contains functions that can be used to traverse and process JavaScript arrays and Java collections in the same manner.
+abstract: The Collection module contains functions that can be used to traverse and process JavaScript arrays and Java collections in the same manner.
 author: Bediako George
 prose_link:
   http://prose.io/#substance/substance.github.com/edit/master/_posts/apis/0100-01-03-collection.md
