@@ -1,22 +1,10 @@
 ---
-layout: module
-title: Substance.io
-abstract: Substance.io is the where your published documents go and where people can read them.
-author_twitter: _mql
-author: Michael Aufreiter
-links:
-  demo: http://substance.io
+layout: api
+title: Collection
+abstract: Collection module contains functions that can be used to traverse and process JavaScript arrays and Java collections in the same manner.
+author: Bediako George
 prose_link:
-  http://prose.io/#substance/substance.github.com/edit/master/_posts/apis/0100-01-02-hub.md
-version: not yet released
-progress: 0
-contributors:
-- name: Michael Aufreiter
-  user: michael
-  avatar: https://secure.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png
-- name: Pier Paolo Ramon 
-  user: yuchi
-  avatar: https://secure.gravatar.com/avatar/fc40b1fe79ea6b10825141d86f767354?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png
+  http://prose.io/#substance/substance.github.com/edit/master/_posts/apis/0100-01-03-collection.md
 categories:
 - apis
 published: true
