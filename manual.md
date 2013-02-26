@@ -1,3 +1,41 @@
-# How does it work?
+---
+layout: default
+permalink: /apis/
+---
 
-Enter Text in Markdown format.
+<div class="api">
+  {% include menu.html %}
+  <div class="article-navigation">
+    
+    {% for item in site.categories.apis reversed limit:40 offset:0 %}
+      <a class="article-link{% if item.title == "Extensions" %} active{% endif %}" href="{{site.baseurl}}{{item.url}}" title="{{item.title}}">
+        <div class="title" style="padding-top: 43px">{{item.title}}</div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% for page in site.categories.apis reversed limit:1 offset:5 %}
+
+  <div class="intro">
+    <div class="title">
+    {{page.title}}
+    </div>
+    <div class="abstract">{{page.abstract}}</div>
+  </div>
+
+  <div class="article-wrapper">
+    <div class="help post-content">
+      {{ page.content }}
+    </div>
+  </div>
+
+  <div class="improve-article-wrapper">
+    <div class="improve-article">
+      <a class="button" href="{{page.prose_link }}">Edit in Prose</a>
+      <p>
+        This article has been written and published using <a href="http://prose.io" target="_blank">Prose</a>. Please help improving it by contributing to the text.
+      </p>
+    </div>
+  </div>
+{% endfor %}
