@@ -1,6 +1,6 @@
 ---
 layout: feature
-title: Start
+title: Develop
 abstract: Substance targets open collaboration. Everyone should be able to contribute to a document, without the hurdles.
 prose_link:
   http://prose.io/#substance/substance.github.com/edit/master/_posts/features/0100-01-02-collaboration.md
