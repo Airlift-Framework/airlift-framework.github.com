@@ -280,6 +280,45 @@ p {
 }
 
 /* ------------------------------------------
+  Development
+---------------------------------------------*/
+
+#main .ideas {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+#main h1 {
+  padding: 10px 0;
+  padding-top: 20px;
+}
+#main .ideas .idea h1 {
+  padding-top: 0px;
+}
+
+#main .ideas .idea {
+  background: rgba(0,0,0, 0.05);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  overflow: auto;
+  padding: 20px;
+}
+
+#main .ideas .idea img {
+  border-radius: 5px;
+  float: left;
+}
+
+#main .ideas .idea .description {
+  margin-left: 190px;
+}
+
+#main .ideas .idea .links {
+  padding-top: 20px;
+}
+/* ------------------------------------------
   Startpage
 ---------------------------------------------*/
 
