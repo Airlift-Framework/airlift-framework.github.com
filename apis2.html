@@ -8,7 +8,7 @@ permalink: /apis2/
   {% include menu.html %}
   <div class="article-navigation">
     
-    {% for item in site.categories.apis2 reversed limit:40 offset:0 %}
+    {% for item in site.categories.apis reversed limit:40 offset:0 %}
       <a class="article-link{% if item.title == "Extensions" %} active{% endif %}" href="{{site.baseurl}}{{item.url}}" title="{{item.title}}">
         <div class="title" style="padding-top: 43px">{{item.title}}</div>
       </a>
@@ -16,7 +16,7 @@ permalink: /apis2/
   </div>
 </div>
 
-{% for page in site.categories.apis2 reversed limit:1 offset:8 %}
+{% for page in site.categories.apis reversed limit:1 offset:8 %}
 
   <div class="intro">
     <div class="title">
