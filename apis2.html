@@ -36,3 +36,12 @@ permalink: /apis2/
     </p>
   </div>
 </div>
+
+{% for page in site.categories.apis reversed limit:1 offset:8 %}
+
+  <div class="answer">
+    {{page.title}}
+    {{page.author}}
+  </div>
+
+{% end for}
