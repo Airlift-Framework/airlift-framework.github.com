@@ -40,9 +40,8 @@ permalink: /apis2/
 {% for page in site.categories.api2 reversed limit:1 offset:8 %}
 
   <div class="answer">
-    {{page.title}}
-    {{page.author}}
-    Should see title and author.
+    {{page.content}}
+    Should see content.
   </div>
 
 {% end for}
