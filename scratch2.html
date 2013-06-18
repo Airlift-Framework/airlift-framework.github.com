@@ -1,8 +1,21 @@
 ---
+published: true
 layout: default
 permalink: /scratch2/
 ---
 
-## A New Post
+{% for page in site.categories.api2 reversed limit:1 offset:0 %}
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+  <div class="intro">
+    <div class="title">
+    {{page.title}}
+    </div>
+  </div>
+
+  <div class="article-wrapper">
+    <div class="help post-content">
+      {{ page.content }}
+    </div>
+  </div>
+
+{% endfor %}
