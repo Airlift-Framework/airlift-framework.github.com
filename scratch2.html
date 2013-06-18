@@ -4,7 +4,7 @@ layout: default
 permalink: /scratch2/
 ---
 
-{% for page in site.categories.apis reversed limit:1 offset:8 %}
+{% for site in site.categories.apis reversed limit:1 offset:8 %}
 
   <div class="intro">
     <div class="title">
@@ -16,6 +16,7 @@ permalink: /scratch2/
   <div class="article-wrapper">
     <div class="help post-content">
       {{ page.content }}
+      work check
     </div>
   </div>
 
