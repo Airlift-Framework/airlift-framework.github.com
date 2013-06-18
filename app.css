@@ -582,11 +582,11 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 }
 
 #main .contribute #menu {
-  background: #E9EAE5;
+  background: #e9eae5;
 }
 
 #main .development #menu {
-  background: #FF9933;
+  background: #ff9933;
 }
 
 .features .article-navigation .article-link.active {
@@ -613,19 +613,25 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   /*border-bottom: 1px solid #ccc;*/
 }
 
-#main .contribute {
+#main .api2 {
   background: #E9EAE5;
   /*border-bottom: 1px solid #ccc;*/
 }
 
+#main .contribute {
+  background: #E9EAE5;
+  /*border-bottom: 1px solid #ccc;*/
+}
 
 #main .team {
   background: #E9EAE5;
   border-bottom: 1px solid #ccc;
 }
 
-
-
+#main .development {
+  background: #E9EAE5;
+  /*border-bottom: 1px solid #ccc;*/
+}
 
 .article-navigation {
   width: 800px;
