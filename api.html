@@ -1,4 +1,5 @@
 ---
+published: true
 layout: default
 permalink: /apis/
 ---
@@ -15,7 +16,7 @@ permalink: /apis/
   </div>
 </div>
 
-{% for page in site.categories.apis reversed limit:1 offset:8 %}
+{% for page in site.categories.apis reversed limit:1 offset:0 %}
 
   <div class="intro">
     <div class="title">
@@ -39,4 +40,3 @@ permalink: /apis/
     </div>
   </div>
 {% endfor %}
-
