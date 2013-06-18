@@ -32,16 +32,7 @@ permalink: /apis2/
     <h1>Why do edits in prose take forever to show up on my website?</h1>
     
     <p class="answer">
-      Hah, no idea but it is quite annoying. Now I'm waiting for the menu bar to turn purple. Now playing with site.categories.
+      Hah, no idea but it is quite annoying. Now I'm waiting for the menu bar to turn purple. Page build keeps failing
     </p>
   </div>
 </div>
-
-{% for page in site.categories.api2 reversed limit:1 offset:8 %}
-
-  <div class="answer">
-    {{page.content}}
-    Should see content.
-  </div>
-
-{% end for}
