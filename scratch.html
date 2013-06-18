@@ -43,7 +43,6 @@ permalink: /scratch/
   <div id="sidebar" class="interface">
     <p>sidebar</p>
     <p>
-      {% include 2013-06-18-sidebar.md %}
     - did it work <br>
     - star <br>
     - star <br>
@@ -92,9 +91,8 @@ permalink: /scratch/
   <div id="content" class="container">
     <p>content</p>
     <p>
-      {% include 2013-06-18-content.md %}
     - maybe yes <br>
-    - purple <br>
+    - asdf <br>
     - purple <br>
     - purple <br>
     - purple <br>
@@ -139,6 +137,14 @@ permalink: /scratch/
     - purple <br>
     - purple <br>
     </p>
+{% for page in site.categories.apis reversed limit:1 offset:8 %}
+
+  <div class="article-wrapper">
+    <div class="help post-content">
+      {{ page.content }}
+    </div>
+  </div>
+{% endfor %}
   </div>
   
 </body>
