@@ -4,20 +4,7 @@ layout: default
 permalink: /scratch3/
 ---
 
-{% for post in site.post.api2 reversed limit:2 offset:0 %}
+{% include _posts/api2/2013-06-18-content.md %}
 
-  <div class="intro">
-    <div class="title">
-      title is
-    {{post.title}}
-    </div>
-    <div class="abstract">{{post.abstract}}</div>
-  </div>
+{% include _posts/api2/2013-06-18-sidebar.md %}
 
-  <div class="article-wrapper">
-    <div class="help post-content">
-      {{ post.content }}
-    </div>
-  </div>
-
-{% endfor %}
