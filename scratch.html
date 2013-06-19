@@ -54,6 +54,13 @@ permalink: /scratch/
     <p>content</p>
 
 {% for page in site.categories.apis reversed limit:9 offset:0 %}
+  <div class="intro">
+    <div class="title">
+    {{page.title}}
+    </div>
+    <div class="abstract">{{page.abstract}}</div>
+  </div>
+    
   <div class="article-wrapper">
     <div class="help post-content">
       {{ page.content }}
