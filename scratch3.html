@@ -1,0 +1,21 @@
+---
+layout: default
+permalink: /scratch3/
+---
+
+{% for page in site.categories.apis reversed limit:2 offset:0 %}
+
+  <div class="intro">
+    <div class="title">
+    {{page.title}}
+    </div>
+    <div class="abstract">{{page.abstract}}</div>
+  </div>
+
+  <div class="article-wrapper">
+    <div class="help post-content">
+      {{ page.content }}
+    </div>
+  </div>
+
+{% endfor %}
