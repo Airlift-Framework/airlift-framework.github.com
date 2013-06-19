@@ -42,20 +42,11 @@ permalink: /scratch/
   <div id="sidebar" class="interface">
     <p>sidebar</p>
 {% for page in site.categories.api2 limit:1 offset:0 %}
-
-  <div class="intro">
-    <div class="title">
-    {{page.title}}
-    </div>
-    <div class="abstract">{{page.abstract}}</div>
-  </div>
-
   <div class="article-wrapper">
     <div class="help post-content">
       {{ page.content }}
     </div>
   </div>
-
 {% endfor %}
   </div>
 
@@ -63,22 +54,12 @@ permalink: /scratch/
     <p>content</p>
 
 {% for page in site.categories.api2 limit:1 offset:1 %}
-
-  <div class="intro">
-    <div class="title">
-    {{page.title}}
-    </div>
-    <div class="abstract">{{page.abstract}}</div>
-  </div>
-
   <div class="article-wrapper">
     <div class="help post-content">
       {{ page.content }}
     </div>
   </div>
-
 {% endfor %}
-
   </div>
   
 </body>    
