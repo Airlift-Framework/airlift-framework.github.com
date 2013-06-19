@@ -40,7 +40,6 @@ permalink: /scratch/
 <body>
 
   <div id="sidebar" class="interface">
-    <p>sidebar</p>
 {% for page in site.categories.api2 limit:1 offset:0 %}
   <div class="article-wrapper">
     <div class="help post-content">
@@ -51,8 +50,6 @@ permalink: /scratch/
   </div>
 
   <div id="content" class="container">
-    <p>content</p>
-
 {% for page in site.categories.apis reversed limit:9 offset:0 %}
   <div class="intro">
     <div class="title">
