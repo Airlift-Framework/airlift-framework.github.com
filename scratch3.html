@@ -36,10 +36,12 @@ published: true
     }
     h3 {
       color: #2A61D9;
-      <!--float: left; -->
+      float: left;
+      width: 78%;
     }
     h3.return {
-      <!--float: right;-->
+      float: right;
+      width: 22%;
     }
 
     label {
@@ -80,7 +82,7 @@ published: true
     div#sidebar {
       background: #DDDDDD;
       position: fixed;
-      top: 100px; left: 0; bottom: 0;
+      top: 0px; left: 0; bottom: 0;
       width: 200px;
       overflow-y: auto;
       overflow-x: hidden;
@@ -94,7 +96,7 @@ published: true
     div.container {
       position: relative;
       width: 750px;
-      margin: 100px 50px 50px 260px;
+      margin: 50px 50px 50px 260px;
       background-color: #EEEEEE;
       overflow-y: auto;
       overflow-x: hidden;
@@ -111,6 +113,7 @@ published: true
   
   <div id="sidebar" class="interface">
 
+    <br><br><br>
     <p><a href="#Airlift">Airlift 2.0</a></p>
     <ul>
       <li><a href="https://github.com/Airlift-Framework/airlift-framework.github.com">Github Repository</a></li>
@@ -273,6 +276,7 @@ f1(&#39;Hello&#39;);
     <p id="equalsIgnoreCase">
       <h3>String.prototype.equalsIgnoreCase (String|java.lang.String
       string)</h3>
+      <h3 class="return">Return Type: Boolean</h3>
       <label class="yellow">Added in 2.0</label>
       Case insensitive comparison of a JavaScript string1 to another
       JavaScript or Java string. Added as a convenience method,
@@ -290,6 +294,7 @@ string1.equalsIgnoreCase(string2);
     <p id="replaceAll">
       <h3>String.prototype.replaceAll (String|java.lang.String
       string1, String|java.lang.String string2)</h3>
+      <h3 class="return">Return Type: String</h3>
       <label class="red">Added in 2.0</label>
       Replaces every occurrence of string1 in 'this' with
       string2. Added as a convenience method, replaceAll is merely a
@@ -351,6 +356,7 @@ string1.replaceAll(&quot;na&quot;, &#39;&#39;);
 
     <p id="each">
       <h3>Each (resourceName, resource, iterator, [context])</h3>
+      <h3 class="return">Return Type: n/A</h3>
       <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
@@ -376,6 +382,7 @@ util.println(JSON.stringify(lightPerson));
 
     <p id="map">
       <h3>Map (resourceName, resource, iterator, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
@@ -404,6 +411,7 @@ util.println(JSON.stringify(lightPerson));
 
     <p id="reduce">
       <h3>Reduce (base, resourceName, resource, iterator, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
@@ -434,6 +442,7 @@ lightPerson;
 
     <p id="sequence">
       <h3>Sequence (function1, function2, ..., functionN)</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Returns a function that is the composition of the passed
       function arguments. The functions are executed in the order they
@@ -465,6 +474,7 @@ var lightPerson = res.each(&#39;person&#39;, person, sequence, context);  //no e
 
     <p id="compose">
       <h3>Compose (function1, function2, ..., functionN)</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Returns a function that is the composition of the passed
       function arguments. The functions are executed in the order they
@@ -499,6 +509,7 @@ var lightPerson = res.each(&#39;person&#39;, person, composition, context);  //n
 
     <p id="watch">
       <h3>Watch ([name1, ..., name2]|[nameList], function)</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Returns a function that will only be executed once and only once
       when the all the attributes in the argument list of nameList are
@@ -544,6 +555,7 @@ lightPerson;
 
     <p id="every">
       <h3>Every (collection, iterator, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Returns true if all of the values in the list pass the iterator
       truth test. For JavaScript arrays, this function delegates to
@@ -561,6 +573,7 @@ success;
 
     <p id="some">
       <h3>Some (collection, iterator, [context]) &#8230;</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       <label class="alias"><em>alias</em> Any</label>
       Returns true if any of the values in the collection pass the
@@ -581,6 +594,7 @@ r;
 
     <p id="forEach">
       <h3>ForEach (collection, iterator, [context]) &#8230;</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       <label class="alias"><em>alias</em> Each</label>
       Iterates over a collection of elements, yielding each in turn to
@@ -601,6 +615,7 @@ count;
 
     <p id="filter">
       <h3>Filter (collection, iterator, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Looks through each value in the list, returning a collection of
       all the values that pass a truth test (iterator). For JavaScript
@@ -618,6 +633,7 @@ util.json(r);
 
     <p id="map">
       <h3>Map (collection, iterator, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Produces a new collection of values by mapping each value in the
       collection through a transformation function (iterator). For
@@ -633,6 +649,7 @@ util.json(r);
 
     <p id="reduce">
       <h3>Reduce (collection, iterator, memo, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Reduce boils down a collection of values into a single
       value. Memo is the initial state of the reduction, and each
@@ -654,6 +671,7 @@ r;
 
     <p id="split">
       <h3>Split (collection, iterator, [context])</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Returns two collections. The first collection contains the items
       for which <em>function returned true, the second collection
@@ -670,6 +688,7 @@ util.json(r);
 
     <p id="partition">
       <h3>Partition (collection, attributeName)</h3>
+      <h3 class="return">Return Type: Object</h3>
       <label class="green">Added in 2.0</label>
       Returns a value list (java.util.List or Javascript array) and a
       map (java.util.Map or Javascript object). The value list
@@ -699,8 +718,7 @@ util.println(util.json(r));
 </html>
 <!--
     <h2 id="cat">Category</h2>
-
-    <p>
+    <p class="h2a">
       Subheader
     </p>
 
@@ -713,6 +731,8 @@ util.println(util.json(r));
 
     <p id="id">
       <h3>methodSig</h3>
+      <h3 class="return">Return Type: Object</h3>
+      <label class="green">Added in 2.0</label>
       <font style="background-color:#95DF9F">Added in 2.0</font>
       Description
 <pre>
