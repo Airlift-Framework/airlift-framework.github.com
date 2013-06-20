@@ -13,7 +13,7 @@ published: true
   <style type="text/css">
     body {
       margin: 0px 0px 0px 0px;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 20px;
       background: #EEEEEE;
       color: #000;
@@ -76,12 +76,18 @@ published: true
     }
     a {
       color:black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #CF4A29;
+      /*transition: background 100ms linear, color 100ms linear;*/
     }
     code {
       margin-left: 20px;
     }
     pre {
-      font-size: 12px;
+      font-size: 14px;
       padding: 2px 0 2px 15px;
       border-left: 5px solid #bbb;
       margin: 0px 0 30px;
@@ -93,7 +99,7 @@ published: true
     div#sidebar {
       background: #DDDDDD;
       position: fixed;
-      top: 50px; left: 0; bottom: 0;
+      top: 60px; left: 0; bottom: 0;
       width: 200px;
       overflow-y: auto;
       overflow-x: hidden;
@@ -115,18 +121,73 @@ published: true
       -webkit-overflow-scrolling: touch;
       z-index: 1;
     }
-    div.api2 {
+<!--    div.api2 {
       position: fixed;
       z-index: 3;
       width: 100%;
+      background-color: #A82929;
+      line-height:60px;
+    }-->
+    #menu {
+      position: fixed;
+      z-index: 3;
+      width: 100%;
+      background-color: #A82929;
+      line-height:20px;
+      padding: 10px 0;
+      overflow: auto;
+    }
+    #menu .inner {
+      width: 800px;
+      margin: 0 auto;
+    }
+    #menu a {
+      color: #fff;
+      background: rgba(0,0,0, 0.2);
+      padding: 10px 20px;
+      font-family: OpenSans;
+      font-weight: normal;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      display: block;
+      float: left;
+      margin-right: 30px;
+      font-size: 18px;
+    }
+    #menu a:last-child {
+      margin-right: 0px;
+    }
+    #menu a.title {
+      padding-left: 0px;
+      margin-right: 141px;
+      font-size: 26px;
+      color: rgba(255,255,255, 0.8);
+      background: none;
+    }
+    #menu a.title.active, #menu a.title:hover {
+      background: none;
+    }
+    #menu a.active, #menu a:hover {
+      background: rgba(0,0,0, 0.5);
     }
   </style>
 </head>
 
 <body>
 
-  <div class="api2">
+<!--  <div class="api2">
     {% include menu.html %}
+  </div>-->
+  <div id="menu">
+    <div class="inner">
+      <a class="title" href="http://airlift.lucidtechnics.com/" class="title">Airlift</a>
+      <a href="http://airlift.lucidtechnics.com/"{% if page.url == '/' %} class="active"{% endif %}>Intro</a>
+      <a href="http://airlift.lucidtechnics.com/manual/"{% if page.url contains '/features/' %} class="active"{% endif %}>Manual</a>
+      <a href="http://airlift.lucidtechnics.com/apis/"{% if page.url contains '/apis/' %} class="active"{% endif %}>API</a>
+      <a href="http://airlift.lucidtechnics.com/team/"{% if page.url contains '/team/' %} class="active"{% endif %}>Team</a>
+      <a href="http://airlift.lucidtechnics.com/development/"{% if page.url contains '/development/' %} class="active"{% endif %}>Dev</a>
+    </div>
   </div>
 
   <div id="sidebar" class="interface">
@@ -230,7 +291,6 @@ published: true
       frameworks? Filler filler filler filler filler blah blah blah
       blah blah i do like cheese filler filler filler filler filler
       filler blah blah blah blah blah blah blah blah blah blah blah.
-      2:09
     </p>
 
     <p>
@@ -309,7 +369,7 @@ string1.equalsIgnoreCase(string2);
     <p id="replaceAll">
       <h3>String.prototype.replaceAll (String|java.lang.String
       string1, String|java.lang.String string2)</h3>
-      <h3 class="return">Return Type: String</h3>
+      <h3 class="return">Return Type: String</h3><br><br><br><br>
       <label class="red">Added in 2.0</label>
       Replaces every occurrence of string1 in 'this' with
       string2. Added as a convenience method, replaceAll is merely a
