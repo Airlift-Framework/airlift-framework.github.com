@@ -83,7 +83,7 @@ published: true
     div#sidebar {
       background: #DDDDDD;
       position: fixed;
-      top: 0px; left: 0; bottom: 0;
+      top: 100px; left: 0; bottom: 0;fixed
       width: 200px;
       overflow-y: auto;
       overflow-x: hidden;
@@ -95,10 +95,10 @@ published: true
       -moz-box-shadow: 0 0 20px #ccc;
       z-index: 2;
     }
-    div.container {
+    div.content {
       position: absolute;
       width: 750px;
-      margin: 50px 50px 50px 260px;
+      margin: 100px 50px 50px 260px;
       background-color: #EEEEEE;
       overflow-y: auto;
       overflow-x: hidden;
@@ -106,15 +106,16 @@ published: true
       z-index: 1;
     }
     div.api2 {
-      position: absolute;
+      position: fixed;
       z-index: 3;
       width: 100%;
+      background-color:purple;
+      line-height:500%;
     }
   </style>
 </head>
 
 <body>
-
 
   <div class="api2">
     {% include menu.html %}
@@ -206,7 +207,7 @@ published: true
 
   </div>
 
-  <div id="content" class="container">
+  <div id="content" class="content">
     <p id="introduction">
       <h1>Airlift API Documentation</h1>
     </p>
@@ -721,6 +722,7 @@ util.println(util.json(r));
     </p>
     <br>
 
+</div>
 
 </body>
 
