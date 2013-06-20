@@ -20,10 +20,49 @@ published: true
       <!--font-family: Helvetica Neue, Helvetica, Arial; -->
     }
     h2 {
-      background-color: #E47E7E
+      padding-left: 10px;
+      background-color: #E47E7E;
+      line-height:35px;
+      margin: 0px;
+    }
+    p.h2a {
+      margin: 0px;
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #E47E7E;
     }
     h3 {
       color: #2A61D9;
+      <!--float: left; -->
+    }
+    h3.return {
+      <!--float: right;-->
+    }
+
+    label {
+      font-size: 12px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+    label.green {
+      background-color:#95DF9F;
+    }
+    label.yellow {
+      background-color:#EDD287;
+    }
+    label.red {
+      background-color:#F47A72;
+    }
+    label.purple {
+      background-color:#BB95E9;
+    }
+    label.alias {
+      background-color:#7EA0F5
     }
     a {
       color:black;
@@ -41,29 +80,31 @@ published: true
     div#sidebar {
       background: #DDDDDD;
       position: fixed;
-      top: 0; left: 0; bottom: 0;
+      top: 100px; left: 0; bottom: 0;
       width: 200px;
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       padding: 15px 0 30px 30px;
       border-right: 1px solid #bbb;
-      box-shadow: 0 0 20px #ccc; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc;
+      box-shadow: 0 0 20px #ccc;
+      -webkit-box-shadow: 0 0 20px #ccc;
+      -moz-box-shadow: 0 0 20px #ccc;
     }
     div.container {
-      width: 600px;
-      margin: 40px 0 50px 260px;
+      position: relative;
+      width: 750px;
+      margin: 100px 50px 50px 260px;
       background-color: #EEEEEE;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
     }
   </style>
 </head>
 
 <body>
 
-<!--div class="api2">
-  {% include menu.html %}
-</div> -->  
-  
   <div id="sidebar" class="interface">
 
     <p><a href="#Airlift">Airlift 2.0</a></p>
@@ -151,7 +192,7 @@ published: true
 
   <div id="content" class="container">
     <p id="introduction">
-      <h1>Airlift</h1>
+      <h1>Airlift API Documentation</h1>
     </p>
 
     <p>
@@ -180,11 +221,11 @@ published: true
     <br>
 
     <h2 id="Extensions">Extensions</h2>
-
-    <p>
+      
+    <p class="h2a">
       JavaScript module extensions that support Airlift utility modules.
     </p>
-
+ 
     <p>
       Airlift is built on Rhino and App Engine. Rhino is a fantastic
       JavaScript interpreter library written for Java. App Engine is a
@@ -202,9 +243,9 @@ published: true
 
     <p id="partial">
       <h3>Function.prototype.partial (Type arg1, Type arg2, ...,
-      Type argN)</h3>
-      <h4 dir="rtl">Return Type: Object</h4>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+        Type argN)</h3>
+      <h3 class="return">Return Type: Object</h3>
+      <label class="green">Added in 2.0</label>
       Returns a wrapper function that wraps the funciton refered to by
       'this'. The arguments passed into partial are stRetrieves a list
       of boundaries for all DOM elements matching the providedored to
@@ -228,7 +269,7 @@ f1(&#39;Hello&#39;);
     <p id="equalsIgnoreCase">
       <h3>String.prototype.equalsIgnoreCase (String|java.lang.String
       string)</h3>
-      <font style="background-color:#EDD287">Added in 2.0</font>
+      <label class="yellow">Added in 2.0</label>
       Case insensitive comparison of a JavaScript string1 to another
       JavaScript or Java string. Added as a convenience method,
       equalsIgnoreCase is merely a wrapper for
@@ -245,8 +286,8 @@ string1.equalsIgnoreCase(string2);
     <p id="replaceAll">
       <h3>String.prototype.replaceAll (String|java.lang.String
       string1, String|java.lang.String string2)</h3>
-      <font style="background-color:#F47A72">Added in 2.0</font>
-      Replaces every occurrence of string1 in ‘this’ with
+      <label class="red">Added in 2.0</label>
+      Replaces every occurrence of string1 in 'this' with
       string2. Added as a convenience method, replaceAll is merely a
       wrapper for java.lang.String.replaceAll.
 <pre><code>
@@ -259,7 +300,7 @@ string1.replaceAll(&quot;na&quot;, &#39;&#39;);
 
     <h2 id="Resource">Resource</h2>
 
-    <p>
+    <p class="h2a">
       The resource module contains functions that allow you to iterate
       over the attributes of your application's resources.
     </p>
@@ -269,13 +310,13 @@ string1.replaceAll(&quot;na&quot;, &#39;&#39;);
       Airlift application development. When designing an application,
       developers are encouraged to create as many resources as they
       like. The resource.js module contains functions that allow
-      developers to traverse the application resources’ attributes. In
+      developers to traverse the application resources' attributes. In
       Airlift a resource is represented as a simple JavaScript object ({}).
       <br><br>
       Whenever a iterative function is executed in resource, the
       iterator function that you provide is executed within a context
       that governs the traversal of that resource. This context is set
-      as the ‘this’ for the iterator function. It makes available
+      as the 'this' for the iterator function. It makes available
       following:
       <ul>
       <li>resourceName - the name of the resource being
@@ -306,7 +347,7 @@ string1.replaceAll(&quot;na&quot;, &#39;&#39;);
 
     <p id="each">
       <h3>Each (resourceName, resource, iterator, [context])</h3>
-      <font style="background-color:#BB95E9">Added in 2.0</font>
+      <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
       passed, along with the attributes provided in the default
@@ -331,7 +372,7 @@ util.println(JSON.stringify(lightPerson));
 
     <p id="map">
       <h3>Map (resourceName, resource, iterator, [context])</h3>
-      <font style="background-color:#BB95E9">Added in 2.0</font>
+      <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
       passed, along with the attributes provided in the default
@@ -359,7 +400,7 @@ util.println(JSON.stringify(lightPerson));
 
     <p id="reduce">
       <h3>Reduce (base, resourceName, resource, iterator, [context])</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
       passed, along with the attributes provided in the default
@@ -389,12 +430,12 @@ lightPerson;
 
     <p id="sequence">
       <h3>Sequence (function1, function2, ..., functionN)</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Returns a function that is the composition of the passed
       function arguments. The functions are executed in the order they
-      are passed into sequence. Sequence’s returned function can be
+      are passed into sequence. Sequence's returned function can be
       used in a iterative manner on a resource or executed as a
-      standalone. Sequence returns the value of the last function’s
+      standalone. Sequence returns the value of the last function's
       execution.
 <pre><code>
 var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
@@ -420,16 +461,16 @@ var lightPerson = res.each(&#39;person&#39;, person, sequence, context);  //no e
 
     <p id="compose">
       <h3>Compose (function1, function2, ..., functionN)</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Returns a function that is the composition of the passed
       function arguments. The functions are executed in the order they
-      are passed in to Compose. Compose’s returned function can be
+      are passed in to Compose. Compose's returned function can be
       used in a iterative manner on a resource or executed as a
       standalone. On execution, the function returned by Compose
       passes its arguments to the first function executed. Each
       function after that will get the return value of the previous
       function as a replacement for the first argument of the original
-      arguments. Compose returns the value of the last function’s
+      arguments. Compose returns the value of the last function's
       execution.
 <pre><code>
 var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
@@ -454,7 +495,7 @@ var lightPerson = res.each(&#39;person&#39;, person, composition, context);  //n
 
     <p id="watch">
       <h3>Watch ([name1, ..., name2]|[nameList], function)</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Returns a function that will only be executed once and only once
       when the all the attributes in the argument list of nameList are
       visited by the iterative function. If an attribute list is not
@@ -490,22 +531,16 @@ lightPerson;
 
     <h2 id="Collection">Collection</h2>
 
-    <p>
+    <p class="h2a">
       The Collection module contains functions that can be used to
       traverse and process JavaScript arrays and Java collections in
       the same manner.
-    </p>
-
-    <p>
-      The Collection module contains handy functions developers can
-      use to traverse a JavaScript array, or a Java ArrayList or Java
-      Set in a similar manner.
     </p>
     <br>
 
     <p id="every">
       <h3>Every (collection, iterator, [context])</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Returns true if all of the values in the list pass the iterator
       truth test. For JavaScript arrays, this function delegates to
       the native every function.
@@ -522,10 +557,10 @@ success;
 
     <p id="some">
       <h3>Some (collection, iterator, [context]) &#8230;</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
-      <font style="background-color:#7EA0F5">alias Any</font>
+      <label class="green">Added in 2.0</label>
+      <label class="alias"><em>alias</em> Any</label>
       Returns true if any of the values in the collection pass the
-      iterator’s truth test. Short-circuits and stops traversing the
+      iterator's truth test. Short-circuits and stops traversing the
       list if a true element is found. If collection is a JavaScript
       array this function delegates to the native method some.
 <pre><code>
@@ -542,8 +577,8 @@ r;
 
     <p id="forEach">
       <h3>ForEach (collection, iterator, [context]) &#8230;</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
-      <font style="background-color:#7EA0F5">alias Each</font>
+      <label class="green">Added in 2.0</label>
+      <label class="alias"><em>alias</em> Each</label>
       Iterates over a collection of elements, yielding each in turn to
       an iterator function. The iterator is bound to the context
       object, if one is passed. Each invocation of iterator is called
@@ -562,7 +597,7 @@ count;
 
     <p id="filter">
       <h3>Filter (collection, iterator, [context])</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Looks through each value in the list, returning a collection of
       all the values that pass a truth test (iterator). For JavaScript
       arrays this function delegates to the native filter method.
@@ -579,7 +614,7 @@ util.json(r);
 
     <p id="map">
       <h3>Map (collection, iterator, [context])</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Produces a new collection of values by mapping each value in the
       collection through a transformation function (iterator). For
       JavaScript arrays, the native map method is used.
@@ -594,7 +629,7 @@ util.json(r);
 
     <p id="reduce">
       <h3>Reduce (collection, iterator, memo, [context])</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Reduce boils down a collection of values into a single
       value. Memo is the initial state of the reduction, and each
       successive step of it should be returned by iterator. The
@@ -615,7 +650,7 @@ r;
 
     <p id="split">
       <h3>Split (collection, iterator, [context])</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Returns two collections. The first collection contains the items
       for which <em>function returned true, the second collection
       contains the items for which the function returned false.</em>
@@ -631,7 +666,7 @@ util.json(r);
 
     <p id="partition">
       <h3>Partition (collection, attributeName)</h3>
-      <font style="background-color:#95DF9F">Added in 2.0</font>
+      <label class="green">Added in 2.0</label>
       Returns a value list (java.util.List or Javascript array) and a
       map (java.util.Map or Javascript object). The value list
       contains, in the order they were discovered, the values that
