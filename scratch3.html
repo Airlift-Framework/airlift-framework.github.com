@@ -92,28 +92,34 @@ published: true
       box-shadow: 0 0 20px #ccc;
       -webkit-box-shadow: 0 0 20px #ccc;
       -moz-box-shadow: 0 0 20px #ccc;
+      z-index: 2;
     }
     div.container {
-      position: relative;
+      position: absolute;
       width: 750px;
       margin: 50px 50px 50px 260px;
       background-color: #EEEEEE;
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
+      z-index: 1;
+    }
+    div.api2 {
+      z-index: 3;
     }
   </style>
 </head>
 
 <body>
 
+
   <div class="api2">
     {% include menu.html %}
   </div>
-  
+
   <div id="sidebar" class="interface">
 
-    <br><br><br>
+    <br><br><br><br>
     <p><a href="#Airlift">Airlift 2.0</a></p>
     <ul>
       <li><a href="https://github.com/Airlift-Framework/airlift-framework.github.com">Github Repository</a></li>
