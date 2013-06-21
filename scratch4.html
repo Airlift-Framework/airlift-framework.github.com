@@ -6,13 +6,14 @@ published: true
 
 <!DOCTYPE html>
 <html>
-
+  
 <head>
   <meta charset='UTF-8'/>
-  <title> Airlift &middot; A JavaScript web application framework for
-  Google App Engine </title>
-  <link rel='stylesheet' href='"http://airlift.lucidtechnics.com/fonts/open-sans.css">
-  <link rel='stylesheet' href='"http://airlift.lucidtechnics.com/app.css">
+  <title>Airlift &middot; A JavaScript web application framework for Google App Engine</title>
+  <link rel='stylesheet' href='{{site.baseurl}}/fonts/open-sans.css'/>
+  <link rel='stylesheet' href='{{site.baseurl}}/app.css'/>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="/javascripts/rainbow-custom.min.js"></script>
   <style type="text/css">
     body {
       margin: 0px 0px 0px 0px;
@@ -131,52 +132,6 @@ published: true
       background-color: #A82929;
       line-height:60px;
     }
-<!--    #menu {
-      position: fixed;
-      z-index: 3;
-      width: 100%;
-      background-color: #A82929;
-      line-height:20px;
-      padding: 10px 0;
-      overflow: auto;
-    }
-    #menu .inner {
-      width: 800px;
-      margin: 0 auto;
-    }
-    #menu a {
-      color: #fff;
-      background: rgba(0,0,0, 0.2);
-      padding: 10px 20px;
-      font-family: OpenSans, sans-serif;
-      font-weight: normal;
-      -moz-border-radius: 4px;
-      -webkit-border-radius: 4px;
-      border-radius: 4px;
-      display: block;
-      float: left;
-      margin-right: 30px;
-      font-size: 18px;
-      line-height: 20px;
-      transition: background 100ms linear, color 100ms linear;
-
-    }
-    #menu a:last-child {
-      margin-right: 0px;
-    }
-    #menu a.title {
-      padding-left: 0px;
-      margin-right: 141px;
-      font-size: 26px;
-      color: rgba(255,255,255, 0.8);
-      background: none;
-    }
-    #menu a.title.active, #menu a.title:hover {
-      background: none;
-    }
-    #menu a.active, #menu a:hover {
-      background: rgba(0,0,0, 0.5);
-    }-->
   </style>
 </head>
 
@@ -185,16 +140,6 @@ published: true
   <div class="api2">
     {% include menu.html %}
   </div>
-<!--  <div id="menu">
-    <div class="inner">
-      <a class="title" href="http://airlift.lucidtechnics.com/" class="title">Airlift</a>
-      <a href="http://airlift.lucidtechnics.com/"{% if page.url == '/' %} class="active"{% endif %}>Intro</a>
-      <a href="http://airlift.lucidtechnics.com/manual/"{% if page.url contains '/features/' %} class="active"{% endif %}>Manual</a>
-      <a href="http://airlift.lucidtechnics.com/apis/"{% if page.url contains '/apis/' %} class="active"{% endif %}>API</a>
-      <a href="http://airlift.lucidtechnics.com/team/"{% if page.url contains '/team/' %} class="active"{% endif %}>Team</a>
-      <a href="http://airlift.lucidtechnics.com/development/"{% if page.url contains '/development/' %} class="active"{% endif %}>Dev</a>
-    </div>
-  </div>-->
 
   <div id="sidebar" class="interface">
 
