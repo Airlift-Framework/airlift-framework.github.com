@@ -571,10 +571,14 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 
 #main .api #menu {
   background: #b16649;
+  
 }
 
 #main .api2 #menu {
   background: #A82929/*#9966ff*/;
+  position: fixed;
+  z-index: 3;
+  line-height: 60px;
 }
 
 #main .team #menu {
