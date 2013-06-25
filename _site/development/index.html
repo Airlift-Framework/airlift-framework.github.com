@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <title>Airlift &middot; A JavaScript web application framework for Google App Engine</title>
+  <link rel='stylesheet' href='/fonts/open-sans.css'/>
+  <link rel='stylesheet' href='/app.css'/>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="/javascripts/rainbow-custom.min.js"></script>
+</head>
+<body>
+  <div id='container'>
+    <!-- <div id="header">
+      <div class="navigation">
+        <span class="subtitle">rapid application deployment</span>
+      </div>
+    </div> -->
+
+    <div id='main'><div class="development">
+  <div id="menu">
+  <div class="inner">
+    <a class="title" href="/" class="title">Airlift</a>
+    <a href="/">Intro</a>
+    <a href="/manual/">Manual</a>
+    <a href="/api/">API</a>
+    <a href="/team/">Team</a>
+    <a href="/development/" class="active">Dev</a>
+  </div>
+</div>
+
+  <div class="plot">
+    <p>
+      <strong>Airlift</strong> is constantly being improved.  We are always looking for help in the following areas.  If you would like to contribute in any way, whether you are an intern, someone working with Google Summer of Code, or are just looking for a cool project to join, please <a href="http://www.lucidtechnics.com/about/">contact us</a>.  We could use the help!
+    </p>
+  </div>
+</div>
+
+<div class="ideas">
+  <div class="idea">
+    <h1>Dictation Improvements</h1>
+    <div class="description">
+      <p>
+        Dictation is our English based domain specific language we use to describe a business' application resources. Airlift uses these Dictation based resource descriptions to produce Google App Engine specific code.  The code we generate includes, but is not limited to, datastore persistence logic, resource validation and conversion, and application audit and security.
+            </div>
+    <div class="description">
+      <p>
+        Dictation is not perfect.  We will like to improve Dictation's usability.  One such way is to provide an editor that automatically detects syntax errors as well as improve Dictation's readability via keyword highlighting.  This editor should be cloud based, but also usable offline.  It should be easy enough to use that a non-technical person code create a valid Dictation file with ease.
+      </p>
+      <div class="links">
+        <ul style="list-style: none">
+          <li>Project Lead <a href="http://github.com/davezen1">David Hodge</a></li>
+          <li>Source Code <a href="https://github.com/LucidTechnics/dictation">Dictation</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+    
+    <div class="idea">
+    <h1>Google App Engine Service Api Enhancements</h1>
+    <div class="description">
+      <p>
+        Airlift's goal is twofold ...  1> make it easier to use Google's App Engine, and 2> provide JavaScript developer's a vehicle for creating server side code deployed on App Engine. Part of this goal can be achieved by simplifying the Google's API for App Engine services.
+            </div>
+    <div class="description">
+      <p>
+      We have has success simplifying the use of datastore, task queues, and memcache.  We would like to do the same for the other App Engine APIs like search for instance, as well as provide APIs that integrate other Google services such as Cloud, Drive, Prediction, and other APIs.  
+      </p>
+      <div class="links">
+        <ul style="list-style: none">
+          <li>
+            Project Lead <a href="http://github.com/bediako">Bediako George</a></li>
+          <li>Source Code <a href="https://github.com/LucidTechnics/Airlift">Airlift</a></li>
+        <li>APIs <a href="https://cloud.google.com/products/">Google Cloud Services</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+      <div class="idea">
+    <h1>Airflow - automated workflow</h1>
+    <div class="description">
+      <p>
+        Airflow is a workflow generation framework built on Dictation and Airlift.  It is designed to look at an application's Dictation file and create an underlying workflow framework that relies on Airlift generated code designed to automate manual workflow tasks.
+            </div>
+    <div class="description">
+      <p>
+        Using Airlift's inherently restful design along with the descriptive access information provided by a Dictation, it is possible to generate logic that provides automated resource monitoring and change notifications to system actors via email and other mechanisms.  We call this process Airflow and are looking for help creating this open source bolt-on for Airlift.  
+      </p>
+      <div class="links">
+        <ul style="list-style: none">
+          <li>Project Lead <a href="http://github.com/bediako">Bediako George</a></li>
+          <li>Source Code <a href="https://github.com/LucidTechnics/Airlift">Airlift</a></li>
+        </ul>
+      </div>
+    </div>
+  
+  </div>
+</div></div>
+  </div>
+
+  <div id='footer'>
+    <div class="footer-content">
+      This open sourced site is hosted on <a href="http://github.com/Airlift-Framework/airlift-framework.github.com">GitHub</a>. Please help us to improve it!
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var codeBlocks = document.querySelectorAll('code');
+    Array.prototype.forEach.call(codeBlocks, function iterator(block) {
+      block.setAttribute('data-language', 'javascript');
+    });
+    Rainbow.color();
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7466901-3', 'lucidtechnics.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
