@@ -155,7 +155,7 @@ permalink: /api/
 
   <div class="sidebar">
 
-    <p><a href="#Airlift">Airlift 2.0</a></p>
+    <p><a href="#Introduction">Airlift 2.0</a></p>
     <ul>
       <li><a href="https://github.com/Airlift-Framework/airlift-framework.github.com">Github Repository</a></li>
       <li><a href="https://github.com/Airlift-Framework/airlift-framework.github.com">Download PDF</a></li>
@@ -247,7 +247,7 @@ permalink: /api/
 
   <div class="container">
   <div class="content">
-    <p id="introduction">
+    <p id="Introduction">
       <h1>Airlift API Documentation</h1>
     </p>
 
@@ -678,25 +678,119 @@ var target = res.map('person', bediako, res.clone, undefined, context);
     <p>
       The Collection module contains handy functions developers can
       use to traverse a JavaScript array, or a Java ArrayList or Java
-      Set in a similar manner.
+      Set in a similar manner. Each function takes three parameters:
+      collection, function, and context.
     </p>
+    <p>
+      The collection parameter can be a java.util.Collection, a
+      java.lang.String, a Javascript array, or a Javascript string to
+      iterate over. The given function will be applied to every member
+      of that collection or array, or every character of the
+      java.lang.String or Javascript string. The function can expect
+      the item/character, index, and collection/string to be passed to
+      it at runtime.
+    </p>
+    <p>
+      These functions can be used by including the following code:
+    </p>
+    <br>
+<pre><code>
+var collection = require('airlift/collection');
+</code></pre>
     <br>
 
     <p id="every">
-      <h3>Every (collection, iterator, [context])</h3>
-      <h3 class="return">Return Type: Object</h3>
+      <h3>every(collection, function, [context])</h3>
+      <h3 class="return">Return Type: Boolean</h3>
       <label class="purple">Added in 2.0</label>
       Returns true if all of the values in the list pass the iterator
       truth test. For JavaScript arrays, this function delegates to
-      the native every function.
+      the native every function. The iteration stops once all the
+      members of the collection have been visited or if the function
+      ever returns false.
       </p>
 <pre><code>
-var util = require(&#39;airlift/util&#39;);
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;],
-      c = require(&#39;collection&#39;);
-var success = c.every(users, function(_item, _index, _collection) { return true; });
-success;
+var users = ['Bediako', 'Dave', 'Loki'];
+var success = collection.every(users, function(_item, _index, _collection)
+    {
+        return true;
+    })
+
 => true
+</code></pre>
+
+    <p id="forEach">
+      <h3>forEach(collection, function, [context])</h3>
+      <h3 class="return">Return Type: n/A</h3>
+      <label class="purple">Added in 2.0</label>
+      <label class="alias"><em>alias</em> Each</label>
+      Iterates over a collection of elements, yielding each in turn to
+      an iterator function. The iterator is bound to the context
+      object, if one is passed. Each invocation of iterator is called
+      with three arguments: (item, index, collection). For JavaScript
+      arrays this function delegates to the native forEach function.
+      </p>
+<pre><code>
+var users = ['Bediako', 'Dave', 'Loki'];
+var index = 0;
+var results = [];
+ 
+collection.forEach(users, function(_item, _index, _collection)
+   {
+      results.push('Hello, ' + _item);
+   });
+
+=> ['Hello, Bediako', 'Hello, Dave', 'Hello, Loki']
+</code></pre>
+
+    <p id="filter">
+      <h3>filter(collection, function, [context])</h3>
+      <h3 class="return">Return Type: java.util.List|Array</h3>
+      <label class="purple">Added in 2.0</label>
+      Looks through each value in the list, returning a collection of
+      all the values that pass a truth test (iterator). For JavaScript
+      arrays this function delegates to the native filter method.
+      </p>
+<pre><code>
+var array = [1, true, 20, 'hello'];
+var index = 0;
+var results = collection.filter(array, function(_item, _index, _collection)
+    {
+        if (_index % 2 === 0)
+        {
+            return false;
+	}
+	else
+	{
+	    return true;
+	}
+});
+
+=> [true, 'hello']
+</code></pre>
+
+    <p id="map">
+      <h3>map(collection, function, [context])</h3>
+      <h3 class="return">Return Type: java.util.List|Array</h3>
+      <label class="purple">Added in 2.0</label>
+      Produces a new collection of values by mapping each value in the
+      collection through a transformation function (iterator). For
+      JavaScript arrays, the native map method is used.
+      Returns a new collection of values that contains every result
+      returned by the execution of function against every item in the
+      collection.
+      </p>
+<pre><code>
+exports['test map'] = function(_assert)
+{
+    var users = ['Bediako', 'Dave', 'Loki'];
+    var index = 0;
+    var results = collection.map(users, function(_item, _index, _collection)
+	{
+	    return _item + ' is the best!';
+	});
+
+=> ['Bediako is the best!', 'Dave is the best!', 'Loki is the best!']
 </code></pre>
 
     <p id="some">
@@ -717,59 +811,6 @@ var r = c.some(users, function(_item, _index, _collection) { return
       (_index === 2); });
 r;
 => true
-</code></pre>
-
-    <p id="forEach">
-      <h3>ForEach (collection, iterator, [context]) &#8230;</h3>
-      <h3 class="return">Return Type: Object</h3>
-      <label class="purple">Added in 2.0</label>
-      <label class="alias"><em>alias</em> Each</label>
-      Iterates over a collection of elements, yielding each in turn to
-      an iterator function. The iterator is bound to the context
-      object, if one is passed. Each invocation of iterator is called
-      with three arguments: (item, index, collection). For JavaScript
-      arrays this function delegates to the native forEach function.
-      </p>
-<pre><code>
-var util = require(&#39;airlift/util&#39;), count = 0;
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;],
-      c = require(&#39;collection&#39;);
-c.forEach(users, function(_item, _index, _collection) { count++; });
-count;
-=> 3
-</code></pre>
-
-    <p id="filter">
-      <h3>Filter (collection, iterator, [context])</h3>
-      <h3 class="return">Return Type: Object</h3>
-      <label class="purple">Added in 2.0</label>
-      Looks through each value in the list, returning a collection of
-      all the values that pass a truth test (iterator). For JavaScript
-      arrays this function delegates to the native filter method.
-      </p>
-<pre><code>
-var util = require(&#39;airlift/util&#39;);
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;],
-      c = require(&#39;collection&#39;);
-var r = c.filter(users, function(_item, _index, _collection) { return (_index === 0); });
-util.json(r);
-=> [&quot;Bediako&quot;]
-</code></pre>
-
-    <p id="map">
-      <h3>Map (collection, iterator, [context])</h3>
-      <h3 class="return">Return Type: Object</h3>
-      <label class="purple">Added in 2.0</label>
-      Produces a new collection of values by mapping each value in the
-      collection through a transformation function (iterator). For
-      JavaScript arrays, the native map method is used.
-      </p>
-<pre><code>
-var util = require(&#39;airlift/util&#39;);
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var r = c.map(users, function(_item, _index, _collection) { return &#39;Hello &#39; + _item; });
-util.json(r);
-=> [&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;, &quot;Hello Loki&quot;]
 </code></pre>
 
     <p id="reduce">
