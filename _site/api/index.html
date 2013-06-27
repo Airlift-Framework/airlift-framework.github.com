@@ -179,10 +179,17 @@
     <ul>
       <li><a href="#each">each</a></li>
       <li><a href="#map">map</a></li>
+      <li><a href="#transform">transform</a></li>
       <li><a href="#reduce">reduce</a></li>
       <li><a href="#sequence">sequence</a></li>
       <li><a href="#compose">compose</a></li>
+      <li><a href="#toString">toString</a></li>
       <li><a href="#watch">watch</a></li>
+      <li><a href="#json">json</a></li>
+      <li><a href="#audit">audit</a></li>
+      <li><a href="#copy">copy</a></li>
+      <li><a href="#clone">clone</a></li>
+      <li><a href="#stream">stream</a></li>
     </ul>
 
     <p><a href="#Collection">Collection</a></p>
@@ -204,12 +211,12 @@
       <li><a href="#createClass">createClass</a></li>
       <li><a href="#isWhiteSpace">isWhiteSpace</a></li>
       <li><a href="#hasValue">hasValue</a></li>
-      <li><a href="#multiTry">multiTry</a></li>
+      <li><a href="#multitry">multitry</a></li>
       <li><a href="#createDate">createDate</a></li>
       <li><a href="#createCalendar">createCalendar</a></li>
       <li><a href="#guid">guid</a></li>
       <li><a href="#trim">trim</a></li>
-      <li><a href="#pring">println</a></li>
+      <li><a href="#print">print</a></li>
       <li><a href="#println">println</a></li>
       <li><a href="#value">value</a></li>
     </ul>
@@ -299,13 +306,12 @@
       <h3>Function.prototype.partial (Type arg1, Type arg2, ...,
         Type argN)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
-      Returns a wrapper function that wraps the funciton refered to by
-      'this'. The arguments passed into partial are stRetrieves a list
-      of boundaries for all DOM elements matching the providedored to
-      be applied when the wrapper function is invoked. When the wrapper
-      function is invoked, its arguments are taked on to the stored
-      arguments. If any of stored arguments are undefined, they will
+      <label class="purple">Added in 2.0</label>
+      Returns a wrapper function that wraps the function referred to by
+      'this'. The arguments passed into partial are stored to be
+      applied when the wrapper function is invoked. When the wrapper
+      function is invoked, its arguments are tacked on to the stored
+      arguments.  If any of stored arguments are undefined, they will
       be filled in in the order of presentation of the wrapper
       function arguments.
       </p>
@@ -323,7 +329,7 @@ f1(&#39;Hello&#39;);
       <h3>String.prototype.equalsIgnoreCase (String|java.lang.String
       string)</h3>
       <h3 class="return">Return Type: Boolean</h3>
-      <label class="yellow">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Case insensitive comparison of a JavaScript string1 to another
       JavaScript or Java string. Added as a convenience method,
       equalsIgnoreCase is merely a wrapper for
@@ -340,7 +346,7 @@ string1.equalsIgnoreCase(string2);
       <h3>String.prototype.replaceAll (String|java.lang.String
       string1, String|java.lang.String string2)</h3>
       <h3 class="return">Return Type: String</h3>
-      <label class="red">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Replaces every occurrence of string1 in 'this' with
       string2. Added as a convenience method, replaceAll is merely a
       wrapper for java.lang.String.replaceAll.
@@ -399,32 +405,32 @@ string1.replaceAll(&quot;na&quot;, &#39;&#39;);
     <br>
 
     <p class="function" id="each">
-      <h3>Each (resourceName, resource, iterator, [context])</h3>
+      <h3>each(String resourceName, Object resource, Function
+      function, Function callback, Object context)</h3>
       <h3 class="return">Return Type: n/A</h3>
       <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
       passed, along with the attributes provided in the default
       context. Each invocation of iterator is called with four
-      arguments: (value, attributeName, resource, metadata).
+      arguments: (value, attributeName, resource, metadata). <span
+      style="background-color:red">If callback is defined, ???</span>
       </p>
 <pre><code>
-var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
-var lightPerson = {};
-var res = require(&#39;resource&#39;);
-var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]};
-      //optional - set to limit iteration
-res.each(&#39;person&#39;, person, function(_value, _name, _resource, _metadata)
-{
-   lightPerson[_name] = _value;
-} , context);
+var attributes = [];
 
-util.println(JSON.stringify(lightPerson));
-=> {shortName: &#39;Kwame&#39;, age: 27 }
+res.each('person', bediako, function(_value, _attributeName, _resource, _metadata)
+    {
+        attributes.push(_attributeName);		
+    }, undefined, context);
+
+=> ["fullName", "shortName", "status", "birthDate", "age", "friendList",
+    "familySet", "auditPostDate", "auditPutDate", "auditUserId", "id"]
 </code></pre>
 
     <p id="map">
-      <h3>Map (resourceName, resource, iterator, [context])</h3>
+      <h3>map(String resourceName, Object resource, Function
+      function, Function callback, Object context)</h3>
       <h3 class="return">Return Type: Object</h3>
       <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
@@ -436,26 +442,49 @@ util.println(JSON.stringify(lightPerson));
       object.
       </p>
 <pre><code>
-var person = {fullName: &#39;Kwame Mtume&#39;, shortName:
-      &#39;Kwame&#39;, age: 27};
-var res = require(&#39;resource&#39;);
-var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]};
-      //optional - set to limit iteration
+var attributes = [];
 
-var lightPerson = res.map(&#39;person&#39;, person, function(_value,
-_name, _resource, _metadata)
-{
-   return _value;
-} , context);
+//create a person resource using map ...
+var person = res.map('person', bediako,
+    function(_value, _attributeName, _resource, _metadata)
+    {
+        attributes.push(_attributeName);
+	return _value;
+    }, undefined, context);
 
-util.println(JSON.stringify(lightPerson));
-=> {shortName: &#39;Kwame&#39;, age: 27 }
+=> ["fullName","shortName","status","birthDate","age","friendList","familySet",
+    "auditPostDate","auditPutDate","auditUserId","id"] 
 </code></pre>
 
-    <p id="reduce">
-      <h3>Reduce (base, resourceName, resource, iterator, [context])</h3>
+    <p id="transform">
+      <h3>transform(Object dictionary, String resourceName, Object
+      resource, Function function, Function callback, Object context)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
+      <span style="background-color:red"> NEEDS DESCRIPTION</span>
+      </p>
+<pre><code>
+var attributes = [];
+var dictionary = {fullName: 'name'};
+
+//create a person resource using transform ...
+var person = res.transform(dictionary, 'person', bediako,
+    function(_value, _attributeName, _resource, _metadata)
+    {
+	attributes.push(_attributeName);
+	return _value;
+    }, undefined, context);
+
+=> ["fullName","shortName","status","birthDate","age","friendList","familySet",
+    "auditPostDate","auditPutDate","auditUserId","id"] 
+</code></pre>
+
+
+    <p id="reduce">
+      <h3>reduce(String base, String resourceName, Object resource,
+      Function function, Function callback, Object context)</h3>
+      <h3 class="return">Return Type: String</h3>
+      <label class="purple">Added in 2.0</label>
       Iterates over a resource, yielding each in turn to an iterator
       function. The iterator is bound to the context object, if one is
       passed, along with the attributes provided in the default
@@ -465,27 +494,25 @@ util.println(JSON.stringify(lightPerson));
       value. Reduce returns the value of base at the end.
       </p>
 <pre><code>
-var person = {fullName: &#39;Kwame Mtume&#39;, shortName:
-      &#39;Kwame&#39;, age: 27};
-var res = require(&#39;resource&#39;);
-var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]};
-      //optional - set to limit iteration
-var base = &#39;&lt;ul&gt;&#39;;
+var attributes = [];
+	
+var reducedResult = res.reduce('person:', 'person', bediako,
+    function(_base, _value, _attributeName, _resource, _metadata)
+    {
+	attributes.push(_attributeName);
+	var formattedValue = Packages.airlift.util.FormatUtil.format(_value||"");
+	return _base + ':' + _attributeName + '=' + formattedValue;		
+    }, undefined, context);
 
-var lightPerson = res.reduce(base, &#39;person&#39;, person,
-function(_value, _name, _resource, _metadata)
-{
-   return &#39;&lt;li&gt;&#39; + _value + &#39;&lt;/li&gt;&#39;;
-} , context);
-
-lightPerson;
-=> &lt;ul&gt;&lt;li&gt;Kwame&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;
+=> "person::fullName=Bediako George:shortName=Bediako:status=middle aged
+    :birthDate=01-01-1970:age=43.0:friendList=[\"friend1\",\"friend2\",\"friend3\"]
+    :familySet=[\"family1\"]:auditPostDate=:auditPutDate=:auditUserId=:id=6524d6f79d19"
 </code></pre>
 
     <p id="sequence">
-      <h3>Sequence (function1, function2, ..., functionN)</h3>
-      <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <h3>sequence(Function f1, Function f2, ... , Function fN)</h3>
+      <h3 class="return">Return Type: Function</h3>
+      <label class="purple">Added in 2.0</label>
       Returns a function that is the composition of the passed
       function arguments. The functions are executed in the order they
       are passed into sequence. Sequence's returned function can be
@@ -494,29 +521,22 @@ lightPerson;
       execution.
       </p>
 <pre><code>
-var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
-var res = require(&#39;resource&#39;);
+var results = [];
+var sequence = res.sequence(
+    function() { results.push(1); },
+    function() { results.push(2); },
+    function() { results.push(3); },
+    function() { results.push(4); }
+);
+sequence();
 
-var checkStringType = function(_value, _name, _resource, _metadata) {
-   if (&quot;java.lang.String&quot;.equals(_metadata.type) === false) throw &#39;error&#39;;
-}
-
-var checkAttributeHasValue = function(_value)
-{
-   if (util.hasValue(_value) === false) throw &#39;error&#39;;
-}
-
-var sequence = res.sequence(checkStringType, checkAttributeHasValue);
-var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]};
-//optional - set to limit iteration
-
-var lightPerson = res.each(&#39;person&#39;, person, sequence, context);  //no errors
+=> [1,2,3,4]
 </code></pre>
 
     <p id="compose">
-      <h3>Compose (function1, function2, ..., functionN)</h3>
-      <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <h3>Compose (Function f1, Function f2, ..., Function fN)</h3>
+      <h3 class="return">Return Type: Function</h3>
+      <label class="purple">Added in 2.0</label>
       Returns a function that is the composition of the passed
       function arguments. The functions are executed in the order they
       are passed in to Compose. Compose's returned function can be
@@ -529,28 +549,35 @@ var lightPerson = res.each(&#39;person&#39;, person, sequence, context);  //no e
       execution.
       </p>
 <pre><code>
-var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
-var res = require(&#39;resource&#39;);
+var results = [];
 
-var returnOK = function(_value, _name, _resource, _metadata) {
-   return &#39;OK&#39;;
-}
+var compose = res.compose(
+    function() { results.push(1); },
+    function() { results.push(2); },
+    function() { results.push(3); },
+    function() { results.push(4); }
+);
 
-var checkOK = function(_value)
-{
-   if (&quot;OK&quot;.equals(_value) === false) throw &#39;error&#39;;
-}
+compose();
 
-var composition = res.compose(returnOK, checkOK);
-var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+=> [1,2,3,4]
+</code></pre>
 
-var lightPerson = res.each(&#39;person&#39;, person, composition, context);  //no errors
+    <p id="toString">
+      <h3>toString(String resourceName, Object resource, Object context)</h3>
+      <h3 class="return">Return Type: String</h3>
+      <label class="purple">Added in 2.0</label>
+      <span style="background-color:red">NEEDS DESCRIPTION</span>
+      </p>
+<pre><code>
+'NEEEEEEEDS TEEEESSSSST CAAAASSSEEEESSSSS'
 </code></pre>
 
     <p id="watch">
-      <h3>Watch ([name1, ..., name2]|[nameList], function)</h3>
-      <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <h3>Watch ([String attributeName1, ..., String
+      attributeNameN]|[String names], Function watchFunction)</h3>
+      <h3 class="return">Return Type: Function</h3>
+      <label class="purple">Added in 2.0</label>
       Returns a function that will only be executed once and only once
       when the all the attributes in the argument list of nameList are
       visited by the iterative function. If an attribute list is not
@@ -559,28 +586,90 @@ var lightPerson = res.each(&#39;person&#39;, person, composition, context);  //n
       visited.
       </p>
 <pre><code>
-var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
-var res = require(&#39;resource&#39;);
+var executionTest = [], attributes = {};
+var watchFunction = function(_value, _attributeName, _resource, _metadata)
+   {
+	executionTest.push(1);
+	attributes[_attributeName] = (attributes[_attributeName]
+                && attributes[_attributeName] + 1)||1;
+    };
+var watch = res.watch('birthDate', 'age', watchFunction);
+res.each('person', bediako, watch, undefined, context);
+var result = {age: 1};
+	
+=> attributes: {age: 1}
+</code></pre>
 
-var closeUlTag = function(_base, _value, _attributeName, _resource, _metadata) {
-   return _base + &#39;&lt;/ul&gt;&#39;;
-}
+    <p id="json">
+      <h3>json(Object resource, Object replacer)</h3>
+      <h3 class="return">Return Type: Function</h3>
+      <label class="purple">Added in 2.0</label>
+      Converts an object into a string by calling JSON.strinigfy().
+      </p>
+<pre><code>
+res.json({});
+=> '{}'
 
-var liTag = function(_base, _value, _attributeName, _resource, _metadata)
-{
-   return _base + &#39;&lt;li&gt;&#39; + _value + &#39;&lt;/li&gt;&#39;;
-}
+res.json(['bediako']);
+=> '["bediako"]'
 
-var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
-var watch1 = res.watch(closeUlTag); //watch1 will execute once and only once ... 
-var composition = res.compose(liTag, watch1);
+res.json({number: new Packages.java.lang.Integer(1)});
+=> '{"number":1}'
 
-var lightPerson = res.reduce(&#39;&lt;ul&gt;&#39;, &#39;person&#39;,
-person, composition, context);
-     //.. when &#39;shortName&#39; and &#39;age&#39; are visited at least once.
+res.json({time: new Date(5)});
+=> '{"time":"1970-01-01T00:00:00.005Z"}'
+</code></pre>
 
-lightPerson;
-=> &lt;ul&gt;&lt;li&gt;Kwame&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;&lt;/ul&gt;
+    <p id="audit">
+      <h3>audit(_config)</h3>
+      <h3 class="return">Return Type: n/A</h3>
+      <label class="purple">Added in 2.0</label>
+      <span style="background-color:red">NEEDS DESCRIPTION</span>
+      </p>
+<pre><code>
+'NEEEEEEEDS TEEEESSSSST CAAAASSSEEEESSSSS'
+</code></pre>
+
+    <p id="copy">
+      <h3>copy(Object target, Object value, String attributeName)</h3>
+      <h3 class="return">Return Type: n/A</h3>
+      <label class="purple">Added in 2.0</label>
+      Copies each attributeName of value into target.
+      </p>
+<pre><code>
+var target = {};
+res.each('person', bediako, res.copy.partial(target), undefined, context);
+
+=> {"fullName":"Bediako George","shortName":"Bediako","status":"middle aged",
+    "birthDate":"1970-01-01T05:00:00.000Z","age":43,
+    "friendList":["friend1","friend2","friend3"],"familySet":["family1"],
+    "id":"6524d6f79d19"}
+</code></pre>
+
+    <p id="clone">
+      <h3>clone(Object value)</h3>
+      <h3 class="return">Return Type: Object</h3>
+      <label class="purple">Added in 2.0</label>
+      Returns a copy of the object.
+      </p>
+<pre><code>
+var target = res.map('person', bediako, res.clone, undefined, context);
+
+=> {"fullName":"Bediako George","shortName":"Bediako","status":"middle aged",
+    "birthDate":"1970-01-01T05:00:00.000Z","age":43,
+    "friendList":["friend1","friend2","friend3"],"familySet":["family1"],
+    "id":"6524d6f79d19"}
+</code></pre>
+
+    <p id="stream">
+      <h3>function(Function iterator, Function serialize, Function write,
+      Array separators)</h3>
+      <h3 class="return">Return Type: n/A</h3>
+      <label class="purple">Added in 2.0</label>
+      <span style="background-color:red">NEEDS DESCRIPTION</span>
+      </p>
+<pre><code>
+'NEEEEEEEDS TEEEESSSSST CAAAASSSEEEESSSSS'
 </code></pre>
 
     <h2 id="Collection">Collection</h2>
@@ -601,7 +690,7 @@ lightPerson;
     <p id="every">
       <h3>Every (collection, iterator, [context])</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Returns true if all of the values in the list pass the iterator
       truth test. For JavaScript arrays, this function delegates to
       the native every function.
@@ -618,7 +707,7 @@ success;
     <p id="some">
       <h3>Some (collection, iterator, [context]) &#8230;</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       <label class="alias"><em>alias</em> Any</label>
       Returns true if any of the values in the collection pass the
       iterator's truth test. Short-circuits and stops traversing the
@@ -638,7 +727,7 @@ r;
     <p id="forEach">
       <h3>ForEach (collection, iterator, [context]) &#8230;</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       <label class="alias"><em>alias</em> Each</label>
       Iterates over a collection of elements, yielding each in turn to
       an iterator function. The iterator is bound to the context
@@ -658,7 +747,7 @@ count;
     <p id="filter">
       <h3>Filter (collection, iterator, [context])</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Looks through each value in the list, returning a collection of
       all the values that pass a truth test (iterator). For JavaScript
       arrays this function delegates to the native filter method.
@@ -675,7 +764,7 @@ util.json(r);
     <p id="map">
       <h3>Map (collection, iterator, [context])</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Produces a new collection of values by mapping each value in the
       collection through a transformation function (iterator). For
       JavaScript arrays, the native map method is used.
@@ -685,12 +774,13 @@ var util = require(&#39;airlift/util&#39;);
 var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
 var r = c.map(users, function(_item, _index, _collection) { return &#39;Hello &#39; + _item; });
 util.json(r);
-=> [&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;, &quot;Hello Loki&quot;]</code></pre>
+=> [&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;, &quot;Hello Loki&quot;]
+</code></pre>
 
     <p id="reduce">
       <h3>Reduce (collection, iterator, memo, [context])</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Reduce boils down a collection of values into a single
       value. Memo is the initial state of the reduction, and each
       successive step of it should be returned by iterator. The
@@ -711,7 +801,7 @@ r;
     <p id="split">
       <h3>Split (collection, iterator, [context])</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Returns two collections. The first collection contains the items
       for which <em>function returned true, the second collection
       contains the items for which the function returned false.</em>
@@ -727,7 +817,7 @@ util.json(r);
     <p id="partition">
       <h3>Partition (collection, attributeName)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Returns a value list (java.util.List or Javascript array) and a
       map (java.util.Map or Javascript object). The value list
       contains, in the order they were discovered, the values that
@@ -765,7 +855,7 @@ util.println(util.json(r));
     <p id="typeOf">
       <h3>typeOf (Value v)</h3>
       <h3 class="return">Return Type: String</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Determines the type of JavaScript object value.
     </p>
 <pre><code>
@@ -780,7 +870,7 @@ u.typeOf(function(){});     => function
     <p id="isEmpty">
       <h3>isEmpty (Object o)</h3>
       <h3 class="return">Return Type: Boolean</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Determines whether or not a JavaScript object has any
       properties.
     </p>
@@ -795,7 +885,7 @@ u.isEmpty({name: undefined})
     <p id="createClass">
       <h3>createClass (String className)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Creates a Java class object identified by the classname.
     </p>
 <pre><code>
@@ -807,7 +897,7 @@ u.createClass(&quot;java.lang.String&quot;).getName();
     <p id="isWhiteSpace">
       <h3>isWhiteSpace (String string)</h3>
       <h3 class="return">Return Type: Boolean</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Returns true if string is whitespace, false otherwise.
     </p>
 <pre><code>
@@ -820,7 +910,7 @@ u.isWhitespace(&#39;name&#39;); => false
     <p id="hasValue">
       <h3>hasValue (Item i)</h3>
       <h3 class="return">Return Type: Boolean</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Returns true if item is not equal to null and is not equal to
       undefined.
     </p>
@@ -838,7 +928,7 @@ u.hasValue({});            => true
     <p id="multitry">
       <h3>multitry (Function f, Int tries, String message, Function completeFailure)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Tries to execute function ‘tries’ number of times, catching any
       exceptions encountered. If message is provided it is written as
       a warning to the logs for each failed try. If the number of
@@ -856,7 +946,7 @@ u.multitry(logIntoPayPal, 5, &#39;paypal login failed&#39;, function(tries, e) {
     <p id="createDate">
       <h3>createDate ([milliseconds]</h3>
       <h3 class="return">Return Type: java.util.Date</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Creates a java.util.Date object. If milliseconds is provided it
       is passed to the Date constructor, otherwise the date returned
       will reflect the current time to the millisecond.
@@ -870,7 +960,7 @@ var date = u.createDate(5)
     <p id="createCalendar">
       <h3>createCalendar ([config])</h3>
       <h3 class="return">Return Type: java.util.Calendar</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Creates a java.util.Calendar object. The optional config
       parameter may contain the following optional parameters:<br>
       <ul>
@@ -900,7 +990,7 @@ var calendar = u.createCalendar(config);
     <p id="guid">
       <h3>guid (Int length)</h3>
       <h3 class="return">Return Type: String</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Creates a guid of type string. The method for creating the guid
       involves truncating a SHA1 hash of a random uuid created by
       java.util.UUID class. The SHA1 hash is truncated to the length
@@ -918,7 +1008,7 @@ var id = u.guid(12)
     <p id="trim">
       <h3>trim (String s)</h3>
       <h3 class="return">Return Type: String</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Removes whitespace from left and right sides of a string.
     </p>
 <pre><code>
@@ -930,7 +1020,7 @@ var trimmed = u.trim(&#39;\t Bediako \n&#39;)
     <p id="print">
       <h3>print (String s)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Writes string to standard out.
     </p>
 <pre><code>
@@ -942,7 +1032,7 @@ u.print(&#39;Bediako&#39;);
     <p id="println">
       <h3>println (String s)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Writes string to standard out, then writes a newline to standard
       out.
     </p>
@@ -956,7 +1046,7 @@ u.println(&#39;Bediako&#39;);
     <p id="value">
       <h3>value (Value value, Value default)</h3>
       <h3 class="return">Return Type: Object</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Returns value if it is not null or it is not
       undefined. Otherwise it returns default.
     </p>
@@ -985,7 +1075,7 @@ u.value(&#39;Connor&#39;, &#39;Bediako);     => Connor
       <h3 style="width:50%">createKey (String resourceName, String guid)</h3>
       <h3 class="return" style="width:50%">Return Type:
       com.google.appengine.api.datastore.Key</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Creates a com.google.appengine.api.datastore.Key via the
       KeyFactory.
     </p>
@@ -1000,7 +1090,7 @@ key.getName()
       <h3 style="width:50%">createEntity (String resourceName, String guid)</h3>
       <h3 class="return" style="width:50%">Return Type:
       com.google.appengine.api.datastore.Entity</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Creates a com.google.appengine.api.datastore.Entity. Relies on createKey.
     </p>
 <pre><code>
@@ -1014,7 +1104,7 @@ entity.getKind()
       <h3>bookkeeping (Entity, String userid, Date postDate, Date
       putDate)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Populates the entity object with the bookkeeping metadata that
       describes when this object was created and by whom it was
       created. If userId is not provided and cannot be determined
@@ -1033,7 +1123,7 @@ in.bookkeeping(person, &#39;bediako&#39;, u.createDate());
     <p id="entify">
       <h3>entify (Entity, Value, String attributeName)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Function designed to be used with resource.each, it converts a
       resource's attribute values into a property map values on an
       entity object.
@@ -1055,7 +1145,7 @@ res.each(&#39;person&#39;, person, in.entify.partial(entity));
     <p id="encrypt">
       <h3>encrypt (Entity, Value, String attributeName)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Function designed to be used with resource.each, it converts a
       resource's sensitive attribute values into encrypted property
       map values on an entity object.
@@ -1076,7 +1166,7 @@ res.each(&#39;person&#39;, person, in.encrypt.partial(entity));
     <p id="convert">
       <h3>convert (Value, attributeName, resource)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Function designed to be used with resource.each, it converts a
       request parameter values into a property map values on a
       JavaScript object. It relies on Airlift automatically setting
@@ -1094,7 +1184,7 @@ res.each(&#39;person&#39;, person, in.convert);
     <p id="validate">
       <h3>validate (value, attributeName, resource, metadata)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Function designed to be used with resource.each, it verifies
       that the resource&#8217;s property values are in line with the
       constraints outlined in the attribute and resource metadata. Use
@@ -1136,7 +1226,7 @@ res.each(&#39;person&#39;, person, res.sequence(in.validate, res.watch(
     <p id="deentify">
       <h3> deentify (Entity, Value, String attributeName)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Function designed to be used with resource.each, it converts an
       entity’s property values into a JavaScript’s objects attribute
       values.
@@ -1156,7 +1246,7 @@ res.each(&#39;person&#39;, person, in.deentify.partial(entity));
     <p id="decrypt">
       <h3> decrypt (Entity, Value, String attributeName)</h3>
       <h3 class="return">Return Type: n/A</h3>
-      <label class="green">Added in 2.0</label>
+      <label class="purple">Added in 2.0</label>
       Function designed to be used with resource.each, it converts a
       resource’s sensitive attribute values into encrypted property
       map values on an entity object.
