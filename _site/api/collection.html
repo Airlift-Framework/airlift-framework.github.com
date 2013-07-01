@@ -1,0 +1,83 @@
+<h1 id='introduction'>Introduction</h1>
+
+<p>The Collection module contains handy functions developers can use to traverse a JavaScript array, or a Java ArrayList or Java Set in a similar manner.</p>
+
+<h2 id='_every_collection_iterator_context'>- Every (collection, iterator, [context])</h2>
+
+<p>Returns true if all of the values in the list pass the iterator truth test. For JavaScript arrays, this function delegates to the native every function.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+var success = c.every(users, function(_item, _index, _collection) { return true; });
+util.println(success); //true</code></pre>
+
+<h2 id='_some_collection_iterator_context__alias_any'>- Some (collection, iterator, [context]) &#8230; alias Any</h2>
+
+<p>Returns true if any of the values in the collection pass the iterator&#8217;s truth test. Short-circuits and stops traversing the list if a true element is found. If collection is a JavaScript array this function delegates to the native method some.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+var r = c.some(users, function(_item, _index,_collection) { return (_index === 2); });
+util.println(r); //true</code></pre>
+
+<h2 id='_foreach_collection_iterator_context__alias_each'>- ForEach (collection, iterator, [context]) &#8230; alias Each</h2>
+
+<p>Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;), count = 0;
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+c.forEach(users, function(_item, _index, _collection) { count++; });
+util.println(count); //3</code></pre>
+
+<h2 id='_filter_collection_iterator_context'>- Filter (collection, iterator, [context])</h2>
+
+<p>Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+var r = c.filter(users, function(_item, _index, _collection) { return (_index === 0); });
+util.println(util.json(r)); //[&quot;Bediako&quot;]</code></pre>
+
+<h2 id='_map_collection_iterator_context'>- Map (collection, iterator, [context])</h2>
+
+<p>Produces a new collection of values by mapping each value in the collection through a transformation function (iterator). For JavaScript arrays, the native map method is used.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+var r = c.map(users, function(_item, _index, _collection) { return &#39;Hello &#39; + _item; });
+util.println(util.json(r)); //[&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;, &quot;Hello Loki&quot;]</code></pre>
+
+<h2 id='_reduce_collection_iterator_memo_context'>- Reduce (collection, iterator, memo, [context])</h2>
+
+<p>Reduce boils down a collection of values into a single value. Memo is the initial state of the reduction, and each successive step of it should be returned by iterator. The iterator is passed four arguments: the memo, then the value and the index of the iteration, and finally a reference to the entire list. Reduce defers to the native implementation for JavaScript arrays.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&#39;Bediako&#39;, &#39;Dave&#39;, &#39;Loki&#39;], c = require(&#39;collection&#39;);
+var r = c.reduce(users, function(_memo, _item, _index, _collection) { return _memo + _item.length; }, 0);
+util.println(r); //15</code></pre>
+
+<h2 id='_split_collection_iterator_context'>- Split (collection, iterator, [context])</h2>
+
+<p>Returns two collections. The first collection contains the items for which _function returned true, the second collection contains the items for which the function returned false.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+var r = c.split(users, function(_item, _index, _collection) { return _item.length &gt; 4; });
+util.println(util.json(r)); //{success: [&quot;Bediako&quot;], fail: [&quot;Dave&quot;, &quot;Loki&quot;] }</code></pre>
+
+<h2 id='_partition_collection_attributename'>- Partition (collection, attributeName)</h2>
+
+<p>Returns a value list (java.util.List or Javascript array) and a map (java.util.Map or Javascript object). The value list contains, in the order they were discovered, the values that each item in the collection had on its property identified by attributeName. The map&#8217;s keys are the values found in the value list. Each key points to the list of items that had that value on its property identified by attributeName.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = \[{name: &quot;Bediako&quot;}, {name: &quot;Dave&quot;}, {name: &quot;Loki&quot;}, {name: &quot;Bediako&quot;}\];
+var r = require(&#39;collection&#39;).partition(users, &#39;name&#39;);
+util.println(util.json(r)); //{keys: \[&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;\], partition: {&quot;Bediako&quot; : \[{name: &quot;Bediako&quot;}, {name: &quot;Bediako&quot;}\], &quot;Dave&quot;: \[{name: &quot;Dave&quot;}\], &quot;Loki&quot;: \[{name: Loki}\]}}</code></pre>

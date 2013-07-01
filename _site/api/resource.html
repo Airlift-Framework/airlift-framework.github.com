@@ -1,0 +1,142 @@
+<h1 id='introduction'>Introduction</h1>
+
+<p>Airlift is a restful framework. Resources are the center of Airlift application development. When designing an application, developers are encouraged to create as many resources as they like. The resource.js module contains functions that allow developers to traverse the application resources&#8217; attributes. In Airlift a resource is represented as a simple JavaScript object ({}).</p>
+
+<p>Whenever a iterative function is executed in resource, the iterator function that you provide is executed within a context that governs the traversal of that resource. This context is set as the &#8216;this&#8217; for the iterator function. It makes available following:</p>
+
+<ul>
+<li>resourceName - the name of the resource being traversed.</li>
+
+<li>resourceMetadata - metadata describing the resource being traversed. It contains a list of attributes this resource holds.</li>
+
+<li>attributesMetadata - metadata describing each individual attribute this resource holds.</li>
+
+<li>foreignKeys - a list of names of all the foreign keys in this resource.</li>
+
+<li>attributes - a list of names of all the attributes in this resource.</li>
+
+<li>web - a web object that gives access to the web context. The web context contains information about the current request.</li>
+
+<li>report - a function used to report errors.</li>
+
+<li>allErrors - a function that returns all errors reported so far.</li>
+
+<li>getErrors - a function that returns all errors reported for a given attribute of this resource.</li>
+</ul>
+
+<p>All iterative functions in resource.js allow for the replacement of any of the attributes of the context object by optionally providing an object at invocation time.</p>
+
+<p>The functions available in this module are described below.</p>
+
+<h2 id='_each_resourcename_resource_iterator_context'>- Each (resourceName, resource, iterator, [context])</h2>
+
+<p>Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata).</p>
+
+<pre><code>var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
+var lightPerson = {};
+var res = require(&#39;resource&#39;);
+var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+
+res.each(&#39;person&#39;, person, function(_value, _name, _resource, _metadata)
+{
+   lightPerson[_name] = _value;
+} , context);
+
+util.println(JSON.stringify(lightPerson)); // {shortName: &#39;Kwame&#39;, age: 27 }</code></pre>
+
+<h2 id='_map_resourcename_resource_iterator_context'>- Map (resourceName, resource, iterator, [context])</h2>
+
+<p>Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata). The result of each iterator invocation is saved to a new resource object.</p>
+
+<pre><code>var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
+var res = require(&#39;resource&#39;);
+var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+
+var lightPerson = res.map(&#39;person&#39;, person, function(_value, _name, _resource, _metadata)
+{
+   return _value;
+} , context);
+
+util.println(JSON.stringify(lightPerson)); // {shortName: &#39;Kwame&#39;, age: 27 }</code></pre>
+
+<h2 id='_reduce_base_resourcename_resource_iterator_context'>- Reduce (base, resourceName, resource, iterator, [context])</h2>
+
+<p>Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with five arguments: (base, value, attributeName, resource, metadata). The result of each iterator invocation replaces the base value. Reduce returns the value of base at the end.</p>
+
+<pre><code>var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
+var res = require(&#39;resource&#39;);
+var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+var base = &#39;&lt;ul&gt;&#39;;
+
+var lightPerson = res.reduce(base, &#39;person&#39;, person, function(_value, _name, _resource, _metadata)
+{
+   return &#39;&lt;li&gt;&#39; + _value + &#39;&lt;/li&gt;&#39;;
+} , context);
+
+util.println(lightPerson); // &lt;ul&gt;&lt;li&gt;Kwame&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;</code></pre>
+
+<h2 id='_sequence_function1_function2__functionn'>- Sequence (function1, function2, &#8230;, functionN)</h2>
+
+<p>Returns a function that is the composition of the passed function arguments. The functions are executed in the order they are passed into sequence. Sequence&#8217;s returned function can be used in a iterative manner on a resource or executed as a standalone. Sequence returns the value of the last function&#8217;s execution.</p>
+
+<pre><code>var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
+var res = require(&#39;resource&#39;);
+
+var checkStringType = function(_value, _name, _resource, _metadata) {
+   if (&quot;java.lang.String&quot;.equals(_metadata.type) === false) throw &#39;error&#39;;
+}
+
+var checkAttributeHasValue = function(_value)
+{
+   if (util.hasValue(_value) === false) throw &#39;error&#39;;
+}
+
+var sequence = res.sequence(checkStringType, checkAttributeHasValue);
+var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+
+var lightPerson = res.each(&#39;person&#39;, person, sequence, context);  //no errors</code></pre>
+
+<h2 id='_compose_function1_function2__functionn'>- Compose (function1, function2, &#8230;, functionN)</h2>
+
+<p>Returns a function that is the composition of the passed function arguments. The functions are executed in the order they are passed in to Compose. Compose&#8217;s returned function can be used in a iterative manner on a resource or executed as a standalone. On execution, the function returned by Compose passes its arguments to the first function executed. Each function after that will get the return value of the previous function as a replacement for the first argument of the original arguments. Compose returns the value of the last function&#8217;s execution.</p>
+
+<pre><code>var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
+var res = require(&#39;resource&#39;);
+
+var returnOK = function(_value, _name, _resource, _metadata) {
+   return &#39;OK&#39;;
+}
+
+var checkOK = function(_value)
+{
+   if (&quot;OK&quot;.equals(_value) === false) throw &#39;error&#39;;
+}
+
+var composition = res.compose(returnOK, checkOK);
+var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+
+var lightPerson = res.each(&#39;person&#39;, person, composition, context);  //no errors</code></pre>
+
+<h2 id='_watch_name1__name2namelist_function'>- Watch ([name1, &#8230;, name2]|[nameList], function)</h2>
+
+<p>Returns a function that will only be executed once and only once when the all the attributes in the argument list of nameList are visited by the iterative function. If an attribute list is not passed as arguments or as an array, watch will execute once and only once all the attributes of the iterative context are visited.</p>
+
+<pre><code>var person = {fullName: &#39;Kwame Mtume&#39;, shortName: &#39;Kwame&#39;, age: 27};
+var res = require(&#39;resource&#39;);
+
+var closeUlTag = function(_base, _value, _attributeName, _resource, _metadata) {
+   return _base + &#39;&lt;/ul&gt;&#39;;
+}
+
+var liTag = function(_base, _value, _attributeName, _resource, _metadata)
+{
+   return _base + &#39;&lt;li&gt;&#39; + _value + &#39;&lt;/li&gt;&#39;;
+}
+
+var context = {attributes: [&#39;shortName&#39;, &#39;age&#39;]}; //optional - set to limit iteration
+var watch1 = res.watch(closeUlTag); //watch1 will execute once and only once ... 
+var composition = res.compose(liTag, watch1);
+
+var lightPerson = res.reduce(&#39;&lt;ul&gt;&#39;, &#39;person&#39;, person, composition, context); //.. when &#39;shortName&#39; and &#39;age&#39; are visited at least once.
+
+util.println(lightPerson); // &lt;ul&gt;&lt;li&gt;Kwame&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;&lt;/ul&gt;</code></pre>
