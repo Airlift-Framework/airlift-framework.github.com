@@ -4,7 +4,7 @@
 
 <pre><code> var collection = require(&#39;airlift/collection&#39;);</code></pre>
 <p id='every' />
-<h3 id='everycollection_function_context'>every(collection, function, [context])</h3>
+<h3 id='everyobject_collection_function_iterator_object_context'>every(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
@@ -17,79 +17,137 @@ Returns true if all of the values in the list pass the iterator truth test. For 
       })
 
  =&gt; true</code></pre>
+<p id='forEach' />
+<h3 id='foreachobject_collection_function_iterator_object_context'>forEach(Object collection, Function iterator, Object context)</h3>
 
-<h2 id='_foreach_collection_iterator_context__alias_each'>- ForEach (collection, iterator, [context]) &#8230; alias Each</h2>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label> <label class='alias'><em>alias</em> each</label>
+Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function.
+</p>
+<pre><code> var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;];
+ var index = 0;
+ var results = [];
 
-<p>Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function.</p>
+ collection.forEach(users, function(_item, _index, _collection)
+      {
+           results.push(&#39;Hello, &#39; + _item);
+      });
 
-<pre><code>var util = require(&#39;airlift/util&#39;), count = 0;
+ =&gt; [&#39;Hello, Bediako&#39;, &#39;Hello, Dave&#39;, &#39;Hello, Loki&#39;]</code></pre>
+<p id='filter' />
+<h3 id='filterobject_collection_function_iterator_object_context'>filter(Object collection, Function iterator, Object context)</h3>
 
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-c.forEach(users, function(_item, _index, _collection) { count++; });
-util.println(count); //3</code></pre>
+<h4 id='return_type_javautillistarray'>Return type: java.util.List|Array</h4>
+<p> <label class='new'>Added in 2.0</label>
+Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method.
+</p>
+<pre><code> var array = [1, true, 20, &#39;hello&#39;];
+ var index = 0;
+ var results = collection.filter(array, function(_item, _index, _collection)
+      {
+           if (_index % 2 === 0)
+           {
+                return false;
+           }
+           else
+           {
+                return true;
+      }
+ });
 
-<h3 id='each'>each</h3>
+ =&gt; [true, &#39;hello&#39;]</code></pre>
+<p id='col_map' />
+<h3 id='mapobject_collection_function_iterator_object_context'>map(Object collection, Function iterator, Object context)</h3>
 
-<h2 id='_filter_collection_iterator_context'>- Filter (collection, iterator, [context])</h2>
+<h4 id='return_type_javautillistarray'>Return type: java.util.List|Array</h4>
+<p> <label class='new'>Added in 2.0</label>
+Produces a new collection of values by mapping each value in the collection through a transformation function (iterator). For JavaScript arrays, the native map method is used. Returns a new collection of values that contains every result returned by the execution of function against every item in the collection.
+</p>
+<pre><code> var users = [&#39;Bediako&#39;, &#39;Dave&#39;, &#39;Loki&#39;];
+ var index = 0;
+ var results = collection.map(users, function(_item, _index, _collection)
+      {
+           return _item + &#39; is the best!&#39;;
+      });
 
-<p>Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method.</p>
-
-<pre><code>var util = require(&#39;airlift/util&#39;);
-
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var r = c.filter(users, function(_item, _index, _collection) { return (_index === 0); });
-util.println(util.json(r)); //[&quot;Bediako&quot;]</code></pre>
-
-<h2 id='_map_collection_iterator_context'>- Map (collection, iterator, [context])</h2>
-
-<p>Produces a new collection of values by mapping each value in the collection through a transformation function (iterator). For JavaScript arrays, the native map method is used.</p>
-
-<pre><code>var util = require(&#39;airlift/util&#39;);
-
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var r = c.map(users, function(_item, _index, _collection) { return &#39;Hello &#39; + _item; });
-util.println(util.json(r)); //[&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;, &quot;Hello Loki&quot;]</code></pre>
+ =&gt; [&#39;Bediako is the best!&#39;, &#39;Dave is the best!&#39;, &#39;Loki is the best!&#39;]</code></pre>
 <p id='some' />
-<h3 id='_some_collection_iterator_context__alias_any'>- Some (collection, iterator, [context]) &#8230; alias Any</h3>
+<h3 id='someobject_collection_function_iterator_object_context'>some(Object collection, Function iterator, Object context)</h3>
 
-<p>Returns true if any of the values in the collection pass the iterator&#8217;s truth test. Short-circuits and stops traversing the list if a true element is found. If collection is a JavaScript array this function delegates to the native method some.</p>
+<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<p> <label class='new'>Added in 2.0></label> <label class='alias'><em>alias</em> any</label>
+Applies an iterator truth test to each item in the collection. The iteration will stop once all the members of the collection have been visited OR if the iterator function ever returns true. Returns true if the function returned true for any item it visited.
+</p>
+<pre><code> var array = [1, true, 20, &#39;hello&#39;];
+ var pass = collection.some(array, function(_item, _index, _collection)
+     {
+         return (&quot;hello&quot;.equalsIgnoreCase(_item) === true);
+     });
+ _assert.eq(true, pass, &#39;failed&#39;);
 
-<pre><code>var util = require(&#39;airlift/util&#39;);
+ =&gt; true</code></pre>
+<p id='split' />
+<h3 id='splitobject_collection_function_iterator_object_context'>split(Object collection, Function iterator, Object context)</h3>
 
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var r = c.some(users, function(_item, _index,_collection) { return (_index === 2); });
-util.println(r); //true</code></pre>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0></label>
+Returns an object with two array collections, success and fail.  The first collection, success, contains the items for which \_function returned true. The second collection, fail, contains the items for which the function returned false.
+</p>
+<pre><code> var array = [1, true, 20, &#39;hello&#39;];
+ var index = 0;
+ var result = collection.split(array, function(_item, _index, _collection)
+      {
+           if (_index % 2 === 0)
+           {
+                return false;
+           }
+           else
+           {
+	    return true;
+           }
+});
 
-<h2 id='_reduce_collection_iterator_memo_context'>- Reduce (collection, iterator, memo, [context])</h2>
+ =&gt; result.success: [true, &#39;hello&#39;]
+ =&gt; result.fail: [1, 20]</code></pre>
+<p id='partition' />
+<h3 id='partitionobject_collection_string_attributename'>partition(Object collection, String attributeName)</h3>
 
-<p>Reduce boils down a collection of values into a single value. Memo is the initial state of the reduction, and each successive step of it should be returned by iterator. The iterator is passed four arguments: the memo, then the value and the index of the iteration, and finally a reference to the entire list. Reduce defers to the native implementation for JavaScript arrays.</p>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns an object containing a value list (java.util.List or Javascript array) and a map (java.util.Map or Javascript object).  The value list is stored in property 'keys' and contains, in the order they were discovered, the set of values that each item in the collection had on its property, attribute.  The map is stored in property 'partition.' The map's keys are the values found in the value list.  Each key points to the list of items that had that value on its property identified by attributeName.
+</p>
+<pre><code> var array = [];	
+ array.push({name: &#39;Bediako&#39;});
+ array.push({name: &#39;Loki&#39;});
+ array.push({name: &#39;Connor&#39;});
+ array.push({name: &#39;Bediako&#39;});
 
-<pre><code>var util = require(&#39;airlift/util&#39;);
+ var partition = collection.partition(array, &#39;name&#39;);
 
-var users = [&#39;Bediako&#39;, &#39;Dave&#39;, &#39;Loki&#39;], c = require(&#39;collection&#39;);
-var r = c.reduce(users, function(_memo, _item, _index, _collection) { return _memo + _item.length; }, 0);
-util.println(r); //15</code></pre>
+ =&gt; [&#39;Bediako&#39;, &#39;Loki&#39;, &#39;Connor&#39;]</code></pre>
+<p id='col_reduce' />
+<h3 id='reduceobject_collection_function_iterator_object_initialvalue_object_context'>reduce(Object collection, Function iterator, Object initialValue, Object context)</h3>
 
-<h3 id='any'>any</h3>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Reduce boils down a collection of values into a single value. 'initialValue' is the initial state of the reduction, and each successive step of it should be returned by iterator. Reduce defers to the native implementation for JavaScript arrays.
+</p>
+<pre><code> var array = [1, true, 20, &#39;hello&#39;];
+ var result = collection.reduce(array, function(_result, _item, _index, _collection)
+     {
+         return _result + &#39;&#39; + _item;
+     }, &#39;&#39;);
 
-<h2 id='_split_collection_iterator_context'>- Split (collection, iterator, [context])</h2>
+ =&gt; &#39;1true20hello&#39;
 
-<p>Returns two collections. The first collection contains the items for which _function returned true, the second collection contains the items for which the function returned false.</p>
+ var set = new java.util.HashSet();
+ set.add(1);
+ set.add(2);
+ set.add(3);
+ set.add(4);
+ var result = collection.reduce(set, function(_result, _item, _index, _collection)
+     {
+         return _result + _item.intValue();
+     }, 0);
 
-<pre><code>var util = require(&#39;airlift/util&#39;);
-
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var r = c.split(users, function(_item, _index, _collection) { return _item.length &gt; 4; });
-util.println(util.json(r)); //{success: [&quot;Bediako&quot;], fail: [&quot;Dave&quot;, &quot;Loki&quot;] }</code></pre>
-
-<h2 id='_partition_collection_attributename'>- Partition (collection, attributeName)</h2>
-
-<p>Returns a value list (java.util.List or Javascript array) and a map (java.util.Map or Javascript object). The value list contains, in the order they were discovered, the values that each item in the collection had on its property identified by attributeName. The map&#8217;s keys are the values found in the value list. Each key points to the list of items that had that value on its property identified by attributeName.</p>
-
-<pre><code>var util = require(&#39;airlift/util&#39;);
-
-var users = \[{name: &quot;Bediako&quot;}, {name: &quot;Dave&quot;}, {name: &quot;Loki&quot;}, {name: &quot;Bediako&quot;}\];
-var r = require(&#39;collection&#39;).partition(users, &#39;name&#39;);
-util.println(util.json(r)); //{keys: \[&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;\], partition: {&quot;Bediako&quot; : \[{name: &quot;Bediako&quot;}, {name: &quot;Bediako&quot;}\], &quot;Dave&quot;: \[{name: &quot;Dave&quot;}\], &quot;Loki&quot;: \[{name: Loki}\]}}</code></pre>
-
-<h3 id='reduce'>reduce</h3>
+ =&gt; 10</code></pre>

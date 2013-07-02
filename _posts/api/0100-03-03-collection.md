@@ -16,7 +16,7 @@ These functions can be used by including the following code:
 
 
 <p id="every"></p>
-### every(collection, function, \[context\])
+### every(Object collection, Function iterator, Object context)
 #### Return type: Boolean
 
 <p> <label class="new">Added in 2.0</label>
@@ -33,76 +33,163 @@ Returns true if all of the values in the list pass the iterator truth test. For 
      => true
 
 
-## - ForEach (collection, iterator, \[context\]) ... alias Each
+<p id="forEach"></p>
+### forEach(Object collection, Function iterator, Object context)
+#### Return type: n/A
+
+<p> <label class="new">Added in 2.0</label> <label class="alias"><em>alias</em> each</label>
 Iterates over a collection of elements, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed. Each invocation of iterator is called with three arguments: (item, index, collection). For JavaScript arrays this function delegates to the native forEach function.
-
-    var util = require('airlift/util'), count = 0;
-    
-    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
-    c.forEach(users, function(_item, _index, _collection) { count++; });
-    util.println(count); //3
+</p>
 
 
-### each
+     var users = ["Bediako", "Dave", "Loki"];
+     var index = 0;
+     var results = [];
+ 
+     collection.forEach(users, function(_item, _index, _collection)
+          {
+               results.push('Hello, ' + _item);
+          });
 
-    
-## - Filter (collection, iterator, \[context\])
+     => ['Hello, Bediako', 'Hello, Dave', 'Hello, Loki']
+
+
+<p id="filter"></p>
+### filter(Object collection, Function iterator, Object context)
+#### Return type: java.util.List|Array
+
+<p> <label class="new">Added in 2.0</label>
 Looks through each value in the list, returning a collection of all the values that pass a truth test (iterator). For JavaScript arrays this function delegates to the native filter method.
+</p>
 
-    var util = require('airlift/util');
-    
-    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
-    var r = c.filter(users, function(_item, _index, _collection) { return (_index === 0); });
-    util.println(util.json(r)); //["Bediako"]
 
-## - Map (collection, iterator, \[context\])
-Produces a new collection of values by mapping each value in the collection through a transformation function (iterator). For JavaScript arrays, the native map method is used.
+     var array = [1, true, 20, 'hello'];
+     var index = 0;
+     var results = collection.filter(array, function(_item, _index, _collection)
+          {
+               if (_index % 2 === 0)
+               {
+                    return false;
+               }
+               else
+               {
+                    return true;
+          }
+     });
 
-    var util = require('airlift/util');
-    
-    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
-    var r = c.map(users, function(_item, _index, _collection) { return 'Hello ' + _item; });
-    util.println(util.json(r)); //["Hello Bediako", "Hello Dave", "Hello Loki"]
+     => [true, 'hello']
+
+
+<p id="col_map"></p>
+### map(Object collection, Function iterator, Object context)
+#### Return type: java.util.List|Array
+
+<p> <label class="new">Added in 2.0</label>
+Produces a new collection of values by mapping each value in the collection through a transformation function (iterator). For JavaScript arrays, the native map method is used. Returns a new collection of values that contains every result returned by the execution of function against every item in the collection.
+</p>
+
+
+     var users = ['Bediako', 'Dave', 'Loki'];
+     var index = 0;
+     var results = collection.map(users, function(_item, _index, _collection)
+          {
+               return _item + ' is the best!';
+          });
+
+     => ['Bediako is the best!', 'Dave is the best!', 'Loki is the best!']
+
+
 
 <p id="some"></p>
-### - Some (collection, iterator, \[context\]) ... alias Any
-Returns true if any of the values in the collection pass the iterator's truth test. Short-circuits and stops traversing the list if a true element is found. If collection is a JavaScript array this function delegates to the native method some.
+### some(Object collection, Function iterator, Object context)
+#### Return type: Boolean
 
-    var util = require('airlift/util');
-    
-    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
-    var r = c.some(users, function(_item, _index,_collection) { return (_index === 2); });
-    util.println(r); //true
-    
-
-## - Reduce (collection, iterator, memo, \[context\])
-Reduce boils down a collection of values into a single value. Memo is the initial state of the reduction, and each successive step of it should be returned by iterator. The iterator is passed four arguments: the memo, then the value and the index of the iteration, and finally a reference to the entire list.  Reduce defers to the native implementation for JavaScript arrays.
-
-    var util = require('airlift/util');
-    
-    var users = ['Bediako', 'Dave', 'Loki'], c = require('collection');
-    var r = c.reduce(users, function(_memo, _item, _index, _collection) { return _memo + _item.length; }, 0);
-    util.println(r); //15
+<p> <label class="new">Added in 2.0></label> <label class="alias"><em>alias</em> any</label>
+Applies an iterator truth test to each item in the collection. The iteration will stop once all the members of the collection have been visited OR if the iterator function ever returns true. Returns true if the function returned true for any item it visited.
+</p>
 
 
-### any
-    
-## - Split (collection, iterator, \[context\])
-Returns two collections.  The first collection contains the items for which \_function returned true, the second collection contains the items for which the function returned false.
+     var array = [1, true, 20, 'hello'];
+     var pass = collection.some(array, function(_item, _index, _collection)
+         {
+             return ("hello".equalsIgnoreCase(_item) === true);
+         });
+     _assert.eq(true, pass, 'failed');
 
-    var util = require('airlift/util');
-    
-    var users = ["Bediako", "Dave", "Loki"], c = require('collection');
-    var r = c.split(users, function(_item, _index, _collection) { return _item.length > 4; });
-    util.println(util.json(r)); //{success: ["Bediako"], fail: ["Dave", "Loki"] }
-    
-## - Partition (collection, attributeName)
-Returns a value list (java.util.List or Javascript array) and a map (java.util.Map or Javascript object).  The value list contains, in the order they were discovered, the values that each item in the collection had on its property identified by attributeName.  The map's keys are the values found in the value list.  Each key points to the list of items that had that value on its property identified by attributeName.
+     => true
 
-    var util = require('airlift/util');
-    
-    var users = \[{name: "Bediako"}, {name: "Dave"}, {name: "Loki"}, {name: "Bediako"}\];
-    var r = require('collection').partition(users, 'name');
-    util.println(util.json(r)); //{keys: \["Bediako", "Dave", "Loki"\], partition: {"Bediako" : \[{name: "Bediako"}, {name: "Bediako"}\], "Dave": \[{name: "Dave"}\], "Loki": \[{name: Loki}\]}}
 
-### reduce
+<p id="split"></p>
+### split(Object collection, Function iterator, Object context)
+#### Return type: Object
+
+<p> <label class="new">Added in 2.0></label>
+Returns an object with two array collections, success and fail.  The first collection, success, contains the items for which \_function returned true. The second collection, fail, contains the items for which the function returned false.
+</p>
+
+
+     var array = [1, true, 20, 'hello'];
+     var index = 0;
+     var result = collection.split(array, function(_item, _index, _collection)
+          {
+               if (_index % 2 === 0)
+               {
+                    return false;
+               }
+               else
+               {
+		    return true;
+               }
+	});
+
+     => result.success: [true, 'hello']
+     => result.fail: [1, 20]
+
+
+<p id="partition"></p>
+### partition(Object collection, String attributeName)
+#### Return type: Object
+
+<p> <label class="new">Added in 2.0</label>
+Returns an object containing a value list (java.util.List or Javascript array) and a map (java.util.Map or Javascript object).  The value list is stored in property 'keys' and contains, in the order they were discovered, the set of values that each item in the collection had on its property, attribute.  The map is stored in property 'partition.' The map's keys are the values found in the value list.  Each key points to the list of items that had that value on its property identified by attributeName.
+</p>
+
+     var array = [];	
+     array.push({name: 'Bediako'});
+     array.push({name: 'Loki'});
+     array.push({name: 'Connor'});
+     array.push({name: 'Bediako'});
+
+     var partition = collection.partition(array, 'name');
+
+     => ['Bediako', 'Loki', 'Connor']
+
+
+<p id="col_reduce"></p>
+### reduce(Object collection, Function iterator, Object initialValue, Object context)
+#### Return type: Object
+
+<p> <label class="new">Added in 2.0</label>
+Reduce boils down a collection of values into a single value. 'initialValue' is the initial state of the reduction, and each successive step of it should be returned by iterator. Reduce defers to the native implementation for JavaScript arrays.
+</p>
+
+
+     var array = [1, true, 20, 'hello'];
+     var result = collection.reduce(array, function(_result, _item, _index, _collection)
+         {
+             return _result + '' + _item;
+         }, '');
+
+     => '1true20hello'
+
+     var set = new java.util.HashSet();
+     set.add(1);
+     set.add(2);
+     set.add(3);
+     set.add(4);
+     var result = collection.reduce(set, function(_result, _item, _index, _collection)
+         {
+             return _result + _item.intValue();
+         }, 0);
+
+     => 10
