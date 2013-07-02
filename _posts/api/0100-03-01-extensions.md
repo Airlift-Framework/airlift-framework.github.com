@@ -14,22 +14,22 @@ In order for Airlift to support server side JavaScript programming on App Engine
 <p id="partial"></p>
 ### Function.prototype.partial (argument-1, argument-2, ..., argument-n)
 #### Return type: Object
-<p> <label class="purple">Added in 2.0</label>
+<p> <label class="new">Added in 2.0</label>
 Returns a wrapper function that wraps the function refered to by 'this'. The arguments passed into partial are stored to be applied when the wrapper function is invoked. When the wrapper function is invoked, its arguments are tacked on to the stored arguments.  If any of stored arguments are undefined, they will be filled in in the order of presentation of the wrapper function arguments.
 </p>
 
-	var f0 = function(a1, a2)
-	{
-		return a1 + a2;
-	};
-	var f1 = f0.partial(undefined, 'Bediako');	
-	=> Hello Bediako
+     var f0 = function(a1, a2)
+          {
+               return a1 + a2;
+          };
+     var f1 = f0.partial(undefined, 'Bediako');	
+     => Hello Bediako
     
     
 <p id="equalsIgnoreCase"></p>
 ### String.prototype.equalsIgnoreCase (String|java.lang.String string)
 #### Return type: Boolean
-<p> <label class="purple">Added in 2.0</label>
+<p> <label class="new">Added in 2.0</label>
 Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string. Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
 </p>
 
@@ -43,11 +43,11 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
 <p id="replaceAll"></p>
 ### String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)
 #### Return Type: String
-<p> <label class="purple">Added in 2.0</label>
+<p> <label class="new">Added in 2.0</label>
 Replaces every occurrence of string1 in 'this' with string2.  Added as a convenience method, replaceAll is merely a wrapper for java.lang.String.replaceAll.
 </p>
 
 
-	 var string1 = 'banana';
-	 string1.replaceAll('na', '');
-	 => ba
+     var string1 = 'banana';
+     string1.replaceAll('na', '');
+     => ba

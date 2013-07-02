@@ -11,7 +11,6 @@ permalink: /api/
   <title>Airlift &middot; A JavaScript web application framework for Google App Engine</title>
   <link rel='stylesheet' href='{{site.baseurl}}/fonts/open-sans.css'/>
   <link rel='stylesheet' href='{{site.baseurl}}/app.css'/>
-  <!--<link rel='stylesheet' href='app.css'/>-->
   <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script src="/javascripts/rainbow-custom.min.js"></script>
   <style type="text/css">
@@ -71,16 +70,16 @@ permalink: /api/
       padding-top: 2px;
       padding-bottom: 2px;
     }
-    label.green {
+    label.stable {
       background-color:#95DF9F;
     }
-    label.yellow {
+    label.unstable {
       background-color:#EDD287;
     }
-    label.red {
+    label.deprecated {
       background-color:#F47A72;
     }
-    label.purple {
+    label.new {
       background-color:#BB95E9;
     }
     label.alias {
@@ -95,15 +94,11 @@ permalink: /api/
       color: #CF4A29;
       transition: 0ms;
     }
-   pre {
-      margin-top: 20px
-      margin-left: 20px;
-}
     pre, code {
       font-size: 14px;
       padding: 2px 0 2px 15px;
       border-left: 5px solid #bbb;
-      margin: 20px 0px 20px 0px;
+      margin: 20px 0px 50px 0px;
       background-color: #DDDDDD;
     }
     div.sidebar li {
@@ -166,12 +161,13 @@ permalink: /api/
 
   <div class="container">
     <div class="content">
-      {% for page in site.categories.intro %}
-        {{page.content}}
-      {% endfor %}
-
+      <p id="airlift">
+        {% for page in site.categories.intro %}
+          {{page.content}}
+        {% endfor %}
+      </p>
       {% for page in site.categories.api reversed %}
-        <h2>
+        <h2 id={{page.title}}>
           {{page.title}}
         </h2>
         <h2 class="a">
