@@ -1,26 +1,22 @@
-<h1 id='introduction'>Introduction</h1>
+<p>The Collection module contains handy functions developers can use to traverse a JavaScript array, or a Java ArrayList or Java Set in a similar manner. Each function takes three parameters: collection, function, and context.</p>
 
-<p>The Collection module contains handy functions developers can use to traverse a JavaScript array, or a Java ArrayList or Java Set in a similar manner.</p>
+<p>The collection parameter can be a java.util.Collection, a java.lang.String, a Javascript array, or a Javascript string to iterate over. The given function will be applied to every member of that collection or array, or every character of the java.lang.String or Javascript string. The function can expect the item/character, index, and collection/string to be passed to it at runtime. These functions can be used by including the following code:</p>
 
-<h2 id='_every_collection_iterator_context'>- Every (collection, iterator, [context])</h2>
+<pre><code> var collection = require(&#39;airlift/collection&#39;);</code></pre>
+<p id='every' />
+<h3 id='everycollection_function_context'>every(collection, function, [context])</h3>
 
-<p>Returns true if all of the values in the list pass the iterator truth test. For JavaScript arrays, this function delegates to the native every function.</p>
+<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns true if all of the values in the list pass the iterator truth test. For JavaScript arrays, this function delegates to the native every function. The iteration stops once all the members of the collection have been visited or if the function ever returns false.
+</p>
+<pre><code> var users = [&#39;Bediako&#39;, &#39;Dave&#39;, &#39;Loki&#39;];
+ var success = collection.every(users, function(_item, _index, _collection)
+      {
+           return true;
+      })
 
-<pre><code>var util = require(&#39;airlift/util&#39;);
-
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var success = c.every(users, function(_item, _index, _collection) { return true; });
-util.println(success); //true</code></pre>
-
-<h2 id='_some_collection_iterator_context__alias_any'>- Some (collection, iterator, [context]) &#8230; alias Any</h2>
-
-<p>Returns true if any of the values in the collection pass the iterator&#8217;s truth test. Short-circuits and stops traversing the list if a true element is found. If collection is a JavaScript array this function delegates to the native method some.</p>
-
-<pre><code>var util = require(&#39;airlift/util&#39;);
-
-var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
-var r = c.some(users, function(_item, _index,_collection) { return (_index === 2); });
-util.println(r); //true</code></pre>
+ =&gt; true</code></pre>
 
 <h2 id='_foreach_collection_iterator_context__alias_each'>- ForEach (collection, iterator, [context]) &#8230; alias Each</h2>
 
@@ -31,6 +27,8 @@ util.println(r); //true</code></pre>
 var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
 c.forEach(users, function(_item, _index, _collection) { count++; });
 util.println(count); //3</code></pre>
+
+<h3 id='each'>each</h3>
 
 <h2 id='_filter_collection_iterator_context'>- Filter (collection, iterator, [context])</h2>
 
@@ -51,6 +49,16 @@ util.println(util.json(r)); //[&quot;Bediako&quot;]</code></pre>
 var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
 var r = c.map(users, function(_item, _index, _collection) { return &#39;Hello &#39; + _item; });
 util.println(util.json(r)); //[&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;, &quot;Hello Loki&quot;]</code></pre>
+<p id='some' />
+<h3 id='_some_collection_iterator_context__alias_any'>- Some (collection, iterator, [context]) &#8230; alias Any</h3>
+
+<p>Returns true if any of the values in the collection pass the iterator&#8217;s truth test. Short-circuits and stops traversing the list if a true element is found. If collection is a JavaScript array this function delegates to the native method some.</p>
+
+<pre><code>var util = require(&#39;airlift/util&#39;);
+
+var users = [&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;], c = require(&#39;collection&#39;);
+var r = c.some(users, function(_item, _index,_collection) { return (_index === 2); });
+util.println(r); //true</code></pre>
 
 <h2 id='_reduce_collection_iterator_memo_context'>- Reduce (collection, iterator, memo, [context])</h2>
 
@@ -61,6 +69,8 @@ util.println(util.json(r)); //[&quot;Hello Bediako&quot;, &quot;Hello Dave&quot;
 var users = [&#39;Bediako&#39;, &#39;Dave&#39;, &#39;Loki&#39;], c = require(&#39;collection&#39;);
 var r = c.reduce(users, function(_memo, _item, _index, _collection) { return _memo + _item.length; }, 0);
 util.println(r); //15</code></pre>
+
+<h3 id='any'>any</h3>
 
 <h2 id='_split_collection_iterator_context'>- Split (collection, iterator, [context])</h2>
 
@@ -81,3 +91,5 @@ util.println(util.json(r)); //{success: [&quot;Bediako&quot;], fail: [&quot;Dave
 var users = \[{name: &quot;Bediako&quot;}, {name: &quot;Dave&quot;}, {name: &quot;Loki&quot;}, {name: &quot;Bediako&quot;}\];
 var r = require(&#39;collection&#39;).partition(users, &#39;name&#39;);
 util.println(util.json(r)); //{keys: \[&quot;Bediako&quot;, &quot;Dave&quot;, &quot;Loki&quot;\], partition: {&quot;Bediako&quot; : \[{name: &quot;Bediako&quot;}, {name: &quot;Bediako&quot;}\], &quot;Dave&quot;: \[{name: &quot;Dave&quot;}\], &quot;Loki&quot;: \[{name: Loki}\]}}</code></pre>
+
+<h3 id='reduce'>reduce</h3>
