@@ -128,6 +128,7 @@
     div.content {
       width: 700px;
       margin-left: 40px;
+      margin-bottom: 50px;
     }
     div.api{
       background-color: #A82929;
@@ -778,7 +779,9 @@ Replaces every occurrence of string1 in 'this' with string2.  Added as a conveni
 
 <p>All iterative functions in resource.js allow for the replacement of any of the attributes of the context object by optionally providing an object at invocation time.</p>
 
-<p>The functions available in this module are described below.</p>
+<p>The functions available in this module are described below. They can be accessed by providing the following code:</p>
+
+<pre><code> var resource = require(&#39;airlift/resouce&#39;);</code></pre>
 <p id='Resource_each' />
 <h3 id='eachstring_resourcename_object_resource_function_function_function_callback_object_context'>each(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
@@ -1141,6 +1144,14 @@ Reduce boils down a collection of values into a single value. 'initialValue' is 
 
  =&gt; 10</code></pre>
       
+        <h2 id=Rest>
+          Rest
+        </h2>
+        <h2 class="a">
+          This page is under construction.
+        </h2>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+      
         <h2 id=Util>
           Util
         </h2>
@@ -1419,77 +1430,57 @@ res.each(&#39;person&#39;, person, in.decrypt.partial(entity));</code></pre>
           Java Array
         </h2>
         <h2 class="a">
-          The Outgoing module contains functions used in the retrieval of data. Typically this is used when getting or collecting data from the datastore.
+          This page is under construction.
         </h2>
-        <h1 id='introduction'>Introduction</h1>
-
-<p>The Outgoing module contains functions for processing retrieved data. This includes functions for unencrypting data, and converting entities into JavaScript objects.</p>
-
-<h2 id='_deentify_entity_value_attributename'>- Deentify (entity, value, attributeName)</h2>
-
-<p>Function designed to be used with resource.each, it converts an entity&#8217;s property values into a JavaScript&#8217;s objects attribute values.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;), out = require(&#39;airlift/outgoing&#39;);
-
-var person = {};
-var entity = out.createEntity(&#39;person&#39;, u.guid(12));
-entity.setProperty(&#39;fullName&#39;, &#39;Kwame Mtume&#39;);
-entity.setProperty(&#39;age&#39;, 37);
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-res.each(&#39;person&#39;, person, in.deentify.partial(entity));</code></pre>
-
-<h2 id='_decrypt_entity_value_attributename'>- Decrypt (entity, value, attributeName)</h2>
-
-<p>Function designed to be used with resource.each, it converts a resource&#8217;s sensitive attribute values into encrypted property map values on an entity object.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;), out = require(&#39;airlift/outgoing&#39;);
-
-var person = {};
-var entity = out.createEntity(&#39;person&#39;, u.guid(12));
-entity.setProperty(&#39;fullName&#39;, &#39;Kwame Mtume&#39;);
-entity.setProperty(&#39;age&#39;, 37);
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-res.each(&#39;person&#39;, person, in.decrypt.partial(entity));</code></pre>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
       
-        <h2 id=Rest>
-          Rest
+        <h2 id=Service>
+          Service
         </h2>
         <h2 class="a">
-          The Outgoing module contains functions used in the retrieval of data. Typically this is used when getting or collecting data from the datastore.
+          This page is under construction.
         </h2>
-        <h1 id='introduction'>Introduction</h1>
-
-<p>The Outgoing module contains functions for processing retrieved data. This includes functions for unencrypting data, and converting entities into JavaScript objects.</p>
-
-<h2 id='_deentify_entity_value_attributename'>- Deentify (entity, value, attributeName)</h2>
-
-<p>Function designed to be used with resource.each, it converts an entity&#8217;s property values into a JavaScript&#8217;s objects attribute values.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;), out = require(&#39;airlift/outgoing&#39;);
-
-var person = {};
-var entity = out.createEntity(&#39;person&#39;, u.guid(12));
-entity.setProperty(&#39;fullName&#39;, &#39;Kwame Mtume&#39;);
-entity.setProperty(&#39;age&#39;, 37);
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-res.each(&#39;person&#39;, person, in.deentify.partial(entity));</code></pre>
-
-<h2 id='_decrypt_entity_value_attributename'>- Decrypt (entity, value, attributeName)</h2>
-
-<p>Function designed to be used with resource.each, it converts a resource&#8217;s sensitive attribute values into encrypted property map values on an entity object.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;), out = require(&#39;airlift/outgoing&#39;);
-
-var person = {};
-var entity = out.createEntity(&#39;person&#39;, u.guid(12));
-entity.setProperty(&#39;fullName&#39;, &#39;Kwame Mtume&#39;);
-entity.setProperty(&#39;age&#39;, 37);
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-res.each(&#39;person&#39;, person, in.decrypt.partial(entity));</code></pre>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+      
+        <h2 id=Web>
+          Web
+        </h2>
+        <h2 class="a">
+          This page is under construction.
+        </h2>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+      
+        <h2 id=Assert>
+          Assert
+        </h2>
+        <h2 class="a">
+          This page is under construction.
+        </h2>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+      
+        <h2 id=Attribute Metadata>
+          Attribute Metadata
+        </h2>
+        <h2 class="a">
+          This page is under construction.
+        </h2>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+      
+        <h2 id=Resource Metadata>
+          Resource Metadata
+        </h2>
+        <h2 class="a">
+          This page is under construction.
+        </h2>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+      
+        <h2 id=Resource Security Metadata>
+          Resource Security Metadata
+        </h2>
+        <h2 class="a">
+          This page is under construction.
+        </h2>
+        <h1 id='coming_soon'>Coming soon&#8230;</h1>
       
     </div>
   </div>
