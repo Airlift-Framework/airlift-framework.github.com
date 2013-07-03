@@ -54,10 +54,6 @@
       line-height: 21px;
       padding-bottom: 0px;
     }
-    div.sidebar h1 {
-      font-size: 14px;
-      line-height: 20px;
-    }
     label {
       font-size: 12px;
       padding-left: 8px;
@@ -96,21 +92,26 @@
       margin: 20px 0px 50px 0px;
       background-color: #DDDDDD;
     }
+    div.sidebar h1 {
+      font-size: 12px;
+      line-height: 20px;
+    }
     div.sidebar li {
       list-style-type: none;
-    margin-left: -25px; 
+      margin-left: -25px; 
     }
     div.sidebar li a {
       font-weight: normal;
     }
     div.sidebar {
+      font-size: 11px;
       background: #DDDDDD;
       position: fixed;
       top: 60px; right: 0px; bottom: 0px; left: 0px;
       width: 220px;
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 15px 0 30px 30px;
+      padding: 15px 0 30px 20px;
       border-right: 1px solid #bbb;
       box-shadow: 0 0 20px #ccc;
       z-index: 2;
@@ -160,7 +161,7 @@
 
   <div class="sidebar">
     
-      <h1 id='airlift_20'><a href='#airlift'>Airlift 2.0</a></h1>
+      <h1 id='airlift_20'><a href='#Airlift'>Airlift 2.0</a></h1>
 
 <ul>
 <li><a href='https://github.com/Airlift-Framework/airlift-framework.github.com'>Github Repository</a></li>
@@ -168,128 +169,200 @@
 <li><a href='#'>Download PDF</a></li>
 </ul>
 
-<h1 id='introduction'><a href='#airlift'>Introduction</a></h1>
+<h1 id='introduction'><a href='#Airlift'>Introduction</a></h1>
 <br />
 <h1 id='extensions'><a href='#Extensions'>Extensions</a></h1>
 
 <ul>
-<li><a href='#partial'>partial</a></li>
+<li><a href='#Extensions_partial'>partial</a></li>
 
-<li><a href='#equalsIgnoreCase'>equalsIgnoreCase</a></li>
+<li><a href='#Extensions_equalsIgnoreCase'>equalsIgnoreCase</a></li>
 
-<li><a href='#replaceAll'>replaceAll</a></li>
+<li><a href='#Extensions_replaceAll'>replaceAll</a></li>
 </ul>
 
 <h1 id='resource'><a href='#Resource'>Resource</a></h1>
 
 <ul>
-<li><a href='#each'>each</a></li>
+<li><a href='#Resource_each'>each</a></li>
 
-<li><a href='#map'>map</a></li>
+<li><a href='#Resource_map'>map</a></li>
 
-<li><a href='#transform'>transform</a></li>
+<li><a href='#Resource_transform'>transform</a></li>
 
-<li><a href='#reduce'>reduce</a></li>
+<li><a href='#Resource_reduce'>reduce</a></li>
 
-<li><a href='#sequence'>sequence</a></li>
+<li><a href='#Resource_sequence'>sequence</a></li>
 
-<li><a href='#compose'>compose</a></li>
+<li><a href='#Resource_compose'>compose</a></li>
 
-<li><a href='#toString'>toString</a></li>
+<li><a href='#Resource_toString'>toString</a></li>
 
-<li><a href='#watch'>watch</a></li>
+<li><a href='#Resource_watch'>watch</a></li>
 
-<li><a href='#json'>json</a></li>
+<li><a href='#Resource_json'>json</a></li>
 
-<li><a href='#audit'>audit</a></li>
+<li><a href='#Resource_audit'>audit</a></li>
 
-<li><a href='#copy'>copy</a></li>
+<li><a href='#Resource_copy'>copy</a></li>
 
-<li><a href='#clone'>clone</a></li>
+<li><a href='#Resource_clone'>clone</a></li>
 
-<li><a href='#stream'>stream</a></li>
+<li><a href='#Resource_stream'>stream</a></li>
 </ul>
 
 <h1 id='collection'><a href='#Collection'>Collection</a></h1>
 
 <ul>
-<li><a href='#every'>every</a></li>
+<li><a href='#Collection_every'>every</a></li>
 
-<li><a href='#forEach'>forEach</a></li>
+<li><a href='#Collection_forEach'>forEach</a></li>
 
-<li><a href='#filter'>filter</a></li>
+<li><a href='#Collection_filter'>filter</a></li>
 
-<li><a href='#col_map'>map</a></li>
+<li><a href='#Collection_map'>map</a></li>
 
-<li><a href='#some'>some</a></li>
+<li><a href='#Collection_some'>some</a></li>
 
-<li><a href='#split'>split</a></li>
+<li><a href='#Collection_split'>split</a></li>
 
-<li><a href='#partition'>partition</a></li>
+<li><a href='#Collection_partition'>partition</a></li>
 
-<li><a href='#col_reduce'>reduce</a></li>
-</ul>
-
-<h1 id='util'><a href='#Util'>Util</a></h1>
-
-<ul>
-<li><a href='#typeOf'>typeOf</a></li>
-
-<li><a href='#isEmpty'>isEmpty</a></li>
-
-<li><a href='#createClass'>createClass</a></li>
-
-<li><a href='#isWhiteSpace'>isWhiteSpace</a></li>
-
-<li><a href='#hasValue'>hasValue</a></li>
-
-<li><a href='#multiTry'>multiTry</a></li>
-
-<li><a href='#createDate'>createDate</a></li>
-
-<li><a href='#createCalendar'>createCalendar</a></li>
-
-<li><a href='#guid'>guid</a></li>
-
-<li><a href='#trim'>trim</a></li>
-
-<li><a href='#print'>print</a></li>
-
-<li><a href='#println'>println</a></li>
-
-<li><a href='#value'>value</a></li>
-</ul>
-
-<h1 id='incoming'><a href='#Incoming'>Incoming</a></h1>
-
-<ul>
-<li><a href='#createKey'>createKey</a></li>
-
-<li><a href='#createEntity'>createEntity</a></li>
-
-<li><a href='#bookkeeping'>bookkeeping</a></li>
-
-<li><a href='#entify'>entify</a></li>
-
-<li><a href='#encrypt'>encrypt</a></li>
-
-<li><a href='#convert'>convert</a></li>
-
-<li><a href='#validate'>validate</a></li>
-</ul>
-
-<h1 id='outgoing'><a href='#Outgoing'>Outgoing</a></h1>
-
-<ul>
-<li><a href='#deentify'>deentify</a></li>
-
-<li><a href='#decrypt'>decrypt</a></li>
+<li><a href='#Collection_reduce'>reduce</a></li>
 </ul>
 
 <h1 id='rest'><a href='#Rest'>Rest</a></h1>
 
 <ul>
-<li><a href='#'>tbdRest</a></li>
+<li><a href='#Collect_collect'>collect</a></li>
+
+<li><a href='#Collect_collectBy'>collectBy</a></li>
+
+<li><a href='#Collect_collectByMembership'>collectByMembership</a></li>
+
+<li><a href='#Delete_delete'>delete</a></li>
+
+<li><a href='#Get_get'>get</a></li>
+
+<li><a href='#Post_post'>post</a></li>
+
+<li><a href='#Put_put'>put</a></li>
+</ul>
+
+<h1 id='util'><a href='#Util'>Util</a></h1>
+
+<ul>
+<li><a href='#Util_typeOf'>typeOf</a></li>
+
+<li><a href='#Util_isEmpty'>isEmpty</a></li>
+
+<li><a href='#Util_createClass'>createClass</a></li>
+
+<li><a href='#Util_isWhiteSpace'>isWhiteSpace</a></li>
+
+<li><a href='#Util_hasValue'>hasValue</a></li>
+
+<li><a href='#Util_createErrorReporter'>createErrorReporter</a></li>
+
+<li><a href='#Util_multiTry'>multiTry</a></li>
+
+<li><a href='#Util_createDate'>createDate</a></li>
+
+<li><a href='#Util_createTimezone'>createTimezone</a></li>
+
+<li><a href='#Util_formatDate'>formatDate</a></li>
+
+<li><a href='#Util_adjustUTCDate'>adjustUTCDate</a></li>
+
+<li><a href='#Util_createCalendar'>createCalendar</a></li>
+
+<li><a href='#Util_guid'>guid</a></li>
+
+<li><a href='#Util_trim'>trim</a></li>
+
+<li><a href='#Util_print'>print</a></li>
+
+<li><a href='#Util_println'>println</a></li>
+
+<li><a href='#Util_info'>info</a></li>
+
+<li><a href='#Util_warning'>warning</a></li>
+
+<li><a href='#Util_severe'>severe</a></li>
+
+<li><a href='#Util_value'>value</a></li>
+
+<li><a href='#Util_primitive'>primitive</a></li>
+
+<li><a href='#Util_callbackIterator'>callbackIterator</a></li>
+
+<li><a href='#Util_list'>list</a></li>
+
+<li><a href='#Util_set'>set</a></li>
+
+<li><a href='#Util_orderedSet'>orderedSet</a></li>
+
+<li><a href='#Util_map'>map</a></li>
+
+<li><a href='#Util_createKeysIterator'>createKeysIterator</a></li>
+
+<li><a href='#Util_createKeysCollection'>createKeysCollection</a></li>
+
+<li><a href='#Util_createKeysIterable'>createKeysIterable</a></li>
+
+<li><a href='#Util_getResourceMetadata'>getResourceMetadata</a></li>
+
+<li><a href='#Util_getWebRequestId'>getWebRequestId</a></li>
+
+<li><a href='#Util_string'>string</a></li>
+
+<li><a href='#Util_boolean'>boolean</a></li>
+
+<li><a href='#Util_leftPad'>leftPad</a></li>
+
+<li><a href='#Util_rightPad'>rightPad</a></li>
+
+<li><a href='#Util_hash'>hash</a></li>
+
+<li><a href='#Util_load'>load</a></li>
+
+<li><a href='#Util_stringBuffer'>stringBuffer</a></li>
+
+<li><a href='#Util_appProfile'>appProfile</a></li>
+
+<li><a href='#Util_sanitize'>sanitize</a></li>
+
+<li><a href='#Util_printStackTraceToString'>printStackTraceToString</a></li>
+
+<li><a href='#Util_getJavaException'>getJavaException</a></li>
+
+<li><a href='#Util_now'>now</a></li>
+</ul>
+
+<h1 id='incoming'><a href='#Incoming'>Incoming</a></h1>
+
+<ul>
+<li><a href='#Incoming_createKey'>createKey</a></li>
+
+<li><a href='#Incoming_createEntity'>createEntity</a></li>
+
+<li><a href='#Incoming_bookkeeping'>bookkeeping</a></li>
+
+<li><a href='#Incoming_entify'>entify</a></li>
+
+<li><a href='#Incoming_encrypt'>encrypt</a></li>
+
+<li><a href='#Incoming_convert'>convert</a></li>
+
+<li><a href='#Incoming_validate'>validate</a></li>
+</ul>
+
+<h1 id='outgoing'><a href='#Outgoing'>Outgoing</a></h1>
+
+<ul>
+<li><a href='#Outgoing_deentify'>deentify</a></li>
+
+<li><a href='#Outgoing_decrypt'>decrypt</a></li>
 </ul>
 
 <h1 id='data_access'><a href='#Data_Access'>Data Access</a></h1>
@@ -297,12 +370,330 @@
 <ul>
 <li><a href='#'>tbdDataAccess</a></li>
 </ul>
+
+<h1 id='assert'><a href='#Assert'>Assert</a></h1>
+
+<ul>
+<li><a href='#Assert_name'>AssertionError().name</a></li>
+
+<li><a href='#Assert_message'>AssertionError().message</a></li>
+
+<li><a href='#Assert_actual'>AssertionError().actual</a></li>
+
+<li><a href='#Assert_expected'>AssertionError().expected</a></li>
+
+<li><a href='#Assert_operator'>AssertionError().operator</a></li>
+
+<li><a href='#Assert_AssertionError.prototype.toString'>AssertionError.prototype.toString</a></li>
+
+<li><a href='#Assert_fail'>fail</a></li>
+
+<li><a href='#Assert_ok'>ok</a></li>
+
+<li><a href='#Assert_eq'>eq</a></li>
+
+<li><a href='#Assert_equal'>equal</a></li>
+
+<li><a href='#Assert_notEq'>notEq</a></li>
+
+<li><a href='#Assert_deepEqual'>deepEqual</a></li>
+
+<li><a href='#Assert_notDeepEqual'>notDeepEqual</a></li>
+
+<li><a href='#Assert_kindaEqual'>kindaEqual</a></li>
+
+<li><a href='#Assert_notKindaEqual'>notKindaEqual</a></li>
+
+<li><a href='#Assert_throws'>throws</a></li>
+
+<li><a href='#Assert_doesNotThrow'>doesNotThrow</a></li>
+
+<li><a href='#Assert_ifError'>ifError</a></li>
+</ul>
+
+<h1 id='javaarray'><a href='#JavaArray'>JavaArray</a></h1>
+
+<ul>
+<li><a href='#JavaArray_createArray'>createArray</a></li>
+
+<li><a href='#JavaArray_stringArray'>stringArray</a></li>
+
+<li><a href='#JavaArray_byteArray'>byteArray</a></li>
+
+<li><a href='#JavaArray_byteObjectArray'>byteObjectArray</a></li>
+
+<li><a href='#JavaArray_shortArray'>shortArray</a></li>
+
+<li><a href='#JavaArray_shortObjectArray'>shortObjectArray</a></li>
+
+<li><a href='#JavaArray_charArray'>charArray</a></li>
+
+<li><a href='#JavaArray_characterObjectArray'>characterObjectArray</a></li>
+
+<li><a href='#JavaArray_intArray'>intArray</a></li>
+
+<li><a href='#JavaArray_integerObjectArray'>integerObjectArray</a></li>
+
+<li><a href='#JavaArray_longArray'>longArray</a></li>
+
+<li><a href='#JavaArray_longObjectArray'>longObjectArray</a></li>
+
+<li><a href='#JavaArray_boolean'>boolean</a></li>
+
+<li><a href='#JavaArray_booleanObject'>booleanObject</a></li>
+
+<li><a href='#JavaArray_float'>float</a></li>
+
+<li><a href='#JavaArray_floatObject'>floatObject</a></li>
+
+<li><a href='#JavaArray_double'>double</a></li>
+
+<li><a href='#JavaArray_doubleObject'>doubleObject</a></li>
+
+<li><a href='#JavaArray_arrayCopy'>arrayCopy</a></li>
+</ul>
+
+<h1 id='service'><a href='#Service'>Service</a></h1>
+
+<ul>
+<li><a href='#Service_name'>getQueueService().name</a></li>
+
+<li><a href='#Service_method'>getQueueService().method</a></li>
+
+<li><a href='#Service_add'>getQueueService().add</a></li>
+
+<li><a href='#Service_service'>getQueueService().service</a></li>
+
+<li><a href='#Service_getAppId'>getAppId().getAppId</a></li>
+
+<li><a href='#Service_getDomain'>getAppId().getDomain</a></li>
+
+<li><a href='#Service_getPartition'>getAppId().getPartition</a></li>
+
+<li><a href='#Service_service'>getAppId().service</a></li>
+
+<li><a href='#Service_get'>getCacheService().get</a></li>
+
+<li><a href='#Service_getAll'>getCacheService().getAll</a></li>
+
+<li><a href='#Service_put'>getCacheService().put</a></li>
+
+<li><a href='#Service_putAll'>getCacheService().putAll</a></li>
+
+<li><a href='#Service_delete'>getCacheService().delete</a></li>
+
+<li><a href='#Service_service'>getCacheService().service</a></li>
+</ul>
+
+<h1 id='web'><a href='#Web'>Web</a></h1>
+
+<ul>
+<li><a href='#Web_getServlet'>getServlet</a></li>
+
+<li><a href='#Web_getProductionMode'>getProductionMode</a></li>
+
+<li><a href='#Web_getHandlerName'>getHandlerName</a></li>
+
+<li><a href='#Web_getRequest'>getRequest</a></li>
+
+<li><a href='#Web_getResponse'>getResponse</a></li>
+
+<li><a href='#Web_getRestContext'>getRestContext</a></li>
+
+<li><a href='#Web_getContentContext'>getContentContext</a></li>
+
+<li><a href='#Web_getUriBase'>getUriBase</a></li>
+
+<li><a href='#Web_getPath'>getPath</a></li>
+
+<li><a href='#Web_getUri'>getUri</a></li>
+
+<li><a href='#Web_getQueryString'>getQueryString</a></li>
+
+<li><a href='#Web_getMethod'>getMethod</a></li>
+
+<li><a href='#Web_getAuditContext'>getAuditContext</a></li>
+
+<li><a href='#Web_getSecurityContext'>getSecurityContext</a></li>
+
+<li><a href='#Web_convertToString'>convertToString</a></li>
+
+<li><a href='#Web_getResourcePath'>getResourcePath</a></li>
+
+<li><a href='#Web_getId'>getId</a></li>
+
+<li><a href='#Web_getIds'>getIds</a></li>
+
+<li><a href='#Web_getEntity'>getEntity</a></li>
+
+<li><a href='#Web_getEntities'>getEntities</a></li>
+
+<li><a href='#Web_getForeignKey'>getForeignKey</a></li>
+
+<li><a href='#Web_getResourceName'>getResourceName</a></li>
+
+<li><a href='#Web_hasId'>hasId</a></li>
+
+<li><a href='#Web_getResourcePathMap'>getResourcePathMap</a></li>
+
+<li><a href='#Web_getTitle'>getTitle</a></li>
+
+<li><a href='#Web_getServletName'>getServletName</a></li>
+
+<li><a href='#Web_getLocale'>getLocale</a></li>
+
+<li><a href='#Web_getUser'>getUser</a></li>
+
+<li><a href='#Web_getUserId'>getUserId</a></li>
+
+<li><a href='#Web_getUserName'>getUserName</a></li>
+
+<li><a href='#Web_getUserEmail'>getUserEmail</a></li>
+
+<li><a href='#Web_getUserService'>getUserService</a></li>
+
+<li><a href='#Web_getAppProfile'>getAppProfile</a></li>
+
+<li><a href='#Web_getInitParameter'>getInitParameter</a></li>
+
+<li><a href='#Web_getRootPackageName'>getRootPackageName</a></li>
+
+<li><a href='#Web_auditInserts'>auditInserts</a></li>
+
+<li><a href='#Web_auditGets'>auditGets</a></li>
+
+<li><a href='#Web_auditUpdates'>auditUpdates</a></li>
+
+<li><a href='#Web_auditDeletes'>auditDeletes</a></li>
+
+<li><a href='#Web_getCachingContext'>getCachingContext</a></li>
+
+<li><a href='#Web_getTimezone'>getTimezone</a></li>
+
+<li><a href='#Web_getResourceBindings'>getResourceBindings</a></li>
+
+<li><a href='#Web_getWebRequestId'>getWebRequestId</a></li>
+
+<li><a href='#Web_setResponseCode'>setResponseCode</a></li>
+
+<li><a href='#Web_setContent'>setContent</a></li>
+
+<li><a href='#Web_setType'>setType</a></li>
+
+<li><a href='#Web_stream'>stream</a></li>
+
+<li><a href='#Web_setCacheable'>setCacheable</a></li>
+</ul>
+
+<h1 id='attributemetadata'><a href='#AttributeMetadata'>AttributeMetadata</a></h1>
+
+<ul>
+<li><a href='#AttributeMetadata_name'>name</a></li>
+
+<li><a href='#AttributeMetadata_type'>type</a></li>
+
+<li><a href='#AttributeMetadata_isPresentable'>isPresentable</a></li>
+
+<li><a href='#AttributeMetadata_displayOrder'>displayOrder</a></li>
+
+<li><a href='#AttributeMetadata_fieldSetName'>fieldSetName</a></li>
+
+<li><a href='#AttributeMetadata_label'>label</a></li>
+
+<li><a href='#AttributeMetadata_pluralLabel'>pluralLabel</a></li>
+
+<li><a href='#AttributeMetadata_displayLength'>displayLength</a></li>
+
+<li><a href='#AttributeMetadata_inputType'>inputType</a></li>
+
+<li><a href='#AttributeMetadata_textAreaRows'>textAreaRows</a></li>
+
+<li><a href='#AttributeMetadata_textAreaColumns'>textAreaColumns</a></li>
+
+<li><a href='#AttributeMetadata_hasFormat'>hasFormat</a></li>
+
+<li><a href='#AttributeMetadata_readOnly'>readOnly</a></li>
+
+<li><a href='#AttributeMetadata_allowedValues'>allowedValues</a></li>
+
+<li><a href='#AttributeMetadata_dateTimePattern'>dateTimePattern</a></li>
+
+<li><a href='#AttributeMetadata_delimiter'>delimiter</a></li>
+
+<li><a href='#AttributeMetadata_isPersistable'>isPersistable</a></li>
+
+<li><a href='#AttributeMetadata_maxLength'>maxLength</a></li>
+
+<li><a href='#AttributeMetadata_minLength'>minLength</a></li>
+
+<li><a href='#AttributeMetadata_isSearchable'>isSearchable</a></li>
+
+<li><a href='#AttributeMetadata_isIndexable'>isIndexable</a></li>
+
+<li><a href='#AttributeMetadata_isPrimaryKey'>isPrimaryKey</a></li>
+
+<li><a href='#AttributeMetadata_isUniqueKey'>isUniqueKey</a></li>
+
+<li><a href='#AttributeMetadata_concept'>concept</a></li>
+
+<li><a href='#AttributeMetadata_nullable'>nullable</a></li>
+
+<li><a href='#AttributeMetadata_immutable'>immutable</a></li>
+
+<li><a href='#AttributeMetadata_ranged'>ranged</a></li>
+
+<li><a href='#AttributeMetadata_minValue'>minValue</a></li>
+
+<li><a href='#AttributeMetadata_maxValue'>maxValue</a></li>
+
+<li><a href='#AttributeMetadata_encrypted'>encrypted</a></li>
+
+<li><a href='#AttributeMetadata_semanticType'>semanticType</a></li>
+
+<li><a href='#AttributeMetadata_mapTo'>mapTo</a></li>
+
+<li><a href='#AttributeMetadata_mapToMany'>mapToMany</a></li>
+</ul>
+
+<h1 id='resourcemetadata'><a href='#ResourceMetadata'>ResourceMetadata</a></h1>
+
+<ul>
+<li><a href='#ResourceMetadata_isView'>isView</a></li>
+
+<li><a href='#ResourceMetadata_isPresented'>isPresented</a></li>
+
+<li><a href='#ResourceMetadata_isPersisted'>isPersisted</a></li>
+
+<li><a href='#ResourceMetadata_isCached'>isCached</a></li>
+
+<li><a href='#ResourceMetadata_isSecured'>isSecured</a></li>
+
+<li><a href='#ResourceMetadata_isAudited'>isAudited</a></li>
+
+<li><a href='#ResourceMetadata_lookingAt'>lookingAt</a></li>
+</ul>
+
+<h1 id='resourcesecuritymetadata'><a href='#ResourceSecurityMetadata'>ResourceSecurityMetadata</a></h1>
+
+<ul>
+<li><a href='#ResourceSecurityMetadata_collectRoles'>collectRoles</a></li>
+
+<li><a href='#ResourceSecurityMetadata_putRoles'>putRoles</a></li>
+
+<li><a href='#ResourceSecurityMetadata_postRoles'>postRoles</a></li>
+
+<li><a href='#ResourceSecurityMetadata_headRoles'>headRoles</a></li>
+
+<li><a href='#ResourceSecurityMetadata_getRoles'>getRoles</a></li>
+
+<li><a href='#ResourceSecurityMetadata_deleteRoles'>deleteRoles</a></li>
+</ul>
     
   </div>
 
   <div class="container">
     <div class="content">
-      <p id="airlift">
+      <p id="Airlift">
         
           <br /><br />
 <h1 id='airlift_api_documentation'>Airlift API Documentation</h1>
@@ -313,7 +704,7 @@
 
 <p>This project is <a href='http://github.com/Airlift-Framework/airlift-framework.github.com'>hosted on Github</a></p>
 
-<p>The PDF of this documentation can be downloaded <a href='http://github.com/Airlift-Framework/airlift-framework.github.com'>here</a>.</p>
+<p>The PDF of this documentation can be downloaded <a href='#'>here</a>.</p>
         
       </p>
       
@@ -326,7 +717,7 @@
         <p>Airlift is built on Rhino and App Engine. Rhino is a fantastic JavaScript interpreter library written for Java. App Engine is a fantastic platform as a service cloud environment that offers support for web applications programmed in Go, Python, and Java.</p>
 
 <p>In order for Airlift to support server side JavaScript programming on App Engine we applied Rhino&#8217;s capabilities to the App Engine environment. To accomplish this we extended some of Rhino&#8217;s libraries, and we added additional functionality to JavaScript&#8217;s standard objects. The following outlines the adaptations and improvements we made.</p>
-<p id='partial' />
+<p id='Extensions_partial' />
 <h3 id='functionprototypepartial_argument1_argument2__argumentn'>Function.prototype.partial (argument-1, argument-2, &#8230;, argument-n)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -339,7 +730,7 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
       };
  var f1 = f0.partial(undefined, &#39;Bediako&#39;);	
  =&gt; Hello Bediako</code></pre>
-<p id='equalsIgnoreCase' />
+<p id='Extensions_equalsIgnoreCase' />
 <h3 id='stringprototypeequalsignorecase_stringjavalangstring_string'>String.prototype.equalsIgnoreCase (String|java.lang.String string)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
@@ -350,7 +741,7 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
  var string2 = new Packages.java.lang.String(&#39;Bediako&#39;);
  string1.equalsIgnoreCase(string2);
  =&gt; true</code></pre>
-<p id='replaceAll' />
+<p id='Extensions_replaceAll' />
 <h3 id='stringprototypereplaceall_stringjavalangstring_string1_stringjavalangstring_string2'>String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)</h3>
 
 <h4 id='return_type_string'>Return Type: String</h4>
@@ -394,7 +785,7 @@ Replaces every occurrence of string1 in 'this' with string2.  Added as a conveni
 <p>All iterative functions in resource.js allow for the replacement of any of the attributes of the context object by optionally providing an object at invocation time.</p>
 
 <p>The functions available in this module are described below.</p>
-<p id='each' />
+<p id='Resource_each' />
 <h3 id='eachstring_resourcename_object_resource_function_function_function_callback_object_context'>each(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_na'>Return Type: n/A</h4>
@@ -410,7 +801,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
  =&gt; [&quot;fullName&quot;, &quot;shortName&quot;, &quot;status&quot;, &quot;birthDate&quot;, &quot;age&quot;, &quot;friendList&quot;,
      &quot;familySet&quot;, &quot;auditPostDate&quot;, &quot;auditPutDate&quot;, &quot;auditUserId&quot;, &quot;id&quot;]</code></pre>
-<p id='map' />
+<p id='Resource_map' />
 <h3 id='mapstring_resourcename_object_resource_function_function_function_callback_object_context'>map(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -429,7 +820,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
  =&gt; [&quot;fullName&quot;,&quot;shortName&quot;,&quot;status&quot;,&quot;birthDate&quot;,&quot;age&quot;,&quot;friendList&quot;,&quot;familySet&quot;,
      &quot;auditPostDate&quot;,&quot;auditPutDate&quot;,&quot;auditUserId&quot;,&quot;id&quot;]</code></pre>
-<p id='transform' />
+<p id='Resource_transform' />
 <h3 id='transformobject_dictionary_string_resourcename_object_resource_function_function_function_callback_object_context'>transform(Object dictionary, String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -449,7 +840,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
  =&gt; [&quot;fullName&quot;,&quot;shortName&quot;,&quot;status&quot;,&quot;birthDate&quot;,&quot;age&quot;,&quot;friendList&quot;,&quot;familySet&quot;,
      &quot;auditPostDate&quot;,&quot;auditPutDate&quot;,&quot;auditUserId&quot;,&quot;id&quot;]</code></pre>
-<p id='reduce' />
+<p id='Resource_reduce' />
 <h3 id='reducestring_base_string_resourcename_object_resource_function_function_function_callback_object_context'>reduce(String base, String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_string'>Return type: String</h4>
@@ -470,7 +861,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
      :birthDate=01-01-1970:age=43.0:friendList=[\&quot;friend1\&quot;,\&quot;friend2\&quot;,\&quot;friend3\&quot;]
      :familySet=[\&quot;family1\&quot;]:auditPostDate=:auditPutDate=:auditUserId=
      :id=6524d6f79d19&quot;</code></pre>
-<p id='sequence' />
+<p id='Resource_sequence' />
 <h3 id='sequencefunction_f1_function_f2___function_fn'>sequence(Function f1, Function f2, &#8230; , Function fN)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -487,7 +878,7 @@ Returns a function that is the composition of the passed function arguments. The
  sequence();
 
  =&gt; [1,2,3,4]</code></pre>
-<p id='compose' />
+<p id='Resource_compose' />
 <h3 id='composefunction_f1_function_f2__function_fn'>compose(Function f1, Function f2, &#8230;, Function fN)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -506,7 +897,7 @@ var compose = res.compose(
 compose();
 
 =&gt; [1,2,3,4]</code></pre>
-<p id='toString' />
+<p id='Resource_toString' />
 <h3 id='tostringstring_resourcename_object_resource_object_context'>toString(String resourceName, Object resource, Object context)</h3>
 
 <h4 id='return_type_string'>Return type: String</h4>
@@ -514,7 +905,7 @@ compose();
 <span style='background:color'>Description under construction.</span>
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
-<p id='watch' />
+<p id='Resource_watch' />
 <h3 id='watchstring_attributename1__string_attributenamen_function_watchfunction'>watch(String attributeName1, &#8230;, String attributeNameN, Function watchFunction)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -533,7 +924,7 @@ Returns a function that will only be executed once and only once when the all th
  var result = {age: 1};
 
  =&gt; attributes: {age: 1}</code></pre>
-<p id='json' />
+<p id='Resource_json' />
 <h3 id='jsonobject_resource_object_replacer'>json(Object resource, Object replacer)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -551,7 +942,7 @@ Converts an object into a string by calling JSON.strinigfy().
  
  res.json({time: new Date(5)});
  =&gt; &#39;{&quot;time&quot;:&quot;1970-01-01T00:00:00.005Z&quot;}&#39;</code></pre>
-<p id='audit' />
+<p id='Resource_audit' />
 <h3 id='audit_config'>audit(_config)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -559,7 +950,7 @@ Converts an object into a string by calling JSON.strinigfy().
 <span style='background-color:red'>Description under construction.</span>
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
-<p id='copy' />
+<p id='Resource_copy' />
 <h3 id='copyobject_target_object_value_string_attributename'>copy(Object target, Object value, String attributeName)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -574,7 +965,7 @@ Copies each 'attributeName' of 'value' into 'target'.
      &quot;birthDate&quot;:&quot;1970-01-01T05:00:00.000Z&quot;,&quot;age&quot;:43,
      &quot;friendList&quot;:[&quot;friend1&quot;,&quot;friend2&quot;,&quot;friend3&quot;],&quot;familySet&quot;:[&quot;family1&quot;],
      &quot;id&quot;:&quot;6524d6f79d19&quot;}</code></pre>
-<p id='clone' />
+<p id='Resource_clone' />
 <h3 id='cloneobject_value'>clone(Object value)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -587,7 +978,7 @@ Creates a new instance of 'value', copies all the attributes to the new instance
      &quot;birthDate&quot;:&quot;1970-01-01T05:00:00.000Z&quot;,&quot;age&quot;:43,
      &quot;friendList&quot;:[&quot;friend1&quot;,&quot;friend2&quot;,&quot;friend3&quot;],&quot;familySet&quot;:[&quot;family1&quot;],
      &quot;id&quot;:&quot;6524d6f79d19&quot;}</code></pre>
-<p id='stream' />
+<p id='Resource_stream' />
 <h3 id='streamfunction_iterator_function_serialize_function_write_array_separators'>stream(Function iterator, Function serialize, Function write, Array separators)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -607,7 +998,7 @@ Creates a new instance of 'value', copies all the attributes to the new instance
 <p>The collection parameter can be a java.util.Collection, a java.lang.String, a Javascript array, or a Javascript string to iterate over. The given function will be applied to every member of that collection or array, or every character of the java.lang.String or Javascript string. The function can expect the item/character, index, and collection/string to be passed to it at runtime. These functions can be used by including the following code:</p>
 
 <pre><code> var collection = require(&#39;airlift/collection&#39;);</code></pre>
-<p id='every' />
+<p id='Collection_every' />
 <h3 id='everyobject_collection_function_iterator_object_context'>every(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
@@ -621,7 +1012,7 @@ Returns true if all of the values in the list pass the iterator truth test. For 
       })
 
  =&gt; true</code></pre>
-<p id='forEach' />
+<p id='Collection_forEach' />
 <h3 id='foreachobject_collection_function_iterator_object_context'>forEach(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -638,7 +1029,7 @@ Iterates over a collection of elements, yielding each in turn to an iterator fun
       });
 
  =&gt; [&#39;Hello, Bediako&#39;, &#39;Hello, Dave&#39;, &#39;Hello, Loki&#39;]</code></pre>
-<p id='filter' />
+<p id='Collection_filter' />
 <h3 id='filterobject_collection_function_iterator_object_context'>filter(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_javautillistarray'>Return type: java.util.List|Array</h4>
@@ -660,7 +1051,7 @@ Looks through each value in the list, returning a collection of all the values t
  });
 
  =&gt; [true, &#39;hello&#39;]</code></pre>
-<p id='col_map' />
+<p id='Collection_map' />
 <h3 id='mapobject_collection_function_iterator_object_context'>map(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_javautillistarray'>Return type: java.util.List|Array</h4>
@@ -675,7 +1066,7 @@ Produces a new collection of values by mapping each value in the collection thro
       });
 
  =&gt; [&#39;Bediako is the best!&#39;, &#39;Dave is the best!&#39;, &#39;Loki is the best!&#39;]</code></pre>
-<p id='some' />
+<p id='Collection_some' />
 <h3 id='someobject_collection_function_iterator_object_context'>some(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
@@ -690,7 +1081,7 @@ Applies an iterator truth test to each item in the collection. The iteration wil
  _assert.eq(true, pass, &#39;failed&#39;);
 
  =&gt; true</code></pre>
-<p id='split' />
+<p id='Collection_split' />
 <h3 id='splitobject_collection_function_iterator_object_context'>split(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -713,7 +1104,7 @@ Returns an object with two array collections, success and fail.  The first colle
 
  =&gt; result.success: [true, &#39;hello&#39;]
  =&gt; result.fail: [1, 20]</code></pre>
-<p id='partition' />
+<p id='Collection_partition' />
 <h3 id='partitionobject_collection_string_attributename'>partition(Object collection, String attributeName)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -729,7 +1120,7 @@ Returns an object containing a value list (java.util.List or Javascript array) a
  var partition = collection.partition(array, &#39;name&#39;);
 
  =&gt; [&#39;Bediako&#39;, &#39;Loki&#39;, &#39;Connor&#39;]</code></pre>
-<p id='col_reduce' />
+<p id='Collection_reduce' />
 <h3 id='reduceobject_collection_function_iterator_object_initialvalue_object_context'>reduce(Object collection, Function iterator, Object initialValue, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>

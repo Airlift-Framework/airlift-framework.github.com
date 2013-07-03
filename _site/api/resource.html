@@ -25,7 +25,7 @@
 <p>All iterative functions in resource.js allow for the replacement of any of the attributes of the context object by optionally providing an object at invocation time.</p>
 
 <p>The functions available in this module are described below.</p>
-<p id='each' />
+<p id='Resource_each' />
 <h3 id='eachstring_resourcename_object_resource_function_function_function_callback_object_context'>each(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_na'>Return Type: n/A</h4>
@@ -41,7 +41,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
  =&gt; [&quot;fullName&quot;, &quot;shortName&quot;, &quot;status&quot;, &quot;birthDate&quot;, &quot;age&quot;, &quot;friendList&quot;,
      &quot;familySet&quot;, &quot;auditPostDate&quot;, &quot;auditPutDate&quot;, &quot;auditUserId&quot;, &quot;id&quot;]</code></pre>
-<p id='map' />
+<p id='Resource_map' />
 <h3 id='mapstring_resourcename_object_resource_function_function_function_callback_object_context'>map(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -60,7 +60,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
  =&gt; [&quot;fullName&quot;,&quot;shortName&quot;,&quot;status&quot;,&quot;birthDate&quot;,&quot;age&quot;,&quot;friendList&quot;,&quot;familySet&quot;,
      &quot;auditPostDate&quot;,&quot;auditPutDate&quot;,&quot;auditUserId&quot;,&quot;id&quot;]</code></pre>
-<p id='transform' />
+<p id='Resource_transform' />
 <h3 id='transformobject_dictionary_string_resourcename_object_resource_function_function_function_callback_object_context'>transform(Object dictionary, String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -80,7 +80,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
  =&gt; [&quot;fullName&quot;,&quot;shortName&quot;,&quot;status&quot;,&quot;birthDate&quot;,&quot;age&quot;,&quot;friendList&quot;,&quot;familySet&quot;,
      &quot;auditPostDate&quot;,&quot;auditPutDate&quot;,&quot;auditUserId&quot;,&quot;id&quot;]</code></pre>
-<p id='reduce' />
+<p id='Resource_reduce' />
 <h3 id='reducestring_base_string_resourcename_object_resource_function_function_function_callback_object_context'>reduce(String base, String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
 <h4 id='return_type_string'>Return type: String</h4>
@@ -101,7 +101,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
      :birthDate=01-01-1970:age=43.0:friendList=[\&quot;friend1\&quot;,\&quot;friend2\&quot;,\&quot;friend3\&quot;]
      :familySet=[\&quot;family1\&quot;]:auditPostDate=:auditPutDate=:auditUserId=
      :id=6524d6f79d19&quot;</code></pre>
-<p id='sequence' />
+<p id='Resource_sequence' />
 <h3 id='sequencefunction_f1_function_f2___function_fn'>sequence(Function f1, Function f2, &#8230; , Function fN)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -118,7 +118,7 @@ Returns a function that is the composition of the passed function arguments. The
  sequence();
 
  =&gt; [1,2,3,4]</code></pre>
-<p id='compose' />
+<p id='Resource_compose' />
 <h3 id='composefunction_f1_function_f2__function_fn'>compose(Function f1, Function f2, &#8230;, Function fN)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -137,7 +137,7 @@ var compose = res.compose(
 compose();
 
 =&gt; [1,2,3,4]</code></pre>
-<p id='toString' />
+<p id='Resource_toString' />
 <h3 id='tostringstring_resourcename_object_resource_object_context'>toString(String resourceName, Object resource, Object context)</h3>
 
 <h4 id='return_type_string'>Return type: String</h4>
@@ -145,7 +145,7 @@ compose();
 <span style='background:color'>Description under construction.</span>
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
-<p id='watch' />
+<p id='Resource_watch' />
 <h3 id='watchstring_attributename1__string_attributenamen_function_watchfunction'>watch(String attributeName1, &#8230;, String attributeNameN, Function watchFunction)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -164,7 +164,7 @@ Returns a function that will only be executed once and only once when the all th
  var result = {age: 1};
 
  =&gt; attributes: {age: 1}</code></pre>
-<p id='json' />
+<p id='Resource_json' />
 <h3 id='jsonobject_resource_object_replacer'>json(Object resource, Object replacer)</h3>
 
 <h4 id='return_type_function'>Return type: Function</h4>
@@ -182,7 +182,7 @@ Converts an object into a string by calling JSON.strinigfy().
  
  res.json({time: new Date(5)});
  =&gt; &#39;{&quot;time&quot;:&quot;1970-01-01T00:00:00.005Z&quot;}&#39;</code></pre>
-<p id='audit' />
+<p id='Resource_audit' />
 <h3 id='audit_config'>audit(_config)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -190,7 +190,7 @@ Converts an object into a string by calling JSON.strinigfy().
 <span style='background-color:red'>Description under construction.</span>
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
-<p id='copy' />
+<p id='Resource_copy' />
 <h3 id='copyobject_target_object_value_string_attributename'>copy(Object target, Object value, String attributeName)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -205,7 +205,7 @@ Copies each 'attributeName' of 'value' into 'target'.
      &quot;birthDate&quot;:&quot;1970-01-01T05:00:00.000Z&quot;,&quot;age&quot;:43,
      &quot;friendList&quot;:[&quot;friend1&quot;,&quot;friend2&quot;,&quot;friend3&quot;],&quot;familySet&quot;:[&quot;family1&quot;],
      &quot;id&quot;:&quot;6524d6f79d19&quot;}</code></pre>
-<p id='clone' />
+<p id='Resource_clone' />
 <h3 id='cloneobject_value'>clone(Object value)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -218,7 +218,7 @@ Creates a new instance of 'value', copies all the attributes to the new instance
      &quot;birthDate&quot;:&quot;1970-01-01T05:00:00.000Z&quot;,&quot;age&quot;:43,
      &quot;friendList&quot;:[&quot;friend1&quot;,&quot;friend2&quot;,&quot;friend3&quot;],&quot;familySet&quot;:[&quot;family1&quot;],
      &quot;id&quot;:&quot;6524d6f79d19&quot;}</code></pre>
-<p id='stream' />
+<p id='Resource_stream' />
 <h3 id='streamfunction_iterator_function_serialize_function_write_array_separators'>stream(Function iterator, Function serialize, Function write, Array separators)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>

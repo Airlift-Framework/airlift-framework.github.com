@@ -1,7 +1,7 @@
 <p>Airlift is built on Rhino and App Engine. Rhino is a fantastic JavaScript interpreter library written for Java. App Engine is a fantastic platform as a service cloud environment that offers support for web applications programmed in Go, Python, and Java.</p>
 
 <p>In order for Airlift to support server side JavaScript programming on App Engine we applied Rhino&#8217;s capabilities to the App Engine environment. To accomplish this we extended some of Rhino&#8217;s libraries, and we added additional functionality to JavaScript&#8217;s standard objects. The following outlines the adaptations and improvements we made.</p>
-<p id='partial' />
+<p id='Extensions_partial' />
 <h3 id='functionprototypepartial_argument1_argument2__argumentn'>Function.prototype.partial (argument-1, argument-2, &#8230;, argument-n)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -14,7 +14,7 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
       };
  var f1 = f0.partial(undefined, &#39;Bediako&#39;);	
  =&gt; Hello Bediako</code></pre>
-<p id='equalsIgnoreCase' />
+<p id='Extensions_equalsIgnoreCase' />
 <h3 id='stringprototypeequalsignorecase_stringjavalangstring_string'>String.prototype.equalsIgnoreCase (String|java.lang.String string)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
@@ -25,7 +25,7 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
  var string2 = new Packages.java.lang.String(&#39;Bediako&#39;);
  string1.equalsIgnoreCase(string2);
  =&gt; true</code></pre>
-<p id='replaceAll' />
+<p id='Extensions_replaceAll' />
 <h3 id='stringprototypereplaceall_stringjavalangstring_string1_stringjavalangstring_string2'>String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)</h3>
 
 <h4 id='return_type_string'>Return Type: String</h4>

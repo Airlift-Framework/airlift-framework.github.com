@@ -3,7 +3,7 @@
 <p>The collection parameter can be a java.util.Collection, a java.lang.String, a Javascript array, or a Javascript string to iterate over. The given function will be applied to every member of that collection or array, or every character of the java.lang.String or Javascript string. The function can expect the item/character, index, and collection/string to be passed to it at runtime. These functions can be used by including the following code:</p>
 
 <pre><code> var collection = require(&#39;airlift/collection&#39;);</code></pre>
-<p id='every' />
+<p id='Collection_every' />
 <h3 id='everyobject_collection_function_iterator_object_context'>every(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
@@ -17,7 +17,7 @@ Returns true if all of the values in the list pass the iterator truth test. For 
       })
 
  =&gt; true</code></pre>
-<p id='forEach' />
+<p id='Collection_forEach' />
 <h3 id='foreachobject_collection_function_iterator_object_context'>forEach(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
@@ -34,7 +34,7 @@ Iterates over a collection of elements, yielding each in turn to an iterator fun
       });
 
  =&gt; [&#39;Hello, Bediako&#39;, &#39;Hello, Dave&#39;, &#39;Hello, Loki&#39;]</code></pre>
-<p id='filter' />
+<p id='Collection_filter' />
 <h3 id='filterobject_collection_function_iterator_object_context'>filter(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_javautillistarray'>Return type: java.util.List|Array</h4>
@@ -56,7 +56,7 @@ Looks through each value in the list, returning a collection of all the values t
  });
 
  =&gt; [true, &#39;hello&#39;]</code></pre>
-<p id='col_map' />
+<p id='Collection_map' />
 <h3 id='mapobject_collection_function_iterator_object_context'>map(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_javautillistarray'>Return type: java.util.List|Array</h4>
@@ -71,7 +71,7 @@ Produces a new collection of values by mapping each value in the collection thro
       });
 
  =&gt; [&#39;Bediako is the best!&#39;, &#39;Dave is the best!&#39;, &#39;Loki is the best!&#39;]</code></pre>
-<p id='some' />
+<p id='Collection_some' />
 <h3 id='someobject_collection_function_iterator_object_context'>some(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_boolean'>Return type: Boolean</h4>
@@ -86,7 +86,7 @@ Applies an iterator truth test to each item in the collection. The iteration wil
  _assert.eq(true, pass, &#39;failed&#39;);
 
  =&gt; true</code></pre>
-<p id='split' />
+<p id='Collection_split' />
 <h3 id='splitobject_collection_function_iterator_object_context'>split(Object collection, Function iterator, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -109,7 +109,7 @@ Returns an object with two array collections, success and fail.  The first colle
 
  =&gt; result.success: [true, &#39;hello&#39;]
  =&gt; result.fail: [1, 20]</code></pre>
-<p id='partition' />
+<p id='Collection_partition' />
 <h3 id='partitionobject_collection_string_attributename'>partition(Object collection, String attributeName)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -125,7 +125,7 @@ Returns an object containing a value list (java.util.List or Javascript array) a
  var partition = collection.partition(array, &#39;name&#39;);
 
  =&gt; [&#39;Bediako&#39;, &#39;Loki&#39;, &#39;Connor&#39;]</code></pre>
-<p id='col_reduce' />
+<p id='Collection_reduce' />
 <h3 id='reduceobject_collection_function_iterator_object_initialvalue_object_context'>reduce(Object collection, Function iterator, Object initialValue, Object context)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>

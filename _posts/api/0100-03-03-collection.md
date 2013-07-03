@@ -15,7 +15,7 @@ These functions can be used by including the following code:
      var collection = require('airlift/collection');
 
 
-<p id="every"></p>
+<p id="Collection_every"></p>
 ### every(Object collection, Function iterator, Object context)
 #### Return type: Boolean
 
@@ -33,7 +33,7 @@ Returns true if all of the values in the list pass the iterator truth test. For 
      => true
 
 
-<p id="forEach"></p>
+<p id="Collection_forEach"></p>
 ### forEach(Object collection, Function iterator, Object context)
 #### Return type: n/A
 
@@ -54,7 +54,7 @@ Iterates over a collection of elements, yielding each in turn to an iterator fun
      => ['Hello, Bediako', 'Hello, Dave', 'Hello, Loki']
 
 
-<p id="filter"></p>
+<p id="Collection_filter"></p>
 ### filter(Object collection, Function iterator, Object context)
 #### Return type: java.util.List|Array
 
@@ -80,7 +80,7 @@ Looks through each value in the list, returning a collection of all the values t
      => [true, 'hello']
 
 
-<p id="col_map"></p>
+<p id="Collection_map"></p>
 ### map(Object collection, Function iterator, Object context)
 #### Return type: java.util.List|Array
 
@@ -100,7 +100,7 @@ Produces a new collection of values by mapping each value in the collection thro
 
 
 
-<p id="some"></p>
+<p id="Collection_some"></p>
 ### some(Object collection, Function iterator, Object context)
 #### Return type: Boolean
 
@@ -119,7 +119,7 @@ Applies an iterator truth test to each item in the collection. The iteration wil
      => true
 
 
-<p id="split"></p>
+<p id="Collection_split"></p>
 ### split(Object collection, Function iterator, Object context)
 #### Return type: Object
 
@@ -146,7 +146,7 @@ Returns an object with two array collections, success and fail.  The first colle
      => result.fail: [1, 20]
 
 
-<p id="partition"></p>
+<p id="Collection_partition"></p>
 ### partition(Object collection, String attributeName)
 #### Return type: Object
 
@@ -165,7 +165,7 @@ Returns an object containing a value list (java.util.List or Javascript array) a
      => ['Bediako', 'Loki', 'Connor']
 
 
-<p id="col_reduce"></p>
+<p id="Collection_reduce"></p>
 ### reduce(Object collection, Function iterator, Object initialValue, Object context)
 #### Return type: Object
 

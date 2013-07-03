@@ -21,4 +21,4 @@ filler blah blah blah blah blah blah blah blah blah blah blah.
 
 This project is [hosted on Github](http://github.com/Airlift-Framework/airlift-framework.github.com)
 
-The PDF of this documentation can be downloaded [here](http://github.com/Airlift-Framework/airlift-framework.github.com).
+The PDF of this documentation can be downloaded [here](#).
