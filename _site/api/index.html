@@ -1226,78 +1226,158 @@ Updates an existing resource.
         <h2 class="a">
           The Util module contains utility functions that are used throughout Airlift.
         </h2>
-        <h1 id='introduction'>Introduction</h1>
+        <p>The Util module contains utility functions developers can use process resources. These include checks for empty JavaScript objects, type checks, multi trys and more. Use these functions by including the following code:</p>
 
-<p>The Util module contains utility functions developers can use process resources. These include checks for empty JavaScript objects, type checks, multi trys and more.</p>
+<pre><code> var util = require(&#39;airlift/util&#39;)</code></pre>
+<p id='Util_typeOf' />
+<h3 id='typeofobject_value'>typeOf(Object value)</h3>
 
-<h2 id='_typeof_value'>- TypeOf (value)</h2>
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Determines the type of JavaScript object value.
+</p>
+<pre><code> util.typeOf({});                        =&gt; &quot;object&quot;
+ util.typeOf(function() {});             =&gt; &quot;function&quot;
+ util.typeOf([]);                        =&gt; &quot;array&quot;
+ util.typeOf(1);                         =&gt; &quot;number&quot;
+ util.typeOf(&#39;1&#39;);                       =&gt; &quot;string&quot;
+ util.typeOf(new java.lang.Object());    =&gt; &quot;object&quot;
+ util.typeOf(new java.lang.String());    =&gt; &quot;object&quot;</code></pre>
+<p id='Util_isEmpty' />
+<h3 id='isempty_object_o'>isEmpty (Object o)</h3>
 
-<p>Determines the type of JavaScript object value.</p>
+<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Determines whether or not a JavaScript object has any properties.
+</p>
+<pre><code> util.isEmpty({});                       =&gt; true
+ util.isEmpty({name: &#39;Serena&#39;});         =&gt; false</code></pre>
+<p id='Util_createClass' />
+<h3 id='createclassstring_classname'>createClass(String className)</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-u.println(u.typeOf({}); //object
-u.println(u.typeOf([]); //array
-u.println(u.typeOf(&#39;string&#39;); //string
-u.println(u.typeOf(5); //number
-u.println(u.typeOf(function(){})); //function</code></pre>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a Java class object identified by the classname.
+</p>
+<pre><code> util.createClass(&#39;java.lang.String&#39;);                  
+ =&gt; class java.lang.String
 
-<h2 id='_isempty_object'>- IsEmpty (object)</h2>
+ util.createClass(&#39;airlift.util.JavaScriptingUtil&#39;);
+ =&gt; class airlift.util.JavaScriptingUtil</code></pre>
+<p id='Util_isWhiteSpace' />
+<h3 id='iswhitespacestring_string'>isWhitespace(String string)</h3>
 
-<p>Determines whether or not a JavaScript object has any properties.</p>
+<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns true if string is whitespace, false otherwise.
+</p>
+<pre><code> util.isWhitespace(&#39;&#39;);                  =&gt; true
+ util.isWhitespace(&#39;    \t\n&#39;);          =&gt; true
+ util.isWhitespace(&#39;    \t\nxyz  \t&#39;);   =&gt; false</code></pre>
+<p id='Util_hasValue' />
+<h3 id='hasvalueobject_value'>hasValue(Object value)</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-u.println(u.isEmpty({}); //true
-u.println(u.isEmpty({name: undefined}); false</code></pre>
+<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns true if item is not equal to null and is not equal to undefined.
+</p>
+<pre><code> util.hasValue(&#39;&#39;);                      =&gt; true
+ util.hasValue([])                       =&gt; true
+ util.hasValue({})                       =&gt; true
+ util.hasValue(-1)                       =&gt; true
+ util.hasValue(true)                     =&gt; true
+ util.hasValue(null);                    =&gt; false</code></pre>
+<p id='Util_createErrorReporter' />
+<h3 id='createerrorreporter'>createErrorReporter()</h3>
 
-<h2 id='_createclass_classname'>- CreateClass (className)</h2>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates an object that handles error reporting.  This object includes methods allErrors(), getErrors(String name), and report(String name, String error).
+</p>
+<pre><code> var errorReporter = util.createErrorReporter();
+ errorReporter.report(&#39;hello&#39;, &#39;message1&#39;, &#39;test&#39;);
+ errorReporter.report(&#39;hello&#39;, &#39;message2&#39;, &#39;test&#39;);
+ errorReporter.report(&#39;goodbye&#39;, &#39;message3&#39;, &#39;test&#39;);
+ var result = errorReporter.allErrors();
 
-<p>Creates a Java class object identified by the classname.</p>
+ =&gt; {hello:[{name: &#39;hello&#39;, message: &#39;message1&#39;, category: &#39;test&#39;},
+      {name: &#39;hello&#39;, message: &#39;message2&#39;, category: &#39;test&#39;}],
+      goodbye: [{name: &#39;goodbye&#39;, message: &#39;message3&#39;, category: &#39;test&#39;}]}</code></pre>
+<p id='Util_multiTry' />
+<h3 id='multitryfunction_executable_number_trycount_function_completefailure'>multiTry(Function executable, Number tryCount, Function completeFailure)</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-u.println(u.createClass(&quot;java.lang.String&quot;).getName()); //java.lang.String</code></pre>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tries to execute function 'tryCount' number of times, catching any exceptions encountered.  If 'executable' is successfully executed, it's value is stored in result. If the number of failed tries exceeds try a severe error is logged, and the last exception encountered is rethrown unless callback function is provided.
+</p>
+<pre><code> var list = util.list();
+ util.multiTry(function() { list.add(&#39;star&#39;); }, 5);
+ =&gt; [&quot;star&quot;]
 
-<h2 id='_iswhitespace_string'>- IsWhiteSpace (string)</h2>
+ list = util.list();
+ util.multiTry(function(_tries) 
+      { list.add(&#39;star&#39;); if (_tries &lt; 3) throw &#39;error&#39;; }, 3);
+ =&gt; [&quot;star&quot;,&quot;star&quot;,&quot;star&quot;]
 
-<p>Returns true if string is whitespace, false otherwise.</p>
+ list = util.list();
+ util.multiTry(function(_tries) 
+                { list.add(&#39;try&#39;); if (_tries &lt; 4) throw &#39;error&#39;; }, 3,
+                function(_tries, _exception)
+                { list.add(&#39;completely failed&#39;); });
+ =&gt; [&quot;try&quot;,&quot;try&quot;,&quot;try&quot;,&quot;completely failed&quot;]</code></pre>
+<p id='Util_createDate' />
+<h3 id='createdate_number_milliseconds'>createDate (Number milliseconds)</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-u.println(u.isWhitespace(&#39;&#39;)); //true
-u.println(u.isWhitespace(&#39;\t\n&#39;)); //true
-u.println(u.isWhitespace(&#39;name&#39;)); false</code></pre>
+<h4 id='return_type_javautildate'>Return type: java.util.Date</h4>
+<p> <label class='new'>Added in 2.0</label> <label class='alias'><em>alias</em> date</label>
+If milliseconds is provided it is passed to the Date constructor, otherwise the date returned will reflect the current time to the millisecond.
+</p>
+<pre><code> var date = util.createDate();           =&gt; Fri Jul 05 12:22:26 EDT 2013
+ var date = util.createDate(0);          =&gt; Wed Dec 31 19:00:00 EST 1969</code></pre>
+<p id='Util_createTimezone' />
+<h3 id='createtimezonestring_id'>createTimezone(String id)</h3>
 
-<h2 id='_hasvalue_item'>- HasValue (item)</h2>
+<h4 id='return_type_javautiltimezone'>Return type: java.util.TimeZone</h4>
+<p> <label class='new'>Added in 2.0></label> <label class='alias'><em>alias</em> timezone</label>
+Creates a timezone of location 'id', which can either be an abbreviation such as "EST", a full name such as "America/New_York", or a custom ID such as "GMT+9:00".
+</p>
+<pre><code> var timezone = util.timezone(&#39;America/New_York&#39;);
+ =&gt; sun.util.calendar.ZoneInfo[id=&quot;America/New_York&quot;,offset=-18000000,
+    dstSavings=3600000,useDaylight=true,transitions=235,
+    lastRule=java.util.SimpleTimeZone[id=America/New_York,offset=-18000000,
+    dstSavings=3600000,useDaylight=true,startYear=0,startMode=3,startMonth=2,
+    startDay=8,startDayOfWeek=1,startTime=7200000,startTimeMode=0,endMode=3,
+    endMonth=10,endDay=1,endDayOfWeek=1,endTime=7200000,endTimeMode=0]]</code></pre>
+<p id='Util_formatDate' />
+<h3 id='formatdatejavautildatedate_utcdate_string_format_string_timezone'>formatDate(java.util.Date|Date utcDate, String format, String timezone)</h3>
 
-<p>Returns true if item is not equal to null and is not equal to undefined.</p>
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Formats a java.util.Date or Javascript Date into an easily readable string.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Util_adjustUTCDate' />
+<h3 id='adjustutcdatejavautildatedate_utcdate_javautiltimezonetimezone_timezone'>adjustUTCDate(java.util.Date|Date utcDate, java.util.Timezone|Timezone timezone)</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-u.println(u.hasValue(&#39;&#39;)); //true
-u.println(u.isValue(null)); //false
-u.println(u.isWhitespace(undefined)); false
-u.println(u.hasValue([])); //true
-u.println(u.hasValue(0)); //true
-u.println(u.hasValue(-1)); //true
-u.println(u.hasValue({})); //true</code></pre>
+<h4 id='return_type_javautildate'>Return type: java.util.Date</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns an adjusted date that is the addition of the current UTC date and specified timezone.
+</p>
+<pre><code> var date = util.date();
+ var adjustedDate = util.adjustUTCDate(date, &#39;America/New_York&#39;);
+ =&gt; Fri Jul 05 09:23:12 EDT 2013
 
-<h2 id='_multitry_function_tries_message_completefailure'>- MultiTry (function, tries, [message], [completeFailure])</h2>
+ var timezone = util.timezone(&#39;America/New_York&#39;);
+ var offset = timezone.getOffset(date.getTime());
+ var newDate = util.date(date.getTime() + offset);
+ =&gt; Fri Jul 05 09:23:12 EDT 2013</code></pre>
+<p id='Util_createCalendar' />
+<h3 id='createcalendarobject_config'>createCalendar(Object config)</h3>
 
-<p>Tries to execute function &#8216;tries&#8217; number of times, catching any exceptions encountered. If message is provided it is written as a warning to the logs for each failed try. If the number of failed tries exceeds try a severe error is logged, and the last exception encountered is rethrown unless completeFailure function is provided.</p>
-
-<pre><code>var u = require(&#39;util&#39;);
-u.multitry(logIntoPayPal, 5, &#39;paypal login failed&#39;, function(tries, e) {
-    	sendEmailToAdministrator(); throw e;
-});</code></pre>
-
-<h2 id='_createdate_milliseconds'>- createDate ([milliseconds])</h2>
-
-<p>Creates a java.util.Date object. If milliseconds is provided it is passed to the Date constructor, otherwise the date returned will reflect the current time to the millisecond.</p>
-
-<pre><code>var u = require(&#39;util&#39;);
-var date = u.createDate(5) //date is 5 milliseconds after the epoch</code></pre>
-
-<h2 id='_createcalendar_config'>- createCalendar ([config])</h2>
-
-<p>Creates a java.util.Calendar object. The optional config parameter may contain the following optional parameters:</p>
-
+<h4 id='return_type_javautilcalendar'>Return type: java.util.Calendar</h4>
+<p> <label class='new'>Added in 2.0</label> <label class='alias'><em>alias</em> calendar</label>
+Creates a java.util.Calendar object.  The optional config parameter may contain the following optional parameters:
+</p>
 <ul>
 <li>date - a date the calendar will be set to. If not provided the current date is used.</li>
 
@@ -1312,54 +1392,89 @@ var date = u.createDate(5) //date is 5 milliseconds after the epoch</code></pre>
 
 <p>The config object may have all or none of these parameters.</p>
 
-<pre><code>var u = require(&#39;util&#39;);
-var config = {};
-config.date = u.createDate();
-config.dateOffset = 10000;
-config.dateOffsetType = java.util.Calendar.MILLISECOND;
-var calendar = u.createCalendar(config);</code></pre>
+<pre><code> var date = new Packages.java.util.Date();
+ var calendar = util.createCalendar({date: date});
+ =&gt; java.util.GregorianCalendar[time=1373046196220,areFieldsSet=false,
+     areAllFieldsSet=false,lenient=true,zone=sun.util.calendar.ZoneInfo
+     [id=&quot;UTC&quot;,offset=0,dstSavings=0,useDaylight=false,transitions=0,
+     lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,
+     YEAR=2013,MONTH=6,WEEK_OF_YEAR=27,WEEK_OF_MONTH=1,DAY_OF_MONTH=5,
+     DAY_OF_YEAR=186,DAY_OF_WEEK=6,DAY_OF_WEEK_IN_MONTH=1,AM_PM=1,HOUR=5,
+     HOUR_OF_DAY=17,MINUTE=43,SECOND=16,MILLISECOND=220,ZONE_OFFSET=0,
+     DST_OFFSET=0]</code></pre>
+<p id='Util_guid' />
+<h3 id='guidnumber_length'>guid(Number length)</h3>
 
-<h2 id='_guid_length'>- Guid ([length])</h2>
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a guid of type string.  The method for creating the guid involves truncating a SHA1 hash of a random uuid created by java.util.UUID class.  The SHA1 hash is truncated to the length specified.  If length is not specified the value of the application configuration parameter 'airlift.truncated.sha1.id.length' is used instead.  If that is not configured it defaults to 32.
+</p>
+<pre><code> var id = util.guid(12);                 =&gt; c30215c36032
+ var id = util.guid();                   =&gt; 741ca9295cf204886893257202e8559b</code></pre>
+<p id='Util_trim' />
+<h3 id='trimstring_string'>trim(String string)</h3>
 
-<p>Creates a guid of type string. The method for creating the guid involves truncating a SHA1 hash of a random uuid created by java.util.UUID class. The SHA1 hash is truncated to the length specified. If length is not specified the value of the application configuration parameter &#8216;airlift.truncated.sha1.id.length&#8217; is used instead. If that is not configured it defaults to 10.</p>
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Removes whitespace from left and right sides of a string.
+</p>
+<pre><code> var trimmed = util.trim(&#39;\t Josh \n&#39;)
+ =&gt; &quot;Josh&quot;</code></pre>
+<p id='Util_print' />
+<h3 id='print'>print()</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-var id = u.guid(12)
-u.println(id); //c30215c36032</code></pre>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Writes string to standard out.
+</p>
+<pre><code> util.print(&#39;purple&#39;);
+ =&gt; purple</code></pre>
+<p id='Util_println' />
+<h3 id='println'>println()</h3>
 
-<h2 id='_trim_string'>- Trim (string)</h2>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Writes string to standard out, then writes a newline to standard out.
+</p><pre><code>util.println('pandas');
+=> pandas
 
-<p>Removes whitespace from left and right sides of a string.</p>
+</code></pre><p id='Util_info' />
+<h3 id='info'>info()</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-var trimmed = u.trim(&#39;\t Bediako \n&#39;)
-u.println(trimmed); //Bediako</code></pre>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Concatenates arguments and prints it to the command line. 'INFO: ' preceeds the message.
+</p>
+<pre><code> util.info(&#39;hello&#39;,&#39;world&#39;);
+ =&gt; INFO: hello world</code></pre>
+<p id='Util_warning' />
+<h3 id='warning'>warning()</h3>
 
-<h2 id='_print_string'>- Print (string)</h2>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Concatenates arguments and prints it to the command line. 'WARNING: ' preceeds the message.
+</p>
+<pre><code> util.warning(&#39;proceed with caution&#39;);
+ =&gt; WARNING: proceed with caution</code></pre>
+<p id='Util_severe' />
+<h3 id='info'>info()</h3>
 
-<p>Writes string to standard out.</p>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Concatenates arguments and prints it to the command line. 'SEVERE: ' preceeds the message.
+</p>
+<pre><code> util.severe(&#39;Something has gone terribly wrong.&#39;);
+ =&gt; SEVERE: Something has gone terribly wrong.</code></pre>
+<p id='Util_value' />
+<h3 id='value_object_candidate_object_default'>value (Object candidate, Object default)</h3>
 
-<pre><code>var u = require(&#39;util&#39;);
-
-u.print(&#39;Bediako&#39;); //Bediako</code></pre>
-
-<h2 id='_println_string'>- Println (string)</h2>
-
-<p>Writes string to standard out, then writes a newline to standard out.</p>
-
-<pre><code>var u = require(&#39;util&#39;);
-
-u.println(&#39;Bediako&#39;); //Bediako</code></pre>
-
-<h2 id='_value_value_default'>- value (value, default)</h2>
-
-<p>Returns value if it is not null or it is not undefined. Otherwise it returns default.</p>
-
-<pre><code>var u = require(&#39;util&#39;);
-
-u.println(u.value(undefined, &#39;Bediako)); //Bediako
-u.println(u.value(null, &#39;Bediako)); //Bediako
-u.println(u.value(&#39;Connor&#39;, &#39;Bediako)); //Connor</code></pre>
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns 'candidate' if it is not null or it is not undefined.  Otherwise it returns 'default'.
+</p>
+<pre><code> var result = util.value([&#39;a&#39;,&#39;b&#39;,&#39;c&#39;], [&#39;default&#39;]);   =&gt; [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]
+ var result = util.value(undefined, 0);                 =&gt; 0
+ var result = util.value(&#39;Serena&#39;, &#39;Lei&#39;);              =&gt; &#39;Serena&#39;</code></pre>
       
         <h2 id=Incoming>
           Incoming
