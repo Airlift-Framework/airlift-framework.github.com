@@ -191,7 +191,7 @@ Creates a guid of type string.  The method for creating the guid involves trunca
 Removes whitespace from left and right sides of a string.
 </p>
 <pre><code> var trimmed = util.trim(&#39;\t Josh \n&#39;)
- =&gt; &quot;Josh&quot;</code></pre>
+ =&gt; &#39;Josh&#39;</code></pre>
 <p id='Util_print' />
 <h3 id='print'>print()</h3>
 
@@ -247,3 +247,343 @@ Returns 'candidate' if it is not null or it is not undefined.  Otherwise it retu
 <pre><code> var result = util.value([&#39;a&#39;,&#39;b&#39;,&#39;c&#39;], [&#39;default&#39;]);   =&gt; [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]
  var result = util.value(undefined, 0);                 =&gt; 0
  var result = util.value(&#39;Serena&#39;, &#39;Lei&#39;);              =&gt; &#39;Serena&#39;</code></pre>
+<p id='Util_primitive' />
+<h3 id='primitiveobject_o'>primitive(Object o)</h3>
+
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts primitive Java values into primitive Javascript values. If 'o' is not a primitive Java value, returns it unchanged.
+</p>
+<pre><code> var integer = new Packages.java.lang.Integer(1);
+ var jsNumber = 1;
+
+ _assert.eq(util.primitive(integer), jsNumber, &#39;one integer is incorrect&#39;);
+ // OK ...</code></pre>
+<p id='Util_callbackIterator' />
+<h3 id='callbackiteratorfunction_iterator_function_callback'>callbackIterator(Function iterator, Function callback)</h3>
+
+<h4 id='return_type_javautiliterator'>Return type: Java.util.Iterator</h4>
+<p> <label class='new'>Added in 2.0</label>
+Generates an iterator that executes the callback function each time next() is called.
+</p>
+<pre><code> var list = util.list();
+ list.add(&#39;twinkling&#39;);
+ list.add(&#39;shining&#39;);
+ list.add(&#39;bright&#39;);
+
+ var starryList = util.list();
+
+ var iterator = list.iterator();
+ var callbackIterator = util.callbackIterator(iterator, function(_next) { starryList.add(_next+&#39; star&#39;); });
+
+ for (var item in Iterator(callbackIterator)) { } //exercises the iterator
+
+ //=&gt; [&#39;twinkling star&#39;, &#39;shining star&#39;, &#39;bright star&#39;]</code></pre>
+<p id='Util_list' />
+<h3 id='listobject_parameter'>list(Object parameter)</h3>
+
+<h4 id='return_type_javautilarraylist'>Return type: java.util.ArrayList</h4>
+<p> <label class='new'>Added in 2.0</label>
+If no parameter is given, returns a new empty java.util.ArrayList. Otherwise, passes 'parameter' to the java.util.ArrayList constructor method.
+</p>
+<pre><code> var list = util.list();
+ list.add(&#39;element1&#39;);
+ list.add(&#39;element2&#39;);
+ list.add(&#39;element3&#39;);
+
+ var copy = util.list(list);
+ =&gt; [&#39;element1&#39;, &#39;element2&#39;, &#39;element3&#39;]</code></pre>
+<p id='Util_set' />
+<h3 id='setobject_parameter'>set(Object parameter)</h3>
+
+<h4 id='return_type_javautilhashset'>Return type: java.util.HashSet</h4>
+<p> <label class='new'>Added in 2.0</label>
+If no parameter is given, returns a new empty java.util.HashSet. Otherwise, passes 'parameter' to the java.util.HashSet constructor method.
+</p>
+<pre><code> var set = util.set();
+ set.add(&#39;element1&#39;);
+ set.add(&#39;element2&#39;);
+ set.add(&#39;element3&#39;);
+
+ var copy = util.set(set);
+ =&gt; [&#39;element1&#39;, &#39;element2&#39;, &#39;element3&#39;]</code></pre>
+<p id='Util_orderedSet' />
+<h3 id='orderedsetobject_parameter'>orderedSet(Object parameter)</h3>
+
+<h4 id='return_type_javautiltreeset'>Return type: java.util.TreeSet</h4>
+<p> <label class='new'>Added in 2.0</label>
+If no parameter is given, returns a new empty java.util.TreeSet. Otherwise, passes 'parameter' to the java.util.TreeSet constructor method.
+</p>
+<pre><code> var orderedSet = util.orderedSet();
+ orderedSet.add(&#39;element3&#39;);
+ orderedSet.add(&#39;element1&#39;);
+ orderedSet.add(&#39;element2&#39;);
+
+ var copy = util.orderedSet(orderedSet);
+ =&gt; [&#39;element1&#39;, &#39;element2&#39;, &#39;element&#39;]</code></pre>
+<p id='Util_map' />
+<h3 id='mapobject_parameter'>map(Object parameter)</h3>
+
+<h4 id='return_type_javautilhashmap'>Return type: java.util.HashMap</h4>
+<p> <label class='new'>Added in 2.0</label>
+If no parameter is given, returns a new empty java.util.HashMap. Otherwise, passes 'parameter' to the java.util.HashMap constructor method.
+</p>
+<pre><code> var map = util.map();
+ map.put(&#39;element&#39;, 1);
+
+ var copy = util.map(map);
+ =&gt; {element=1.0}</code></pre>
+<p id='Util_createKeysIterator' />
+<h3 id='createkeysiteratorobject_entitylist'>createKeysIterator(Object entityList)</h3>
+
+<h4 id='return_type_javautiliterator'>Return type: java.util.Iterator</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates an iterator that iterates through the keys of 'entitylist'.
+</p>
+<pre><code> var map = util.map();
+ map.put(&#39;ichi&#39;, &#39;uno&#39;);
+ map.put(&#39;ni&#39;, &#39;dos&#39;);
+ map.put(&#39;san&#39;, &#39;thres&#39;);
+ var iterator = util.createKeysIterator(map.entrySet());
+ var string = iterator.next();
+ =&gt; &#39;ichi&#39;</code></pre>
+<p id='Util_createKeysCollection' />
+<h3 id='createkeyscollectionobject_entitylist'>createKeysCollection(Object entityList)</h3>
+
+<h4 id='return_type_javautilcollection'>Return type: java.util.Collection</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a collection from the 'entitylist'.
+</p>
+<pre><code> var map = util.map();
+ map.put(&#39;ichi&#39;, &#39;uno&#39;);
+ map.put(&#39;ni&#39;, &#39;dos&#39;);
+ map.put(&#39;san&#39;, &#39;thres&#39;);
+ var collection = util.createKeysCollection(map);
+ var num = collection.size();
+ =&gt; 3</code></pre>
+<p id='Util_createKeysIterable' />
+<h3 id='createkeysiterableobject_entitylist'>createKeysIterable(Object entityList)</h3>
+
+<h4 id='return_type_javalangiterable'>Return type: java.lang.Iterable</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates an iterable of 'entitylist'.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Util_getResourceMetadata' />
+<h3 id='getresourcemetadatastring_resourcename'>getResourceMetadata(String resourceName)</h3>
+
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Util_getAttributesMetadata' />
+<h3 id='getattributesmetadatastring_resourcename'>getAttributesMetadata(String resourceName)</h3>
+
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Util_getWebRequestId' />
+<h3 id='getwebrequestidstring_resourcename'>getWebRequestId(String resourceName)</h3>
+
+<h4 id='return_type_'>Return type: ???</h4>
+<p> <label class='new'>Added in 2.0</label>
+Gets the request ID using google appengine.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Util_string' />
+<h3 id='stringstring_string'>string(String string)</h3>
+
+<h4 id='return_type_javalangstring'>Return type: java.lang.String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript string into a java string.
+</p>
+<pre><code> var string = new String(&#39;Hello&#39;);
+ var javaString = util.string(string);
+ javaString.getClass().getName();
+ =&gt; &quot;java.lang.String&quot;</code></pre>
+<p id='Util_boolean' />
+<h3 id='booleanstring_booleanstring'>boolean(String booleanString)</h3>
+
+<h4 id='return_type_javalangboolean'>Return type: java.lang.Boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript string into a boolean.
+</p>
+<pre><code> util.boolean(&#39;true&#39;);                   =&gt; true
+ util.boolean(undefined);                =&gt; false
+ util.boolean(null);                     =&gt; false</code></pre>
+<p id='Util_int' />
+<h3 id='intnumber_num'>int(Number num)</h3>
+
+<h4 id='return_type_javalanginteger'>Return type: java.lang.Integer</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript number to a java integer.
+</p>
+<pre><code> var number = 5;
+ var javaNumber = util[&#39;int&#39;](number);
+ =&gt; 5</code></pre>
+<p id='Util_double' />
+<h3 id='doublenumber_num'>double(Number num)</h3>
+
+<h4 id='return_type_javalangdouble'>Return type: java.lang.Double</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript number to a java double.
+</p>
+<pre><code> var number = 5.2;
+ var javaNumber = util[&#39;double&#39;](number);
+ =&gt; 5.2</code></pre>
+<p id='Util_short' />
+<h3 id='shortnumber_num'>short(Number num)</h3>
+
+<h4 id='return_type_javalangshort'>Return type: java.lang.Short</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript number to a java short.
+</p>
+<pre><code> var number = 2;
+ var javaNumber = util[&#39;short&#39;](number);
+ =&gt; 2</code></pre>
+<p id='Util_long' />
+<h3 id='longnumber_num'>long(Number num)</h3>
+
+<h4 id='return_type_javalanglong'>Return type: java.lang.Long</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript number to a java long.
+</p>
+<pre><code> var number = 232423232323232;
+ var javaNumber = util[&#39;long&#39;](number);
+ =&gt; 232423232323232</code></pre>
+<p id='Util_float' />
+<h3 id='floatnumber_num'>float(Number num)</h3>
+
+<h4 id='return_type_javalangfloat'>Return type: java.lang.Float</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a javascript number to a java float.
+</p>
+<pre><code> var number = 5.2;
+ var javaNumber = util[&#39;long&#39;](number);
+ =&gt; 5.2</code></pre>
+<p id='Util_leftPad' />
+<h3 id='leftpadjavalangstringstring_item_number_num_string_padding'>leftPad(java.lang.String|String item, Number num, String padding)</h3>
+
+<h4 id='return_type_javalangstringstring'>Return type: java.lang.String|String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Adds padding to the left side so that the number of digits is equal to 'num'.
+</p>
+<pre><code> var string = &#39;9&#39;;
+ util.leftPad(string, 5, &#39;0&#39;);
+ =&gt; &#39;00009&#39;</code></pre>
+<p id='Util_rightPad' />
+<h3 id='rightpadjavalangstringstring_item_number_num_string_padding'>rightPad(java.lang.String|String item, Number num, String padding)</h3>
+
+<h4 id='return_type_javalangstringstring'>Return type: java.lang.String|String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Adds padding to the right side so that the number of digits is equal to 'num'.
+</p>
+<pre><code> var string = new Packages.java.lang.String(&#39;9);
+ util.rightPad(string, 5, &#39;0&#39;);
+ =&gt; &#39;90000&#39;</code></pre>
+<p id='Util_hash' />
+<h3 id='hashfunction_algorithm_string_message_number_length'>hash(Function algorithm, String message, Number length)</h3>
+
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Util_load' />
+<h3 id='loadstring_resourcepath'>load(String resourcePath)</h3>
+
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Given the pathway to a resource, finds returns the resource as a string.
+</p>
+<pre><code> var assertResourceString = util.load(&#39;airlift/assert.js&#39;);
+ assertResourceString.substring(0, 14);
+ =&gt; &quot;// http://wiki&quot;</code></pre>
+<p id='Util_stringBuffer' />
+<h3 id='stringbufferstring_string'>stringBuffer(String string)</h3>
+
+<h4 id='return_type_javalangstringbuffer'>Return type: java.lang.StringBuffer</h4>
+<p> <label class='new'>Added in 2.0</label>
+Given the pathway to a resource, finds returns the resource as a string.
+</p>
+<pre><code> var stringBuffer = util.stringBuffer(&#39;Hello&#39;);
+ stringBuffer.getClass();
+ =&gt; &#39;java.lang.StringBuffer&#39;
+
+ stringBuffer.toString();
+ =&gt; &quot;Hello&quot;</code></pre>
+<p id='Util_appProfile' />
+<h3 id='appprofilestring_string'>appProfile(String string)</h3>
+
+<h4 id='return_type_airliftappappprofile'>Return type: airlift.app.appProfile</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a new object of class appProfile.
+</p>
+<pre><code> &#39;Example code under construction.&#39;</code></pre>
+<p id='Util_sanitize' />
+<h3 id='sanitizeobject_resource'>sanitize(Object resource)</h3>
+
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Removes properties from 'resource'. Removed properties include auditUserId, auditRequestId, auditPostDate, and auditPutDate.
+</p>
+<pre><code> &#39;Example code under construction.&#39;</code></pre>
+<p id='Util_printStackTraceToString' />
+<h3 id='printstacktracetostringjavalangthrowable_throwable'>printStackTraceToString(java.lang.Throwable throwable)</h3>
+
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+When an error occurs, logs and prints the stack to simplify debugging.
+</p>
+<pre><code> try
+ {
+      throw new Packages.java.lang.RuntimeException();
+ }
+ catch (e)
+ {
+      var stackTrace = util.printStackTraceToString(e);
+      util.print(stackTrace);
+ }
+ =&gt; java.lang.RuntimeException
+ =&gt; 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</code></pre>
+<p id='Util_getJavaException' />
+<h3 id='getjavaexceptionjavalangexceptionobject_exception'>getJavaException(java.lang.Exception|Object exception)</h3>
+
+<h4 id='return_type_javalangexception'>Return type: java.lang.Exception</h4>
+<p> <label class='new'>Added in 2.0</label>
+Captures an exception and returns it.
+</p>
+<pre><code> try
+ {
+      throw new Packages.java.lang.RuntimeException();
+ }
+ catch (e)
+ {
+      var exception = util.getJavaException(e);
+      util.print(exception.getClass());
+ }
+ =&gt; &quot;java.lang.RuntimeException&quot;
+
+ try
+ {
+      var error = {message: &#39;error&#39;, javaException: new Packages.java.lang.RuntimeException()};
+      throw error;
+ }
+ catch (e)
+ {
+      var exception = util.getJavaException(e);
+      util.print(exception.getClass());
+ }
+ =&gt; &quot;java.lang.RuntimeException&quot;</code></pre>
+<p id='Util_now' />
+<h3 id='now'>now()</h3>
+
+<h4 id='return_type_javalanglong'>Return type: java.lang.Long</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns the current time in milliseconds.
+</p>
+<pre><code> var now = util.now();
+ =&gt; 1373315350625</code></pre>
