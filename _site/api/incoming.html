@@ -1,88 +1,115 @@
-<h1 id='introduction'>Introduction</h1>
+<p>The Incoming module contains functions for processing incoming data. This includes data conversion and validation; data encryption, audit and persistence. To use these functions, include the following line of code:</p>
 
-<p>The Incoming module contains functions for processing incoming data. This includes data conversion and validation; data encryption, audit and persistence.</p>
+<pre><code> var incoming = require(&#39;airlift/incoming&#39;);</code></pre>
+<p id='Incoming_createKey' />
+<h3 id='createkey_string_resourcename_string_guid'>CreateKey (String resourceName, String guid)</h3>
 
-<h2 id='_createkey_resourcename_guid'>- CreateKey (resourceName, guid)</h2>
+<h4 id='return_type_comgoogleappengineapidatastorekey'>Return type: com.google.appengine.api.datastore.Key</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses Google appengine's KeyFactory to creates a new Key having no parent from its kind and ID.
+</p>
+<pre><code> var u = require(&#39;airlift/util&#39;);
+ var key = incoming.createKey(&#39;person&#39;, u.guid(12));
+ key.getKind();
+ =&gt; &#39;person&#39;
+ key.getName();
+ =&gt;  &#39;6b466a1c7142&#39;
+ key.getClass();
+ =&gt; &#39;com.google.appengine.api.datastore.Key&#39;</code></pre>
+<p id='Incoming_createEntity' />
+<h3 id='createentity_string_resourcename_string_guid'>createEntity (String resourceName, String guid)</h3>
 
-<p>Creates a com.google.appengine.api.datastore.Key via the KeyFactory.</p>
+<h4 id='return_type_comgoogleappengineapidatastoreentity'>Return type: com.google.appengine.api.datastore.Entity</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses Google appengine to create a new Entity uniquely identified by the provided Key.
+</p>
+<pre><code> var entity = incoming.createEntity(&#39;person&#39;, u.guid(12));
+ entity.getKind();
+ =&gt; &#39;person&#39;</code></pre>
+<p id='Incoming_bookkeeping' />
+<h3 id='bookkeeping_entity_entity_string_userid_date_postdate_date_putdate'>bookkeeping (Entity entity, String userid, Date postDate, Date putDate)</h3>
 
-<pre><code>var in = require(&#39;airlift/incoming&#39;), u = require(&#39;airlift/util&#39;);
-var key = in.createKey(&#39;person&#39;, u.guid(12));
-u.println(key.getName()); //c30215c36032</code></pre>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Populates the entity object with the bookkeeping metadata that describes when this object was created and by whom it was created.  If userId is not provided and cannot be determined systematically 'user id not provided' is recorded.  If postDate is not provided the current date and time is used instead.  If putDate is not provided the postDate is used instead.
+</p>
+<pre><code> var util = require(&#39;airlift/util&#39;);
+ var person = incoming.createEntity(&#39;person&#39;, u.guid(12));
+ incoming.bookkeeping(person, &#39;bediako&#39;, u.createDate());
+ person.getProperty(&quot;auditUserId&quot;);
+ =&gt; &#39;bediako&#39;</code></pre>
+<p id='Incoming_entify' />
+<h3 id='entifyentity_entity_object_value_string_attributename_object_resource_object_attributemetadata'>entify(Entity entity, Object value, String attributeName, Object resource, Object attributeMetadata)</h3>
 
-<h2 id='_createentity_resourcename_guid'>- CreateEntity (resourceName, guid)</h2>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts 'resource' attribute values into a property map values on an entity object. Designed to be used with resource.each.
+</p>
+<pre><code> var u = require(&#39;airlift/util&#39;);
+ var res = require(&#39;airlift/resource&#39;);
 
-<p>Creates a com.google.appengine.api.datastore.Entity. Relies on createKey.</p>
+ var person = {};
+ person.id = u.guid(12);
+ person.fullName = &quot;Kwame Mtume&quot;
+ person.age = 27;
 
-<pre><code>var in = require(&#39;airlift/incoming&#39;), u = require(&#39;airlift/util&#39;);
-var entity = in.createEntity(&#39;person&#39;, u.guid(12));
-u.println(entity.getKind()); //person</code></pre>
+ var entity = incoming.createEntity(&#39;person&#39;, person.id);
+ res.each(&#39;person&#39;, person, incoming.entify.partial(entity));</code></pre>
+<p id='Incoming_encrypt' />
+<h3 id='encryptentity_entity_object_value_string_attributename_object_resource_object_attributemetadata'>encrypt(Entity entity, Object value, String attributeName, Object resource, Object attributeMetadata)</h3>
 
-<h2 id='_bookkeeping_entity_userid_postdate_putdate'>- Bookkeeping (entity, userid, postDate, putDate)</h2>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a resource's sensitive attribute values into encrypted property map values on an entity object. Designed to be used with resource.each.
+</p>
+<pre><code> var u = require(&#39;airlift/util&#39;);
+ var res = require(&#39;airlift/resource&#39;);
 
-<p>Populates the entity object with the bookkeeping metadata that describes when this object was created and by whom it was created. If userId is not provided and cannot be determined systematically &#8216;user id not provided&#8217; is recorded. If postDate is not provided the current date and time is used instead. If putDate is not provided the postDate is used instead.</p>
+ var person = {};
+ person.id = u.guid(12);
+ person.fullName = &quot;Kwame Mtume&quot;
+ person.age = 27;
 
-<pre><code>var in = require(&#39;airlift/incoming&#39;), u = require(&#39;airlift/util&#39;);
-var person = in.createEntity(&#39;person&#39;, u.guid(12));
-in.bookkeeping(person, &#39;bediako&#39;, u.createDate());</code></pre>
+ var entity = incoming.createEntity(&#39;person&#39;, person.id);
+ res.each(&#39;person&#39;, person, incoming.encrypt.partial(entity));</code></pre>
+<p id='Incoming_convert' />
+<h3 id='convertobject_value_string_attributename_object_resource_object_attributemetadata'>convert(Object value, String attributeName, Object resource, Object attributeMetadata)</h3>
 
-<h2 id='_entify_entity_value_attributename'>- Entify (entity, value, attributeName)</h2>
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Converts a request parameter values into a property map values on a JavaScript object. Designed to be used with resource.each. It relies on Airlift automatically setting the web context object that resource.each relies on. 
+</p>
+<pre><code> var u = require(&#39;airlift/util&#39;);
+ var res = require(&#39;airlift/resource&#39;);
 
-<p>Function designed to be used with resource.each, it converts a resource&#8217;s attribute values into a property map values on an entity object.</p>
+ var person = {};
+ res.each(&#39;person&#39;, person, incoming.convert);</code></pre>
+<p id='Incoming_validate' />
+<h3 id='validateobject_value_string_name_object_resource_object_metadata'>validate(Object value, String name, Object resource, Object metadata)</h3>
 
-<pre><code>u = require(&#39;airlift/util&#39;);
+<h4 id='return_type_object'>Return type: Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Function designed to be used with resource.each, it verifies that the resource's property values are in line with the constraints outlined in the attribute and resource metadata. Use resource.watch to get hold of the errors at the end of the validation.
+</p>
+<pre><code> var u = require(&#39;airlift/util&#39;);
+ var bediako = {};
 
-var person = {};
-person.id = u.guid(12);
-person.fullName = &quot;Kwame Mtume&quot;
-person.age = 27;
+ bediako.id = &#39;6524d6f79d19&#39;;
+ bediako.fullName = new Packages.java.lang.String(&#39;Bediako George&#39;);
+ bediako.shortName = new Packages.java.lang.String(&#39;Bediako&#39;);
+ bediako.status = null; //an error should be reported on this property
+ bediako.birthDate = new Packages.java.util.Date(new Date(&#39;01/01/1970&#39;).getTime());
+ bediako.age = new Packages.java.lang.Integer(43).intValue();
+ bediako.friendList = new Packages.java.util.ArrayList();
+ bediako.familySet = new Packages.java.util.HashSet();
 
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-var entity = in.createEntity(&#39;person&#39;, person.id);
-res.each(&#39;person&#39;, person, in.entify.partial(entity));</code></pre>
+ var errors;
+ var bediakoCopy = res.map(&#39;person&#39;, bediako, res.clone, undefined, context);
 
-<h2 id='_encrypt_entity_value_attributename'>- Encrypt (entity, value, attributeName)</h2>
+ res.each(&#39;person&#39;, bediakoCopy, res.sequence(incoming.validate,
+      res.watch(function() { errors = this.allErrors(); })), undefined, context);
 
-<p>Function designed to be used with resource.each, it converts a resource&#8217;s sensitive attribute values into encrypted property map values on an entity object.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;);
-
-var person = {};
-person.id = u.guid(12);
-person.fullName = &quot;Kwame Mtume&quot;
-person.age = 27;
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-var entity = in.createEntity(&#39;person&#39;, person.id);
-res.each(&#39;person&#39;, person, in.encrypt.partial(entity));</code></pre>
-
-<h2 id='_convert_value_attributename_resource'>- Convert (value, attributeName, resource)</h2>
-
-<p>Function designed to be used with resource.each, it converts a request parameter values into a property map values on a JavaScript object. It relies on Airlift automatically setting the web context object that resource.each relies on.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;);
-
-var person = {};
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-res.each(&#39;person&#39;, person, in.convert);</code></pre>
-
-<h2 id='_validate_value_attributename_resource_metadata'>- Validate (value, attributeName, resource, metadata)</h2>
-
-<p>Function designed to be used with resource.each, it verifies that the resource&#8217;s property values are in line with the constraints outlined in the attribute and resource metadata. Use resource.watch to get hold of the errors at the end of the validation.</p>
-
-<pre><code>u = require(&#39;airlift/util&#39;);
-
-var person = {};
-person.id = u.guid(12);
-person.fullName = &quot;Kwame Mtume&quot;
-person.age = 27;
-
-var errors;
-
-var in = require(&#39;airlift/incoming&#39;), res = require(&#39;airlift/resource&#39;); 
-res.each(&#39;person&#39;, person, res.sequence(in.validate, res.watch(
-    function() { 
-        errors = this.allErrors(); 
-    }
-)));</code></pre>
+ u.isEmpty(errors);
+ =&gt; false
+ errors.status.length;
+ =&gt; 1</code></pre>
