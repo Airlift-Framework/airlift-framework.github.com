@@ -20,25 +20,25 @@ Color coded labels denote the stability of the function and tells in which versi
 
 <br>
 
-<table>
+<table class="labels">
   <tr>
-    <td width="100" height="50"> <label class="new">Added in 2.0</label> </td>
+    <td class="l"> <label class="new">Added in 2.0</label> </td>
     <td> <strong> Experimental: </strong> This function is newly released. 
          It may be changed or removed in the future. Feedback on this function 
          would be greatly appreciated. </td>
   </tr>
   <tr>
-    <td width="100" height="50"> <label class="stable">Added in 2.0</label> </td>
+    <td class="l"> <label class="stable">Added in 2.0</label> </td>
     <td> <strong> Stable: </strong> This is a fully supported and robustly
          tested function. Future versions of Airlift will strive to maintain 
          backwards compatibility. </td>
   </tr>
   <tr> 
-    <td width="100" height="50"> <label class="unstable">Added in 2.0</label> </td>
+    <td class="l"> <label class="unstable">Added in 2.0</label> </td>
     <td> <strong> Unstable: </strong> This function may still be subject to revisions. </td>
   </tr>
   <tr>
-    <td width="100" height="50"> <label class="deprecated">Added in 2.0</label> </td>
+    <td class="l"> <label class="deprecated">Added in 2.0</label> </td>
     <td> <strong> Deprecated: </strong> This function will be removed in future
          versions of Airlift. Backwards compatibility should not be expected.
          Avoiding futher usage is highly recommended. </td>

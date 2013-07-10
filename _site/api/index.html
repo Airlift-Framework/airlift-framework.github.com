@@ -130,7 +130,7 @@
       margin-left: 40px;
       margin-bottom: 50px;
     }
-    div.api{
+    div.api {
       background-color: #A82929;
       position: fixed;
       margin: 0px,
@@ -141,6 +141,32 @@
       line-height: 20px;
       z-index: 3;
     }
+    table.labels table, td {
+      vertical-align: middle;
+    }
+    table.labels td.l {
+      width: 100px;
+      height: 50px;
+    }
+    table.functions td, th {
+      vertical-align: middle;
+      border: 2px solid black;
+      text-align: left;
+    }
+    table.functions th {
+      color: #2A61D9;
+      font-family: Kannada MN;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: bold;
+      padding: 10px;
+      width: 200px;
+    }
+    table.functions td {
+      padding: 10px;
+      width: 500px;
+    }
+
   </style>
 </head>
 
@@ -405,19 +431,17 @@
 
 <li><a href='#JavaArray_longObjectArray'>longObjectArray</a></li>
 
-<li><a href='#JavaArray_boolean'>boolean</a></li>
+<li><a href='#JavaArray_booleanArray'>booleanArray</a></li>
 
-<li><a href='#JavaArray_booleanObject'>booleanObject</a></li>
+<li><a href='#JavaArray_booleanObjectArray'>booleanObjectArray</a></li>
 
-<li><a href='#JavaArray_float'>float</a></li>
+<li><a href='#JavaArray_floatArray'>floatArray</a></li>
 
-<li><a href='#JavaArray_floatObject'>floatObject</a></li>
+<li><a href='#JavaArray_floatObjectArray'>floatObjectArray</a></li>
 
-<li><a href='#JavaArray_double'>double</a></li>
+<li><a href='#JavaArray_doubleArray'>doubleArray</a></li>
 
-<li><a href='#JavaArray_doubleObject'>doubleObject</a></li>
-
-<li><a href='#JavaArray_arrayCopy'>arrayCopy</a></li>
+<li><a href='#JavaArray_doubleObjectArray'>doubleObjectArray</a></li>
 </ul>
 
 <h1 id='service'><a href='#Service'>Service</a></h1>
@@ -710,25 +734,25 @@
 <p>Users new to Airlift should check out the <a href='../manual'>manual</a> to get started. This API should help to clarify functions and assist the user as he writes his applications. The Airlift API provides method signatures, descriptions, working code examples and more for each available function in Airlift.</p>
 
 <p>Color coded labels denote the stability of the function and tells in which version the function was added. The stability index is given as follows:</p>
-<br /><table>
+<br /><table class='labels'>
   <tr>
-    <td height='50' width='100'> <label class='new'>Added in 2.0</label> </td>
+    <td class='l'> <label class='new'>Added in 2.0</label> </td>
     <td> <strong> Experimental: </strong> This function is newly released. 
          It may be changed or removed in the future. Feedback on this function 
          would be greatly appreciated. </td>
   </tr>
   <tr>
-    <td height='50' width='100'> <label class='stable'>Added in 2.0</label> </td>
+    <td class='l'> <label class='stable'>Added in 2.0</label> </td>
     <td> <strong> Stable: </strong> This is a fully supported and robustly
          tested function. Future versions of Airlift will strive to maintain 
          backwards compatibility. </td>
   </tr>
   <tr> 
-    <td height='50' width='100'> <label class='unstable'>Added in 2.0</label> </td>
+    <td class='l'> <label class='unstable'>Added in 2.0</label> </td>
     <td> <strong> Unstable: </strong> This function may still be subject to revisions. </td>
   </tr>
   <tr>
-    <td height='50' width='100'> <label class='deprecated'>Added in 2.0</label> </td>
+    <td class='l'> <label class='deprecated'>Added in 2.0</label> </td>
     <td> <strong> Deprecated: </strong> This function will be removed in future
          versions of Airlift. Backwards compatibility should not be expected.
          Avoiding futher usage is highly recommended. </td>
@@ -1185,7 +1209,7 @@ Reduce boils down a collection of values into a single value. 'initialValue' is 
           Rest
         </h2>
         <h2 class="a">
-          This page is under construction.
+          The Rest module contains functions that allow for simple information requests to restful servers.
         </h2>
         <p>The RESTful server, an architectural style of coding, allows Airlift a number of advantages. By only using HTTP requests such as GET, COLLECT, PUT, POST, and DELETE in the client-server relationship, REST allows for any client capable of understanding HTTP to easily request information from a RESTful server. In addition, the firm separation of the client and the server allow for one or the other to be replaced or developed independently of the other. This also enables more easily scalable server capacity.</p>
 
@@ -2022,13 +2046,104 @@ Deciphers the encrypted value associated with 'attributeName' and sets the prope
 
  res.each(&#39;person&#39;, person, out.decrypt.partial(entity));</code></pre>
       
-        <h2 id=Java Array>
-          Java Array
+        <h2 id=JavaArray>
+          JavaArray
         </h2>
         <h2 class="a">
-          This page is under construction.
+          The Java Array module provides functions for creating Java arrays of various generics.
         </h2>
-        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+        <p>The following functions will initialize a Java array, copying over Javascript array elements if given.</p>
+
+<pre><code> var javaArray = require(&#39;airlift/javaArray&#39;);</code></pre>
+<p id='JavaArray_createArray' />
+<h3 id='createarraynumber_size_class_type_array_initializer'>createArray(Number size, Class type, Array initializer)</h3>
+
+<h4 id='return_type_javalangobject'>Return type: java.lang.Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a Java array of the specified size and type. If an initialization array is provided, the contents of that array are copied to the Java array. 'size' is the initial size of the array and defaults to 0. 'type' is the Java type of the array and defults to java.lang.String. 'initializer' is an array of values that should be copied to the array and defaults to an empty array.
+</p>
+<pre><code> var stringArray = javaArray.createArray(3, java.lang.String, [&quot;Bediako&quot;, &quot;Loki&quot;]);
+ java.util.Arrays.toString(stringArray);
+ =&gt; &#39;[Bediako, Loki, null]&#39;
+
+ stringArray.getClass();
+ =&gt; [Ljava.lang.String;</code></pre>
+
+<p>The following functions also serve to initialize Java arrays. Each function requires two parameters, Number size and Array initializer. The functions call this module&#8217;s createArray function, passing the two parameters as well as the appropriate Class type.</p>
+<br /><br /><table class='functions'>
+  <tr>
+    <th>Function(Number size, Array initializer)</th>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <th>stringArray</th>
+    <td>Returns a Java string array.</td>
+  </tr>
+  <tr>
+    <th>byteArray</th>
+    <td>Returns a Java byte array.</td>
+  </tr>
+  <tr>
+    <th>byteObjectArray</th>
+    <td>Returns a Java byte object array.</td>
+  </tr>
+  <tr>
+    <th>shortArray</th>
+    <td>Returns a Java short array.</td>
+  </tr>
+  <tr>
+    <th>shortObjectArray</th>
+    <td>Returns a Java short object array.</td>
+  </tr>
+  <tr>
+    <th>charArray</th>
+    <td>Returns a Java char array.</td>
+  </tr>
+  <tr>
+    <th>characterObjectArray</th>
+    <td>Returns a Java character object array.</td>
+  </tr>
+  <tr>
+    <th>intArray</th>
+    <td>Returns a Java int array.</td>
+  </tr>
+  <tr>
+    <th>integerObjectArray</th>
+    <td>Returns a Java integer array.</td>
+  </tr>
+  <tr>
+    <th>longArray</th>
+    <td>Returns a Java long array.</td>
+  </tr>
+  <tr>
+    <th>longObjectArray</th>
+    <td>Returns a Java long object array.</td>
+  </tr>
+  <tr>
+    <th>booleanArray</th>
+    <td>Returns a Java boolean array.</td>
+  </tr>
+  <tr>
+    <th>booleanObjectArray</th>
+    <td>Returns a Java boolean object array.</td>
+  </tr>
+  <tr>
+    <th>floatArray</th>
+    <td>Returns a Java float array.</td>
+  </tr>
+  <tr>
+    <th>floatObjectArray</th>
+    <td>Returns a Java float object array.</td>
+  </tr>
+  <tr>
+    <th>doubleArray</th>
+    <td>Returns a Java double array.</td>
+  </tr>
+  <tr>
+    <th>doubleObjectArray</th>
+    <td>Returns a Java double object array.</td>
+  </tr>
+</table>
       
         <h2 id=Service>
           Service
