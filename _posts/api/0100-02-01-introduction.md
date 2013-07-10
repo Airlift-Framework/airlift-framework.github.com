@@ -45,6 +45,8 @@ Color coded labels denote the stability of the function and tells in which versi
   </tr>
 </table>
 
+<br>
+
 This project is [hosted on Github](http://github.com/Airlift-Framework/airlift-framework.github.com).
 
 The PDF of this documentation can be downloaded [here](#).
