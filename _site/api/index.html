@@ -17,92 +17,6 @@
       line-height: 20px;
       color: black;
     }
-    div.content h1 {
-      font-family: Kannada MN;
-    }
-    div.content h2 {
-      background-color: #E47E7E;
-      margin: 40px 0px 0px 0px;
-      padding-left: 10px;
-      font-family: Kannada MN;
-      line-height:35px;
-    }
-    div.content h2.a {
-      margin: 0px 0px 20px 0px;
-      font-family: Kannada MN;
-      font-size: 16px;
-      font-weight: normal;
-      line-height: 24px;
-      padding-left: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      border-width: 3px;
-      border-style: solid;
-      border-color: #E47E7E;
-      background-color: #EEEEEE;
-    }
-    div.content h3 {
-      color: #2A61D9;
-      font-family: Kannada MN;
-      font-size: 16px;
-      padding-bottom: 0px;
-    }
-    div.content h4 {
-      color: black;
-      font-family: Kannada MN;
-      font-size: 14px;
-      line-height: 21px;
-      padding-bottom: 0px;
-    }
-    label {
-      font-size: 12px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-top: 2px;
-      padding-bottom: 2px;
-    }
-    label.stable {
-      background-color:#95DF9F;
-    }
-    label.unstable {
-      background-color:#EDD287;
-    }
-    label.deprecated {
-      background-color:#F47A72;
-    }
-    label.new {
-      background-color:#BB95E9;
-    }
-    label.alias {
-      background-color:#7EA0F5
-    }
-    a {
-      color:black;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      color: #CF4A29;
-      transition: 0ms;
-    }
-    pre, code {
-      font-size: 14px;
-      padding: 2px 0 2px 15px;
-      border-left: 5px solid #bbb;
-      margin: 20px 0px 50px 0px;
-      background-color: #DDDDDD;
-    }
-    div.sidebar h1 {
-      font-size: 12px;
-      line-height: 20px;
-    }
-    div.sidebar li {
-      list-style-type: none;
-      margin-left: -25px; 
-    }
-    div.sidebar li a {
-      font-weight: normal;
-    }
     div.sidebar {
       font-size: 11px;
       background: #DDDDDD;
@@ -141,16 +55,55 @@
       line-height: 20px;
       z-index: 3;
     }
-    table.labels table, td {
+    a {
+      color:black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #CF4A29;
+      transition: 0ms;
+    }
+    pre, code {
+      font-size: 14px;
+      padding: 2px 0 2px 15px;
+      border-left: 5px solid #bbb;
+      margin: 20px 0px 50px 0px;
+      background-color: #DDDDDD;
+    }
+    label {
+      font-size: 12px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+    label.stable {
+      background-color:#95DF9F;
+    }
+    label.unstable {
+      background-color:#EDD287;
+    }
+    label.deprecated {
+      background-color:#F47A72;
+    }
+    label.new {
+      background-color:#BB95E9;
+    }
+    label.alias {
+      background-color:#7EA0F5
+    }
+    table.labels td, td.l {
       vertical-align: middle;
+      border-color: transparent;
     }
     table.labels td.l {
       width: 100px;
       height: 50px;
     }
-    table.functions td, th {
+    table.functions th, td {
       vertical-align: middle;
-      border: 2px solid black;
+      border: 1px solid #224CA8;
       text-align: left;
     }
     table.functions th {
@@ -166,7 +119,67 @@
       padding: 10px;
       width: 500px;
     }
-
+    table.functions th.head {
+      color: white;
+      background-color: #2A61D9;
+    }
+    table.functions tr.even {
+      background-color: #DAE1F2;
+    }
+    table.functions tr.odd {
+      background-color: #C9D5F0;
+    }
+    table.functions tr.even:hover, table.functions tr.odd:hover {
+      background-color: #E3EBFF;
+    }
+    div.content h1 {
+      font-family: Kannada MN;
+    }
+    div.content h2 {
+      background-color: #E47E7E;
+      margin: 40px 0px 0px 0px;
+      padding-left: 10px;
+      font-family: Kannada MN;
+      line-height:35px;
+    }
+    div.content h2.a {
+      margin: 0px 0px 20px 0px;
+      font-family: Kannada MN;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 24px;
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #E47E7E;
+      background-color: #EEEEEE;
+    }
+    div.content h3 {
+      color: #2A61D9;
+      font-family: Kannada MN;
+      font-size: 16px;
+      padding-bottom: 0px;
+    }
+    div.content h4 {
+      color: black;
+      font-family: Kannada MN;
+      font-size: 14px;
+      line-height: 21px;
+      padding-bottom: 0px;
+    }
+    div.sidebar h1 {
+      font-size: 12px;
+      line-height: 20px;
+    }
+    div.sidebar li {
+      list-style-type: none;
+      margin-left: -25px; 
+    }
+    div.sidebar li a {
+      font-weight: normal;
+    }
   </style>
 </head>
 
@@ -404,7 +417,7 @@
 <li><a href='#Outgoing_decrypt'>decrypt</a></li>
 </ul>
 
-<h1 id='javaarray'><a href='#JavaArray'>JavaArray</a></h1>
+<h1 id='java_array'><a href='#JavaArray'>Java Array</a></h1>
 
 <ul>
 <li><a href='#JavaArray_createArray'>createArray</a></li>
@@ -2050,7 +2063,7 @@ Deciphers the encrypted value associated with 'attributeName' and sets the prope
           JavaArray
         </h2>
         <h2 class="a">
-          The Java Array module provides functions for creating Java arrays of various generics.
+          The JavaArray module provides functions for creating Java arrays of various generics.
         </h2>
         <p>The following functions will initialize a Java array, copying over Javascript array elements if given.</p>
 
@@ -2071,76 +2084,76 @@ Creates a Java array of the specified size and type. If an initialization array 
 
 <p>The following functions also serve to initialize Java arrays. Each function requires two parameters, Number size and Array initializer. The functions call this module&#8217;s createArray function, passing the two parameters as well as the appropriate Class type.</p>
 <br /><br /><table class='functions'>
-  <tr>
-    <th>Function(Number size, Array initializer)</th>
-    <td>Description</td>
+  <tr class='head'>
+    <th class='head'>Function(Number size, Array initializer)</th>
+    <th class='head'>Description</th>
   </tr>
-  <tr>
-    <th>stringArray</th>
+  <tr class='even'>
+    <th id='JavaArray_stringArray'>stringArray</th>
     <td>Returns a Java string array.</td>
   </tr>
-  <tr>
-    <th>byteArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_byteArray'>byteArray</th>
     <td>Returns a Java byte array.</td>
   </tr>
-  <tr>
-    <th>byteObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_byteObjectArray'>byteObjectArray</th>
     <td>Returns a Java byte object array.</td>
   </tr>
-  <tr>
-    <th>shortArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_shortArray'>shortArray</th>
     <td>Returns a Java short array.</td>
   </tr>
-  <tr>
-    <th>shortObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_shortObjectArray'>shortObjectArray</th>
     <td>Returns a Java short object array.</td>
   </tr>
-  <tr>
-    <th>charArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_charArray'>charArray</th>
     <td>Returns a Java char array.</td>
   </tr>
-  <tr>
-    <th>characterObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_characterObjectArray'>characterObjectArray</th>
     <td>Returns a Java character object array.</td>
   </tr>
-  <tr>
-    <th>intArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_intArray'>intArray</th>
     <td>Returns a Java int array.</td>
   </tr>
-  <tr>
-    <th>integerObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_integerObjectArray'>integerObjectArray</th>
     <td>Returns a Java integer array.</td>
   </tr>
-  <tr>
-    <th>longArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_longArray'>longArray</th>
     <td>Returns a Java long array.</td>
   </tr>
-  <tr>
-    <th>longObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_longObjectArray'>longObjectArray</th>
     <td>Returns a Java long object array.</td>
   </tr>
-  <tr>
-    <th>booleanArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_booleanArray'>booleanArray</th>
     <td>Returns a Java boolean array.</td>
   </tr>
-  <tr>
-    <th>booleanObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_booleanObjectArray'>booleanObjectArray</th>
     <td>Returns a Java boolean object array.</td>
   </tr>
-  <tr>
-    <th>floatArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_floatArray'>floatArray</th>
     <td>Returns a Java float array.</td>
   </tr>
-  <tr>
-    <th>floatObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_floatObjectArray'>floatObjectArray</th>
     <td>Returns a Java float object array.</td>
   </tr>
-  <tr>
-    <th>doubleArray</th>
+  <tr class='odd'>
+    <th id='JavaArray_doubleArray'>doubleArray</th>
     <td>Returns a Java double array.</td>
   </tr>
-  <tr>
-    <th>doubleObjectArray</th>
+  <tr class='even'>
+    <th id='JavaArray_doubleObjectArray'>doubleObjectArray</th>
     <td>Returns a Java double object array.</td>
   </tr>
 </table>

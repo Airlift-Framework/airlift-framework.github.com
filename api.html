@@ -22,92 +22,6 @@ permalink: /api/
       line-height: 20px;
       color: black;
     }
-    div.content h1 {
-      font-family: Kannada MN;
-    }
-    div.content h2 {
-      background-color: #E47E7E;
-      margin: 40px 0px 0px 0px;
-      padding-left: 10px;
-      font-family: Kannada MN;
-      line-height:35px;
-    }
-    div.content h2.a {
-      margin: 0px 0px 20px 0px;
-      font-family: Kannada MN;
-      font-size: 16px;
-      font-weight: normal;
-      line-height: 24px;
-      padding-left: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      border-width: 3px;
-      border-style: solid;
-      border-color: #E47E7E;
-      background-color: #EEEEEE;
-    }
-    div.content h3 {
-      color: #2A61D9;
-      font-family: Kannada MN;
-      font-size: 16px;
-      padding-bottom: 0px;
-    }
-    div.content h4 {
-      color: black;
-      font-family: Kannada MN;
-      font-size: 14px;
-      line-height: 21px;
-      padding-bottom: 0px;
-    }
-    label {
-      font-size: 12px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-top: 2px;
-      padding-bottom: 2px;
-    }
-    label.stable {
-      background-color:#95DF9F;
-    }
-    label.unstable {
-      background-color:#EDD287;
-    }
-    label.deprecated {
-      background-color:#F47A72;
-    }
-    label.new {
-      background-color:#BB95E9;
-    }
-    label.alias {
-      background-color:#7EA0F5
-    }
-    a {
-      color:black;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      color: #CF4A29;
-      transition: 0ms;
-    }
-    pre, code {
-      font-size: 14px;
-      padding: 2px 0 2px 15px;
-      border-left: 5px solid #bbb;
-      margin: 20px 0px 50px 0px;
-      background-color: #DDDDDD;
-    }
-    div.sidebar h1 {
-      font-size: 12px;
-      line-height: 20px;
-    }
-    div.sidebar li {
-      list-style-type: none;
-      margin-left: -25px; 
-    }
-    div.sidebar li a {
-      font-weight: normal;
-    }
     div.sidebar {
       font-size: 11px;
       background: #DDDDDD;
@@ -146,16 +60,55 @@ permalink: /api/
       line-height: 20px;
       z-index: 3;
     }
-    table.labels table, td {
+    a {
+      color:black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #CF4A29;
+      transition: 0ms;
+    }
+    pre, code {
+      font-size: 14px;
+      padding: 2px 0 2px 15px;
+      border-left: 5px solid #bbb;
+      margin: 20px 0px 50px 0px;
+      background-color: #DDDDDD;
+    }
+    label {
+      font-size: 12px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+    label.stable {
+      background-color:#95DF9F;
+    }
+    label.unstable {
+      background-color:#EDD287;
+    }
+    label.deprecated {
+      background-color:#F47A72;
+    }
+    label.new {
+      background-color:#BB95E9;
+    }
+    label.alias {
+      background-color:#7EA0F5
+    }
+    table.labels td, td.l {
       vertical-align: middle;
+      border-color: transparent;
     }
     table.labels td.l {
       width: 100px;
       height: 50px;
     }
-    table.functions td, th {
+    table.functions th, td {
       vertical-align: middle;
-      border: 2px solid black;
+      border: 1px solid #224CA8;
       text-align: left;
     }
     table.functions th {
@@ -171,7 +124,67 @@ permalink: /api/
       padding: 10px;
       width: 500px;
     }
-
+    table.functions th.head {
+      color: white;
+      background-color: #2A61D9;
+    }
+    table.functions tr.even {
+      background-color: #DAE1F2;
+    }
+    table.functions tr.odd {
+      background-color: #C9D5F0;
+    }
+    table.functions tr.even:hover, table.functions tr.odd:hover {
+      background-color: #E3EBFF;
+    }
+    div.content h1 {
+      font-family: Kannada MN;
+    }
+    div.content h2 {
+      background-color: #E47E7E;
+      margin: 40px 0px 0px 0px;
+      padding-left: 10px;
+      font-family: Kannada MN;
+      line-height:35px;
+    }
+    div.content h2.a {
+      margin: 0px 0px 20px 0px;
+      font-family: Kannada MN;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 24px;
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #E47E7E;
+      background-color: #EEEEEE;
+    }
+    div.content h3 {
+      color: #2A61D9;
+      font-family: Kannada MN;
+      font-size: 16px;
+      padding-bottom: 0px;
+    }
+    div.content h4 {
+      color: black;
+      font-family: Kannada MN;
+      font-size: 14px;
+      line-height: 21px;
+      padding-bottom: 0px;
+    }
+    div.sidebar h1 {
+      font-size: 12px;
+      line-height: 20px;
+    }
+    div.sidebar li {
+      list-style-type: none;
+      margin-left: -25px; 
+    }
+    div.sidebar li a {
+      font-weight: normal;
+    }
   </style>
 </head>
 

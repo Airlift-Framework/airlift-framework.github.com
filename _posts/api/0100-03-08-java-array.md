@@ -2,7 +2,7 @@
 layout: null
 published: true
 title: JavaArray
-abstract: The Java Array module provides functions for creating Java arrays of various generics.
+abstract: The JavaArray module provides functions for creating Java arrays of various generics.
 author: Bediako George, Serena Lei
 categories: api
 ---
@@ -36,76 +36,76 @@ The following functions also serve to initialize Java arrays.  Each function req
 <br>
 
 <table class="functions">
-  <tr>
-    <th>Function(Number size, Array initializer)</th>
-    <td>Description</td>
+  <tr class="head">
+    <th class="head">Function(Number size, Array initializer)</th>
+    <th class="head">Description</th>
   </tr>
-  <tr>
-    <th>stringArray</th>
+  <tr class="even">
+    <th id="JavaArray_stringArray">stringArray</th>
     <td>Returns a Java string array.</td>
   </tr>
-  <tr>
-    <th>byteArray</th>
+  <tr class="odd">
+    <th id="JavaArray_byteArray">byteArray</th>
     <td>Returns a Java byte array.</td>
   </tr>
-  <tr>
-    <th>byteObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_byteObjectArray">byteObjectArray</th>
     <td>Returns a Java byte object array.</td>
   </tr>
-  <tr>
-    <th>shortArray</th>
+  <tr class="odd">
+    <th id="JavaArray_shortArray">shortArray</th>
     <td>Returns a Java short array.</td>
   </tr>
-  <tr>
-    <th>shortObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_shortObjectArray">shortObjectArray</th>
     <td>Returns a Java short object array.</td>
   </tr>
-  <tr>
-    <th>charArray</th>
+  <tr class="odd">
+    <th id="JavaArray_charArray">charArray</th>
     <td>Returns a Java char array.</td>
   </tr>
-  <tr>
-    <th>characterObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_characterObjectArray">characterObjectArray</th>
     <td>Returns a Java character object array.</td>
   </tr>
-  <tr>
-    <th>intArray</th>
+  <tr class="odd">
+    <th id="JavaArray_intArray">intArray</th>
     <td>Returns a Java int array.</td>
   </tr>
-  <tr>
-    <th>integerObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_integerObjectArray">integerObjectArray</th>
     <td>Returns a Java integer array.</td>
   </tr>
-  <tr>
-    <th>longArray</th>
+  <tr class="odd">
+    <th id="JavaArray_longArray">longArray</th>
     <td>Returns a Java long array.</td>
   </tr>
-  <tr>
-    <th>longObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_longObjectArray">longObjectArray</th>
     <td>Returns a Java long object array.</td>
   </tr>
-  <tr>
-    <th>booleanArray</th>
+  <tr class="odd">
+    <th id="JavaArray_booleanArray">booleanArray</th>
     <td>Returns a Java boolean array.</td>
   </tr>
-  <tr>
-    <th>booleanObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_booleanObjectArray">booleanObjectArray</th>
     <td>Returns a Java boolean object array.</td>
   </tr>
-  <tr>
-    <th>floatArray</th>
+  <tr class="odd">
+    <th id="JavaArray_floatArray">floatArray</th>
     <td>Returns a Java float array.</td>
   </tr>
-  <tr>
-    <th>floatObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_floatObjectArray">floatObjectArray</th>
     <td>Returns a Java float object array.</td>
   </tr>
-  <tr>
-    <th>doubleArray</th>
+  <tr class="odd">
+    <th id="JavaArray_doubleArray">doubleArray</th>
     <td>Returns a Java double array.</td>
   </tr>
-  <tr>
-    <th>doubleObjectArray</th>
+  <tr class="even">
+    <th id="JavaArray_doubleObjectArray">doubleObjectArray</th>
     <td>Returns a Java double object array.</td>
   </tr>
 </table>
