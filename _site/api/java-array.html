@@ -17,7 +17,7 @@ Creates a Java array of the specified size and type. If an initialization array 
 
 <p>The following functions also serve to initialize Java arrays. Each function requires two parameters, Number size and Array initializer. The functions call this module&#8217;s createArray function, passing the two parameters as well as the appropriate Class type.</p>
 <br /><br /><table class='functions'>
-  <tr class='head'>
+  <tr>
     <th class='head'>Function(Number size, Array initializer)</th>
     <th class='head'>Description</th>
   </tr>
@@ -89,4 +89,10 @@ Creates a Java array of the specified size and type. If an initialization array 
     <th id='JavaArray_doubleObjectArray'>doubleObjectArray</th>
     <td>Returns a Java double object array.</td>
   </tr>
-</table>
+</table><br />
+<pre><code> var array = javaArray.intArray(5, [1, 2, 3]);
+ =&gt; [1, 2, 3, 0, 0]
+ array.getClass();
+ =&gt; [I
+ array.length;
+ =&gt; 5</code></pre>

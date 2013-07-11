@@ -36,7 +36,7 @@ The following functions also serve to initialize Java arrays.  Each function req
 <br>
 
 <table class="functions">
-  <tr class="head">
+  <tr>
     <th class="head">Function(Number size, Array initializer)</th>
     <th class="head">Description</th>
   </tr>
@@ -109,3 +109,13 @@ The following functions also serve to initialize Java arrays.  Each function req
     <td>Returns a Java double object array.</td>
   </tr>
 </table>
+
+<br>
+
+
+     var array = javaArray.intArray(5, [1, 2, 3]);
+     => [1, 2, 3, 0, 0]
+     array.getClass();
+     => [I
+     array.length;
+     => 5
