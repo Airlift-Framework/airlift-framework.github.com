@@ -1,1 +1,103 @@
-<h1 id='coming_soon'>Coming soon&#8230;</h1>
+<p>Airlift&#8217;s service functions are designed to be compatible with Google AppEngine. The module consists of three functions, getQueueService(), getAppIdentityService, and getCacheService. A call to these functions will initialize a Javascript Object with accessible properties and functions.</p>
+
+<pre><code> var service = require(&#39;airlift/service&#39;);</code></pre>
+<p id='Service_Qname' />
+<h3 id='getqueueservicejavalangstringstring_name_javalangstringstring_methodname'>getQueueService(java.lang.String|String name, java.lang.String|String method).name</h3>
+
+<h4 id='return_type_javalangstringstring'>Return type: java.lang.String|String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a com.google.appengine.api.taskqueue Queue object and returns 'name'.
+</p>
+<pre><code> service.getQueueService(&quot;serviceName&quot;, &quot;POST&quot;).name;
+ =&gt; &quot;serviceName&quot;</code></pre>
+<p id='Service_Qmethod' />
+<h3 id='getqueueservicejavalangstringstring_name_javalangstringstring_methodmethod'>getQueueService(java.lang.String|String name, java.lang.String|String method).method</h3>
+
+<h4 id='return_type_javalangstringstring'>Return type: java.lang.String|String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Creates a com.google.appengine.api.taskqueue Queue object and returns 'method'.  If method is undefined, defaults to 'POST'.
+</p>
+<pre><code>service.getQueueService(&quot;serviceName&quot;, &quot;GET&quot;).method;
+=&gt; &quot;GET&quot;</code></pre>
+<p id='Service_Qadd' />
+<h3 id='getqueueservicejavalangstringstring_name_javalangstringstring_methodaddjavalangstringstring_path_object_parameters'>getQueueService(java.lang.String|String name, java.lang.String|String method).add(java.lang.String|String path, Object parameters)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Submits a task to the queue. Creates a com.google.appengine.api.taskqueue Queue object. Uses 'method' to initializes a com.google.appengine.api.taskqueue.TaskOptions and sets the URL to null unless specified by 'path'. 'parameters' should be an Object with enumerable properties of type java.lang.String|String. Adds each named parameter into the TaskOptions Object and then passes it to Google AppEngine's Queue add() function.
+</p>
+<pre><code> var queuey = service.getQueueService(&quot;serviceName&quot;, &quot;POST&quot;);
+ var parameters = {};
+ parameters[&#39;task1&#39;] = &quot;value1&quot;;
+ parameters[&#39;task2&#39;] = &quot;value2&quot;;
+ queuey.add(&quot;/url_pathway&quot;, parameters);</code></pre>
+<p id='Service_Qservice' />
+<h3 id='getqueueservicejavalangstringstring_name_javalangstringstring_methodservice'>getQueueService(java.lang.String|String name, java.lang.String|String method).service()</h3>
+
+<h4 id='return_type_comgoogleappengineapitaskqueue'>Return type: com.google.appengine.api.taskqueue</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns Packages.com.google.appengine.api.taskqueue.QueueFactory.getQueue(name)
+</p>
+<pre><code> var queuey = service.getQueueService(&quot;serviceName&quot;, &quot;POST&quot;)\;
+ var queue = queuey.service();</code></pre>
+<p id='Service_AgetAppId' />
+<h3 id='getappidentityservicegetappid'>getAppIdentityService().getAppId()</h3>
+
+<h4 id='return_type_javalangstring'>Return type: java.lang.String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.utils.SystemProperty to return the application identifier for the current application.
+</p><p id='Service_AgetDomain' />
+<h3 id='getappidentityservicegetdomain'>getAppIdentityService().getDomain()</h3>
+
+<h4 id='return_type_javalangstring'>Return type: java.lang.String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.appidentity.AppIdentityService.ParsedAppId to return the application's domain or the empty string if no domain.
+</p><p id='Service_AgetPartition' />
+<h3 id='getappidentityservicegetpartition'>getAppIdentityService().getPartition()</h3>
+
+<h4 id='return_type_javalangstring'>Return type: java.lang.String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.appidentity.AppIdentityService.ParsedAppId to return the partition the application runs in.
+</p><p id='Service_Aservice' />
+<h3 id='getappidentityserviceservice'>getAppIdentityService().service()</h3>
+
+<h4 id='return_type_comgoogleappengineapiappidentityappidentityservice'>Return type: com.google.appengine.api.appidentity.AppIdentityService</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns com.google.appengine.api.appidentity.AppIdentityServiceFactory.getAppIdentityService();
+</p><p id='Service_Cget' />
+<h3 id='getcacheservicegetjavalangobject_key'>getCacheService().get(java.lang.Object key)</h3>
+
+<h4 id='return_type_javalangobject'>Return type: java.lang.Object</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.memcache.MemcacheService to fetches a previously-stored value, or null if unset.
+</p><p id='Service_CgetAll' />
+<h3 id='getcacheservicegetalljavautilcollectiont_keys'>getCacheService().getAll(java.util.Collection&#60;T&#62; keys)</h3>
+
+<h4 id='return_type_javautilmapjavalangobject'>Return type: java.util.Map&#60;java.lang.Object&#62;</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.memcache.MemcacheService to performs a get of multiple keys at once.
+</p><p id='Service_Cput' />
+<h3 id='getcacheserviceputjavalangobject_key_javalangobject_value'>getCacheService().put(java.lang.Object key, java.lang.Object value)</h3>
+
+<h4 id='return_type_void'>Return type: void</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.memcache.MemcacheService to store a new value into the cache, using key, but subject to the policy regarding existing entries.
+</p><p id='Service_CputAll' />
+<h3 id='getcacheserviceputalljavautilmap_values'>getCacheService().putAll(java.util.Map&#60;?,?&#62; values)</h3>
+
+<h4 id='return_type_void'>Return type: void</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.memcache.MemcacheService to store new values into the cache, using key, but subject to the policy regarding existing entries.
+</p><p id='Service_Cdelete' />
+<h3 id='getcacheservicedeletejavalangobject_key'>getCacheService().delete(java.lang.Object key)</h3>
+
+<h4 id='return_type_boolean'>Return type: boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.memcache.MemcacheService to remove key from the cache.
+</p><p id='Service_Cservice' />
+<h3 id='getcacheserviceservice'>getCacheService().service()</h3>
+
+<h4 id='return_type_comgoogleappengineapimemcachememcacheservice'>Return type: com.google.appengine.api.memcache.MemcacheService</h4>
+<p> <label class='new'>Added in 2.0</label>
+Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle to the cache service.
+</p>
