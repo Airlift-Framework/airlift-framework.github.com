@@ -592,25 +592,11 @@
 <h1 id='assert'><a href='#Assert'>Assert</a></h1>
 
 <ul>
-<li><a href='#Assert_name'>AssertionError().name</a></li>
-
-<li><a href='#Assert_message'>AssertionError().message</a></li>
-
-<li><a href='#Assert_actual'>AssertionError().actual</a></li>
-
-<li><a href='#Assert_expected'>AssertionError().expected</a></li>
-
-<li><a href='#Assert_operator'>AssertionError().operator</a></li>
-
-<li><a href='#Assert_AssertionError.prototype.toString'>AssertionError.prototype.toString</a></li>
-
 <li><a href='#Assert_fail'>fail</a></li>
 
 <li><a href='#Assert_ok'>ok</a></li>
 
 <li><a href='#Assert_eq'>eq</a></li>
-
-<li><a href='#Assert_equal'>equal</a></li>
 
 <li><a href='#Assert_notEq'>notEq</a></li>
 
@@ -2320,9 +2306,99 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
           Assert
         </h2>
         <h2 class="a">
-          This page is under construction.
+          The assert module provides functions that throw AssertionErrors when particular conditions are not met.
         </h2>
-        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+        <p>Assert functions evaluate predicates and can help developers locate problems in their code, aiding the debugging process. All assertion methods provide both the actual and expected values to the assertion error for display purposes. Airlift&#8217;s many unit tests make extensive use of this module. The assert module can be found on <a href='http://wiki.commonjs.org/wiki/Unit_Testing/1.0'>CommonJS</a>.</p>
+
+<pre><code> var assert = require(&#39;airlift/assert&#39;);     </code></pre>
+<p id='Assert_fail' />
+<h3 id='failobject_actual_object_expected_string_message_string_operator_string_stackstartfunction'>fail(Object actual, Object expected, String message, String operator, String stackStartFunction)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_ok' />
+<h3 id='okobject_value_string_message'>ok(Object value, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests whether 'value' is truthy.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_eq' />
+<h3 id='eqobject_actual_object_expected_string_message'>eq(Object actual, Object expected, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests shallow, coercive equality with ==.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_notEq' />
+<h3 id='noteqobject_actual_object_expected_string_message'>notEq(Object actual, Object expected, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests for whether two objects are not equal with != .
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_deepEqual' />
+<h3 id='deepequalobject_actual_object_expected_string_message'>deepEqual(Object actual, Object expected, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests a deep equality relation.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_notDeepEqual' />
+<h3 id='notdeepequalobject_actual_object_expected_string_message'>notDeepEqual(Object actual, Object expected, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests for any deep inequality.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_kindaEqual' />
+<h3 id='kindaequalobject_actual_object_expected_string_message'>kindaEqual(Object actual, Object expected, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests strict equality, as determined by ===.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_notKindaEqual' />
+<h3 id='notkindaequalobject_actual_object_expected_string_message'>notKindaEqual(Object actual, Object expected, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests for strict inequality, as determined by !== .
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_throws' />
+<h3 id='throwsobject_block_object_error_string_message'>throws(Object block, Object error, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests that 'block' throws an error as expected. 'error' and 'message' are optional. 'error' can be constructor, regexp or validation function.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_doesNotThrow' />
+<h3 id='doesnotthrowobject_block_object_error_string_message'>doesNotThrow(Object block, Object error, String message)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Tests that 'block' does not throw an error. 'error' and 'message' are optional. 'error' can be constructor, regexp or validation function.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Assert_ifError' />
+<h3 id='iferrorobject_value'>ifError(Object value)</h3>
+
+<h4 id='return_type_na'>Return type: n/A</h4>
+<p> <label class='new'>Added in 2.0</label>
+Evaluates 'value' to a boolean using the abstract method ToBoolean and throws 'value' if it is true. Useful when testing the first argument, error in callbacks.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
       
         <h2 id=AttributeMetadata>
           AttributeMetadata
