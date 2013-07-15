@@ -340,7 +340,7 @@ p {
   padding-bottom: 30px;
 }
 
-.substance-features {
+<!--.substance-features {
   width: 800px;
   margin: 0 auto;
   overflow: auto;
@@ -398,14 +398,6 @@ p {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
-
-/*.substance-features .feature img {
-  display: none;
-}
-*/
-/*.substance-features .feature {
-  background: url('/images/knight-foundation.png') top left no-repeat;
-}*/
 
 .substance-features h2 {
   padding-top: 10px;
@@ -492,7 +484,7 @@ p {
 
   border-bottom: 5px solid rgba(0,0,0, 0.2);
 }
-
+-->
 
 /* ------------------------------------------
   Footer - a sticky one
@@ -565,7 +557,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   background: #3d3d34;
 }
 
-#main .features #menu {
+#main .manual #menu {
   background: #86a2a9;
 }
 
@@ -585,33 +577,25 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   background: #ff9933;
 }
 
-.features .article-navigation .article-link.active {
+.manual .article-navigation .article-link.active {
   background: #86a2a9;
 }
-
-.api .article-navigation .article-link.active {
-  background: #b16649;
-}
-
 
 #main .start {
   background: #E9EAE5;
   border-bottom: 1px solid #ccc;
 }
 
-#main .features {
+#main .manual {
   background: #E9EAE5;
-  /*border-bottom: 1px solid #ccc;*/
 }
 
 #main .api {
   background: #E9EAE5;
-  /*border-bottom: 1px solid #ccc;*/
 }
 
 #main .contribute {
   background: #E9EAE5;
-  /*border-bottom: 1px solid #ccc;*/
 }
 
 #main .team {
@@ -621,7 +605,6 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 
 #main .development {
   background: #E9EAE5;
-  /*border-bottom: 1px solid #ccc;*/
 }
 
 .article-navigation {
@@ -656,9 +639,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 
 .article-link .title {
   vertical-align: middle;
-  padding: 0 10px;
   overflow: hidden;
-  padding-top: 30px;
+  line-height: 110px;
 }
 
 .article-navigation .article-link.active {

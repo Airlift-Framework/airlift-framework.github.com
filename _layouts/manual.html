@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<div class="manual">
+  {% include menu.html %}
+  <div class="article-navigation">
+    {% for item in site.categories.manual reversed limit:40 offset:0 %}
+      <a class="article-link{% if page.title == item.title %} active{% endif %}" href="{{site.baseurl}}{{item.url}}" title="{{item.title}}">
+        <div class="title">{{item.title}}</div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="intro">
+  <div class="title">{{page.title}}</div>
+  <div class="abstract">{{page.abstract}}</div>
+</div>
+
+<div class="article-wrapper">
+  <div class="help post-content">
+    {{ content }}
+  </div>
+</div>
+
+<div class="improve-article-wrapper">
+  <div class="improve-article">
+    <a class="button" href="{{ page.prose_link }}">Edit in Prose</a>
+    <p>
+      This article has been written and published using <a href="http://prose.io" target="_blank">Prose</a>. Please help improving this documentation by contributing to the text.
+    </p>
+  </div>
+</div>
