@@ -520,8 +520,6 @@
 
 <li><a href='#Web_getSecurityContext'>getSecurityContext</a></li>
 
-<li><a href='#Web_convertToString'>convertToString</a></li>
-
 <li><a href='#Web_getResourcePath'>getResourcePath</a></li>
 
 <li><a href='#Web_getId'>getId</a></li>
@@ -535,8 +533,6 @@
 <li><a href='#Web_getForeignKey'>getForeignKey</a></li>
 
 <li><a href='#Web_getResourceName'>getResourceName</a></li>
-
-<li><a href='#Web_hasId'>hasId</a></li>
 
 <li><a href='#Web_getResourcePathMap'>getResourcePathMap</a></li>
 
@@ -562,14 +558,6 @@
 
 <li><a href='#Web_getRootPackageName'>getRootPackageName</a></li>
 
-<li><a href='#Web_auditInserts'>auditInserts</a></li>
-
-<li><a href='#Web_auditGets'>auditGets</a></li>
-
-<li><a href='#Web_auditUpdates'>auditUpdates</a></li>
-
-<li><a href='#Web_auditDeletes'>auditDeletes</a></li>
-
 <li><a href='#Web_getCachingContext'>getCachingContext</a></li>
 
 <li><a href='#Web_getTimezone'>getTimezone</a></li>
@@ -578,15 +566,27 @@
 
 <li><a href='#Web_getWebRequestId'>getWebRequestId</a></li>
 
-<li><a href='#Web_setResponseCode'>setResponseCode</a></li>
+<li><a href='#Web_setCacheable'>setCacheable</a></li>
 
 <li><a href='#Web_setContent'>setContent</a></li>
 
+<li><a href='#Web_setResponseCode'>setResponseCode</a></li>
+
 <li><a href='#Web_setType'>setType</a></li>
 
-<li><a href='#Web_stream'>stream</a></li>
+<li><a href='#Web_auditDeletes'>auditDeletes</a></li>
 
-<li><a href='#Web_setCacheable'>setCacheable</a></li>
+<li><a href='#Web_auditGets'>auditGets</a></li>
+
+<li><a href='#Web_auditInserts'>auditInserts</a></li>
+
+<li><a href='#Web_auditUpdates'>auditUpdates</a></li>
+
+<li><a href='#Web_convertToString'>convertToString</a></li>
+
+<li><a href='#Web_hasId'>hasId</a></li>
+
+<li><a href='#Web_stream'>stream</a></li>
 </ul>
 
 <h1 id='assert'><a href='#Assert'>Assert</a></h1>
@@ -2298,9 +2298,241 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
           Web
         </h2>
         <h2 class="a">
-          This page is under construction.
+          The Web module provides mainly getter and setter functions for a web context's properties.
         </h2>
-        <h1 id='coming_soon'>Coming soon&#8230;</h1>
+        <p>Web functions make available the various properties of a web context, which is passed into the module when executing the following code:</p>
+
+<pre><code> var webContext = require(&#39;airlift/web&#39;);</code></pre>
+
+<h4 id='getter_functions'>Getter functions:</h4>
+<br /><table class='functions'>
+  <tr>
+    <th class='head'>Function</th>
+    <th class='head'>Description</th>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getServlet'>getServlet</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getProductionMode'>getProductionMode</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getHandlerName'>getHandlerName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getRequest'>getRequest</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getResponse'>getResponse</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getRestContext'>getRestContext</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getContentContext'>getContentContext</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getUriBase'>getUriBase</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getPath'>getPath</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getUri'>getUri</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getQueryString'>getQueryString</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getMethod'>getMethod</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getAuditContext'>getAuditContext</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getSecurityContext'>getSecurityContext</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getResourcePath'>getResourcePath</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getIds'>getIds</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getEntity'>getEntity</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getEntities'>getEntities</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getForeignKey'>getForeignKey</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getResourceName'>getResourceName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getResourcePathMap'>getResourcePathMap</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getTitle'>getTitle</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getServletName'>getServletName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getLocale'>getServletName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getUser'>getUser</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getUserId'>getUserId</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getUserName'>getUserName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getUserEmail'>getUserName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getUserService'>getUserService</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getAppProfile'>getAppProfile</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getInitParameter'>getInitParameter</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getRootPackageName'>getRootPackageName</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getCachingContext'>getCachingContext</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getTimezone'>getTimezone</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_getResourceBindings'>getResourceBindings</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_getWebRequestId'>getWebRequestId</th>
+    <td>Description</td>
+  </tr>
+</table><br /><br />
+<h4 id='setter_functions'>Setter functions:</h4>
+<br /><table class='functions'>
+  <tr>
+    <th style='width:300px' class='head'>Function</th>
+    <th class='head'>Description</th>
+  </tr>
+  <tr class='even'>
+    <th id='Web_setCacheable'>setCacheable(Number seconds)</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_setContent'>setContent(Object content)</th>
+    <td>Description</td>
+  </tr>
+  <tr class='even'>
+    <th id='Web_setResponseCode'>setResponseCode(Object code)</th>
+    <td>Description</td>
+  </tr>
+  <tr class='odd'>
+    <th id='Web_setType'>setType(String type)</th>
+    <td>Description</td>
+  </tr>
+</table><br /><p id='Web_auditDeletes' />
+<h3 id='auditdeletes'>auditDeletes()</h3>
+
+<h4 id='return_type_'>Return type: ???</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Web_auditGets' />
+<h3 id='auditgets'>auditGets()</h3>
+
+<h4 id='return_type_'>Return type: ???</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Web_auditInserts' />
+<h3 id='auditinserts'>auditInserts()</h3>
+
+<h4 id='return_type_'>Return type: ???</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Web_auditUpdates' />
+<h3 id='auditupdates'>auditUpdates()</h3>
+
+<h4 id='return_type_'>Return type: ???</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Web_convertToString' />
+<h3 id='converttostringcollection_ids'>convertToString(Collection ids)</h3>
+
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Web_hasId' />
+<h3 id='hasid'>hasId()</h3>
+
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<p id='Web_stream' />
+<h3 id='streamstreamer_type_headers_responsecode'>stream(streamer, type, headers, responseCode)</h3>
+
+<h4 id='return_type_string'>Return type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Description under construction.
+</p>
+<pre><code> &#39;Example code coming soon.&#39;</code></pre>
       
         <h2 id=Assert>
           Assert
