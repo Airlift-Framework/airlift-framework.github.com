@@ -8,19 +8,44 @@ categories: manual
 published: true
 ---
 
+| [Introduction](#Introduction) | [Cloud Computing](#Cloud_Computing) | [A Brief History](#A_Brief_History) | [Airlift Concepts](#Airlift_Concepts) | [Installation](#Installation) | [Setting Up](#Setting_Up) |
+
+<p id="Introduction"></p>
 # 1.0 Introduction
 
-This page will be about getting started with Lucid Technic's Airlift.  We will begin by explaining some background on restful servers, web development and cloud infrastructures.  Then we will cover how to get Airlift running on your system and setup so that you can start working with it. At the end of this page you should understand what Airlift is capable of, why you should use it, and be ready to rapidly start your first Airlift application.
+This page will be about getting started with Lucid Technic's Airlift.  We will begin by explaining some background on cloud computing and restful servers.  Then we will cover how to get Airlift running on your system and setup so that you can start working with it. At the end of this page you should understand what Airlift is capable of, why you should use it, and be ready to rapidly start your first Airlift application.
 
+<p id="Cloud_Computing"></p>
 # 1.1 Cloud Computing
 
-# A Brief History
+<p id="A_Brief_History"></p>
+# 1.2 A Brief History
 
-# Airlift Concepts
+<p id="Airlift_Concepts"></p>
+# 1.3 Airlift Concepts
 
-# Installation
+<p id="Installation"></p>
+# 1.4 Installation
 
-# Setting Up
+Installing Airlift is simple.  You just need to copy the Airlift directory onto your local machine.  This should only take a few minutes.  But before you do that, be sure that your system meets the following requirements:
+
+* Mac OS X, Microsoft Windows
+* [Java](https://developers.google.com/appengine/downloads#Download_the_Google_App_Engine_SDK)
+* [Apache Ant](http://ant.apache.org/srcdownload.cgi)
+* [Google App Engine](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Java)
+
+## Install with Git
+
+As Airlift is hosted on [github](https://github.com/LucidTechnics/Airlift), all you need to do is clone the repository onto your machine. This requires that you have [git](http://git-scm.com/downloads) installed.  At the terminal prompt, simply run the following command to install Airlift.
+
+     $ git clone https://github.com/LucidTechnics/Airlift.git
+
+That's it!  You should now have access to all that Airlift has to offer.
+
+
+
+<p id="Setting_Up"></p>
+# 1.5 Setting Up
 
 # This page is under construction!
 
