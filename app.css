@@ -616,11 +616,10 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 
 .article-navigation .article-link {
   position: relative;
-  display: block;
+  display: table;
   float: left;
   height: 110px;
   width: 110px;
-
 
   -moz-border-radius: 55px;
   -webkit-border-radius: 55px;
@@ -633,6 +632,7 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+  vertical-align: middle;
   margin-right: 10px;
 }
 
@@ -640,7 +640,8 @@ body:before {/* thanks to Maleika (Kohoutec)*/
 .article-link .title {
   vertical-align: middle;
   overflow: hidden;
-  line-height: 110px;
+  height: 100%;
+  display: table-cell;
 }
 
 .article-navigation .article-link.active {
