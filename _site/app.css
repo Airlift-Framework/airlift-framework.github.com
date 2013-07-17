@@ -851,6 +851,19 @@ body:before {/* thanks to Maleika (Kohoutec)*/
   background: rgba(0,0,0, 0.8);
 }
 
+a.download {
+  font-size: 18px;
+  color: white;
+  background-color: #1FA339;
+  padding:15px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+a.download:hover {
+  background-color: #0C5E1D;
+}
+
 .post-content {
   width: 800px;
   margin: 0px auto;
