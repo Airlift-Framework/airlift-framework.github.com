@@ -19,10 +19,63 @@ This page will be about getting started with Lucid Technic's Airlift.  We will b
 <p id="Cloud_Computing"></p>
 # 1.1 Cloud Computing
 
-<!--Amazon AWS notes
+Cloud computing is the dynamic delivery of resources and services through the internet.  Due to its cost effectiveness, flexibility, and global accessibility, more and more companies are outsourcing their IT needs to seemingly virtual third party servers.  Instead of executing computations on a personal computer, through the cloud, a network of remote servers can provide scalable computing power.  These servers can store, manage, and process data using the internet as a medium.  When we check our email, collaborate on a project with Google Docs, or add an item to our Amazon cart, we are utilizing services on the cloud.
 
+## Tiers
+
+Cloud computing consists of three tiers: infrastructure, platform, and service.  
+\[More on this later.\]
+\[Image to be inserted later.\]
+
+## Selling Points
+
+[Brief introduction of AWS and Google Cloud + why they're selling their computing power, then the following bullet points list features of cloud computing.]
+
+* Autoscaling
+
+One of the main reasons companies are turning toward cloud computing is cost.  Small companies may have difficulty affording hardware and staff to set up and maintain servers.  Maintainence of datacenters is taxing for even large companies.  Allocating too much hardware means wasted computing power, and wasted money.  Allocate too little, and clients may not have a satisfying experience with the applications.  Cloud computing provides a way to increase or decrease capacities and capabilities by demand, without needing to maintain infrastructure or train personnel.  Highly scalable applications are pay-per-use; a company only needs to pay for services they use.
+
+* Computing, Storage, and Database services
+
+* Running Apps, Hosting Sites, and Storing Data
+
+
+<!--
+Amazon AWS notes
+-"cloud computing" = the on-demand delivery of IT resources via the Internet with pay-as-you-go pricing.
+-cloud computing services - accessed by the internet 
+-aws has compute, storage, database services
+-IT resources without capital investment
+-services = pay as you go without upfront costs
 -pay only for what you need
 -add and remove capacity quickly - saves money + provide enough capacity for chees
+-traditional data center - provision too many service -> waste money and time, too few -> customers dont have best experience
+-scale up and down; autoscaling
+
+cloud computing use cases
+-web, mobile, & social apps
+-big data: store and process large datasets
+-backup & storage
+-digital media: ingest, store, encode, protect, stream media
+-enterprise applications
+-gaming: deliver casual or MMO games
+
+
+Google App Engine
+-autoscaling without worrying about managing machines
+-supercharge app with services such as Task Queue, XMPP, and Cloud SQL (google services use these)
+-customize: manage your app with a simple, web-based dashboard
+-App Engine = easy to build, maintain, and scale
+-you can publish an app that people can use right away at no charge from Google and with no obligation
+You may be outsourcing actual hardware, application development and hosting, or only wish to run online software from other providers.
+
+Wikipedia
+Cloud computing is a colloquial expression used to describe a variety of different types of computing concepts that involve a large number of computers that are conected through a real-time communication network (typically the Internet).[1] Cloud computing is a jargon term without a commonly accepted non-ambiguous scientific or technical definition. In science, cloud computing is a synonym for distributed computing over a network and means the ability to run a program on many connected computers at the same time. The popularity of the term can be attributed to its use in marketing to sell hosted services in the sense of application service provisioning that run client server software on a remote location.
+
+ a way to increase capacity or add capabilities on the fly without investing in new infrastructure, training new personnel, or licensing new software. Cloud computing encompasses any subscription-based or pay-per-use service that, in real time over the Internet, extends IT's existing capabilities.
+
+services offered by cloud computing: application, platform, infrastructure
+
 -->
 
 <p id="A_Brief_History"></p>
@@ -33,6 +86,11 @@ This page will be about getting started with Lucid Technic's Airlift.  We will b
 # 1.3 Airlift Concepts
 <!--
 airlift world, js functional programming, rhino, rest, handlers, methods, serverside, spirit
+
+
+A resource handle is an identifier for a resource that is currently being accessed. Resource handles can be opaque, in which case they are often integer numbers, or they can be pointers that allow access to further information. Common resource handles are file descriptors and sockets.
+
+The concept of a web resource is primitive in the Web architecture, and is used in the definition of its fundamental elements. The term was first introduced to refer to targets of uniform resource locators (URLs), but its definition has been further extended to include the referent of any uniform resource identifier (RFC 3986), or internationalized resource identifier (RFC 3987). In the Semantic Web, abstract resources and their semantic properties are described using the family of languages based on Resource Description Framework (RDF).
 
 Airlift is Lucid Technics’ open source rapid web development framework designed to work with cloud infrastructures. We use Airlift to rapidly build secure and scalable cloud applications. Much of the software created using Airlift is generated from Dictation, Lucid Technics’ open source human readable business requirements language.
 
