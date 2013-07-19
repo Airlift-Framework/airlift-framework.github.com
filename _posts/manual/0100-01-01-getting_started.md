@@ -13,7 +13,7 @@ published: true
 <p id="Introduction"></p>
 # 1.0 Introduction
 
-This page will be about getting started with Lucid Technic's Airlift.  We will begin by explaining some background on cloud computing and restful servers.  Then we will cover how to get Airlift running on your system and setup so that you can start working with it. At the end of this page you should understand what Airlift is capable of, why you should use it, and be ready to rapidly start your first Airlift application.
+This page will be about getting started with Lucid Technic's Airlift.  We will begin by explaining some background on cloud computing.  Then we will cover how to get Airlift running on your system and setup so that you can start working with it. At the end of this page you should understand what Airlift is capable of, why you should use it, and be ready to rapidly start your first Airlift application.
 
 
 <p id="Cloud_Computing"></p>
@@ -21,23 +21,40 @@ This page will be about getting started with Lucid Technic's Airlift.  We will b
 
 Cloud computing is the dynamic delivery of resources and services through the internet.  Due to its cost effectiveness, flexibility, and global accessibility, more and more companies are outsourcing their IT needs to seemingly virtual third party servers.  Instead of executing computations on a personal computer, through the cloud, a network of remote servers can provide scalable computing power.  These servers can store, manage, and process data using the internet as a medium.  When we check our email, collaborate on a project with Google Docs, or add an item to our Amazon cart, we are utilizing services on the cloud.
 
-## Tiers
+## Service Levels
 
-Cloud computing consists of three tiers: infrastructure, platform, and service.  
-\[More on this later.\]
-\[Image to be inserted later.\]
+Cloud computing consists of three tiers: infrastructure, platform, and software.  
+
+* **Software as a Service (SaaS)** are applications designed for end-users and delivered over the internet. 
+* **Platform as a Service (PaaS)** are tools designed to simplify and expedite the creation and delivery of software. 
+* **Infrastructure as a Service (IaaS)** are the outsourced, on-demand resources that provide computing power through servers, storage, network, and operating systems.
+
+![](/images/manual/CloudComputing_logos.png)
+
+At the lowest level, IaaS provides computing power that one can rent.  By outsourcing hardware, one does not need to fret over the investment, maintainence, power, and cooling of servers and networks.  IaaS is how data is stored on the cloud.  An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible.  Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.
+
+In the middle, PaaS provides foundations for developers to easily build and host applications.  An example of a PaaS platform is Google App Engine.  Such platforms provision hardware, and the devloper need not worry about infrastructure components such as software upgrades, patches, and licensing.  With all this taken care of, a programmer may concentrate soley on his application, utilizing the underlying infrastructure to customize and specialize his code..  You can use PaaS platforms to develop SaaS applications.
+
+At the highest level, SaaS provides web access to commercial software.  An example of an SaaS web application is Gmail, which is free and web-based.  To use Gmail, users do not need to install any applications onto their local harddrives, as the application is provided through a web browser.  Since the software is hosted on the cloud, users can access their accounts from any location as long as they have internet and a browser.  
 
 ## Selling Points
 
-[Brief introduction of AWS and Google Cloud + why they're selling their computing power, then the following bullet points list features of cloud computing.]
+* Cost-efficient
 
-* Autoscaling
+One of the main reasons companies are turning toward cloud computing is cost.  Small companies may have difficulty affording hardware and staff to set up and maintain servers.  Maintainence of datacenters is taxing for even large companies.  Allocating too much hardware means wasted computing power, and wasted money.  Allocate too little, and clients may not have a satisfying experience.  Cloud services are pay-per-use; a company only needs to pay for services they use.
 
-One of the main reasons companies are turning toward cloud computing is cost.  Small companies may have difficulty affording hardware and staff to set up and maintain servers.  Maintainence of datacenters is taxing for even large companies.  Allocating too much hardware means wasted computing power, and wasted money.  Allocate too little, and clients may not have a satisfying experience with the applications.  Cloud computing provides a way to increase or decrease capacities and capabilities by demand, without needing to maintain infrastructure or train personnel.  Highly scalable applications are pay-per-use; a company only needs to pay for services they use.
+* Scalability
 
-* Computing, Storage, and Database services
+Cloud computing provides a way to increase or decrease capacities and capabilities by demand, without needing to maintain infrastructure, train personnel, or liscence new software.  As an application grows, companies can add storage, RAM, and CPU capacity as needed.  Highly scalable applications adjust to demands, provisioning more resources when an application has ten thousand users today and automatically downscaling tomorrow when it isn't as busy.
 
-* Running Apps, Hosting Sites, and Storing Data
+* Accessibility to Resources
+
+Along with increasing capabilities, one has the option to handpick any of the services, software, and applications that will best suit his or her needs.  By using a one-to-many model, cloud computing makes its applications available for multiple users, clients, and devices.  This promotes efficiency, code reuse, and global accessibility. 
+
+* Quick Deployment
+
+With cloud computing, one need not worry about the time it takes to implement and deploy applications.  When an application is ready to go up on the web, it will be functional and ready to use within a few minutes.
+
 
 
 <!--
