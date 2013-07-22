@@ -64,30 +64,44 @@ Airlift originated as the solution to the frustrations of a developer.  At the t
 Airlift was designed to meet the following goals:
 
 * It should be RESTful.  It should use the simplest approach towards creating web applications.  One should not have to spend time figuring out which modules are creating a particular page or what the actions were.  Creating a web application should be easy.
-* It should use JavaScript.  JavaScript's functions are first class objects, supporting functional programming.  JavaScript is dynamically typed, allowing for faster development, and capability to use closures for interesting applications.  When JavaScript is used on the both the client and server side, code can easily be moved back and forth.
+* It should use JavaScript. JavaScript is dynamically typed, allowing for faster development, and capability to use closures for interesting applications.  When JavaScript is used on the both the client and server side, code can easily be moved back and forth.
 * It should be hosted on the cloud.  By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server.  Instead, it should be quickly and reliably scalable.
 
-Airlift, which satisfies the above specifications, is being successfully deployed today.  Airlift had been used to fulfill the software requirements of Northern Virginia Area Health Center, Ez-XBRL Solutions, Clark Construction, and the Office of Personal Management.
+Airlift, which satisfies the above specifications, is being successfully deployed today.  Airlift is being used to fulfill the software requirements of Northern Virginia Area Health Center, Ez-XBRL Solutions, Clark Construction, and the Office of Personal Management.
 
 Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
 
 <p id="Airlift_Concepts"></p>
 # 1.3 Airlift Concepts
-<!--
-airlift world, js functional programming, rhino, rest, handlers, methods, serverside, spirit
 
+Airlift is Lucid Technics’ open source rapid web development framework designed to work with cloud infrastructures.  Airlift can be used to rapidly build secure and scalable cloud applications.  Much of the software created using Airlift is generated from Dictation, Lucid Technics’ open source human readable business requirements language.
 
-A resource handle is an identifier for a resource that is currently being accessed. Resource handles can be opaque, in which case they are often integer numbers, or they can be pointers that allow access to further information. Common resource handles are file descriptors and sockets.
+Using Dictation with Airlift, Lucid Technics can generate software to deliver many modes of business functionality that are often coded by hand.  These include common application functionality such as data formatting, data conversion, and data validation.  They also include more challenging application functionality, such as automatic data auditing, robust data encryption, user action undo and redo, and role based security.
 
-The concept of a web resource is primitive in the Web architecture, and is used in the definition of its fundamental elements. The term was first introduced to refer to targets of uniform resource locators (URLs), but its definition has been further extended to include the referent of any uniform resource identifier (RFC 3986), or internationalized resource identifier (RFC 3987). In the Semantic Web, abstract resources and their semantic properties are described using the family of languages based on Resource Description Framework (RDF).
+This advanced code generation apparatus enables rapid deployment of web applications, thereby allowing one to spend less time on infrastructure code, and more time on business workflow requirements.
 
-Airlift is Lucid Technics’ open source rapid web development framework designed to work with cloud infrastructures. We use Airlift to rapidly build secure and scalable cloud applications. Much of the software created using Airlift is generated from Dictation, Lucid Technics’ open source human readable business requirements language.
+## The Airlift Environment
 
-Using Dictation with Airlift, Lucid Technics can generate software to deliver many modes of business functionality that are often coded by hand. These include common application functionality such as data formatting, data conversion, and data validation. They also include more challenging application functionality, such as automatic data auditing, robust data encryption, user action undo and redo, and role based security.
+Rhino = a JavaScript interpretter written in Java
 
-Our advanced code generation apparatus enables Lucid Technics to rapidly stand up your web applications, thereby allowing us to spend less time on infrastructure code, and more time on your business workflow requirements.
--->
+\[Diagram to come: Airlift environment\]
+
+## JavaScript Functional Programming
+
+Why did Lucid Technics decide to build Airlift for JavaScript?  A simple answer is to enable web applications to use the same language on both the client and server side.  That limits the options to JavaScript -- an easy choice.  By using the same language on both sides, code can be moved back and forth with little to no editting.  Other advantages truly make JavaScript a strong choice.  JavaScript is dynamically typed, which allows for faster development and greater flexibility in polymorphism and interactive applications.  JavaScript supports functional programming, as its functions are first class objects.  This enables developers to exploit the many interesting applications of closures.  Google App Engine does not directly support JavaScript, but Lucid Technics believed in JavaScript for restful web applications.  Therefore, Lucid Technics made the decision to incorporate Rhino into Airlift to use JavaScript with Google App Engine.
+
+## REST
+
+As defined by Roy Fielding, Representational State Transfer (REST) is an "architectural style for distributed hypermedia systems" (2000).  Restful web applications feature scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems.  Rest-style architectures generally consist of clients and servers, where clients send request to the server and the server answers with a response.  Rest is a predominant web API design model.
+
+Airlift supports the development of restful web applications.  It implements the HTTP request methods, GET, POST, PUT, DELETE, and COLLECT, which are used for requests.  Requests and responses are built around the transfer of representations and resources.  Resources are addressable objects, like files and documents, and a resource's representation is documentation that captures the current or intended state of a resource.  Resources are the center of Airlift application development.  In Airlift, each resource is represented as a simple JavaScript object. Airlift provides many restful functions for manipulating these resources in the server side of web applications.
+
+\[Diagram to come later: Airlift with client-server structure.\]
+
+## Conclusion
+
+Now the purposes and features of Airlift should be clear.  Airlift provides a restful JavaScript web application framework, designed to function with Google App Engine and cloud infrastructures.  If this sounds like the perfect tool for your web application development, or a framework that you would like to try, great!  We trust that Airlift will facilitate the rapid development of your scalable application on Google App Engine.  The following section will walk you through the installation process.
 
 
 <p id="Installation"></p>
@@ -114,6 +128,8 @@ That's it!  You should now have access to all that Airlift has to offer.  If you
 <p id="Setting_Up"></p>
 # 1.5 Setting Up
 
+
+check out api
 
 # This page is under construction!
 

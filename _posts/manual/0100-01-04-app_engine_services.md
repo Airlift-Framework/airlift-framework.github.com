@@ -1,7 +1,7 @@
 ---
 layout: manual
 title: App Engine Services
-abstract: Frequently asked questions are addressed here.
+abstract: How Airlift can be used with Google App Engine and other web services.
 prose_link: http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-04-app_engine_services.md
 author: Serena Lei
 categories: manual
