@@ -122,7 +122,7 @@ All set?  Go ahead and download the zip file, and unzip it into whichever direct
 <br>
 <br>
 
-That's it!  You should now have access to all that Airlift has to offer.  If you have any trouble downloading airlift, contact us at info@lucidtechnics.com.
+That's it!  You should now have access to all that Airlift has to offer.  If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.
 
 
 <p id="Setting_Up"></p>
@@ -130,8 +130,3 @@ That's it!  You should now have access to all that Airlift has to offer.  If you
 
 
 check out api
-
-# This page is under construction!
-
-We are currently working to make the getting started page available soon.  Thank you for your patience.
-

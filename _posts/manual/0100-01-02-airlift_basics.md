@@ -8,6 +8,8 @@ categories: manual
 published: true
 ---
 
+| [Introduction](#Introduction) | [Modules](#Modules) | [Dictation](#Dictation) | [Creating a Resource](#Creating_a_Resource) | [Writing a Handler](#Writing_a_Handler) | [Handling Resources](#Handling_Resources) | [Code Generation](#Code_Generation) | 
+
 # Introduction
 
 # Modules
