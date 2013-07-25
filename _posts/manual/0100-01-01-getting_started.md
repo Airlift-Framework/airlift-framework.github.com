@@ -33,7 +33,7 @@ Cloud computing consists of three tiers: infrastructure, platform, and software.
 
 At the lowest level, IaaS provides computing power that one can rent.  By outsourcing hardware, one does not need to fret over the investment, maintenance, power, and cooling of servers and networks.  IaaS is how data is stored on the cloud.  An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible.  Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.
 
-In the middle, PaaS provides foundations for developers to easily build and host applications.  An example of a PaaS platform is Google App Engine.  Such platforms provision hardware, and the developer need not worry about infrastructure components such as software upgrades, patches, and licensing.  With all this taken care of, a programmer may concentrate solely on his application, utilizing the underlying infrastructure to customize and specialize his code..  You can use PaaS platforms to develop SaaS applications.
+In the middle, PaaS provides foundations for developers to easily build and host applications.  An example of a PaaS platform is Google App Engine.  Such platforms provision hardware, and the developer need not worry about infrastructure components such as software upgrades, patches, and licensing.  With all this taken care of, a programmer may concentrate solely on his application, utilizing the underlying infrastructure to customize and specialize his code.  You can use PaaS platforms to develop SaaS applications.
 
 At the highest level, SaaS provides web access to commercial software.  An example of an SaaS web application is Gmail, which is free and web-based.  To use Gmail, users do not need to install any applications onto their local hard drives, as the application is provided through a web browser.  Since the software is hosted on the cloud, users can access their accounts from any location as long as they have internet and a browser.  
 
@@ -59,6 +59,8 @@ With cloud computing, one need not worry about the time it takes to implement an
 <p id="A_Brief_History"></p>
 # 1.2 A Brief History
 
+\[Image to come: Illustration of frustrated Bediako.\]
+
 Airlift originated as the solution to the frustrations of a developer.  At the time, Java web application frameworks, such as Apache Struts, were not up to par with the developer's needs.  There had to be a better and faster way to build applications.  He traded in Java for a dynamic programming language, JavaScript.  He then began excitedly experimenting with Hannibn(?), capable of building web applications by using Java applications on servlets called Rhino.  It didn't take long for the developer to successfully utilize the benefits of this servlet, and he realized the potential of taking the entire platform and putting it on the cloud environment.  No more would he need to defeat the obstacles of setting up his own server, buying his own hardware, and dealing with web hosting providers.  No more would he need to wait ages for his server to be set up and for his applications to deploy.  By hosting a platform on the cloud, all these hassles would be taken care of.  Thus, Airlift was born!
 
 Airlift was designed to meet the following goals:
@@ -69,8 +71,11 @@ Airlift was designed to meet the following goals:
 
 Airlift, which satisfies the above specifications, is being successfully deployed today.  Airlift is being used to fulfill the software requirements of Northern Virginia Area Health Center, Ez-XBRL Solutions, Clark Construction, and the Office of Personal Management.
 
+\[Image to come: Banner of logos of companies using Airlift.\]
+
 Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
+\[Image to come: Illustration of happy Bediako with Airlift.\]
 
 <p id="Airlift_Concepts"></p>
 # 1.3 Airlift Concepts
@@ -83,9 +88,15 @@ This advanced code generation apparatus enables rapid deployment of web applicat
 
 ## The Airlift Environment
 
-Rhino = a JavaScript interpretter written in Java
+\[Image to come: Diagram of Airlift environment\]
 
-\[Diagram to come: Airlift environment\]
+
+
+\[Image to come: Diagram of Airlift with Google App Engine\]
+
+The previous diagram shows how Airlift works with Google App Engine.  Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go.  Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScriptIn order to run JavaScript.  Airlift incorporates [Rhino](https://developer.mozilla.org/en-US/docs/Rhino), an open source JavaScript engine,  
+Rhino = a JavaScript interpretter written in Java, to convert JavaScript scripts into Java classes.  This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.
+
 
 ## JavaScript Functional Programming
 
@@ -97,7 +108,7 @@ As defined by Roy Fielding, Representational State Transfer (REST) is an "archit
 
 Airlift supports the development of restful web applications.  It implements the HTTP request methods, GET, POST, PUT, DELETE, and COLLECT, which are used for requests.  Requests and responses are built around the transfer of representations and resources.  Resources are addressable objects, like files and documents, and a resource's representation is documentation that captures the current or intended state of a resource.  Resources are the center of Airlift application development.  In Airlift, each resource is represented as a simple JavaScript object. Airlift provides many restful functions for manipulating these resources in the server side of web applications.
 
-\[Diagram to come later: Airlift with client-server structure.\]
+\[Image to come: Illustration of Airlift with client-server structure.\]
 
 ## Conclusion
 
@@ -128,5 +139,14 @@ That's it!  You should now have access to all that Airlift has to offer.  If you
 <p id="Setting_Up"></p>
 # 1.5 Setting Up
 
+The download button above provides a template hierarchy directory for a web application.  Inside the directory, many folders and files are already set up.  As the developer, you only need to worry about the business logic and the handlers.  In the dictation file app.dic (..src/doc/app.dic), you can use plain english to describe your business logic.  You may write your own restful handlers for each class, resource, or domain in war/WEB-INF/classes/handler.  
 
-check out api
+Once you have finished writing the business logic and handlers.  From the command line, go into your web application directory and call:
+
+     ant runserver
+
+This will generate all the restful security, memcache, metadata, CRUD operations, and more to enable your application to interact with a datastore.  With Airlift rapidly generating and taking care of datastore functions, you can spend more time concentrating on the user interface and business side of your application.
+
+Now that Airlift is set up, you may go ahead and start fleshing out your web application.  In the next section, you will learn more about [airlift basics](/manual/airlift_basics) and how to go about writing an application.
+
+If you'd like to see some examples for inspiration, head over to the [demos](/manual/demos).  If you are ready to start developing, please refer to our [API](/api) for a complete listing and description of Airlift functions.
