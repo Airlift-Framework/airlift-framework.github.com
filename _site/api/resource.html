@@ -32,17 +32,21 @@
 
 <h4 id='return_type_na'>Return Type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata).
-</p><span style='background-color:red'>Add a bit more explanation about callback.</span>
+Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: value, attributeName, resource, and metadata. An optional callback can be supplied.  If the callback is supplied, it will be called at the end of the iteration cycle with two arguments: resourceName, resource.
+</p>
 <pre><code> var attributes = [];
 
- res.each(&#39;person&#39;, bediako, function(_value, _attributeName, _resource, _metadata)
-      {
-           attributes.push(_attributeName);		
-      }, undefined, context);
+ resource.each(&#39;person&#39;, bediako, 
+       function iterator(_value, _attributeName, _resource, _metadata)
+           {
+                attributes.push(_attributeName);		
+           },
+       function callback(_resourceName, resource)
+           {
+                attributes.push(&#39;finished&#39;);
+           }, context);
 
- =&gt; [&quot;fullName&quot;, &quot;shortName&quot;, &quot;status&quot;, &quot;birthDate&quot;, &quot;age&quot;, &quot;friendList&quot;,
-     &quot;familySet&quot;, &quot;auditPostDate&quot;, &quot;auditPutDate&quot;, &quot;auditUserId&quot;, &quot;id&quot;]</code></pre>
+ =&gt; [&quot;fullName&quot;, &quot;shortName&quot;, &quot;status&quot;, &quot;birthDate&quot;, &quot;id&quot;, &quot;finished&quot;]</code></pre>
 <p id='Resource_map' />
 <h3 id='mapstring_resourcename_object_resource_function_function_function_callback_object_context'>map(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
@@ -53,7 +57,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 <pre><code> var attributes = [];
 
  //create a person resource using map ...
- var person = res.map(&#39;person&#39;, bediako,
+ var person = resource.map(&#39;person&#39;, bediako,
      function(_value, _attributeName, _resource, _metadata)
      {
          attributes.push(_attributeName);
@@ -67,21 +71,22 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
 <h4 id='return_type_object'>Return type: Object</h4>
 <p> <label class='new'>Added in 2.0</label>
-<span style='background-color:red'>Description under construction.</span>
+Transforms the attribute names of a resource into a new set of names as defined by the 'dictionary'.
 </p>
 <pre><code> var attributes = [];
+ var bediako = {fullName: &#39;Bediako George&#39;, shortName: &#39;Bediako&#39;, 
+      status: &#39;middle aged&#39;, id: 1};
  var dictionary = {fullName: &#39;name&#39;};
 
  //create a person resource using transform ...
- var person = res.transform(dictionary, &#39;person&#39;, bediako,
+ resource.transform(dictionary, &#39;person&#39;, bediako,
      function(_value, _attributeName, _resource, _metadata)
      {
            attributes.push(_attributeName);
            return _value;
      }, undefined, context);
 
- =&gt; [&quot;fullName&quot;,&quot;shortName&quot;,&quot;status&quot;,&quot;birthDate&quot;,&quot;age&quot;,&quot;friendList&quot;,&quot;familySet&quot;,
-     &quot;auditPostDate&quot;,&quot;auditPutDate&quot;,&quot;auditUserId&quot;,&quot;id&quot;]</code></pre>
+ =&gt; {name: &#39;Bediako George&#39;, shortName: &#39;Bediako&#39;, status: &#39;middle aged&#39;, id: 1}</code></pre>
 <p id='Resource_reduce' />
 <h3 id='reducestring_base_string_resourcename_object_resource_function_function_function_callback_object_context'>reduce(String base, String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
@@ -91,7 +96,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 </p>
 <pre><code> var attributes = [];
  	
- var reducedResult = res.reduce(&#39;person:&#39;, &#39;person&#39;, bediako,
+ var reducedResult = resource.reduce(&#39;person:&#39;, &#39;person&#39;, bediako,
       function(_base, _value, _attributeName, _resource, _metadata)
       {
            attributes.push(_attributeName);
@@ -111,7 +116,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 Returns a function that is the composition of the passed function arguments. The functions are executed in the order they are passed into sequence. Sequence's returned function can be used in a iterative manner on a resource or executed as a standalone. Sequence returns the value of the last function's execution.
 </p>
 <pre><code> var results = [];
- var sequence = res.sequence(
+ var sequence = resource.sequence(
       function() { results.push(1); },
       function() { results.push(2); },
       function() { results.push(3); },
@@ -129,7 +134,7 @@ Returns a function that is the composition of the passed function arguments. The
 </p>
 <pre><code>var results = [];
 
-var compose = res.compose(
+var compose = resource.compose(
     function() { results.push(1); },
     function() { results.push(2); },
     function() { results.push(3); },
@@ -144,9 +149,15 @@ compose();
 
 <h4 id='return_type_string'>Return type: String</h4>
 <p> <label class='new'>Added in 2.0</label>
-<span style='background:color'>Description under construction.</span>
+Returns a string representation of a resource.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var bediako = {fullName: &#39;Bediako George&#39;, shortName: &#39;Bediako&#39;};
+ resource.toString(&#39;person&#39;, bediako);
+
+ =&gt; [** person
+ 	fullName: Bediako George
+shortName: Bediako
+    ]</code></pre>
 <p id='Resource_watch' />
 <h3 id='watchstring_attributename1__string_attributenamen_function_watchfunction'>watch(String attributeName1, &#8230;, String attributeNameN, Function watchFunction)</h3>
 
@@ -189,7 +200,7 @@ Converts an object into a string by calling JSON.strinigfy().
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-<span style='background-color:red'>Description under construction.</span>
+
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
 <p id='Resource_copy' />

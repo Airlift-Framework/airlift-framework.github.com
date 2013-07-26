@@ -214,11 +214,15 @@
 <h1 id='extensions'><a href='#Extensions'>Extensions</a></h1>
 
 <ul>
-<li><a href='#Extensions_partial'>partial</a></li>
+<li><a href='#Extensions_Function.prototype.partial'>Function.partial</a></li>
 
-<li><a href='#Extensions_equalsIgnoreCase'>equalsIgnoreCase</a></li>
+<li><a href='#Extensions_String.prototype.equalsIgnoreCase'>String.equalsIgnoreCase</a></li>
 
-<li><a href='#Extensions_replaceAll'>replaceAll</a></li>
+<li><a href='#Extensions_String.prototype.replaceAll'>String.replaceAll</a></li>
+
+<li><a href='#Extensions_String.prototype.contains'>String.contains</a></li>
+
+<li><a href='#Extensions_JSON.prototype.stringify'>JSON.stringify</a></li>
 </ul>
 
 <h1 id='resource'><a href='#Resource'>Resource</a></h1>
@@ -772,7 +776,7 @@
         <p>Airlift is built on Rhino and App Engine. Rhino is a fantastic JavaScript interpreter library written for Java. App Engine is a fantastic platform as a service cloud environment that offers support for web applications programmed in Go, Python, and Java.</p>
 
 <p>In order for Airlift to support server side JavaScript programming on App Engine we applied Rhino&#8217;s capabilities to the App Engine environment. To accomplish this we extended some of Rhino&#8217;s libraries, and we added additional functionality to JavaScript&#8217;s standard objects. The following outlines the adaptations and improvements we made.</p>
-<p id='Extensions_partial' />
+<p id='Extensions_Function.prototype.partial' />
 <h3 id='functionprototypepartial_argument1_argument2__argumentn'>Function.prototype.partial (argument-1, argument-2, &#8230;, argument-n)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -785,10 +789,10 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
       };
  var f1 = f0.partial(undefined, &#39;Bediako&#39;);	
  =&gt; Hello Bediako</code></pre>
-<p id='Extensions_equalsIgnoreCase' />
+<p id='Extensions_String.prototype.equalsIgnoreCase' />
 <h3 id='stringprototypeequalsignorecase_stringjavalangstring_string'>String.prototype.equalsIgnoreCase (String|java.lang.String string)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string. Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
 </p>
@@ -796,7 +800,7 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
  var string2 = new Packages.java.lang.String(&#39;Bediako&#39;);
  string1.equalsIgnoreCase(string2);
  =&gt; true</code></pre>
-<p id='Extensions_replaceAll' />
+<p id='Extensions_String.prototype.replaceAll' />
 <h3 id='stringprototypereplaceall_stringjavalangstring_string1_stringjavalangstring_string2'>String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)</h3>
 
 <h4 id='return_type_string'>Return Type: String</h4>
@@ -805,7 +809,28 @@ Replaces every occurrence of string1 in 'this' with string2.  Added as a conveni
 </p>
 <pre><code> var string1 = &#39;banana&#39;;
  string1.replaceAll(&#39;na&#39;, &#39;&#39;);
- =&gt; ba</code></pre>
+ =&gt; &#39;ba&#39;</code></pre>
+<p id='Extensions_String.prototype.contains' />
+<h3 id='stringprototypecontainsjavalangstringstring_string'>String.prototype.contains(java.lang.String|String string)</h3>
+
+<h4 id='return_type_boolean'>Return Type: boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns true if 'this' contains 'string'.
+</p>
+<pre><code> var string1 = &#39;banana&#39;;
+ string1.contains(&#39;na&#39;);
+ =&gt; true</code></pre>
+<p id='Extensions_JSON.prototype.stringify' />
+<h3 id='jsonprototypestringify'>JSON.prototype.stringify()</h3>
+
+<h4 id='return_type_string'>Return Type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Will stringify JavaScript objects as determined by EcmaScript standard as well as stringify the following Java objects ... all Java primitives and all Java primitive arrays; java.util.Date, java.lang.String, java.lang.Number, java.lang.Character, java.lang.Byte and their associated arrays; java.util.Collection and java.util.Map of all the aforementioned primitives, primitive arrays, objects, and object arrays.  
+</p>
+<pre><code>var list = new Packages.java.util.ArrayList();
+list.add(&#39;Bediako&#39;);
+JSON.stringify(list);
+=&gt; [&#39;Bediako&#39;]</code></pre>
       
         <h2 id=Resource>
           Resource
@@ -847,17 +872,21 @@ Replaces every occurrence of string1 in 'this' with string2.  Added as a conveni
 
 <h4 id='return_type_na'>Return Type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata).
-</p><span style='background-color:red'>Add a bit more explanation about callback.</span>
+Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: value, attributeName, resource, and metadata. An optional callback can be supplied.  If the callback is supplied, it will be called at the end of the iteration cycle with two arguments: resourceName, resource.
+</p>
 <pre><code> var attributes = [];
 
- res.each(&#39;person&#39;, bediako, function(_value, _attributeName, _resource, _metadata)
-      {
-           attributes.push(_attributeName);		
-      }, undefined, context);
+ resource.each(&#39;person&#39;, bediako, 
+       function iterator(_value, _attributeName, _resource, _metadata)
+           {
+                attributes.push(_attributeName);		
+           },
+       function callback(_resourceName, resource)
+           {
+                attributes.push(&#39;finished&#39;);
+           }, context);
 
- =&gt; [&quot;fullName&quot;, &quot;shortName&quot;, &quot;status&quot;, &quot;birthDate&quot;, &quot;age&quot;, &quot;friendList&quot;,
-     &quot;familySet&quot;, &quot;auditPostDate&quot;, &quot;auditPutDate&quot;, &quot;auditUserId&quot;, &quot;id&quot;]</code></pre>
+ =&gt; [&quot;fullName&quot;, &quot;shortName&quot;, &quot;status&quot;, &quot;birthDate&quot;, &quot;id&quot;, &quot;finished&quot;]</code></pre>
 <p id='Resource_map' />
 <h3 id='mapstring_resourcename_object_resource_function_function_function_callback_object_context'>map(String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
@@ -868,7 +897,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 <pre><code> var attributes = [];
 
  //create a person resource using map ...
- var person = res.map(&#39;person&#39;, bediako,
+ var person = resource.map(&#39;person&#39;, bediako,
      function(_value, _attributeName, _resource, _metadata)
      {
          attributes.push(_attributeName);
@@ -882,21 +911,22 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
 <h4 id='return_type_object'>Return type: Object</h4>
 <p> <label class='new'>Added in 2.0</label>
-<span style='background-color:red'>Description under construction.</span>
+Transforms the attribute names of a resource into a new set of names as defined by the 'dictionary'.
 </p>
 <pre><code> var attributes = [];
+ var bediako = {fullName: &#39;Bediako George&#39;, shortName: &#39;Bediako&#39;, 
+      status: &#39;middle aged&#39;, id: 1};
  var dictionary = {fullName: &#39;name&#39;};
 
  //create a person resource using transform ...
- var person = res.transform(dictionary, &#39;person&#39;, bediako,
+ resource.transform(dictionary, &#39;person&#39;, bediako,
      function(_value, _attributeName, _resource, _metadata)
      {
            attributes.push(_attributeName);
            return _value;
      }, undefined, context);
 
- =&gt; [&quot;fullName&quot;,&quot;shortName&quot;,&quot;status&quot;,&quot;birthDate&quot;,&quot;age&quot;,&quot;friendList&quot;,&quot;familySet&quot;,
-     &quot;auditPostDate&quot;,&quot;auditPutDate&quot;,&quot;auditUserId&quot;,&quot;id&quot;]</code></pre>
+ =&gt; {name: &#39;Bediako George&#39;, shortName: &#39;Bediako&#39;, status: &#39;middle aged&#39;, id: 1}</code></pre>
 <p id='Resource_reduce' />
 <h3 id='reducestring_base_string_resourcename_object_resource_function_function_function_callback_object_context'>reduce(String base, String resourceName, Object resource, Function function, Function callback, Object context)</h3>
 
@@ -906,7 +936,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 </p>
 <pre><code> var attributes = [];
  	
- var reducedResult = res.reduce(&#39;person:&#39;, &#39;person&#39;, bediako,
+ var reducedResult = resource.reduce(&#39;person:&#39;, &#39;person&#39;, bediako,
       function(_base, _value, _attributeName, _resource, _metadata)
       {
            attributes.push(_attributeName);
@@ -926,7 +956,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 Returns a function that is the composition of the passed function arguments. The functions are executed in the order they are passed into sequence. Sequence's returned function can be used in a iterative manner on a resource or executed as a standalone. Sequence returns the value of the last function's execution.
 </p>
 <pre><code> var results = [];
- var sequence = res.sequence(
+ var sequence = resource.sequence(
       function() { results.push(1); },
       function() { results.push(2); },
       function() { results.push(3); },
@@ -944,7 +974,7 @@ Returns a function that is the composition of the passed function arguments. The
 </p>
 <pre><code>var results = [];
 
-var compose = res.compose(
+var compose = resource.compose(
     function() { results.push(1); },
     function() { results.push(2); },
     function() { results.push(3); },
@@ -959,9 +989,15 @@ compose();
 
 <h4 id='return_type_string'>Return type: String</h4>
 <p> <label class='new'>Added in 2.0</label>
-<span style='background:color'>Description under construction.</span>
+Returns a string representation of a resource.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var bediako = {fullName: &#39;Bediako George&#39;, shortName: &#39;Bediako&#39;};
+ resource.toString(&#39;person&#39;, bediako);
+
+ =&gt; [** person
+ 	fullName: Bediako George
+shortName: Bediako
+    ]</code></pre>
 <p id='Resource_watch' />
 <h3 id='watchstring_attributename1__string_attributenamen_function_watchfunction'>watch(String attributeName1, &#8230;, String attributeNameN, Function watchFunction)</h3>
 
@@ -1004,7 +1040,7 @@ Converts an object into a string by calling JSON.strinigfy().
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-<span style='background-color:red'>Description under construction.</span>
+
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
 <p id='Resource_copy' />
@@ -1058,7 +1094,7 @@ Creates a new instance of 'value', copies all the attributes to the new instance
 <p id='Collection_every' />
 <h3 id='everyobject_collection_function_iterator_object_context'>every(Object collection, Function iterator, Object context)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Returns true if all of the values in the list pass the iterator truth test. For JavaScript arrays, this function delegates to the native every function. The iteration stops once all the members of the collection have been visited or if the function ever returns false.
 </p>
@@ -1126,7 +1162,7 @@ Produces a new collection of values by mapping each value in the collection thro
 <p id='Collection_some' />
 <h3 id='someobject_collection_function_iterator_object_context'>some(Object collection, Function iterator, Object context)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0></label> <label class='alias'><em>alias</em> any</label>
 Applies an iterator truth test to each item in the collection. The iteration will stop once all the members of the collection have been visited OR if the iterator function ever returns true. Returns true if the function returned true for any item it visited.
 </p>
@@ -1304,7 +1340,7 @@ Determines the type of JavaScript object value.
 <p id='Util_isEmpty' />
 <h3 id='isemptyobject_o'>isEmpty(Object o)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Determines whether or not a JavaScript object has any properties.
 </p>
@@ -1325,7 +1361,7 @@ Creates a Java class object identified by the classname.
 <p id='Util_isWhiteSpace' />
 <h3 id='iswhitespacestring_string'>isWhitespace(String string)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Returns true if string is whitespace, false otherwise.
 </p>
@@ -1335,7 +1371,7 @@ Returns true if string is whitespace, false otherwise.
 <p id='Util_hasValue' />
 <h3 id='hasvalueobject_value'>hasValue(Object value)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Returns true if item is not equal to null and is not equal to undefined.
 </p>
@@ -1694,7 +1730,7 @@ Converts a javascript string into a java string.
 <p id='Util_boolean' />
 <h3 id='booleanstring_booleanstring'>boolean(String booleanString)</h3>
 
-<h4 id='return_type_javalangboolean'>Return type: java.lang.Boolean</h4>
+<h4 id='return_type_javalangboolean'>Return type: java.lang.boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Converts a javascript string into a boolean.
 </p>
@@ -2458,7 +2494,7 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
 <h4 id='setter_functions'>Setter functions:</h4>
 <br /><table class='functions'>
   <tr>
-    <th class='head' style='width:300px'>Function()</th>
+    <th style='width:300px' class='head'>Function()</th>
     <th class='head'>Description</th>
   </tr>
   <tr class='even'>
@@ -2522,7 +2558,7 @@ Iterates through 'ids' and concatenates the ids into a single string.
 <p id='Web_hasId' />
 <h3 id='hasid'>hasId()</h3>
 
-<h4 id='return_type_booleanstring'>Return type: Boolean???String???</h4>
+<h4 id='return_type_booleanstring'>Return type: boolean???String???</h4>
 <p> <label class='new'>Added in 2.0</label>
 Checks to see if the rest context has an identifier.
 </p>
@@ -2630,7 +2666,7 @@ Tests that 'block' does not throw an error. 'error' and 'message' are optional. 
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Evaluates 'value' to a boolean using the abstract method ToBoolean and throws 'value' if it is true. Useful when testing the first argument, error in callbacks.
+Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'value' if it is true. Useful when testing the first argument, error in callbacks.
 </p>
 <pre><code> &#39;Example code coming soon.&#39;</code></pre>
       

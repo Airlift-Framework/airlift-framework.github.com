@@ -29,7 +29,7 @@ Cloud computing consists of three tiers: infrastructure, platform, and software.
 * **Platform as a Service (PaaS)** are tools designed to simplify and expedite the creation and delivery of software. 
 * **Infrastructure as a Service (IaaS)** are the outsourced, on-demand resources that provide computing power through servers, storage, network, and operating systems.
 
-![](/images/manual/CloudComputing_logos.png)
+![](/images/manual/CloudComputing_logos_Web.png)
 
 At the lowest level, IaaS provides computing power that one can rent.  By outsourcing hardware, one does not need to fret over the investment, maintenance, power, and cooling of servers and networks.  IaaS is how data is stored on the cloud.  An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible.  Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.
 
@@ -71,7 +71,7 @@ Airlift was designed to meet the following goals:
 
 Airlift, which satisfies the above specifications, is being successfully deployed today.  Airlift is being used to fulfill the software requirements of Northern Virginia Area Health Center, Ez-XBRL Solutions, Clark Construction, and the Office of Personal Management.
 
-\[Image to come: Banner of logos of companies using Airlift.\]
+![](/images/manual/CurrentClients_Web.png)
 
 Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
@@ -88,15 +88,14 @@ This advanced code generation apparatus enables rapid deployment of web applicat
 
 ## The Airlift Environment
 
-\[Image to come: Diagram of Airlift environment\]
+![](/images/manual/Airlift_Chart_Desktop_Web.png)
 
-
-
-\[Image to come: Diagram of Airlift with Google App Engine\]
+![](/images/manual/Airlift_Chart_with_GAE_Web.png)
 
 The previous diagram shows how Airlift works with Google App Engine.  Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go.  Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScriptIn order to run JavaScript.  Airlift incorporates [Rhino](https://developer.mozilla.org/en-US/docs/Rhino), an open source JavaScript engine,  
 Rhino = a JavaScript interpretter written in Java, to convert JavaScript scripts into Java classes.  This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.
 
+![](/images/manual/Airlift_Environment_Web.png)
 
 ## JavaScript Functional Programming
 
@@ -107,8 +106,6 @@ Why did Lucid Technics decide to build Airlift for JavaScript?  A simple answer 
 As defined by Roy Fielding, Representational State Transfer (REST) is an "architectural style for distributed hypermedia systems" (2000).  Restful web applications feature scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems.  Rest-style architectures generally consist of clients and servers, where clients send request to the server and the server answers with a response.  Rest is a predominant web API design model.
 
 Airlift supports the development of restful web applications.  It implements the HTTP request methods, GET, POST, PUT, DELETE, and COLLECT, which are used for requests.  Requests and responses are built around the transfer of representations and resources.  Resources are addressable objects, like files and documents, and a resource's representation is documentation that captures the current or intended state of a resource.  Resources are the center of Airlift application development.  In Airlift, each resource is represented as a simple JavaScript object. Airlift provides many restful functions for manipulating these resources in the server side of web applications.
-
-\[Image to come: Illustration of Airlift with client-server structure.\]
 
 ## Conclusion
 

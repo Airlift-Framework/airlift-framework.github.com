@@ -11,7 +11,7 @@ Airlift is built on Rhino and App Engine.  Rhino is a fantastic JavaScript inter
 
 In order for Airlift to support server side JavaScript programming on App Engine we applied Rhino's capabilities to the App Engine environment.  To accomplish this we extended some of Rhino's libraries, and we added additional functionality to JavaScript's standard objects.  The following outlines the adaptations and improvements we made.
 
-<p id="Extensions_partial"></p>
+<p id="Extensions_Function.prototype.partial"></p>
 ### Function.prototype.partial (argument-1, argument-2, ..., argument-n)
 #### Return type: Object
 <p> <label class="new">Added in 2.0</label>
@@ -26,9 +26,9 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
      => Hello Bediako
     
     
-<p id="Extensions_equalsIgnoreCase"></p>
+<p id="Extensions_String.prototype.equalsIgnoreCase"></p>
 ### String.prototype.equalsIgnoreCase (String|java.lang.String string)
-#### Return type: Boolean
+#### Return type: boolean
 <p> <label class="new">Added in 2.0</label>
 Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string. Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
 </p>
@@ -40,7 +40,7 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
      => true
 
 
-<p id="Extensions_replaceAll"></p>
+<p id="Extensions_String.prototype.replaceAll"></p>
 ### String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)
 #### Return Type: String
 <p> <label class="new">Added in 2.0</label>
@@ -50,4 +50,30 @@ Replaces every occurrence of string1 in 'this' with string2.  Added as a conveni
 
      var string1 = 'banana';
      string1.replaceAll('na', '');
-     => ba
+     => 'ba'
+
+
+<p id="Extensions_String.prototype.contains"></p>
+### String.prototype.contains(java.lang.String|String string)
+#### Return Type: boolean
+<p> <label class="new">Added in 2.0</label>
+Returns true if 'this' contains 'string'.
+</p>
+
+
+     var string1 = 'banana';
+     string1.contains('na');
+     => true
+
+
+<p id="Extensions_JSON.prototype.stringify"></p>
+### JSON.prototype.stringify()
+#### Return Type: String
+<p> <label class="new">Added in 2.0</label>
+Will stringify JavaScript objects as determined by EcmaScript standard as well as stringify the following Java objects ... all Java primitives and all Java primitive arrays; java.util.Date, java.lang.String, java.lang.Number, java.lang.Character, java.lang.Byte and their associated arrays; java.util.Collection and java.util.Map of all the aforementioned primitives, primitive arrays, objects, and object arrays.  
+</p>
+
+	var list = new Packages.java.util.ArrayList();
+	list.add('Bediako');
+	JSON.stringify(list);
+	=> ['Bediako']

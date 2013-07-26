@@ -17,7 +17,7 @@ These functions can be used by including the following code:
 
 <p id="Collection_every"></p>
 ### every(Object collection, Function iterator, Object context)
-#### Return type: Boolean
+#### Return type: boolean
 
 <p> <label class="new">Added in 2.0</label>
 Returns true if all of the values in the list pass the iterator truth test. For JavaScript arrays, this function delegates to the native every function. The iteration stops once all the members of the collection have been visited or if the function ever returns false.
@@ -102,7 +102,7 @@ Produces a new collection of values by mapping each value in the collection thro
 
 <p id="Collection_some"></p>
 ### some(Object collection, Function iterator, Object context)
-#### Return type: Boolean
+#### Return type: boolean
 
 <p> <label class="new">Added in 2.0></label> <label class="alias"><em>alias</em> any</label>
 Applies an iterator truth test to each item in the collection. The iteration will stop once all the members of the collection have been visited OR if the iterator function ever returns true. Returns true if the function returned true for any item it visited.

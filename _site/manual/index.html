@@ -87,7 +87,7 @@
 <li><strong>Infrastructure as a Service (IaaS)</strong> are the outsourced, on-demand resources that provide computing power through servers, storage, network, and operating systems.</li>
 </ul>
 
-<p><img src='/images/manual/CloudComputing_logos.png' alt='' /></p>
+<p><img alt='' src='/images/manual/CloudComputing_logos_Web.png' /></p>
 
 <p>At the lowest level, IaaS provides computing power that one can rent. By outsourcing hardware, one does not need to fret over the investment, maintenance, power, and cooling of servers and networks. IaaS is how data is stored on the cloud. An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible. Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.</p>
 
@@ -139,7 +139,7 @@
 
 <p>Airlift, which satisfies the above specifications, is being successfully deployed today. Airlift is being used to fulfill the software requirements of Northern Virginia Area Health Center, Ez-XBRL Solutions, Clark Construction, and the Office of Personal Management.</p>
 
-<p>[Image to come: Banner of logos of companies using Airlift.]</p>
+<p><img alt='' src='/images/manual/CurrentClients_Web.png' /></p>
 
 <p>Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013. Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine. Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side. Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.</p>
 
@@ -155,11 +155,13 @@
 
 <h2 id='the_airlift_environment'>The Airlift Environment</h2>
 
-<p>[Image to come: Diagram of Airlift environment]</p>
+<p><img alt='' src='/images/manual/Airlift_Chart_Desktop_Web.png' /></p>
 
-<p>[Image to come: Diagram of Airlift with Google App Engine]</p>
+<p><img alt='' src='/images/manual/Airlift_Chart_with_GAE_Web.png' /></p>
 
 <p>The previous diagram shows how Airlift works with Google App Engine. Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go. Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScriptIn order to run JavaScript. Airlift incorporates <a href='https://developer.mozilla.org/en-US/docs/Rhino'>Rhino</a>, an open source JavaScript engine,<br />Rhino = a JavaScript interpretter written in Java, to convert JavaScript scripts into Java classes. This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.</p>
+
+<p><img alt='' src='/images/manual/Airlift_Environment_Web.png' /></p>
 
 <h2 id='javascript_functional_programming'>JavaScript Functional Programming</h2>
 
@@ -170,8 +172,6 @@
 <p>As defined by Roy Fielding, Representational State Transfer (REST) is an &#8220;architectural style for distributed hypermedia systems&#8221; (2000). Restful web applications feature scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems. Rest-style architectures generally consist of clients and servers, where clients send request to the server and the server answers with a response. Rest is a predominant web API design model.</p>
 
 <p>Airlift supports the development of restful web applications. It implements the HTTP request methods, GET, POST, PUT, DELETE, and COLLECT, which are used for requests. Requests and responses are built around the transfer of representations and resources. Resources are addressable objects, like files and documents, and a resource&#8217;s representation is documentation that captures the current or intended state of a resource. Resources are the center of Airlift application development. In Airlift, each resource is represented as a simple JavaScript object. Airlift provides many restful functions for manipulating these resources in the server side of web applications.</p>
-
-<p>[Image to come: Illustration of Airlift with client-server structure.]</p>
 
 <h2 id='conclusion'>Conclusion</h2>
 
@@ -190,7 +190,7 @@
 </ul>
 
 <p>All set? Go ahead and download the zip file, and unzip it into whichever directory you so desire.</p>
-<br /><a class='download' href='https://github.com/LucidTechnics/Airlift/blob/airlift_2.0_development/downloads/airlift-beta-0.70_rc_108_734-env.zip?raw=true'>Download Airlift</a><br /><br />
+<br /><a href='https://github.com/LucidTechnics/Airlift/blob/airlift_2.0_development/downloads/airlift-beta-0.70_rc_108_734-env.zip?raw=true' class='download'>Download Airlift</a><br /><br />
 <p>That&#8217;s it! You should now have access to all that Airlift has to offer. If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.</p>
 <p id='Setting_Up' />
 <h1 id='15_setting_up'>1.5 Setting Up</h1>

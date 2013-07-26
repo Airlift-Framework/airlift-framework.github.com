@@ -1,7 +1,7 @@
 <p>Airlift is built on Rhino and App Engine. Rhino is a fantastic JavaScript interpreter library written for Java. App Engine is a fantastic platform as a service cloud environment that offers support for web applications programmed in Go, Python, and Java.</p>
 
 <p>In order for Airlift to support server side JavaScript programming on App Engine we applied Rhino&#8217;s capabilities to the App Engine environment. To accomplish this we extended some of Rhino&#8217;s libraries, and we added additional functionality to JavaScript&#8217;s standard objects. The following outlines the adaptations and improvements we made.</p>
-<p id='Extensions_partial' />
+<p id='Extensions_Function.prototype.partial' />
 <h3 id='functionprototypepartial_argument1_argument2__argumentn'>Function.prototype.partial (argument-1, argument-2, &#8230;, argument-n)</h3>
 
 <h4 id='return_type_object'>Return type: Object</h4>
@@ -14,10 +14,10 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
       };
  var f1 = f0.partial(undefined, &#39;Bediako&#39;);	
  =&gt; Hello Bediako</code></pre>
-<p id='Extensions_equalsIgnoreCase' />
+<p id='Extensions_String.prototype.equalsIgnoreCase' />
 <h3 id='stringprototypeequalsignorecase_stringjavalangstring_string'>String.prototype.equalsIgnoreCase (String|java.lang.String string)</h3>
 
-<h4 id='return_type_boolean'>Return type: Boolean</h4>
+<h4 id='return_type_boolean'>Return type: boolean</h4>
 <p> <label class='new'>Added in 2.0</label>
 Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string. Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
 </p>
@@ -25,7 +25,7 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
  var string2 = new Packages.java.lang.String(&#39;Bediako&#39;);
  string1.equalsIgnoreCase(string2);
  =&gt; true</code></pre>
-<p id='Extensions_replaceAll' />
+<p id='Extensions_String.prototype.replaceAll' />
 <h3 id='stringprototypereplaceall_stringjavalangstring_string1_stringjavalangstring_string2'>String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)</h3>
 
 <h4 id='return_type_string'>Return Type: String</h4>
@@ -34,4 +34,25 @@ Replaces every occurrence of string1 in 'this' with string2.  Added as a conveni
 </p>
 <pre><code> var string1 = &#39;banana&#39;;
  string1.replaceAll(&#39;na&#39;, &#39;&#39;);
- =&gt; ba</code></pre>
+ =&gt; &#39;ba&#39;</code></pre>
+<p id='Extensions_String.prototype.contains' />
+<h3 id='stringprototypecontainsjavalangstringstring_string'>String.prototype.contains(java.lang.String|String string)</h3>
+
+<h4 id='return_type_boolean'>Return Type: boolean</h4>
+<p> <label class='new'>Added in 2.0</label>
+Returns true if 'this' contains 'string'.
+</p>
+<pre><code> var string1 = &#39;banana&#39;;
+ string1.contains(&#39;na&#39;);
+ =&gt; true</code></pre>
+<p id='Extensions_JSON.prototype.stringify' />
+<h3 id='jsonprototypestringify'>JSON.prototype.stringify()</h3>
+
+<h4 id='return_type_string'>Return Type: String</h4>
+<p> <label class='new'>Added in 2.0</label>
+Will stringify JavaScript objects as determined by EcmaScript standard as well as stringify the following Java objects ... all Java primitives and all Java primitive arrays; java.util.Date, java.lang.String, java.lang.Number, java.lang.Character, java.lang.Byte and their associated arrays; java.util.Collection and java.util.Map of all the aforementioned primitives, primitive arrays, objects, and object arrays.  
+</p>
+<pre><code>var list = new Packages.java.util.ArrayList();
+list.add(&#39;Bediako&#39;);
+JSON.stringify(list);
+=&gt; [&#39;Bediako&#39;]</code></pre>
