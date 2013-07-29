@@ -69,11 +69,7 @@ Airlift was designed to meet the following goals:
 * It should use JavaScript. JavaScript is dynamically typed, allowing for faster development, and capability to use closures for interesting applications.  When JavaScript is used on the both the client and server side, code can easily be moved back and forth.
 * It should be hosted on the cloud.  By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server.  Instead, it should be quickly and reliably scalable.
 
-Airlift, which satisfies the above specifications, is being successfully deployed today.  Airlift is being used to fulfill the software requirements of Northern Virginia Area Health Center, Ez-XBRL Solutions, Clark Construction, and the Office of Personal Management.
-
-![](/images/manual/CurrentClients_Web.png)
-
-Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
+Airlift, which satisfies the above specifications, is being successfully deployed today.  Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
 \[Image to come: Illustration of happy Bediako with Airlift.\]
 
@@ -142,8 +138,8 @@ Once you have finished writing the business logic and handlers.  From the comman
 
      ant runserver
 
-This will generate all the restful security, memcache, metadata, CRUD operations, and more to enable your application to interact with a datastore.  With Airlift rapidly generating and taking care of datastore functions, you can spend more time concentrating on the user interface and business side of your application.
+This will generate all the metadata that describes your resources, their attributes, and their security.  With Airlift rapidly generating and taking care of datastore functions, you can spend more time concentrating on the user interface and business side of your application.
 
 Now that Airlift is set up, you may go ahead and start fleshing out your web application.  In the next section, you will learn more about [airlift basics](/manual/airlift_basics) and how to go about writing an application.
 
-If you'd like to see some examples for inspiration, head over to the [demos](/manual/demos).  If you are ready to start developing, please refer to our [API](/api) for a complete listing and description of Airlift functions.
+If you'd like to see some examples for inspiration, head over to the [demos](/manual/demos).  If you are ready to start developing, please refer to our [API](/api) for a complete listing and description of Airlift functions.  You can learn more about creating a different context or environment in [customization](/manual/customization).  Using Airlift, you should be able to breeze through the development of your web application.

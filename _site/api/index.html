@@ -1012,8 +1012,8 @@ Returns a function that will only be executed once and only once when the all th
            attributes[_attributeName] = (attributes[_attributeName]
                 &amp;&amp; attributes[_attributeName] + 1)||1;
  };
- var watch = res.watch(&#39;birthDate&#39;, &#39;age&#39;, watchFunction);
- res.each(&#39;person&#39;, bediako, watch, undefined, context);
+ var watch = resource.watch(&#39;birthDate&#39;, &#39;age&#39;, watchFunction);
+ resource.each(&#39;person&#39;, bediako, watch, undefined, context);
  var result = {age: 1};
 
  =&gt; attributes: {age: 1}</code></pre>
@@ -1024,25 +1024,29 @@ Returns a function that will only be executed once and only once when the all th
 <p> <label class='new'>Added in 2.0</label>
 Converts an object into a string by calling JSON.strinigfy().
 </p>
-<pre><code> res.json({});
+<pre><code> resource.json({});
  =&gt; &#39;{}&#39;
  
- res.json([&#39;bediako&#39;]);
+ resource.json([&#39;bediako&#39;]);
  =&gt; &#39;[&quot;bediako&quot;]&#39;
  
- res.json({number: new Packages.java.lang.Integer(1)});
+ resource.json({number: new Packages.java.lang.Integer(1)});
  =&gt; &#39;{&quot;number&quot;:1}&#39;
  
- res.json({time: new Date(5)});
+ resource.json({time: new Date(5)});
  =&gt; &#39;{&quot;time&quot;:&quot;1970-01-01T00:00:00.005Z&quot;}&#39;</code></pre>
 <p id='Resource_audit' />
-<h3 id='audit_config'>audit(_config)</h3>
+<h3 id='auditobject_config'>audit(Object config)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-
+Records audit information associated with an action on a particular resource.  The 'config' object is a set of key/value pairs that configure the audit request.  It includes an entity (com.google.appengine.api.datastore.Entity), an id (java.lang.String|String), an action (java.lang.String|String), and a resourceName (java.lang.String|String).
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var entity = incoming.createEntity(&#39;person&#39;, &#39;Bediako&#39;);
+ entity.setProperty(&#39;fullName&#39;, &#39;Bediako George&#39;);
+ entity.setProperty(&#39;shortName&#39;, &#39;Bediako&#39;);
+ resource.audit({entity: entity, action: &#39;INSERT&#39;});
+ =&gt; undefined //records information to datastore</code></pre>
 <p id='Resource_copy' />
 <h3 id='copyobject_target_object_value_string_attributename'>copy(Object target, Object value, String attributeName)</h3>
 
@@ -1052,7 +1056,7 @@ Copies each 'attributeName' of 'value' into 'target'.
 </p>
 <pre><code> var target = {};
 
- res.each(&#39;person&#39;, bediako, res.copy.partial(target), undefined, context);
+ resource.each(&#39;person&#39;, bediako, resource.copy.partial(target), undefined, context);
  
  =&gt; {&quot;fullName&quot;:&quot;Bediako George&quot;,&quot;shortName&quot;:&quot;Bediako&quot;,&quot;status&quot;:&quot;middle aged&quot;,
      &quot;birthDate&quot;:&quot;1970-01-01T05:00:00.000Z&quot;,&quot;age&quot;:43,
@@ -1065,7 +1069,7 @@ Copies each 'attributeName' of 'value' into 'target'.
 <p> <label class='new'>Added in 2.0</label>
 Creates a new instance of 'value', copies all the attributes to the new instance and returns it.
 </p>
-<pre><code> var target = res.map(&#39;person&#39;, bediako, res.clone, undefined, context);
+<pre><code> var target = resource.map(&#39;person&#39;, bediako, resource.clone, undefined, context);
 
  =&gt; {&quot;fullName&quot;:&quot;Bediako George&quot;,&quot;shortName&quot;:&quot;Bediako&quot;,&quot;status&quot;:&quot;middle aged&quot;,
      &quot;birthDate&quot;:&quot;1970-01-01T05:00:00.000Z&quot;,&quot;age&quot;:43,
@@ -1075,10 +1079,24 @@ Creates a new instance of 'value', copies all the attributes to the new instance
 <h3 id='streamfunction_iterator_function_serialize_function_write_array_separators'>stream(Function iterator, Function serialize, Function write, Array separators)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
-<p> <label class='new'>Added in 2.0</label>
-<span style='background-color:red'>Description under construction.</span>
+<p> <label class='unstable'>Added in 2.0</label>
+Streams content from the iterator using the provided serializer and writer until all the items in the iterator is processed.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var da = require(&#39;airlift/da/collect&#39;).create(_web);
+ var persons = da.collect(&#39;person&#39;);
+ var serialize = function(_person) {
+      return JSON.stringify(_person);
+ };
+ var writer =
+ {
+      this.write = function(_content) {
+           util.info(_content);
+      };
+      this.end = function() {
+      };
+ };
+ resource.stream(persons, serialize, writer, &#39;[&#39;,&#39;,&#39;,&#39;]&#39;);
+ =&gt; undefined //writes data to stream</code></pre>
       
         <h2 id=Collection>
           Collection
@@ -2494,7 +2512,7 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
 <h4 id='setter_functions'>Setter functions:</h4>
 <br /><table class='functions'>
   <tr>
-    <th style='width:300px' class='head'>Function()</th>
+    <th class='head' style='width:300px'>Function()</th>
     <th class='head'>Description</th>
   </tr>
   <tr class='even'>
