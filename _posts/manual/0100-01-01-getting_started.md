@@ -59,8 +59,6 @@ With cloud computing, one need not worry about the time it takes to implement an
 <p id="A_Brief_History"></p>
 # 1.2 A Brief History
 
-\[Image to come: Illustration of frustrated Bediako.\]
-
 Airlift originated as the solution to the frustrations of a developer.  At the time, Java web application frameworks, such as Apache Struts, were not up to par with the developer's needs.  There had to be a better and faster way to build applications.  He traded in Java for a dynamic programming language, JavaScript.  He then began excitedly experimenting with Hannibn(?), capable of building web applications by using Java applications on servlets called Rhino.  It didn't take long for the developer to successfully utilize the benefits of this servlet, and he realized the potential of taking the entire platform and putting it on the cloud environment.  No more would he need to defeat the obstacles of setting up his own server, buying his own hardware, and dealing with web hosting providers.  No more would he need to wait ages for his server to be set up and for his applications to deploy.  By hosting a platform on the cloud, all these hassles would be taken care of.  Thus, Airlift was born!
 
 Airlift was designed to meet the following goals:
@@ -70,8 +68,6 @@ Airlift was designed to meet the following goals:
 * It should be hosted on the cloud.  By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server.  Instead, it should be quickly and reliably scalable.
 
 Airlift, which satisfies the above specifications, is being successfully deployed today.  Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
-
-\[Image to come: Illustration of happy Bediako with Airlift.\]
 
 <p id="Airlift_Concepts"></p>
 # 1.3 Airlift Concepts
@@ -84,14 +80,29 @@ This advanced code generation apparatus enables rapid deployment of web applicat
 
 ## The Airlift Environment
 
-![](/images/manual/Airlift_Chart_Desktop_Web.png)
+<img src="/images/manual/Airlift_Charts_Web.png" style="float:left">
 
-![](/images/manual/Airlift_Chart_with_GAE_Web.png)
+Airlift requires Java, Ant, and the App Engine SDK.  Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go.  Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScript.  Airlift incorporates [Rhino](https://developer.mozilla.org/en-US/docs/Rhino), an open source JavaScript engine, to convert JavaScript scripts into Java classes.  This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.
 
-The previous diagram shows how Airlift works with Google App Engine.  Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go.  Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScriptIn order to run JavaScript.  Airlift incorporates [Rhino](https://developer.mozilla.org/en-US/docs/Rhino), an open source JavaScript engine,  
-Rhino = a JavaScript interpretter written in Java, to convert JavaScript scripts into Java classes.  This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Airlift makes the web development process simpler.  The developer only needs to write a dictation file describing business logic and the handlers.  The Airlift framework takes care of the rest.  When deploying a web app, the following steps are executed:
+
+1.  Ant acts as the orchestrator for the whole process.  It first calls [Dictation](http://www.lucidtechnics.com/projects/dictation.html), a language for describing business applications.
+2.  app.dic, a document describing the business logic in English, is parsed by Dictation.
+3.  Dictation converts the app.dic into a coding language and generates metadata: meta/r files, meta/a files, and AppProfile.java.
+4.  Ant starts Google App Engine, running a local server.
+5.  Google App Engine initializes Airlift,  a .jar file which contains a servlet called RestServlet.
+6.  Airlift deploys your web application, hosted on the cloud!
+
+The following diagram illustrates what the Airlift environment contains and how it deploys a web application.
 
 ![](/images/manual/Airlift_Environment_Web.png)
+
 
 ## JavaScript Functional Programming
 

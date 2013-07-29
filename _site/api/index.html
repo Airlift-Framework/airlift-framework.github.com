@@ -1274,7 +1274,8 @@ Reduce boils down a collection of values into a single value. 'initialValue' is 
 <p> <label class='new'>Added in 2.0</label>
 Creates a java.util.Collection of all the resources<span style='background-color:red'>(?)</span> and returns an iterator over the collection.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var collect = require(&#39;airlift/da/collect&#39;)
+ &#39;Example code coming soon.&#39;</code></pre>
 <p id='Collect_collectBy' />
 <h3 id='collectbystring_attributename_object_value_object_config'>collectBy(String attributeName, Object value, Object config)</h3>
 
@@ -1398,7 +1399,8 @@ Returns true if item is not equal to null and is not equal to undefined.
  util.hasValue({})                       =&gt; true
  util.hasValue(-1)                       =&gt; true
  util.hasValue(true)                     =&gt; true
- util.hasValue(null);                    =&gt; false</code></pre>
+ util.hasValue(null);                    =&gt; false
+ util.hasValue(undefined);               =&gt; false</code></pre>
 <p id='Util_createErrorReporter' />
 <h3 id='createerrorreporter'>createErrorReporter()</h3>
 
@@ -1467,7 +1469,12 @@ Creates a timezone of location 'id', which can either be an abbreviation such as
 <p> <label class='new'>Added in 2.0</label>
 Formats a java.util.Date or Javascript Date into an easily readable string.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var date = new Date(1375110037982);
+ var formattedDate = util.formatDate(date, &#39;MMMM dd, yyyy&#39;);
+ =&gt; &quot;July 29, 2013&quot;
+
+ var formattedDate = util.formatDate(date, &#39;EEE, dd MMM yyyy hh:mm:ss zzz&#39;);
+ =&gt; &quot;Mon, 29 Jul 2013 11:00:37 EDT&quot;</code></pre>
 <p id='Util_adjustUTCDate' />
 <h3 id='adjustutcdatejavautildatedate_utcdate_javautiltimezonetimezone_timezone'>adjustUTCDate(java.util.Date|Date utcDate, java.util.Timezone|Timezone timezone)</h3>
 
@@ -2512,7 +2519,7 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
 <h4 id='setter_functions'>Setter functions:</h4>
 <br /><table class='functions'>
   <tr>
-    <th class='head' style='width:300px'>Function()</th>
+    <th style='width:300px' class='head'>Function()</th>
     <th class='head'>Description</th>
   </tr>
   <tr class='even'>
