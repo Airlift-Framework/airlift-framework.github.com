@@ -59,6 +59,8 @@ With cloud computing, one need not worry about the time it takes to implement an
 <p id="A_Brief_History"></p>
 # 1.2 A Brief History
 
+<img src="/images/manual/Frustrated_Bedi_Web.png" style="float:left">
+
 Airlift originated as the solution to the frustrations of a developer.  At the time, Java web application frameworks, such as Apache Struts, were not up to par with the developer's needs.  There had to be a better and faster way to build applications.  He traded in Java for a dynamic programming language, JavaScript.  He then began excitedly experimenting with Hannibn(?), capable of building web applications by using Java applications on servlets called Rhino.  It didn't take long for the developer to successfully utilize the benefits of this servlet, and he realized the potential of taking the entire platform and putting it on the cloud environment.  No more would he need to defeat the obstacles of setting up his own server, buying his own hardware, and dealing with web hosting providers.  No more would he need to wait ages for his server to be set up and for his applications to deploy.  By hosting a platform on the cloud, all these hassles would be taken care of.  Thus, Airlift was born!
 
 Airlift was designed to meet the following goals:
@@ -66,6 +68,8 @@ Airlift was designed to meet the following goals:
 * It should be RESTful.  It should use the simplest approach towards creating web applications.  One should not have to spend time figuring out which modules are creating a particular page or what the actions were.  Creating a web application should be easy.
 * It should use JavaScript. JavaScript is dynamically typed, allowing for faster development, and capability to use closures for interesting applications.  When JavaScript is used on the both the client and server side, code can easily be moved back and forth.
 * It should be hosted on the cloud.  By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server.  Instead, it should be quickly and reliably scalable.
+
+<img src="/images/manual/Happy_Bedi_Web.png" style="float:right">
 
 Airlift, which satisfies the above specifications, is being successfully deployed today.  Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
