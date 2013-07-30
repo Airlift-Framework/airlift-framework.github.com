@@ -10,12 +10,10 @@ Uses Google appengine's KeyFactory to creates a new Key having no parent from it
 </p>
 <pre><code> var u = require(&#39;airlift/util&#39;);
  var key = in.createKey(&#39;person&#39;, u.guid(12));
- key.getKind();
- =&gt; &#39;person&#39;
- key.getName();
- =&gt;  &#39;6b466a1c7142&#39;
- key.getClass();
- =&gt; &#39;com.google.appengine.api.datastore.Key&#39;</code></pre>
+
+ key.getKind();      =&gt; &#39;person&#39;
+ key.getName();      =&gt;  &#39;6b466a1c7142&#39;
+ key.getClass();     =&gt; &#39;com.google.appengine.api.datastore.Key&#39;</code></pre>
 <p id='Incoming_createEntity' />
 <h3 id='createentitystring_resourcename_string_guid'>createEntity(String resourceName, String guid)</h3>
 

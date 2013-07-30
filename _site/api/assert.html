@@ -8,7 +8,9 @@
 <p> <label class='new'>Added in 2.0</label>
 Description under construction.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var result = true;
+ assert.fail(result, false, &#39;false positive&#39;);
+ =&gt; &#39;Example result coming soon.&#39;</code></pre>
 <p id='Assert_ok' />
 <h3 id='okobject_value_string_message'>ok(Object value, String message)</h3>
 
@@ -16,7 +18,11 @@ Description under construction.
 <p> <label class='new'>Added in 2.0</label>
 Tests whether 'value' is truthy.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> assert.ok(1, &#39;result is not truthy&#39;);
+ =&gt; &#39;Example result coming soon.&#39;
+
+ assert.ok(0, &#39;result is not truthy&#39;);
+ =&gt; &#39;Example result coming soon.&#39;</code></pre>
 <p id='Assert_eq' />
 <h3 id='eqobject_actual_object_expected_string_message'>eq(Object actual, Object expected, String message)</h3>
 
@@ -24,7 +30,9 @@ Tests whether 'value' is truthy.
 <p> <label class='new'>Added in 2.0</label>
 Tests shallow, coercive equality with ==.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var result = 1;
+ assert.eq(result, &#39;one&#39;, &#39;function failed to convert integer to written numbers&#39;);
+ =&gt; &#39;Example result coming soon.&#39;</code></pre>
 <p id='Assert_notEq' />
 <h3 id='noteqobject_actual_object_expected_string_message'>notEq(Object actual, Object expected, String message)</h3>
 
@@ -32,7 +40,9 @@ Tests shallow, coercive equality with ==.
 <p> <label class='new'>Added in 2.0</label>
 Tests for whether two objects are not equal with != .
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var result = 2 + 2;
+ assert.eq(result, 5, &#39;2 + 2 should not equal 5.&#39;);
+ =&gt; &#39;Example result coming soon.&#39;</code></pre>
 <p id='Assert_deepEqual' />
 <h3 id='deepequalobject_actual_object_expected_string_message'>deepEqual(Object actual, Object expected, String message)</h3>
 
@@ -40,7 +50,10 @@ Tests for whether two objects are not equal with != .
 <p> <label class='new'>Added in 2.0</label>
 Tests a deep equality relation.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var a = [1, 2, 3];
+ var b = [1, 2, 3];
+ assert.deepEqual(b, a, &#39;elements of two matrices were not equal.&#39;);
+ =&gt; &#39;Example result coming soon.&#39;</code></pre>
 <p id='Assert_notDeepEqual' />
 <h3 id='notdeepequalobject_actual_object_expected_string_message'>notDeepEqual(Object actual, Object expected, String message)</h3>
 
@@ -48,7 +61,10 @@ Tests a deep equality relation.
 <p> <label class='new'>Added in 2.0</label>
 Tests for any deep inequality.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> var a = [1, 2, 3];
+ var b = [1, 2, 4];
+ assert.notDeepEqual(b, a, &#39;elements of two matrices should not be equal.&#39;);
+ =&gt; &#39;Example result coming soon.&#39;</code></pre>
 <p id='Assert_kindaEqual' />
 <h3 id='kindaequalobject_actual_object_expected_string_message'>kindaEqual(Object actual, Object expected, String message)</h3>
 

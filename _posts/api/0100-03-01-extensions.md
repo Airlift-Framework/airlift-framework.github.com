@@ -27,7 +27,7 @@ Returns a wrapper function that wraps the function refered to by 'this'. The arg
     
     
 <p id="Extensions_String.prototype.equalsIgnoreCase"></p>
-### String.prototype.equalsIgnoreCase (String|java.lang.String string)
+### String.prototype.equalsIgnoreCase (java.lang.String|String string)
 #### Return type: boolean
 <p> <label class="new">Added in 2.0</label>
 Case insensitive comparison of a JavaScript string1 to another JavaScript or Java string. Added as a convenience method, equalsIgnoreCase is merely a wrapper for java.lang.String.equalsIgnoreCase.
@@ -41,10 +41,10 @@ Case insensitive comparison of a JavaScript string1 to another JavaScript or Jav
 
 
 <p id="Extensions_String.prototype.replaceAll"></p>
-### String.prototype.replaceAll (String|java.lang.String string1, String|java.lang.String string2)
+### String.prototype.replaceAll (java.lang.String|String string1, java.lang.String|String string2)
 #### Return Type: String
 <p> <label class="new">Added in 2.0</label>
-Replaces every occurrence of string1 in 'this' with string2.  Added as a convenience method, replaceAll is merely a wrapper for java.lang.String.replaceAll.
+Replaces every occurrence of 'string1' in 'this' with 'string2'.  Added as a convenience method, replaceAll is merely a wrapper for java.lang.String.replaceAll.
 </p>
 
 
