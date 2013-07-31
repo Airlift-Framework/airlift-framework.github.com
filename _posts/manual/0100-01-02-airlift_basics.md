@@ -8,29 +8,28 @@ categories: manual
 published: true
 ---
 
-| [Introduction](#Introduction) | [The Airlift World](#The_Airlift_World) | [Dictation](#Dictation) | [Handlers](#Handlers) | [Code Generation](#Code_Generation) |
+| [Introduction](#20_introduction) | [The Airlift World](#21_the_airlift_world) | [Dictation](#22_dictation) | [Handlers](#23_handlers) | [Code Generation](#24_code_generation) |
 
-<p id="Introduction"></p>
 # 2.0 Introduction
 
-<p id="The_Airlift_World"></p>
+
 # 2.1 The Airlift World
 
-<p id="Dictation"></p>
+
 # 2.2 Dictation
 
 ## app.dic
 
 ## Resources
 
-<p id="Handlers"></p>
+
 # 2.3 Handlers
 
 ## Rest
 
 ## Hello World
 
-<p id="Code_Generation"></p>
+
 # 2.4 Code Generation
 
 <!--

@@ -8,15 +8,13 @@ categories: manual
 published: true
 ---
 
-| [Introduction](#Introduction) | [Cloud Computing](#Cloud_Computing) | [A Brief History](#A_Brief_History) | [Airlift Concepts](#Airlift_Concepts) | [Installation](#Installation) | [Setting Up](#Setting_Up) |
+| [Introduction](#10_introduction) | [Cloud Computing](#11_cloud_computing) | [A Brief History](#12_a_brief_history) | [Airlift Concepts](#13_airlift_concepts) | [Installation](#14_installation) | [Setting Up](#15_setting_up) |
 
-<p id="Introduction"></p>
 # 1.0 Introduction
 
 This page will be about getting started with Lucid Technic's Airlift.  We will begin by explaining some background on cloud computing.  Then we will cover how to get Airlift running on your system and setup so that you can start working with it. At the end of this page you should understand what Airlift is capable of, why you should use it, and be ready to rapidly start your first Airlift application.
 
 
-<p id="Cloud_Computing"></p>
 # 1.1 Cloud Computing
 
 Cloud computing is the dynamic delivery of resources and services through the internet.  Due to its cost effectiveness, flexibility, and global accessibility, more and more companies are outsourcing their IT needs to seemingly virtual third party servers.  Instead of executing computations on a personal computer, through the cloud, a network of remote servers can provide scalable computing power.  These servers can store, manage, and process data using the internet as a medium.  When we check our email, collaborate on a project with Google Docs, or add an item to our Amazon cart, we are utilizing services on the cloud.
@@ -56,7 +54,6 @@ Along with increasing capabilities, one has the option to handpick any of the se
 With cloud computing, one need not worry about the time it takes to implement and deploy applications.  When an application is ready to go up on the web, it will be functional and ready to use within a few minutes.
 
 
-<p id="A_Brief_History"></p>
 # 1.2 A Brief History
 
 <img src="/images/manual/Frustrated_Bedi_Web.png" style="float:left">
@@ -73,7 +70,7 @@ Airlift was designed to meet the following goals:
 
 Airlift, which satisfies the above specifications, is being successfully deployed today.  Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
-<p id="Airlift_Concepts"></p>
+
 # 1.3 Airlift Concepts
 
 Airlift is Lucid Technics’ open source rapid web development framework designed to work with cloud infrastructures.  Airlift can be used to rapidly build secure and scalable cloud applications.  Much of the software created using Airlift is generated from Dictation, Lucid Technics’ open source human readable business requirements language.
@@ -123,7 +120,6 @@ Airlift supports the development of restful web applications.  It implements the
 Now the purposes and features of Airlift should be clear.  Airlift provides a restful JavaScript web application framework, designed to function with Google App Engine and cloud infrastructures.  If this sounds like the perfect tool for your web application development, or a framework that you would like to try, great!  We trust that Airlift will facilitate the rapid development of your scalable application on Google App Engine.  The following section will walk you through the installation process.
 
 
-<p id="Installation"></p>
 # 1.4 Installation
 
 Installing Airlift is simple.  You just need to copy the Airlift directory onto your local machine.  This should only take a few minutes.  But before you do that, be sure that your system meets the following requirements:
@@ -144,7 +140,6 @@ All set?  Go ahead and download the zip file, and unzip it into whichever direct
 That's it!  You should now have access to all that Airlift has to offer.  If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.
 
 
-<p id="Setting_Up"></p>
 # 1.5 Setting Up
 
 The download button above provides a template hierarchy directory for a web application.  Inside the directory, many folders and files are already set up.  As the developer, you only need to worry about the business logic and the handlers.  In the dictation file app.dic (..src/doc/app.dic), you can use plain english to describe your business logic.  You may write your own restful handlers for each class, resource, or domain in war/WEB-INF/classes/handler.  
