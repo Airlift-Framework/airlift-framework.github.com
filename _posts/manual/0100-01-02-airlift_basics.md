@@ -24,14 +24,14 @@ published: true
 ## Resources
 
 <p id="Handlers"></p>
-# Handlers
+# 2.3 Handlers
 
 ## Rest
 
 ## Hello World
 
 <p id="Code_Generation"></p>
-# Code Generation
+# 2.4 Code Generation
 
 <!--
 A resource handle is an identifier for a resource that is currently being accessed. Resource handles can be opaque, in which case they are often integer numbers, or they can be pointers that allow access to further information. Common resource handles are file descriptors and sockets.
