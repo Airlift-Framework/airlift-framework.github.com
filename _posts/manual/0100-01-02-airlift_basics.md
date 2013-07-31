@@ -8,25 +8,30 @@ categories: manual
 published: true
 ---
 
-| [Introduction](#Introduction) | [Modules](#Modules) | [Dictation](#Dictation) | [Creating a Resource](#Creating_a_Resource) | [Writing a Handler](#Writing_a_Handler) | [Handling Resources](#Handling_Resources) | [Code Generation](#Code_Generation) | 
+| [Introduction](#Introduction) | [The Airlift World](#The_Airlift_World) | [Dictation](#Dictation) | [Handlers](#Handlers) | [Code Generation](#Code_Generation) |
 
-# Introduction
+<p id="Introduction"></p>
+# 2.0 Introduction
 
-# Modules
+<p id="The_Airlift_World"></p>
+# 2.1 The Airlift World
 
-# Dictation
+<p id="Dictation"></p>
+# 2.2 Dictation
 
-# Creating a Resource
+## app.dic
 
-# Writing a Handler
+## Resources
 
-# Handling Resources
+<p id="Handlers"></p>
+# Handlers
 
+## Rest
+
+## Hello World
+
+<p id="Code_Generation"></p>
 # Code Generation
-
-# This page is under construction!
-
-We are currently working to make the airlift basics page available soon.  Thank you for your patience.
 
 <!--
 A resource handle is an identifier for a resource that is currently being accessed. Resource handles can be opaque, in which case they are often integer numbers, or they can be pointers that allow access to further information. Common resource handles are file descriptors and sockets.

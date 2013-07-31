@@ -24,31 +24,31 @@ The following table describes the properties of the Javascript Object returned b
   </tr>
   <tr class="even">
     <th id="ResourceMetadata_isView">isView</th>
-    <td>Returns the isView of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is a view, or false.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceMetadata_isPresented">isPresented</th>
-    <td>Returns the isPresented of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is presented, or true.</td>
   </tr>
   <tr class="even">
     <th id="ResourceMetadata_isPersisted">isPersisted</th>
-    <td>Returns the isPersisted of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is persisted, or true.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceMetadata_isCached">isCached</th>
-    <td>Returns the isCached of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is cached, or true.</td>
   </tr>
   <tr class="even">
     <th id="ResourceMetadata_isSecured">isSecured</th>
-    <td>Returns the isSecured of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is secured, or true.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceMetadata_isAudited">isAudited</th>
-    <td>Returns the isAudited of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is audited, or false.</td>
   </tr>
   <tr class="even">
     <th id="ResourceMetadata_lookingAt">lookingAt</th>
-    <td>Returns the lookingAt of the attribute, or undefined.</td>
+    <td>Returns an object of what the attribute is currently looking at, or undefined.</td>
   </tr>
 </table>
 

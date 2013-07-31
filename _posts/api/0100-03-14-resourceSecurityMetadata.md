@@ -13,7 +13,7 @@ When requiring the ResourceSecurityMetadata module, a Javascript object will be 
      var resourceMetadata = require('airlift/resourceMetadata');
 
 
-The following table describes the properties of the Javascript Object returned by the previous code. Returns a property of the resource if it has a value for that property. If not, returns a default value.
+The following table describes the properties of the Javascript Object returned by the previous code. It returns a property of the resource if it has a value for that property. If not, returns a default value. The returned properties are Java HashSets of roles that can make requests to the resource.
 
 <br>
 
@@ -24,36 +24,36 @@ The following table describes the properties of the Javascript Object returned b
   </tr>
   <tr class="even">
     <th id="ResourceSecurityMetadata_collectRoles">collectRoles</th>
-    <td>Returns the collectRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can collect this resource, or {'all': 1}.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceSecurityMetadata_putRoles">putRoles</th>
-    <td>Returns the putRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can update this resource, or {'all': 1}.</td>
   </tr>
   <tr class="even">
     <th id="ResourceSecurityMetadata_postRoles">postRoles</th>
-    <td>Returns the postRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can create this resource, or {'all': 1}.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceSecurityMetadata_headRoles">headRoles</th>
-    <td>Returns the headRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can get this resource, or {'all': 1}.</td>
   </tr>
   <tr class="even">
     <th id="ResourceSecurityMetadata_getRoles">getRoles</th>
-    <td>Returns the getRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can get this resource, or {'all': 1}.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceSecurityMetadata_deleteRoles">deleteRoles</th>
-    <td>Returns the deleteRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can delete this resource, or {'noone': 1}.</td>
   </tr>
 </table>
 
 <br>
 
 
-     resourceSecurityMetadata.collectRoles;       => true
-     resourceSecurityMetadata.putRoles;           => false
-     resourceSecurityMetadata.deleteRoles;        => true
+     resourceSecurityMetadata.collectRoles;       => ['manager','employee']
+     resourceSecurityMetadata.putRoles;           => ['manager']
+     resourceSecurityMetadata.deleteRoles;        => {'noone': 1}
 
 
 

@@ -52,7 +52,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
 <h4 id='return_type_object'>Return type: Object</h4>
 <p> <label class='new'>Added in 2.0</label>
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata). The result of each iterator invocation is saved to a new resource object.
+Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: value, attributeName, resource, and metadata. The result of each iterator invocation is saved to a new resource object.
 </p>
 <pre><code> var attributes = [];
 
@@ -92,7 +92,7 @@ Transforms the attribute names of a resource into a new set of names as defined 
 
 <h4 id='return_type_string'>Return type: String</h4>
 <p> <label class='new'>Added in 2.0</label>
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with five arguments: (base, value, attributeName, resource, metadata). The result of each iterator invocation replaces the base value. Reduce returns the value of base at the end.
+Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with five arguments: base, value, attributeName, resource, and metadata. The result of each iterator invocation replaces the base value. Reduce returns the value of base at the end.
 </p>
 <pre><code> var attributes = [];
  	
@@ -182,7 +182,7 @@ Returns a function that will only be executed once and only once when the all th
 
 <h4 id='return_type_function'>Return type: Function</h4>
 <p> <label class='new'>Added in 2.0</label>
-Converts an object into a string by calling JSON.strinigfy().
+Converts an object into a string by calling JSON.stringify().
 </p>
 <pre><code> resource.json({});
  =&gt; &#39;{}&#39;

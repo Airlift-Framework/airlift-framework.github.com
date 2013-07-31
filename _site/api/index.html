@@ -892,7 +892,7 @@ Iterates over a resource, yielding each in turn to an iterator function. The ite
 
 <h4 id='return_type_object'>Return type: Object</h4>
 <p> <label class='new'>Added in 2.0</label>
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: (value, attributeName, resource, metadata). The result of each iterator invocation is saved to a new resource object.
+Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with four arguments: value, attributeName, resource, and metadata. The result of each iterator invocation is saved to a new resource object.
 </p>
 <pre><code> var attributes = [];
 
@@ -932,7 +932,7 @@ Transforms the attribute names of a resource into a new set of names as defined 
 
 <h4 id='return_type_string'>Return type: String</h4>
 <p> <label class='new'>Added in 2.0</label>
-Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with five arguments: (base, value, attributeName, resource, metadata). The result of each iterator invocation replaces the base value. Reduce returns the value of base at the end.
+Iterates over a resource, yielding each in turn to an iterator function. The iterator is bound to the context object, if one is passed, along with the attributes provided in the default context. Each invocation of iterator is called with five arguments: base, value, attributeName, resource, and metadata. The result of each iterator invocation replaces the base value. Reduce returns the value of base at the end.
 </p>
 <pre><code> var attributes = [];
  	
@@ -1022,7 +1022,7 @@ Returns a function that will only be executed once and only once when the all th
 
 <h4 id='return_type_function'>Return type: Function</h4>
 <p> <label class='new'>Added in 2.0</label>
-Converts an object into a string by calling JSON.strinigfy().
+Converts an object into a string by calling JSON.stringify().
 </p>
 <pre><code> resource.json({});
  =&gt; &#39;{}&#39;
@@ -2520,24 +2520,24 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
 <h4 id='setter_functions'>Setter functions:</h4>
 <br /><table class='functions'>
   <tr>
-    <th class='head' style='width:300px'>Function()</th>
+    <th style='width:300px' class='head'>Function()</th>
     <th class='head'>Description</th>
   </tr>
   <tr class='even'>
     <th id='Web_setCacheable'>setCacheable(Number seconds)</th>
-    <td>Description</td>
+    <td>Sets the browser to cache the page for 'seconds' seconds.  By default, the cache is set to 86400 seconds or 24 hours.</td>
   </tr>
   <tr class='odd'>
     <th id='Web_setContent'>setContent(Object content)</th>
-    <td>Description</td>
+    <td>Sets the content of the page to 'content'.</td>
   </tr>
   <tr class='even'>
     <th id='Web_setResponseCode'>setResponseCode(Object code)</th>
-    <td>Description</td>
+    <td>Sets the response code web context to 'code'.</td>
   </tr>
   <tr class='odd'>
     <th id='Web_setType'>setType(String type)</th>
-    <td>Description</td>
+    <td>Sets the type of the web context to 'type'.</td>
   </tr>
 </table><br /><p id='Web_auditDeletes' />
 <h3 id='auditdeletes'>auditDeletes()</h3>
@@ -2722,7 +2722,7 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
 
 <pre><code> var attributeMetadata = require(&#39;airlift/attributeMetadata&#39;);</code></pre>
 
-<p>The following table describes the properties of the Javascript Object returned by the previous code. Returns a property of the attribute if it has a value for that property. If not, returns a default value.</p>
+<p>The following table describes the properties of the Javascript Object returned by the previous code. It returns a property of the attribute if it has a value for that property. If not, returns a default value. The return types are all Java objects.</p>
 <br /><table class='functions'>
   <tr>
     <th class='head'>Property</th>
@@ -2730,127 +2730,127 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_name'>name</th>
-    <td>Returns the name of the attribute, or null.</td>
+    <td>Returns a String of the name of the attribute, or null.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_type'>type</th>
-    <td>Returns the type of the attribute, or 'java.lang.String'.</td>
+    <td>Returns a String of the type of the attribute, or 'java.lang.String'.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_isPresentable'>isPresentable</th>
-    <td>Returns the isPresentable of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is presentable, or true.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_displayOrder'>displayOrder</th>
-    <td>Returns the displayOrder of the attribute, or 1000.</td>
+    <td>Returns an int of the display order of the attribute, or 1000.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_fieldSetName'>fieldSetName</th>
-    <td>Returns the fieldSetNameof the attribute, or ''.</td>
+    <td>Returns a String of the fieldSetName of the attribute, or ''.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_label'>label</th>
-    <td>Returns the label of the attribute, or ''.</td>
+    <td>Returns a String of the label of the attribute, or ''.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_pluralLabel'>pluralLabel</th>
-    <td>Returns the pluralLabel of the attribute, or ''.</td>
+    <td>Returns a String of the pluralLabel of the attribute, or ''.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_displayLength'>displayLength</th>
-    <td>Returns the displayLength of the attribute, or 32.</td>
+    <td>Returns an int of the display length of the attribute, or 32.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_inputType'>inputType</th>
-    <td>Returns the inputType of the attribute, or 'TEXT'.</td>
+    <td>Returns a Type of the input type of the attribute, or 'TEXT'.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_textAreaRows'>textAreaRows</th>
-    <td>Returns the textAreaRows of the attribute, or 5.</td>
+    <td>Returns an int of the number of rows in the text area of the attribute, or 5.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_textAreaColumns'>textAreaColumns</th>
-    <td>Returns the textAreaColumns of the attribute, or 50.</td>
+    <td>Returns an int of the number of columns in the text area of the attribute, or 50.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_hasFormat'>hasFormat</th>
-    <td>Returns the hasFormat of the attribute, or '.*'.</td>
+    <td>Returns a String of the format of the attribute, or '.*'.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_readOnly'>readOnly</th>
-    <td>Returns the readOnly of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is read-only, or false.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_allowedValues'>allowedValues</th>
-    <td>Returns the allowedValues of the attribute, or {}.</td>
+    <td>Returns a String array of the values the attribute allows, or {}.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_dateTimePattern'>dateTimePattern</th>
-    <td>Returns the dateTimePattern of the attribute, or "MM-dd-yyyy".</td>
+    <td>Returns a String of the date format of the attribute, or "MM-dd-yyyy".</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_delimiter'>delimiter</th>
-    <td>Returns the delimiter of the attribute, or ','.</td>
+    <td>Returns a String of the delimiter of the attribute, or ','.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_isPersistable'>isPersistable</th>
-    <td>Returns the isPersistable of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is persistable, or true.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_maxLength'>maxLength</th>
-    <td>Returns the maxLength of the attribute, or 200.</td>
+    <td>Returns an int of the maximum length of the attribute, or 200.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_minLength'>minLength</th>
-    <td>Returns the minLength of the attribute, or 0.</td>
+    <td>Returns an int of the minimum length of the attribute, or 0.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_isSearchable'>isSearchable</th>
-    <td>Returns the isSearchable of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is searchable, or false.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_isIndexable'>isIndexable</th>
-    <td>Returns the isIndexable of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is indexable, or false.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_isPrimaryKey'>isPrimaryKey</th>
-    <td>Returns the isPrimaryKey of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is a primary key, or false.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_isUniqueKey'>isUniqueKey</th>
-    <td>Returns the isUniqueKey of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is a unique key, or false.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_concept'>concept</th>
-    <td>Returns the concept of the attribute, or ''.</td>
+    <td>Returns a String of the concept of the attribute, or ''.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_nullable'>nullable</th>
-    <td>Returns the nullable of the attribute, or false.</td>
+    <td>Returns a boolean  of whether or not the attribute is nullable, or false.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_immutable'>immutable</th>
-    <td>Returns the immutable of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is immutable, or false.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_ranged'>ranged</th>
-    <td>Returns the ranged of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is ranged, or false.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_minValue'>minValue</th>
-    <td>Returns the minValue of the attribute, or null.</td>
+    <td>Returns a String of the minimum value of the attribute, or null.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_maxValue'>maxValue</th>
-    <td>Returns the maxValue of the attribute, or null.</td>
+    <td>Returns a String the maximum value of the attribute, or null.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_encrypted'>encrypted</th>
-    <td>Returns the encrypted of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is encrypted, or false.</td>
   </tr>
   <tr class='even'>
     <th id='AttributeMetadata_semanticType'>semanticType</th>
-    <td>Returns the semanticType of the attribute, or 'NONE'.</td>
+    <td>Returns a Semantic of the semantic type of the attribute, or 'NONE'.</td>
   </tr>
   <tr class='odd'>
     <th id='AttributeMetadata_mapTo'>mapTo</th>
@@ -2861,7 +2861,7 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
     <td>Returns the mapToMany of the attribute, or null.</td>
   </tr>
 </table><br />
-<pre><code> attributeMetadata.name;                 =&gt; &#39;ex output&#39;
+<pre><code> attributeMetadata.name;                 =&gt; &#39;person&#39;
  attributeMetadata.readOnly;             =&gt; true
  attributeMetadata.encrypted;            =&gt; false</code></pre>
       
@@ -2883,31 +2883,31 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
   </tr>
   <tr class='even'>
     <th id='ResourceMetadata_isView'>isView</th>
-    <td>Returns the isView of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is a view, or false.</td>
   </tr>
   <tr class='odd'>
     <th id='ResourceMetadata_isPresented'>isPresented</th>
-    <td>Returns the isPresented of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is presented, or true.</td>
   </tr>
   <tr class='even'>
     <th id='ResourceMetadata_isPersisted'>isPersisted</th>
-    <td>Returns the isPersisted of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is persisted, or true.</td>
   </tr>
   <tr class='odd'>
     <th id='ResourceMetadata_isCached'>isCached</th>
-    <td>Returns the isCached of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is cached, or true.</td>
   </tr>
   <tr class='even'>
     <th id='ResourceMetadata_isSecured'>isSecured</th>
-    <td>Returns the isSecured of the attribute, or true.</td>
+    <td>Returns a boolean of whether or not the attribute is secured, or true.</td>
   </tr>
   <tr class='odd'>
     <th id='ResourceMetadata_isAudited'>isAudited</th>
-    <td>Returns the isAudited of the attribute, or false.</td>
+    <td>Returns a boolean of whether or not the attribute is audited, or false.</td>
   </tr>
   <tr class='even'>
     <th id='ResourceMetadata_lookingAt'>lookingAt</th>
-    <td>Returns the lookingAt of the attribute, or undefined.</td>
+    <td>Returns an object of what the attribute is currently looking at, or undefined.</td>
   </tr>
 </table><br />
 <pre><code> resourceMetadata.isView;                =&gt; true
@@ -2924,7 +2924,7 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
 
 <pre><code> var resourceMetadata = require(&#39;airlift/resourceMetadata&#39;);</code></pre>
 
-<p>The following table describes the properties of the Javascript Object returned by the previous code. Returns a property of the resource if it has a value for that property. If not, returns a default value.</p>
+<p>The following table describes the properties of the Javascript Object returned by the previous code. It returns a property of the resource if it has a value for that property. If not, returns a default value. The returned properties are Java HashSets of roles that can make requests to the resource.</p>
 <br /><table class='functions'>
   <tr>
     <th class='head'>Property</th>
@@ -2932,32 +2932,32 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
   </tr>
   <tr class='even'>
     <th id='ResourceSecurityMetadata_collectRoles'>collectRoles</th>
-    <td>Returns the collectRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can collect this resource, or {'all': 1}.</td>
   </tr>
   <tr class='odd'>
     <th id='ResourceSecurityMetadata_putRoles'>putRoles</th>
-    <td>Returns the putRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can update this resource, or {'all': 1}.</td>
   </tr>
   <tr class='even'>
     <th id='ResourceSecurityMetadata_postRoles'>postRoles</th>
-    <td>Returns the postRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can create this resource, or {'all': 1}.</td>
   </tr>
   <tr class='odd'>
     <th id='ResourceSecurityMetadata_headRoles'>headRoles</th>
-    <td>Returns the headRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can get this resource, or {'all': 1}.</td>
   </tr>
   <tr class='even'>
     <th id='ResourceSecurityMetadata_getRoles'>getRoles</th>
-    <td>Returns the getRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can get this resource, or {'all': 1}.</td>
   </tr>
   <tr class='odd'>
     <th id='ResourceSecurityMetadata_deleteRoles'>deleteRoles</th>
-    <td>Returns the deleteRoles of the resource's security, or {'all': 1}.</td>
+    <td>Returns a HashSet of the roles that can delete this resource, or {'noone': 1}.</td>
   </tr>
 </table><br />
-<pre><code> resourceSecurityMetadata.collectRoles;       =&gt; true
- resourceSecurityMetadata.putRoles;           =&gt; false
- resourceSecurityMetadata.deleteRoles;        =&gt; true</code></pre>
+<pre><code> resourceSecurityMetadata.collectRoles;       =&gt; [&#39;manager&#39;,&#39;employee&#39;]
+ resourceSecurityMetadata.putRoles;           =&gt; [&#39;manager&#39;]
+ resourceSecurityMetadata.deleteRoles;        =&gt; {&#39;noone&#39;: 1}</code></pre>
       
     </div>
   </div>
