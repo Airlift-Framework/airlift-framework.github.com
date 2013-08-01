@@ -1,7 +1,7 @@
 ---
 layout: manual
 title: Airlift Basics
-abstract: Documentation for incorporating Airlift into your applications.
+abstract: Documentation for deploying your Airlift applicaton.
 prose_link: http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-01-airlift_basics.md
 author: Serena Lei
 categories: manual
@@ -12,9 +12,20 @@ published: true
 
 # 2.0 Introduction
 
+In Airlift Basics, we will walk you through the steps of startting and finishing an Airlift application.  We'll explain more about what's inside the Airlift environment and how it all works together.  This page will describe how to write your business logic in the app.dic file and your handlers, which are the only two documents that you need to worry about.  After the developer's part is written, we can move on to deploying your first Airlift hello world application.
+
 
 # 2.1 The Airlift World
 
+Airlift
+  airlift
+    dictate.js
+    hack.js
+    packages.js
+    test.js
+
+gen/meta/a gen/meta/r app.dic harness.js dictate.js
+builds set "global" variables outside of build file then the build file uses them
 
 # 2.2 Dictation
 
