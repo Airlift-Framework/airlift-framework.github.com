@@ -51,8 +51,8 @@ The following table describes the properties of the Javascript Object returned b
 <br>
 
 
-     resourceSecurityMetadata.collectRoles;       => ['manager','employee']
-     resourceSecurityMetadata.putRoles;           => ['manager']
+     resourceSecurityMetadata.collectRoles;       => {'manager': 1, 'employee': 1}
+     resourceSecurityMetadata.putRoles;           => {'manager': 1}
      resourceSecurityMetadata.deleteRoles;        => {'noone': 1}
 
 

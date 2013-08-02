@@ -33,6 +33,6 @@
     <td>Returns a HashSet of the roles that can delete this resource, or {'noone': 1}.</td>
   </tr>
 </table><br />
-<pre><code> resourceSecurityMetadata.collectRoles;       =&gt; [&#39;manager&#39;,&#39;employee&#39;]
- resourceSecurityMetadata.putRoles;           =&gt; [&#39;manager&#39;]
+<pre><code> resourceSecurityMetadata.collectRoles;       =&gt; {&#39;manager&#39;: 1, &#39;employee&#39;: 1}
+ resourceSecurityMetadata.putRoles;           =&gt; {&#39;manager&#39;: 1}
  resourceSecurityMetadata.deleteRoles;        =&gt; {&#39;noone&#39;: 1}</code></pre>
