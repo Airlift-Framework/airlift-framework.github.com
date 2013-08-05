@@ -8,20 +8,17 @@
 <p> <label class='new'>Added in 2.0</label>
 Converts an entity's property values into a JavaScript's objects attribute values. Returns 'value' as a Javascript object. Designed to be used with resource.each.
 </p>
-<pre><code> var u = require(&#39;airlift/util&#39;);
+<pre><code> var util = require(&#39;airlift/util&#39;);
  var in = require(&#39;airlift/incoming&#39;);
- var res = require(&#39;airlift/resource&#39;);
+ var resource = require(&#39;airlift/resource&#39;);
 
  var person = {};
- var entity = in.createEntity(&#39;person&#39;, u.guid(12));
+ var entity = in.createEntity(&#39;person&#39;, util.guid(12));
  entity.setProperty(&#39;fullName&#39;, &#39;Josh Lee&#39;);
  entity.setProperty(&#39;age&#39;, 24);
 
- res.each(&#39;person&#39;, person, out.deentify.partial(entity));
- person[&#39;fullName&#39;];
- =&gt; &#39;Josh Lee&#39;
- person[&#39;age&#39;];
- =&gt; 24</code></pre>
+ resource.each(&#39;person&#39;, person, out.deentify.partial(entity));
+ =&gt; {&#39;fullName&#39;: &#39;Josh Lee&#39;, &#39;age&#39;: 24}</code></pre>
 <p id='Outgoing_decrypt' />
 <h3 id='decryptentity_entity_object_value_string_attributename_object_resource_object_attributemetadata'>decrypt(Entity entity, Object value, String attributeName, Object resource, Object attributeMetadata)</h3>
 
@@ -29,13 +26,15 @@ Converts an entity's property values into a JavaScript's objects attribute value
 <p> <label class='new'>Added in 2.0</label>
 Deciphers the encrypted value associated with 'attributeName' and sets the property map values on to 'entity'. Returns the decrypted value. Designed to be used with resource.each.
 </p>
-<pre><code> var u = require(&#39;airlift/util&#39;);
- var in = require(&#39;airlift/incoming&#39;);
- var res = require(&#39;airlift/resource&#39;);
+<pre><code> var in = require(&#39;airlift/incoming&#39;);
+ var resource = require(&#39;airlift/resource&#39;);
 
  var person = {};
- var entity = in.createEntity(&#39;person&#39;, u.guid(12));
+ var entity = in.createEntity(&#39;person&#39;, &#39;007&#39;);
  entity.setProperty(&#39;fullName&#39;, &#39;Josh Lee&#39;);
- entity.setProperty(&#39;age&#39;, 24);
+ entity.setProperty(&#39;secretInfo&#39;, &#39;encrypted_secret_info_28s9l9e9ba2&#39;);
 
- res.each(&#39;person&#39;, person, out.decrypt.partial(entity));</code></pre>
+ resource.each(&#39;person&#39;, person, out.decrypt.partial(entity));
+ =&gt; {&#39;id&#39;: &#39;007&#39;, &#39;fullName&#39;: &#39;Josh Lee&#39;, &#39;secretInfo&#39;: &#39;555-55-5555&#39;}
+ //secret info is decrypted and stored in &#39;entity&#39; along with other
+      &#39;person&#39; attributes</code></pre>

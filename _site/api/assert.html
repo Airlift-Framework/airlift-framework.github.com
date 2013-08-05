@@ -8,9 +8,8 @@
 <p> <label class='new'>Added in 2.0</label>
 Description under construction.
 </p>
-<pre><code> var result = true;
- assert.fail(result, false, &#39;false positive&#39;);
- =&gt; &#39;Example result coming soon.&#39;</code></pre>
+<pre><code> assert.fail(true, false, &#39;false positive&#39;, &#39;===&#39;, assert.eq);
+ THROWS: assert.AssertionError;</code></pre>
 <p id='Assert_ok' />
 <h3 id='okobject_value_string_message'>ok(Object value, String message)</h3>
 
@@ -52,7 +51,7 @@ Tests shallow, coercive equality with ==.
  {
       var result = 1;
       assert.eq(result, &#39;one&#39;, &#39;integer not converted to written numbers&#39;);
- {
+ }
 
  STDOUT:      integer not converted to written numbers ! == 1
          Failed ... test asserts</code></pre>
@@ -67,7 +66,7 @@ Tests for whether two objects are not equal with != .
  {
       var result = 2 + 2;
       assert.eq(result, 5, &#39;oh no, we&#39;ve lapsed into an Orwellian society&#39;);
- {
+ }
 
  STDOUT OK ... test example</code></pre>
 <p id='Assert_deepEqual' />
@@ -82,7 +81,7 @@ Tests a deep equality relation.
       var a = [1, 2, 3];
       var b = [1, 2, 3];
       assert.deepEqual(b, a, &#39;elements of two matrices were not equal.&#39;);
- {
+ }
 
  STDOUT OK ... test example</code></pre>
 <p id='Assert_notDeepEqual' />
@@ -97,25 +96,37 @@ Tests for any deep inequality.
       var a = [1, 2, 3];
       var b = [1, 2, 4];
       assert.notDeepEqual(b, a, &#39;differing elements of two matrices were equal.&#39;);
- {
+ }
 
  STDOUT OK ... test example</code></pre>
 <p id='Assert_kindaEqual' />
 <h3 id='kindaequalobject_actual_object_expected_string_message'>kindaEqual(Object actual, Object expected, String message)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
-<p> <label class='new'>Added in 2.0</label>
-Tests strict equality, as determined by ===.
+<p> <label class='unstable'>Added in 2.0</label>
+Tests equality, as determined by ==.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> exports[&#39;test example&#39;] = function(asserts)
+ {
+      var result = 1;
+      assert.kindaEqual(result, &#39;one&#39;, &#39;result is incorrect&#39;);
+ }
+
+ STDOUT: OK ... test example</code></pre>
 <p id='Assert_notKindaEqual' />
 <h3 id='notkindaequalobject_actual_object_expected_string_message'>notKindaEqual(Object actual, Object expected, String message)</h3>
 
 <h4 id='return_type_na'>Return type: n/A</h4>
-<p> <label class='new'>Added in 2.0</label>
-Tests for strict inequality, as determined by !== .
+<p> <label class='unstable'>Added in 2.0</label>
+Tests for inequality, as determined by != .
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> exports[&#39;test example&#39;] = function(asserts)
+ {
+      var result = &#39;luma&#39;;
+      assert.notKindaEqual(result, null, &#39;error: needs more starbits&#39;);
+ }
+
+ STDOUT: OK ... test example</code></pre>
 <p id='Assert_throws' />
 <h3 id='throwsobject_block_object_error_string_message'>throws(Object block, Object error, String message)</h3>
 
@@ -165,4 +176,9 @@ Tests that 'block' does not throw an error. 'error' and 'message' are optional. 
 <p> <label class='new'>Added in 2.0</label>
 Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'value' if it is true. Useful when testing the first argument, error in callbacks.
 </p>
-<pre><code> &#39;Example code coming soon.&#39;</code></pre>
+<pre><code> try {
+      throw &#39;this is an error&#39;;
+ }
+ catch (e) {
+      assert.ifError(e);
+ }</code></pre>

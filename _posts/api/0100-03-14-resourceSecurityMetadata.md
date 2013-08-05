@@ -24,27 +24,27 @@ The following table describes the properties of the Javascript Object returned b
   </tr>
   <tr class="even">
     <th id="ResourceSecurityMetadata_collectRoles">collectRoles</th>
-    <td>Returns a HashSet of the roles that can collect this resource, or {'all': 1}.</td>
+    <td>Returns an Object containing the roles that can collect this resource, or {'all': 1}.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceSecurityMetadata_putRoles">putRoles</th>
-    <td>Returns a HashSet of the roles that can update this resource, or {'all': 1}.</td>
+    <td>Returns an Object containing the roles that can update this resource, or {'all': 1}.</td>
   </tr>
   <tr class="even">
     <th id="ResourceSecurityMetadata_postRoles">postRoles</th>
-    <td>Returns a HashSet of the roles that can create this resource, or {'all': 1}.</td>
+    <td>Returns an Object containing the roles that can create this resource, or {'all': 1}.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceSecurityMetadata_headRoles">headRoles</th>
-    <td>Returns a HashSet of the roles that can get this resource, or {'all': 1}.</td>
+    <td>Returns an Object containing the roles that can get this resource, or {'all': 1}.</td>
   </tr>
   <tr class="even">
     <th id="ResourceSecurityMetadata_getRoles">getRoles</th>
-    <td>Returns a HashSet of the roles that can get this resource, or {'all': 1}.</td>
+    <td>Returns an Object containing the roles that can get this resource, or {'all': 1}.</td>
   </tr>
   <tr class="odd">
     <th id="ResourceSecurityMetadata_deleteRoles">deleteRoles</th>
-    <td>Returns a HashSet of the roles that can delete this resource, or {'noone': 1}.</td>
+    <td>Returns an Object containing the roles that can delete this resource, or {'noone': 1}.</td>
   </tr>
 </table>
 

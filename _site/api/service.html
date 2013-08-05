@@ -47,7 +47,7 @@ Returns Packages.com.google.appengine.api.taskqueue.QueueFactory.getQueue(name)
 Uses com.google.appengine.api.utils.SystemProperty to return the application identifier for the current application.
 </p>
 <pre><code> var appId = service.getAppIdentityService().getAppId();
- &#39;ex result coming soon&#39;</code></pre>
+ =&gt; &#39;com.example.myCoolApplication&#39;</code></pre>
 <p id='Service_AgetDomain' />
 <h3 id='getappidentityservicegetdomain'>getAppIdentityService().getDomain()</h3>
 
@@ -56,7 +56,7 @@ Uses com.google.appengine.api.utils.SystemProperty to return the application ide
 Uses com.google.appengine.api.appidentity.AppIdentityService.ParsedAppId to return the application's domain or the empty string if no domain.
 </p>
 <pre><code> var domainName = service.getAppIdentityService().getDomain();
- &#39;ex result coming soon&#39;</code></pre>
+ =&gt; &#39;example.com&#39;</code></pre>
 <p id='Service_AgetPartition' />
 <h3 id='getappidentityservicegetpartition'>getAppIdentityService().getPartition()</h3>
 
@@ -65,7 +65,7 @@ Uses com.google.appengine.api.appidentity.AppIdentityService.ParsedAppId to retu
 Uses com.google.appengine.api.appidentity.AppIdentityService.ParsedAppId to return the partition the application runs in.
 </p>
 <pre><code> var partition = service.getAppIdentityService().getPartition();
- &#39;ex result coming soon&#39;</code></pre>
+ =&gt; &#39;example.thisPartition.com&#39;</code></pre>
 <p id='Service_Aservice' />
 <h3 id='getappidentityserviceservice'>getAppIdentityService().service()</h3>
 
@@ -74,7 +74,7 @@ Uses com.google.appengine.api.appidentity.AppIdentityService.ParsedAppId to retu
 Returns com.google.appengine.api.appidentity.AppIdentityServiceFactory.getAppIdentityService();
 </p>
 <pre><code> var appIdService = service.getAppIdentityService().service();
- =&gt; &#39;ex result coming soon&#39;</code></pre>
+ // returns Google App Engine&#39;s AppIdentityService class</code></pre>
 <p id='Service_Cget' />
 <h3 id='getcacheservicegetjavalangobject_key'>getCacheService().get(java.lang.Object key)</h3>
 
