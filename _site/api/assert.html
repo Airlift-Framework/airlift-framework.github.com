@@ -6,7 +6,7 @@
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Description under construction.
+Throws an AssertionError if the test case fails.
 </p>
 <pre><code> assert.fail(true, false, &#39;false positive&#39;, &#39;===&#39;, assert.eq);
  THROWS: assert.AssertionError;</code></pre>
@@ -36,7 +36,7 @@ Tests whether 'value' is truthy.
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Tests shallow, coercive equality with ==.
+Tests for strict equality with ===.
 </p>
 <pre><code> exports[&#39;test example&#39;] = function(asserts)
  {
@@ -60,7 +60,7 @@ Tests shallow, coercive equality with ==.
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Tests for whether two objects are not equal with != .
+Tests for whether two objects are not equal with !== .
 </p>
 <pre><code> exports[&#39;test example&#39;] = function(asserts)
  {

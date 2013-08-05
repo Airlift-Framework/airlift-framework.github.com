@@ -1044,7 +1044,8 @@ Converts an object into a string by calling JSON.stringify().
 <p> <label class='new'>Added in 2.0</label>
 Records audit information associated with an action on a particular resource.  The 'config' object is a set of key/value pairs that configure the audit request.  It includes an entity (com.google.appengine.api.datastore.Entity), an id (java.lang.String|String), an action (java.lang.String|String), and a resourceName (java.lang.String|String).
 </p>
-<pre><code> var entity = incoming.createEntity(&#39;person&#39;, &#39;Bediako&#39;);
+<pre><code> var in = require(&#39;airlift/incoming&#39;)
+ var entity = in.createEntity(&#39;person&#39;, &#39;Bediako&#39;);
  entity.setProperty(&#39;fullName&#39;, &#39;Bediako George&#39;);
  entity.setProperty(&#39;shortName&#39;, &#39;Bediako&#39;);
  resource.audit({entity: entity, action: &#39;INSERT&#39;});
@@ -1691,12 +1692,12 @@ If no parameter is given, returns a new empty java.util.HashMap. Otherwise, pass
 <p> <label class='new'>Added in 2.0</label>
 Returns an iterator that iterates through the keys of 'entitylist' given a collection of entities.
 </p>
-<pre><code>var incoming = require(&#39;airlift/incoming&#39;);
+<pre><code>var in = require(&#39;airlift/incoming&#39;);
 
 var list = util.list();
-list.add(incoming.createEntity(&#39;person&#39;, 9817);
-list.add(incoming.createEntity(&#39;person&#39;, 9818);
-list.add(incoming.createEntity(&#39;person&#39;, 9819);
+list.add(in.createEntity(&#39;person&#39;, 9817);
+list.add(in.createEntity(&#39;person&#39;, 9818);
+list.add(in.createEntity(&#39;person&#39;, 9819);
 
 var iterator = util.createKeysIterator(list);
 iterator.next();               =&gt; 9817
@@ -1709,12 +1710,12 @@ iterator.next();               =&gt; 9819</code></pre>
 <p> <label class='new'>Added in 2.0</label>
 Returns a collection of the keys of an entity collection.
 </p>
-<pre><code>var incoming = require(&#39;airlift/incoming&#39;);
+<pre><code>var in = require(&#39;airlift/incoming&#39;);
 
 var list = util.list();
-list.add(incoming.createEntity(&#39;person&#39;, 9817);
-list.add(incoming.createEntity(&#39;person&#39;, 9818);
-list.add(incoming.createEntity(&#39;person&#39;, 9819);
+list.add(in.createEntity(&#39;person&#39;, 9817);
+list.add(in.createEntity(&#39;person&#39;, 9818);
+list.add(in.createEntity(&#39;person&#39;, 9819);
 
 var collection = util.createKeysCollection(list);
 var set = util.set(collection);
@@ -2603,7 +2604,7 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
 <h4 id='setter_functions'>Setter functions:</h4>
 <br /><table class='functions'>
   <tr>
-    <th style='width:300px' class='head'>Function()</th>
+    <th class='head' style='width:300px'>Function()</th>
     <th class='head'>Description</th>
   </tr>
   <tr class='even'>
@@ -2695,7 +2696,7 @@ Description under construction.
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Description under construction.
+Throws an AssertionError if the test case fails.
 </p>
 <pre><code> assert.fail(true, false, &#39;false positive&#39;, &#39;===&#39;, assert.eq);
  THROWS: assert.AssertionError;</code></pre>
@@ -2725,7 +2726,7 @@ Tests whether 'value' is truthy.
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Tests shallow, coercive equality with ==.
+Tests for strict equality with ===.
 </p>
 <pre><code> exports[&#39;test example&#39;] = function(asserts)
  {
@@ -2749,7 +2750,7 @@ Tests shallow, coercive equality with ==.
 
 <h4 id='return_type_na'>Return type: n/A</h4>
 <p> <label class='new'>Added in 2.0</label>
-Tests for whether two objects are not equal with != .
+Tests for whether two objects are not equal with !== .
 </p>
 <pre><code> exports[&#39;test example&#39;] = function(asserts)
  {

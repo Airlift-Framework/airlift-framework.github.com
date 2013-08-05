@@ -348,12 +348,12 @@ If no parameter is given, returns a new empty java.util.HashMap. Otherwise, pass
 <p> <label class='new'>Added in 2.0</label>
 Returns an iterator that iterates through the keys of 'entitylist' given a collection of entities.
 </p>
-<pre><code>var incoming = require(&#39;airlift/incoming&#39;);
+<pre><code>var in = require(&#39;airlift/incoming&#39;);
 
 var list = util.list();
-list.add(incoming.createEntity(&#39;person&#39;, 9817);
-list.add(incoming.createEntity(&#39;person&#39;, 9818);
-list.add(incoming.createEntity(&#39;person&#39;, 9819);
+list.add(in.createEntity(&#39;person&#39;, 9817);
+list.add(in.createEntity(&#39;person&#39;, 9818);
+list.add(in.createEntity(&#39;person&#39;, 9819);
 
 var iterator = util.createKeysIterator(list);
 iterator.next();               =&gt; 9817
@@ -366,12 +366,12 @@ iterator.next();               =&gt; 9819</code></pre>
 <p> <label class='new'>Added in 2.0</label>
 Returns a collection of the keys of an entity collection.
 </p>
-<pre><code>var incoming = require(&#39;airlift/incoming&#39;);
+<pre><code>var in = require(&#39;airlift/incoming&#39;);
 
 var list = util.list();
-list.add(incoming.createEntity(&#39;person&#39;, 9817);
-list.add(incoming.createEntity(&#39;person&#39;, 9818);
-list.add(incoming.createEntity(&#39;person&#39;, 9819);
+list.add(in.createEntity(&#39;person&#39;, 9817);
+list.add(in.createEntity(&#39;person&#39;, 9818);
+list.add(in.createEntity(&#39;person&#39;, 9819);
 
 var collection = util.createKeysCollection(list);
 var set = util.set(collection);

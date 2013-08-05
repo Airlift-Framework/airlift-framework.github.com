@@ -202,7 +202,8 @@ Converts an object into a string by calling JSON.stringify().
 <p> <label class='new'>Added in 2.0</label>
 Records audit information associated with an action on a particular resource.  The 'config' object is a set of key/value pairs that configure the audit request.  It includes an entity (com.google.appengine.api.datastore.Entity), an id (java.lang.String|String), an action (java.lang.String|String), and a resourceName (java.lang.String|String).
 </p>
-<pre><code> var entity = incoming.createEntity(&#39;person&#39;, &#39;Bediako&#39;);
+<pre><code> var in = require(&#39;airlift/incoming&#39;)
+ var entity = in.createEntity(&#39;person&#39;, &#39;Bediako&#39;);
  entity.setProperty(&#39;fullName&#39;, &#39;Bediako George&#39;);
  entity.setProperty(&#39;shortName&#39;, &#39;Bediako&#39;);
  resource.audit({entity: entity, action: &#39;INSERT&#39;});
