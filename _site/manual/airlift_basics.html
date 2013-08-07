@@ -60,7 +60,7 @@
 
 <div class="article-wrapper">
   <div class="help post-content">
-    <p>| <a href='#20_introduction'>Introduction</a> | <a href='#21_the_airlift_world'>The Airlift World</a> | <a href='#22_dictation'>Dictation</a> | <a href='#23_handlers'>Handlers</a> | <a href='#24_code_generation'>Code Generation</a> |</p>
+    <p>| <a href='#20_introduction'>Introduction</a> | <a href='#21_the_airlift_world'>The Airlift World</a> | <a href='#22_dictation'>Dictation</a> | <a href='#23_handlers'>Handlers</a> | <a href='#24_hello_world'>Hello World</a> | <a href='#25_playing_around'>Playing Around</a> |</p>
 
 <h1 id='20_introduction'>2.0 Introduction</h1>
 
@@ -74,33 +74,113 @@
 
 <p>In the build folder, there are five different types of build. Whether the application is running on the desktop or in production mode, these build files can help to set up global variables and customize an environment.</p>
 
-<p>The dictation file, where a developer writes his business logic, can be found at src/doc/app.dic . If no changes were made to this file, the example inside describes the attributes of four resources: a person, an order, an order line item, and a product.</p>
+<p>Within the src folder, the app.dic file, or dictation file, contains the business logic written in plain english. This file can be found at src/doc/app.dic. It describes the web application&#8217;s resources and their attributes.</p>
 
-<p>Airlift supports GET, COLLECT, POST, PUT, and DELETE requests. Although basic functionality is provided, the developer may need to handle different resources in unique ways. For each resource described in the dictation file, the developer may write handlers in war/WEB-INF/classes/handler. For example, handlers for a person resource, such as get.js and post.js should be placed in war/WEB-INF/classes/handler/person. Handlers for an order resource should be placed in war/WEB-INF/classes/handler/order.</p>
+<p>For each resource described in the dictation file, the developer may write handlers in war/WEB-INF/classes/handler. Each resource could have its own set of handlers.</p>
 
-<p>The metadata that is generated is put in the war/WEB-INF/classes/gen/meta folder. For each resource described in the dictation file, the resource metadata is placed in the meta/r folder, and the attribute metadata can be found in the meta/a folder. By calling <code>ant runserver</code> on the example dictation file, both meta/a and meta/r will have order.js, orderlineitem.js, person.js, and product.js modules.</p>
+<p>The metadata that is generated is put in the war/WEB-INF/classes/gen/meta folder. For each resource described in the dictation file, the resource metadata is placed in the meta/r folder, and the attribute metadata can be found in the meta/a folder.</p>
 
 <p>[image to come: diagram of directory hierarchy]</p>
 
+<p>Now that you know the structure of an Airlift application, let&#8217;s walk you through a hello world application. The helloworld application will set the web content to &#8216;Hello, World&#8217; when the URL is retrieved. After downloading the Airlift directory or making a copy of it, rename the folder to helloworld.</p>
+
 <h1 id='22_dictation'>2.2 Dictation</h1>
+
+<p>Dictation is an open source english based domain specific language for describing business applications. It parses through a dictation file and generates metadata.</p>
 
 <h2 id='appdic'>app.dic</h2>
 
+<p>Open src/doc/app.dic. If no changes were made to this file, the example inside describes the attributes of four resources: a person, an order, an order line item, and a product. We wont be needing this, so you can go ahead and delete everything in this document. Instead, copy and paste the following text into your dictation file.</p>
+
+<pre><code> package example
+ 
+ A Greeting
+ can be viewed or collected or created or updated by all</code></pre>
+
+<p>In the helloworld dictation file, we describe one resource: a Greeting. Following the declaration of a resource are descriptions of the resource&#8217;s attributes. What is great about dictation is that it is easy to read, write, and understand the various specifications about a resource. We only need one resource for this helloworld application, but if you were to need multiple resources, all you would need to do is continue adding paragraph-like descritions of each resource. Dictation files should have the following format:</p>
+
+<pre><code> A(n) [resource name 1]
+ [attribute description 1]
+ [attribute description 2]
+ [attribute description ...]
+ [attribute description n]
+
+ A(n) [resource name ...]
+ [attribute description 1]
+ [attribute description 2]
+ [attribute description ...]
+ [attribute description n]
+
+ A(n) [resource name n]
+ [attribute description 1]
+ [attribute description 2]
+ [attribute description ...]
+ [attribute description n]</code></pre>
+
 <h2 id='resources'>Resources</h2>
+
+<p>Resources are the targets of uniform resource locators (URLs); they are files, documents, images and other objects of the web that can be located and accessed through the Internet.</p>
+
+<p>A dictation file lists all the resources of an Airlift application and their attributes. The only specified attribute of a Greeting is that anyone can retrieve, read, and write to it. Resources could have fields or properties such as a name, date, or price. Attributes can also specify security roles, or who has what access to which resources, relationships between resources, and whether the resource contains static of dynamically updated data. Describing resources in your a file entails describing the basic building blocks of a restful web application.</p>
 
 <h1 id='23_handlers'>2.3 Handlers</h1>
 
-<h2 id='rest'>Rest</h2>
+<p>A handler is a module that writes some data to the server response the when a request is made to a web application.</p>
 
-<h2 id='hello_world'>Hello World</h2>
+<p>Handlers process the request, compute data if necessary, and return a response to the client. Airlift provides <a href='../api/#Rest'>rest modules</a> for basic functionality, but a developer may need to handle different resources in unique ways. In a handler, a developer may define HTTP methods such as get, post, or delete.</p>
 
-<h1 id='24_code_generation'>2.4 Code Generation</h1>
-<!--
-A resource handle is an identifier for a resource that is currently being accessed. Resource handles can be opaque, in which case they are often integer numbers, or they can be pointers that allow access to further information. Common resource handles are file descriptors and sockets.
+<p>For the helloworld application, we will create a get handler. Within war/WEB-INF/classes/handler, create a folder called greeting. Inside the greeting folder, use a text editor to create GET.js. Insert the following code into your handler:</p>
 
-The concept of a web resource is primitive in the Web architecture, and is used in the definition of its fundamental elements. The term was first introduced to refer to targets of uniform resource locators (URLs), but its definition has been further extended to include the referent of any uniform resource identifier (RFC 3986), or internationalized resource identifier (RFC 3987). In the Semantic Web, abstract resources and their semantic properties are described using the family of languages based on Resource Description Framework (RDF).
+<pre><code>exports.handle = function(_web)
+{
+    _web.setContent(&quot;Hello, World&quot;); 
+}</code></pre>
 
--->
+<p>The function inside the handler handles an HTTP get request. When a Greeter resource is retrieved, the handler sets the web content to &#8220;Hello, World&#8221;.</p>
+
+<p>And that is all you need to write for a server-side hello world application!</p>
+
+<h1 id='24_hello_world'>2.4 Hello World</h1>
+
+<p>Here is what your directory structure should look like:</p>
+
+<p>[image to come: pre ant runserver directory tree]</p>
+
+<p>Now, simply open your command line, change directory into your helloworld folder, and enter <code>ant runserver</code>. Here is how your directory structure should look afterwards:</p>
+
+<p>[image to come: post ant runserver directory tree]</p>
+
+<p>Metadata describing the greeter resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and met/r folders. The helloworld application is now hosted on localhost:8080. To send a get request to a greeter resource, type the following into the address bar:</p>
+
+<p><a href='http://localhost:8080/a/greeting/id'>http://localhost:8080/a/greeting/id</a></p>
+
+<p>You should see a blank HTML page and the text, &#8220;Hello, World&#8221;.</p>
+
+<p>[image to come: png of blank hello world html page]</p>
+
+<h1 id='25_playing_around'>2.5 Playing Around</h1>
+
+<p>At this point, feel free to play around and get a feel for Airlift. In order to see small edits quickly, start the server with the following line:</p>
+
+<pre><code> ant -Dairlift.env=desktop runserver</code></pre>
+
+<p>The desktop environment sets the cache to null, so you can immediately see all of your changes.</p>
+
+<h2 id='another_quick_example'>Another quick example</h2>
+
+<p>In this example, we will retrieve the resource&#8217;s id from the web and display it on the page.</p>
+
+<p>In the helloworld application, we accessed a greeter resource with URL, http://localhost:8080/a/greeting/id. We programmed the handler to set the web content to &#8220;Hello, World&#8221; when a greeter resource is requested. That means any greeter resource produces this output. Instead of having &#8216;id&#8217; at the end of the URI, you could replace it with any identifier, such as &#8216;monkey&#8217; or &#8216;purple&#8217;, and you would still see &#8220;Hello, World&#8221;.</p>
+
+<p>Let&#8217;s customize the response. In the greeter get handler (war/WEB-INF/classes/handler/greeting/GET.js), replace the line _web.setContent(&#8220;Hello, World&#8221;); with the following:</p>
+
+<pre><code>_web.setContent(_web.getId());</code></pre>
+
+<p>The updated handler will retrieve the id of the web resource by parsing its URL. It then sets the web content to display the id.</p>
+
+<p>Now, http://localhost:8080/a/greeting/monkey will display &#8220;monkey&#8221; and http://localhost:8080/a/greeting/purple will display &#8220;purple&#8221;.</p>
+
+<p>Thanks for the adventure! Now go ahead and play on.</p>
   </div>
 </div>
 
