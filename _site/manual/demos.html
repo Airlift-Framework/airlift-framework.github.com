@@ -63,6 +63,32 @@
     <h1 id='this_page_is_under_construction'>This page is under construction!</h1>
 
 <p>We are currently working to make the demos available soon. Thank you for your patience.</p>
+
+<h1 id='posting_an_entity_to_the_datastore'>Posting an Entity to the Datastore</h1>
+
+<ol>
+<li>
+<p>Copy the Airlift framework directory and rename it to example01 or any naming of your choice.</p>
+</li>
+
+<li>
+<p>Open the src/doc/app.dic file. The example text included in the file describes four resources: a person, an order, an order line item, and a product.</p>
+</li>
+
+<li>
+<p>Let&#8217;s add a resource to allow a person to register, or create an account for a web app. This resource shall be called a registration. Add the following text to the bottom of the app.dic file.</p>
+
+<pre><code>A Registration
+has a full name
+has an email address
+has a mobile phone number which is not required
+has a &quot;password&quot;</code></pre>
+</li>
+
+<li>
+<p>Create a POST.js handler for registration in war/WEB-INF/classes/handler. Insert the following code:</p>
+</li>
+</ol>
 <!-- To embed a Youtube video for future screencasts, go to the video in Youtube, click "share", select your options, copy the html, and simply paste into a post.
 
 Like so: 
@@ -70,6 +96,22 @@ Like so:
 <iframe width="640" height="360" src="//www.youtube.com/embed/sBDSUPK-LTE?rel=0" frameborder="0" allowfullscreen="allowfullscreen"> </iframe>
 
 -->
+<pre><code>    var util = require(&#39;airlift/util&#39;);
+    exports.handle = function(_web)
+    {
+        var inc = require(&#39;airlift/incoming&#39;).create(_web);
+        var res = require(&#39;airlift/resource&#39;).create(_web);
+ 
+        res.each(_web.getResourceName(), {}, 
+           res.sequence(inc.convert, inc.validate),
+           function(_name, _resource) {
+        if (util.isEmpty(this.allErrors()) === true)
+            {
+            var da = require(&#39;airlift/da/insert&#39;).create(_web);
+            da.insert(_web.getResourceName(), _resource);
+        }
+        });
+    };</code></pre>
   </div>
 </div>
 
