@@ -63,7 +63,7 @@
 <h1 id='21_the_airlift_world'>2.1 The Airlift World</h1>
 
 <p>Airlift provides a framework for web applications. Many files and folders are already set up.</p>
-
+<img src='/images/manual/Env_Hierarchy_Web.png' style='float:left' />
 <p>In the downloaded airlift folder, there are four JavaScript modules: dictate.js, hack.js, packages.js, and test.js. airlift/dictate.js will help to translate your english-written business logic into code.</p>
 
 <p>In the build folder, there are five different types of build. Whether the application is running on the desktop or in production mode, these build files can help to set up global variables and customize an environment.</p>
@@ -73,8 +73,6 @@
 <p>For each resource described in the dictation file, the developer may write handlers in war/WEB-INF/classes/handler. Each resource could have its own set of handlers.</p>
 
 <p>The metadata that is generated is put in the war/WEB-INF/classes/gen/meta folder. For each resource described in the dictation file, the resource metadata is placed in the meta/r folder, and the attribute metadata can be found in the meta/a folder.</p>
-
-<p>[image to come: diagram of directory hierarchy]</p>
 
 <p>Now that you know the structure of an Airlift application, let&#8217;s walk you through a hello world application. The helloworld application will set the web content to &#8216;Hello, World&#8217; when the URL is retrieved. After downloading the Airlift directory or making a copy of it, rename the folder to helloworld.</p>
 
@@ -129,29 +127,21 @@
 {
     _web.setContent(&quot;Hello, World&quot;); 
 }</code></pre>
-
-<p>The function inside the handler handles an HTTP get request. When a Greeter resource is retrieved, the handler sets the web content to &#8220;Hello, World&#8221;.</p>
+<img src='/images/manual/Handler_Web.png' style='float:left' />
+<p>The function inside the handler handles an HTTP get request. When a Greeting resource is retrieved, the handler sets the web content to &#8220;Hello, World&#8221;.</p>
 
 <p>And that is all you need to write for a server-side hello world application!</p>
 
 <h1 id='24_hello_world'>2.4 Hello World</h1>
 
-<p>Here is what your directory structure should look like:</p>
+<p>Now that everything is set up, simply open your command line, change directory into your helloworld folder, and enter <code>ant runserver</code>.</p>
 
-<p>[image to come: pre ant runserver directory tree]</p>
-
-<p>Now, simply open your command line, change directory into your helloworld folder, and enter <code>ant runserver</code>. Here is how your directory structure should look afterwards:</p>
-
-<p>[image to come: post ant runserver directory tree]</p>
-
-<p>Metadata describing the greeter resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and met/r folders. The helloworld application is now hosted on localhost:8080. To send a get request to a greeter resource, type the following into the address bar:</p>
+<p>Metadata describing the greeter resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and meta/r folders. AppProfile.java, located at src/genjava/airlift/app has also been updated to describe the business logic. The helloworld application is now hosted on localhost:8080. To send a get request to a greeter resource, type the following into the address bar:</p>
 
 <p><a href='http://localhost:8080/a/greeting/id'>http://localhost:8080/a/greeting/id</a></p>
 
 <p>You should see a blank HTML page and the text, &#8220;Hello, World&#8221;.</p>
-
-<p>[image to come: png of blank hello world html page]</p>
-
+<img src='/images/manual/HelloWorld_Screenshot_Web.png' width='800' />
 <h1 id='25_playing_around'>2.5 Playing Around</h1>
 
 <p>At this point, feel free to play around and get a feel for Airlift. In order to see small edits quickly, start the server with the following line:</p>
