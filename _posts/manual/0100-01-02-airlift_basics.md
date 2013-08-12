@@ -100,6 +100,8 @@ And that is all you need to write for a server-side hello world application!
 
 Now that everything is set up, simply open your command line, change directory into your helloworld folder, and enter `ant runserver`.
 
+![](/images/manual/Dave_Gen_Web.png)
+
 Metadata describing the greeter resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and meta/r folders.  AppProfile.java, located at src/genjava/airlift/app has also been updated to describe the business logic.  The helloworld application is now hosted on localhost:8080.  To send a get request to a greeter resource, type the following into the address bar:
 
 [http://localhost:8080/a/greeting/id](http://localhost:8080/a/greeting/id)
