@@ -54,11 +54,43 @@
 
 <div class="article-wrapper">
   <div class="help post-content">
-    <h1 id='this_page_is_under_construction'>This page is under construction!</h1>
+    <p>| <a href='#51_hello_world'>Hello World</a> | <a href='#52_posting_an_entity_to_the_datastore'>Posting an Entity to the Datastore</a> | <a href='#53_screencast_post'>POST</a> | <a href='#54_screencast_get'>GET</a> | <a href='#55_screencast_collect'>COLLECT</a> | <a href='#56_screencast_put'>PUT</a> | <a href='#57_screencast_delete'>DELETE</a> |</p>
 
-<p>We are currently working to make the demos available soon. Thank you for your patience.</p>
+<h1 id='51_hello_world'>5.1 Hello World</h1>
 
-<h1 id='posting_an_entity_to_the_datastore'>Posting an Entity to the Datastore</h1>
+<ol>
+<li>
+<p>Copy the Airlift framework directory and rename it to helloworld or any naming of your choice.</p>
+</li>
+
+<li>
+<p>Open the src/doc/app.dic file. Remove the existing text and paste the following:</p>
+
+<pre><code> package example
+ 
+ A Greeting
+ can be viewed or collected or created or updated by all</code></pre>
+</li>
+
+<li>
+<p>Create a POST.js handler for registration in war/WEB-INF/classes/handler/greeting. Insert the following code:</p>
+
+<pre><code>exports.handle = function(_web)
+{
+    _web.setContent(&#39;Hello, World&#39;);
+}</code></pre>
+</li>
+
+<li>
+<p>Go into the command line or terminal and enter <code>ant runserver</code>.</p>
+</li>
+
+<li>
+<p>Visit http://localhost:8080/a/greeting/id to view the posted web content.</p>
+<img src='/images/manual/HelloWorld_Screenshot_Web.png' width='780' /></li>
+</ol>
+
+<h1 id='52_posting_an_entity_to_the_datastore'>5.2 Posting an Entity to the Datastore</h1>
 
 <ol>
 <li>
@@ -80,7 +112,7 @@ has a &quot;password&quot;</code></pre>
 </li>
 
 <li>
-<p>Create a POST.js handler for registration in war/WEB-INF/classes/handler. Insert the following code:</p>
+<p>Create a POST.js handler for registration in war/WEB-INF/classes/handler/registration. Insert the following code:</p>
 
 <pre><code>var util = require(&#39;airlift/util&#39;);
 exports.handle = function(_web)
@@ -88,18 +120,47 @@ exports.handle = function(_web)
     var inc = require(&#39;airlift/incoming&#39;).create(_web);
     var res = require(&#39;airlift/resource&#39;).create(_web);
 
-    res.each(_web.getResourceName(), {}, 
-       res.sequence(inc.convert, inc.validate),
-       function(_name, _resource) {
-    if (util.isEmpty(this.allErrors()) === true)
-        {
-        var da = require(&#39;airlift/da/insert&#39;).create(_web);
-        da.insert(_web.getResourceName(), _resource);
-    }
-    });
+    res.each(_web.getResourceName(), {}, res.sequence(inc.convert, inc.validate),
+       function(_name, _resource)
+       {
+          if (util.isEmpty(this.allErrors()) === true)
+          {
+             var da = require(&#39;airlift/da/insert&#39;).create(_web);
+             da.insert(_web.getResourceName(), _resource);
+          }
+       });
 };</code></pre>
 </li>
+
+<li>
+<p>Go into the command line or terminal and enter <code>ant runserver</code>.</p>
+</li>
+
+<li>
+<p>Visit http://localhost:8080/_ah/admin to view Google App Engine&#8217;s Datastore Viewer. As nothing as been posted yet, it should be empty.</p>
+<img src='/images/manual/ss_empty_datastore.png' width='800' /></li>
+
+<li>
+<p>Use curl to send a POST request to the web server. Enter the following into the command line:</p>
+
+<pre><code>curl -X POST --data &quot;fullName=Zombie_Panda&amp;mobilePhoneNumber=5555555555&amp;password=crun
+chy789&amp;emailAddress=ilikebrainz@zmail.com&quot; http://localhost:8080/a/registration</code></pre>
+</li>
+
+<li>
+<p>The posted data is now viewable on the Datastore.</p>
+<img src='/images/manual/ss_registration1.png' width='780' /><br /><br /><img src='/images/manual/ss_registration2.png' width='780' /></li>
 </ol>
+
+<h1 id='53_screencast_post'>5.3 Screencast: POST</h1>
+
+<h1 id='54_screencast_get'>5.4 Screencast: GET</h1>
+
+<h1 id='55_screencast_collect'>5.5 Screencast: COLLECT</h1>
+
+<h1 id='56_screencast_put'>5.6 Screencast: PUT</h1>
+
+<h1 id='57_screencast_delete'>5.7 Screencast: DELETE</h1>
 <!-- To embed a Youtube video for future screencasts, go to the video in Youtube, click "share", select your options, copy the html, and simply paste into a post.
 
 Like so: 
@@ -112,7 +173,7 @@ Like so:
 
 <div class="improve-article-wrapper">
   <div class="improve-article">
-    <a class="button" href="http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-06-demos.md">Edit in Prose</a>
+    <a class="button" href="http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-05-demos.md">Edit in Prose</a>
     <p>
       This article has been written and published using <a href="http://prose.io" target="_blank">Prose</a>. Please help improving this documentation by contributing to the text.
     </p>

@@ -102,7 +102,7 @@ Now that everything is set up, simply open your command line, change directory i
 
 ![](/images/manual/Dave_Gen_Web.png)
 
-Metadata describing the greeter resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and meta/r folders.  AppProfile.java, located at src/genjava/airlift/app has also been updated to describe the business logic.  The helloworld application is now hosted on localhost:8080.  To send a get request to a greeter resource, type the following into the address bar:
+Metadata describing the greeting resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and meta/r folders.  AppProfile.java, located at src/genjava/airlift/app has also been updated to describe the business logic.  The helloworld application is now hosted on localhost:8080.  To send a get request to a greeting resource, type the following into the address bar:
 
 [http://localhost:8080/a/greeting/id](http://localhost:8080/a/greeting/id)
 
@@ -123,9 +123,9 @@ The desktop environment sets the cache to null, so you can immediately see all o
 
 In this example, we will retrieve the resource's id from the web and display it on the page.
 
-In the helloworld application, we accessed a greeter resource with URL, http://localhost:8080/a/greeting/id.  We programmed the handler to set the web content to "Hello, World" when a greeter resource is requested.  That means any greeter resource produces this output.  Instead of having 'id' at the end of the URI, you could replace it with any identifier, such as 'monkey' or 'purple', and you would still see "Hello, World".  
+In the helloworld application, we accessed a greeting resource with URL, http://localhost:8080/a/greeting/id.  We programmed the handler to set the web content to "Hello, World" when a greeting resource is requested.  That means any greeting resource produces this output.  Instead of having 'id' at the end of the URI, you could replace it with any identifier, such as 'monkey' or 'purple', and you would still see "Hello, World".  
 
-Let's customize the response.  In the greeter get handler (war/WEB-INF/classes/handler/greeting/GET.js), replace the line \_web.setContent("Hello, World"); with the following:
+Let's customize the response.  In the greeting get handler (war/WEB-INF/classes/handler/greeting/GET.js), replace the line \_web.setContent("Hello, World"); with the following:
 
     _web.setContent(_web.getId());
 
