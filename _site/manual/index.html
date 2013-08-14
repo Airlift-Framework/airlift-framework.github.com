@@ -81,7 +81,7 @@
 <li><strong>Infrastructure as a Service (IaaS)</strong> are the outsourced, on-demand resources that provide computing power through servers, storage, network, and operating systems.</li>
 </ul>
 
-<p><img src='/images/manual/CloudComputing_logos_Web.png' alt='' /></p>
+<p><img alt='' src='/images/manual/CloudComputing_logos_Web.png' /></p>
 
 <p>At the lowest level, IaaS provides computing power that one can rent. By outsourcing hardware, one does not need to fret over the investment, maintenance, power, and cooling of servers and networks. IaaS is how data is stored on the cloud. An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible. Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.</p>
 
@@ -116,7 +116,7 @@
 <p>With cloud computing, one need not worry about the time it takes to implement and deploy applications. When an application is ready to go up on the web, it will be functional and ready to use within a few minutes.</p>
 
 <h1 id='12_a_brief_history'>1.2 A Brief History</h1>
-<img src='/images/manual/Frustrated_Bedi_Web.png' style='float:left' />
+<img style='float:left' src='/images/manual/Frustrated_Bedi_Web.png' />
 <p>Airlift originated as the solution to the frustrations of a developer. At the time, Java web application frameworks, such as Apache Struts, were not up to par with the developer&#8217;s needs. There had to be a better and faster way to build applications. He traded in Java for a dynamic programming language, JavaScript. He then began excitedly experimenting with Hannibal, capable of building web applications by using Java applications on servlets called Rhino. It didn&#8217;t take long for the developer to successfully utilize the benefits of this servlet, and he realized the potential of taking the entire platform and putting it on the cloud environment. No more would he need to defeat the obstacles of setting up his own server, buying his own hardware, and dealing with web hosting providers. No more would he need to wait ages for his server to be set up and for his applications to deploy. By hosting a platform on the cloud, all these hassles would be taken care of. Thus, Airlift was born!</p>
 
 <p>Airlift was designed to meet the following goals:</p>
@@ -128,7 +128,7 @@
 
 <li>It should be hosted on the cloud. By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server. Instead, it should be quickly and reliably scalable.</li>
 </ul>
-<img src='/images/manual/Happy_Bedi_Web.png' style='float:right' />
+<img style='float:right' src='/images/manual/Happy_Bedi_Web.png' />
 <p>Airlift, which satisfies the above specifications, is being successfully deployed today. Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013. Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine. Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side. Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.</p>
 
 <h1 id='13_airlift_concepts'>1.3 Airlift Concepts</h1>
@@ -140,7 +140,7 @@
 <p>This advanced code generation apparatus enables rapid deployment of web applications, thereby allowing one to spend less time on infrastructure code, and more time on business workflow requirements.</p>
 
 <h2 id='the_airlift_environment'>The Airlift Environment</h2>
-<img src='/images/manual/Airlift_Charts_Web.png' style='float:left' />
+<img style='float:left' src='/images/manual/Airlift_Charts_Web.png' />
 <p>Airlift requires Java, Ant, and the App Engine SDK. Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go. Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScript. Airlift incorporates <a href='https://developer.mozilla.org/en-US/docs/Rhino'>Rhino</a>, an open source JavaScript engine, to convert JavaScript scripts into Java classes. This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.</p>
 <br /><br /><br /><br /><br />
 <p>Airlift makes the web development process simpler. The developer only needs to write a dictation file describing business logic and the handlers. The Airlift framework takes care of the rest. When deploying a web app, the following steps are executed:</p>
@@ -161,7 +161,7 @@
 
 <p>The following diagram illustrates what the Airlift environment contains and how it deploys a web application.</p>
 
-<p><img src='/images/manual/Airlift_Environment_Web.png' alt='' /></p>
+<p><img alt='' src='/images/manual/Airlift_Environment_Web.png' /></p>
 
 <h2 id='javascript_functional_programming'>JavaScript Functional Programming</h2>
 
@@ -190,7 +190,11 @@
 </ul>
 
 <p>All set? Go ahead and download the zip file, and unzip it into whichever directory you so desire.</p>
-<br /><a class='download' href='https://github.com/LucidTechnics/Airlift/blob/airlift_2.0_development/downloads/airlift-beta-0.70_rc_108_734-env.zip?raw=true'>Download Airlift</a><br /><br />
+<br /><a href='https://github.com/LucidTechnics/Airlift/blob/airlift_2.0_development/downloads/airlift-beta-0.70_rc_108_734-env.zip?raw=true' class='download'>Download Airlift</a><br /><br />
+<p>Now go into this folder from the command line and enter the following to complete the set up.</p>
+
+<pre><code> ant init</code></pre>
+
 <p>That&#8217;s it! You should now have access to all that Airlift has to offer. If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.</p>
 
 <h1 id='15_setting_up'>1.5 Setting Up</h1>

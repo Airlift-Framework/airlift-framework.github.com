@@ -137,6 +137,10 @@ All set?  Go ahead and download the zip file, and unzip it into whichever direct
 <br>
 <br>
 
+Now go into this folder from the command line and enter the following to complete the set up.
+
+     ant init
+
 That's it!  You should now have access to all that Airlift has to offer.  If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.
 
 
