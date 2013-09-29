@@ -73,7 +73,7 @@
 </li>
 
 <li>
-<p>Create a POST.js handler for registration in war/WEB-INF/classes/handler/greeting. Insert the following code:</p>
+<p>Create a GET.js handler for registration in war/WEB-INF/classes/handler/greeting. Insert the following code:</p>
 
 <pre><code>exports.handle = function(_web)
 {
@@ -114,22 +114,12 @@ has a &quot;password&quot;</code></pre>
 <li>
 <p>Create a POST.js handler for registration in war/WEB-INF/classes/handler/registration. Insert the following code:</p>
 
-<pre><code>var util = require(&#39;airlift/util&#39;);
-exports.handle = function(_web)
+<pre><code>exports.handle = function(_web)
 {
-    var inc = require(&#39;airlift/incoming&#39;).create(_web);
-    var res = require(&#39;airlift/resource&#39;).create(_web);
-
-    res.each(_web.getResourceName(), {}, res.sequence(inc.convert, inc.validate),
-       function(_name, _resource)
-       {
-          if (util.isEmpty(this.allErrors()) === true)
-          {
-             var da = require(&#39;airlift/da/insert&#39;).create(_web);
-             da.insert(_web.getResourceName(), _resource);
-          }
-       });
+    require(&#39;airlift/rest/post&#39;).post(_web);
 };</code></pre>
+
+<p>To get a deeper understanding of what this line of code does, one may look through the <a href='https://github.com/LucidTechnics/Airlift/blob/airlift_2.0_development/src/script/javascript/airlift/rest/post.js'>source code</a>. It checks for any validations errors, and if there are none, the resource and each of its attributes are posted to Google App Engine&#8217;s datastore.</p>
 </li>
 
 <li>
@@ -153,27 +143,27 @@ chy789&amp;emailAddress=ilikebrainz@zmail.com&quot; http://localhost:8080/a/regi
 </ol>
 
 <h1 id='53_screencast_post'>5.3 Screencast: POST</h1>
-<iframe src='//www.youtube.com/embed/sSMrE8M60xI' width='640' frameborder='0' height='360' allowfullscreen='allowfullscreen'>
+<iframe src='//www.youtube.com/embed/sSMrE8M60xI' frameborder='0' height='360' allowfullscreen='allowfullscreen' width='640'>
 </iframe>
 <p>Learn how to set up a basic web application using Airlift, write a POST handler, and post a resource to the datastore.</p>
 
 <h1 id='54_screencast_get'>5.4 Screencast: GET</h1>
-<iframe src='//www.youtube.com/embed/sSMrE8M60xI' width='640' frameborder='0' height='360' allowfullscreen='allowfullscreen'>
+<iframe src='//www.youtube.com/embed/r-nzzyleFuc' frameborder='0' height='360' allowfullscreen='allowfullscreen' width='640'>
 </iframe>
-<p><em><strong>To be updated</strong></em>. Learn how to use Airlift to write a GET handler, then send a get request.</p>
+<p>Learn how to use Airlift to write a basic and customized GET handler, and then send a get request.</p>
 
 <h1 id='55_screencast_collect'>5.5 Screencast: COLLECT</h1>
-<iframe src='//www.youtube.com/embed/sSMrE8M60xI' width='640' frameborder='0' height='360' allowfullscreen='allowfullscreen'>
+<iframe src='//www.youtube.com/embed/sSMrE8M60xI' frameborder='0' height='360' allowfullscreen='allowfullscreen' width='640'>
 </iframe>
 <p><em><strong>To be updated</strong></em>. Learn how to get multiple resources at once, using a COLLECT handler.</p>
 
 <h1 id='56_screencast_put'>5.6 Screencast: PUT</h1>
-<iframe src='//www.youtube.com/embed/sSMrE8M60xI' width='640' frameborder='0' height='360' allowfullscreen='allowfullscreen'>
+<iframe src='//www.youtube.com/embed/sSMrE8M60xI' frameborder='0' height='360' allowfullscreen='allowfullscreen' width='640'>
 </iframe>
-<p><em><strong>To be updated</strong></em>. Learn how to write a PUT handler and use it to indempotently post information to the datastore.</p>
+<p><em><strong>To be updated</strong></em>. Learn how to write a PUT handler and use it to idempotently post information to the datastore.</p>
 
 <h1 id='57_screencast_delete'>5.7 Screencast: DELETE</h1>
-<iframe src='//www.youtube.com/embed/sSMrE8M60xI' width='640' frameborder='0' height='360' allowfullscreen='allowfullscreen'>
+<iframe src='//www.youtube.com/embed/sSMrE8M60xI' frameborder='0' height='360' allowfullscreen='allowfullscreen' width='640'>
 </iframe>
 <p><em><strong>To be updated</strong></em>. Learn how to delete a resource from the datastore with a DELETE handler.</p>
   </div>
