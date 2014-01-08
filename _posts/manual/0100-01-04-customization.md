@@ -8,12 +8,16 @@ categories: manual
 published: true
 ---
 
-# Configuration
-
-# Build Script
-
-# Environments
+| [Introduction](#40_introduction) | [Configuration](#41_configuration) | [Build Script](#42_build_script) | [Environments](#43_environments) |
 
 # This page is under construction!
 
-We are currently working to make the dictation page available soon.  Thank you for your patience.
+We are currently working to make the customization page available soon.  Thank you for your patience.
+
+# 4.0 Introduction
+
+# 4.1 Configuration
+
+# 4.2 Build Script
+
+# 4.3 Environments

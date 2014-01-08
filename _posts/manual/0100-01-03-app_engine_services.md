@@ -22,5 +22,3 @@ We are currently working to make the app engine services page available soon.  T
 # 3.2 Datastore
 
 # 3.3 Airlift in Other Systems
-
--AWS
