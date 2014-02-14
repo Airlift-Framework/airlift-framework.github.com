@@ -2092,7 +2092,7 @@ Converts 'resource's sensitive attribute values into encrypted property map valu
  var entity = in.createEntity(&#39;person&#39;, person.id);
  resource.each(&#39;person&#39;, person, in.encrypt.partial(entity));
  //secret info is encrypted and stored in &#39;entity&#39; along with other
-      &#39;person&#39; attributes</code></pre>
+     // &#39;person&#39; attributes</code></pre>
 <p id='Incoming_convert' />
 <h3 id='convertobject_value_string_attributename_object_resource_object_attributemetadata'>convert(Object value, String attributeName, Object resource, Object attributeMetadata)</h3>
 
@@ -2101,7 +2101,7 @@ Converts 'resource's sensitive attribute values into encrypted property map valu
 Converts a request parameter values into a property map values on a JavaScript object. Designed to be used with resource.each. It relies on Airlift automatically setting the web context object that resource.each relies on. 
 </p>
 <pre><code> // imcoming PUT to URI: http://www.example.com/a/person/asdf?
-      fullName=Kwame%20Mtume&amp;secretInfo=555-55-5555&amp;age=27
+     // fullName=Kwame%20Mtume&amp;secretInfo=555-55-5555&amp;age=27
 
  var resource = require(&#39;airlift/resource&#39;);
 
@@ -2109,7 +2109,7 @@ Converts a request parameter values into a property map values on a JavaScript o
 
  resource.each(&#39;person&#39;, person, in.encrypt.partial(entity));
  // person now has {&#39;id&#39;: &#39;asdf&#39;, &#39;fullName&#39;: &#39;Kwame Mtume&#39;,
-      &#39;secretInfo&#39;: &#39;55-55-5555&#39;, &#39;age&#39;: 27}</code></pre>
+     // &#39;secretInfo&#39;: &#39;55-55-5555&#39;, &#39;age&#39;: 27}</code></pre>
 <p id='Incoming_validate' />
 <h3 id='validateobject_value_string_name_object_resource_object_metadata'>validate(Object value, String name, Object resource, Object metadata)</h3>
 
@@ -2604,7 +2604,7 @@ Uses com.google.appengine.api.memcache.MemcacheServiceFactory to gets a handle t
 <h4 id='setter_functions'>Setter functions:</h4>
 <br /><table class='functions'>
   <tr>
-    <th class='head' style='width:300px'>Function()</th>
+    <th style='width:300px' class='head'>Function()</th>
     <th class='head'>Description</th>
   </tr>
   <tr class='even'>
