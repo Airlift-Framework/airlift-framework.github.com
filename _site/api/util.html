@@ -65,7 +65,7 @@ Returns true if item is not equal to null and is not equal to undefined.
 
 <h4 id='return_type_object'>Return type: Object</h4>
 <p> <label class='new'>Added in 2.0</label>
-Creates an object that handles error reporting.  This object includes methods allErrors(), getErrors(String name), and report(String name, String error).
+Creates an object that handles error reporting.  This object includes methods allErrors(), getErrors(String name), hasErrors(), report(String name, String error), and clear().
 </p>
 <pre><code> var errorReporter = util.createErrorReporter();
  errorReporter.report(&#39;hello&#39;, &#39;message1&#39;, &#39;test&#39;);
