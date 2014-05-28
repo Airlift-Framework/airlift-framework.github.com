@@ -1,7 +1,7 @@
 ---
 layout: manual
 title: Why Airlift?
-abstract: The history of Airlift and why you should use it.
+abstract: The history of Airlift, how it works, and why you should use it.
 prose_link: http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-01-why_airlift?.md
 author: Serena Lei
 categories: manual

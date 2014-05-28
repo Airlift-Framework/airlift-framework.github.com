@@ -20,31 +20,35 @@
     div.sidebar {
       font-size: 11px;
       background: #E9EAE5;
-      position: fixed;
-      top: 60px; right: 0px; bottom: 0px; left: 0px;
+      position: absolute;
       width: 220px;
-      overflow-y: auto;
+      height: 100%;
+      margin: 0 auto 60px;
+      overflow-y: scroll;
       overflow-x: hidden;
-      padding: 15px 0 30px 20px;
+      padding: 15px 0 0px 20px;
       border-right: 1px solid #CCC;
       box-shadow: 0 0 20px #CCC;
       z-index: 2;
     }
     div.container {
       background: #F0F1EB;
-      position: fixed;
-      top: 60px; right: 0px; bottom: 0px; left: 220px;
-      overflow-y: auto;
-      overflow-x: auto;
-      overflow: scroll;
+      position: absolute;
+      margin-left: 220px;
+      margin-bottom: 60px;
+      width: 780px;
+      height: 100%;
       z-index: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
     div.content {
       width: 700px;
-      margin-left: 40px;
+      height: 100%;
+      margin: 0px 40px 50px 40px;
       margin-bottom: 50px;
     }
-    div.api {
+    div.menu {
       background-color: #A82929;
       position: fixed;
       margin: 0px,
@@ -180,12 +184,24 @@
     div.sidebar li a {
       font-weight: normal;
     }
+    div.wrapper {
+      margin: 0px;
+      position: fixed;
+      margin: 60px 0px 60px 0px;
+      height: 100%;
+      width: 100%;
+    }
+    div.center {
+      width: 1000px;
+      height: 100%;
+      margin: 0px auto;
+}
   </style>
 </head>
 
-<body>
+  <body>
 
-  <div class="api">
+  <div class="menu">
     <div id="menu">
   <div class="inner">
     <a class="title" href="/" class="title">Airlift</a>
@@ -200,6 +216,9 @@
 
   </div>
 
+  <div class="wrapper">
+  <div class="center">
+  
   <div class="sidebar">
     
       <h1 id='airlift_20'><a href='#Airlift'>Airlift 2.0</a></h1>
@@ -728,6 +747,7 @@
     
   </div>
 
+  
   <div class="container">
     <div class="content">
       <p id="Airlift">
@@ -3121,7 +3141,10 @@ Evaluates 'value' to a boolean using the abstract method Toboolean and throws 'v
       
     </div>
   </div>
-
+  
+  </div>
+  </div>  
+  
 </body>
   
 <script type="text/javascript">
