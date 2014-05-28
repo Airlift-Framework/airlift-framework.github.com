@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <title>Airlift &middot; A JavaScript web application framework for Google App Engine</title>
+  <link rel='stylesheet' href='/fonts/open-sans.css'/>
+  <link rel='stylesheet' href='/app.css'/>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="/javascripts/rainbow-custom.min.js"></script>
+</head>
+<body>
+  <div id='container'>
+    <div id='main'><div class="manual">
+  <div id="menu">
+  <div class="inner">
+    <a class="title" href="/" class="title">Airlift</a>
+    <a href="/">Intro</a>
+    <a href="/manual/" class="active">Manual</a>
+    <a href="/api/">API</a>
+    <a href="/team/">Team</a>
+    <a href="/development/">Dev</a>
+  </div>
+</div>
+
+  <div class="article-navigation">
+    
+      <a class="article-link" href="/manual/getting_started.html" title="Getting Started">
+        <div class="title">Getting Started</div>
+      </a>
+    
+      <a class="article-link active" href="/manual/why_airlift%3F.html" title="Why Airlift?">
+        <div class="title">Why Airlift?</div>
+      </a>
+    
+      <a class="article-link" href="/manual/demos.html" title="Demos">
+        <div class="title">Demos</div>
+      </a>
+    
+      <a class="article-link" href="/manual/screencasts.html" title="Screencasts">
+        <div class="title">Screencasts</div>
+      </a>
+    
+  </div>
+</div>
+
+<div class="intro">
+  <div class="title">Why Airlift?</div>
+  <div class="abstract">The history of Airlift and why you should use it.</div>
+</div>
+
+<div class="article-wrapper">
+  <div class="help post-content">
+    <p>| <a href='#20_introduction'>Introduction</a> | <a href='#21_cloud_computing'>Cloud Computing</a> | <a href='#22_a_brief_history'>A Brief History</a> | <a href='#23_airlift_concepts'>Airlift Concepts</a></p>
+
+<h1 id='10_introduction'>1.0 Introduction</h1>
+
+<p>Airlift is an open web framework for building restful web applications using functional JavaScript. To understand what this means, we will begin by explaining some background on cloud computing. Then we&#8217;ll explore what goals the developers wanted Airlift to achieve. The inner workings of Airlift will be detailed with a diagram. At the end of this page you should understand what Airlift is capable of, why you should use it,</p>
+
+<h1 id='11_cloud_computing'>1.1 Cloud Computing</h1>
+
+<p>Cloud computing is the dynamic delivery of resources and services through the internet. Due to its cost effectiveness, flexibility, and global accessibility, more and more companies are outsourcing their IT needs to seemingly virtual third party servers. Instead of executing computations on a personal computer, through the cloud, a network of remote servers can provide scalable computing power. These servers can store, manage, and process data using the internet as a medium. When we check our email, collaborate on a project with Google Docs, or add an item to our Amazon cart, we are utilizing services on the cloud.</p>
+
+<h2 id='service_levels'>Service Levels</h2>
+
+<p>Cloud computing consists of three tiers: infrastructure, platform, and software.</p>
+
+<ul>
+<li><strong>Software as a Service (SaaS)</strong> are applications designed for end-users and delivered over the internet.</li>
+
+<li><strong>Platform as a Service (PaaS)</strong> are tools designed to simplify and expedite the creation and delivery of software.</li>
+
+<li><strong>Infrastructure as a Service (IaaS)</strong> are the outsourced, on-demand resources that provide computing power through servers, storage, network, and operating systems.</li>
+</ul>
+
+<p><img alt='' src='/images/manual/CloudComputing_logos_Web.png' /></p>
+
+<p>At the lowest level, IaaS provides computing power that one can rent. By outsourcing hardware, one does not need to fret over the investment, maintenance, power, and cooling of servers and networks. IaaS is how data is stored on the cloud. An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible. Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.</p>
+
+<p>In the middle, PaaS provides foundations for developers to easily build and host applications. An example of a PaaS platform is Google App Engine. Such platforms provision hardware, and the developer need not worry about infrastructure components such as software upgrades, patches, and licensing. With all this taken care of, a programmer may concentrate solely on his application, utilizing the underlying infrastructure to customize and specialize his code. You can use PaaS platforms to develop SaaS applications.</p>
+
+<p>At the highest level, SaaS provides web access to commercial software. An example of an SaaS web application is Gmail, which is free and web-based. To use Gmail, users do not need to install any applications onto their local hard drives, as the application is provided through a web browser. Since the software is hosted on the cloud, users can access their accounts from any location as long as they have internet and a browser.</p>
+
+<h2 id='selling_points'>Selling Points</h2>
+
+<ul>
+<li>Cost-efficient</li>
+</ul>
+
+<p>One of the main reasons companies are turning toward cloud computing is cost. Small companies may have difficulty affording hardware and staff to set up and maintain servers. Maintenance of data centers is taxing for even large companies. Allocating too much hardware means wasted computing power, and wasted money. Allocate too little, and clients may not have a satisfying experience. Cloud services are pay-per-use; a company only needs to pay for services they use.</p>
+
+<ul>
+<li>Scalability</li>
+</ul>
+
+<p>Cloud computing provides a way to increase or decrease capacities and capabilities by demand, without needing to maintain infrastructure, train personnel, or license new software. As an application grows, companies can add storage, RAM, and CPU capacity as needed. Highly scalable applications adjust to demands, provisioning more resources when an application has ten thousand users today and automatically downscaling tomorrow when it isn&#8217;t as busy.</p>
+
+<ul>
+<li>Accessibility to Resources</li>
+</ul>
+
+<p>Along with increasing capabilities, one has the option to handpick any of the services, software, and applications that will best suit his or her needs. By using a one-to-many model, cloud computing makes its applications available for multiple users, clients, and devices. This promotes efficiency, code reuse, and global accessibility.</p>
+
+<ul>
+<li>Quick Deployment</li>
+</ul>
+
+<p>With cloud computing, one need not worry about the time it takes to implement and deploy applications. When an application is ready to go up on the web, it will be functional and ready to use within a few minutes.</p>
+
+<h1 id='12_a_brief_history'>1.2 A Brief History</h1>
+<img style='float:left' src='/images/manual/Frustrated_Bedi_Web.png' />
+<p>Airlift originated as the solution to the frustrations of a developer. At the time, Java web application frameworks, such as Apache Struts, were not up to par with the developer&#8217;s needs. There had to be a better and faster way to build applications. He traded in Java for a dynamic programming language, JavaScript. He then began excitedly experimenting with Hannibal, capable of building web applications by using Java applications on servlets called Rhino. It didn&#8217;t take long for the developer to successfully utilize the benefits of this servlet, and he realized the potential of taking the entire platform and putting it on the cloud environment. No more would he need to defeat the obstacles of setting up his own server, buying his own hardware, and dealing with web hosting providers. No more would he need to wait ages for his server to be set up and for his applications to deploy. By hosting a platform on the cloud, all these hassles would be taken care of. Thus, Airlift was born!</p>
+
+<p>Airlift was designed to meet the following goals:</p>
+
+<ul>
+<li>It should be RESTful. It should use the simplest approach towards creating web applications. One should not have to spend time figuring out which modules are creating a particular page or what the actions were. Creating a web application should be easy.</li>
+
+<li>It should use JavaScript. JavaScript is dynamically typed, allowing for faster development, and capability to use closures for interesting applications. When JavaScript is used on the both the client and server side, code can easily be moved back and forth.</li>
+
+<li>It should be hosted on the cloud. By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server. Instead, it should be quickly and reliably scalable.</li>
+</ul>
+<img style='float:right' src='/images/manual/Happy_Bedi_Web.png' />
+<p>Airlift, which satisfies the above specifications, is being successfully deployed today. Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013. Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine. Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side. Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.</p>
+
+<h1 id='13_airlift_concepts'>1.3 Airlift Concepts</h1>
+
+<p>Airlift is Lucid Technics’ open source rapid web development framework designed to work with cloud infrastructures. Airlift can be used to rapidly build secure and scalable cloud applications. Much of the software created using Airlift is generated from Dictation, Lucid Technics’ open source human readable business requirements language.</p>
+
+<p>Using Dictation with Airlift, Lucid Technics can generate software to deliver many modes of business functionality that are often coded by hand. These include common application functionality such as data formatting, data conversion, and data validation. They also include more challenging application functionality, such as automatic data auditing, robust data encryption, user action undo and redo, and role based security.</p>
+
+<p>This advanced code generation apparatus enables rapid deployment of web applications, thereby allowing one to spend less time on infrastructure code, and more time on business workflow requirements.</p>
+
+<h2 id='the_airlift_environment'>The Airlift Environment</h2>
+<img style='float:left' src='/images/manual/Airlift_Charts_Web.png' />
+<p>Airlift requires Java, Ant, and the App Engine SDK. Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go. Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScript. Airlift incorporates <a href='https://developer.mozilla.org/en-US/docs/Rhino'>Rhino</a>, an open source JavaScript engine, to convert JavaScript scripts into Java classes. This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.</p>
+<br /><br /><br /><br /><br />
+<p>Airlift makes the web development process simpler. The developer only needs to write a dictation file describing business logic and the handlers. The Airlift framework takes care of the rest. When deploying a web app, the following steps are executed:</p>
+
+<ol>
+<li>Ant acts as the orchestrator for the whole process. It first calls <a href='http://www.lucidtechnics.com/projects/dictation.html'>Dictation</a>, a language for describing business applications.</li>
+
+<li>app.dic, a document describing the business logic in English, is parsed by Dictation.</li>
+
+<li>Dictation converts the app.dic into a coding language and generates metadata: meta/r files, meta/a files, and AppProfile.java.</li>
+
+<li>Ant starts Google App Engine, running a local server.</li>
+
+<li>Google App Engine initializes Airlift, a .jar file which contains a servlet called RestServlet.</li>
+
+<li>Airlift deploys your web application, hosted on the cloud!</li>
+</ol>
+
+<p>The following diagram illustrates what the Airlift environment contains and how it deploys a web application.</p>
+
+<p><img alt='' src='/images/manual/Airlift_Environment_Web.png' /></p>
+
+<h2 id='javascript_functional_programming'>JavaScript Functional Programming</h2>
+
+<p>Why did Lucid Technics decide to build Airlift for JavaScript? A simple answer is to enable web applications to use the same language on both the client and server side. That limits the options to JavaScript &#8211; an easy choice. By using the same language on both sides, code can be moved back and forth with little to no editting. Other advantages truly make JavaScript a strong choice. JavaScript is dynamically typed, which allows for faster development and greater flexibility in polymorphism and interactive applications. JavaScript supports functional programming, as its functions are first class objects. This enables developers to exploit the many interesting applications of closures. Google App Engine does not directly support JavaScript, but Lucid Technics believed in JavaScript for restful web applications. Therefore, Lucid Technics made the decision to incorporate Rhino into Airlift to use JavaScript with Google App Engine.</p>
+
+<h2 id='rest'>REST</h2>
+
+<p>As defined by Roy Fielding, Representational State Transfer (REST) is an &#8220;architectural style for distributed hypermedia systems&#8221; (2000). Restful web applications feature scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems. Rest-style architectures generally consist of clients and servers, where clients send request to the server and the server answers with a response. Rest is a predominant web API design model.</p>
+
+<p>Airlift supports the development of restful web applications. It implements the HTTP request methods, GET, POST, PUT, DELETE, and COLLECT, which are used for requests. Requests and responses are built around the transfer of representations and resources. Resources are addressable objects, like files and documents, and a resource&#8217;s representation is documentation that captures the current or intended state of a resource. Resources are the center of Airlift application development. In Airlift, each resource is represented as a simple JavaScript object. Airlift provides many restful functions for manipulating these resources in the server side of web applications.</p>
+
+<h2 id='conclusion'>Conclusion</h2>
+
+<p>Now the purposes and features of Airlift should be clear. Airlift provides a restful JavaScript web application framework, designed to function with Google App Engine and cloud infrastructures. If this sounds like the perfect tool for your web application development, or a framework that you would like to try, great! We trust that Airlift will facilitate the rapid development of your scalable application on Google App Engine. <a href='/manual/getting_started.html#11_installation'>Install Airlift now!</a></p>
+  </div>
+</div>
+
+<div class="improve-article-wrapper">
+  <div class="improve-article">
+    <a class="button" href="http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-01-why_airlift?.md">Edit in Prose</a>
+    <p>
+      This article has been written and published using <a href="http://prose.io" target="_blank">Prose</a>. Please help improving this documentation by contributing to the text.
+    </p>
+  </div>
+</div></div>
+  </div>
+
+  <div id='footer'>
+    <div class="footer-content">
+      This open sourced site is hosted on <a href="http://github.com/Airlift-Framework/airlift-framework.github.com">GitHub</a>. Please help us to improve it!
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var codeBlocks = document.querySelectorAll('code');
+    Array.prototype.forEach.call(codeBlocks, function iterator(block) {
+      block.setAttribute('data-language', 'javascript');
+    });
+    Rainbow.color();
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7466901-3', 'lucidtechnics.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

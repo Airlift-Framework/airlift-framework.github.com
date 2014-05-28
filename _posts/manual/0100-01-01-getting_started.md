@@ -1,126 +1,21 @@
 ---
 layout: manual
 title: Getting Started
-abstract: A basic lucid introduction to Airlift for a quick start-up.
+abstract: A lucid introduction to Airlift's installation process, basic concepts, and 'Hello World'.
 prose_link: http://prose.io/#Airlift-Framework/airlift-framework.github.com/edit/master/_posts/manual/0100-01-01-getting_started.md
 author: Serena Lei
 categories: manual
 published: true
 ---
 
-| [Introduction](#10_introduction) | [Cloud Computing](#11_cloud_computing) | [A Brief History](#12_a_brief_history) | [Airlift Concepts](#13_airlift_concepts) | [Installation](#14_installation) | [Setting Up](#15_setting_up) |
+| [Introduction](#10_introduction) | [Installation](#11_installation) | [Setting Up](#12_setting_up) | [The Airlift World](#13_the_airlift_world) | [Dictation](#14_dictation) | [Handlers](#15_handlers) | [Hello World](#16_hello_world) | [Playing Around](#17_playing_around) |
 
 # 1.0 Introduction
 
-This page will be about getting started with Lucid Technic's Airlift.  We will begin by explaining some background on cloud computing.  Then we will cover how to get Airlift running on your system and setup so that you can start working with it. At the end of this page you should understand what Airlift is capable of, why you should use it, and be ready to rapidly start your first Airlift application.
+This page will cover how to get Airlift up and running on your system.  Once setup, we will walk you through the steps of starting and finishing an Airlift application.  We'll explain more about what's inside the Airlift environment and how it all works together.  This page will describe how to write your business logic in the app.dic file and your handlers, which are the only two documents that you need to worry about for the server side.  After the developer's part is written, we can move on to deploying your first Airlift hello world application.
 
 
-# 1.1 Cloud Computing
-
-Cloud computing is the dynamic delivery of resources and services through the internet.  Due to its cost effectiveness, flexibility, and global accessibility, more and more companies are outsourcing their IT needs to seemingly virtual third party servers.  Instead of executing computations on a personal computer, through the cloud, a network of remote servers can provide scalable computing power.  These servers can store, manage, and process data using the internet as a medium.  When we check our email, collaborate on a project with Google Docs, or add an item to our Amazon cart, we are utilizing services on the cloud.
-
-## Service Levels
-
-Cloud computing consists of three tiers: infrastructure, platform, and software.  
-
-* **Software as a Service (SaaS)** are applications designed for end-users and delivered over the internet. 
-* **Platform as a Service (PaaS)** are tools designed to simplify and expedite the creation and delivery of software. 
-* **Infrastructure as a Service (IaaS)** are the outsourced, on-demand resources that provide computing power through servers, storage, network, and operating systems.
-
-![](/images/manual/CloudComputing_logos_Web.png)
-
-At the lowest level, IaaS provides computing power that one can rent.  By outsourcing hardware, one does not need to fret over the investment, maintenance, power, and cooling of servers and networks.  IaaS is how data is stored on the cloud.  An example is Google Cloud Storage, which ensures that your data is safe, secure, and accessible.  Since your Google Spreadsheets and Calendar reminders are stored online in the cloud, if something were to obliterate your laptop, thankfully, your data would not be lost.
-
-In the middle, PaaS provides foundations for developers to easily build and host applications.  An example of a PaaS platform is Google App Engine.  Such platforms provision hardware, and the developer need not worry about infrastructure components such as software upgrades, patches, and licensing.  With all this taken care of, a programmer may concentrate solely on his application, utilizing the underlying infrastructure to customize and specialize his code.  You can use PaaS platforms to develop SaaS applications.
-
-At the highest level, SaaS provides web access to commercial software.  An example of an SaaS web application is Gmail, which is free and web-based.  To use Gmail, users do not need to install any applications onto their local hard drives, as the application is provided through a web browser.  Since the software is hosted on the cloud, users can access their accounts from any location as long as they have internet and a browser.  
-
-## Selling Points
-
-* Cost-efficient
-
-One of the main reasons companies are turning toward cloud computing is cost.  Small companies may have difficulty affording hardware and staff to set up and maintain servers.  Maintenance of data centers is taxing for even large companies.  Allocating too much hardware means wasted computing power, and wasted money.  Allocate too little, and clients may not have a satisfying experience.  Cloud services are pay-per-use; a company only needs to pay for services they use.
-
-* Scalability
-
-Cloud computing provides a way to increase or decrease capacities and capabilities by demand, without needing to maintain infrastructure, train personnel, or license new software.  As an application grows, companies can add storage, RAM, and CPU capacity as needed.  Highly scalable applications adjust to demands, provisioning more resources when an application has ten thousand users today and automatically downscaling tomorrow when it isn't as busy.
-
-* Accessibility to Resources
-
-Along with increasing capabilities, one has the option to handpick any of the services, software, and applications that will best suit his or her needs.  By using a one-to-many model, cloud computing makes its applications available for multiple users, clients, and devices.  This promotes efficiency, code reuse, and global accessibility. 
-
-* Quick Deployment
-
-With cloud computing, one need not worry about the time it takes to implement and deploy applications.  When an application is ready to go up on the web, it will be functional and ready to use within a few minutes.
-
-
-# 1.2 A Brief History
-
-<img src="/images/manual/Frustrated_Bedi_Web.png" style="float:left">
-
-Airlift originated as the solution to the frustrations of a developer.  At the time, Java web application frameworks, such as Apache Struts, were not up to par with the developer's needs.  There had to be a better and faster way to build applications.  He traded in Java for a dynamic programming language, JavaScript.  He then began excitedly experimenting with Hannibal, capable of building web applications by using Java applications on servlets called Rhino.  It didn't take long for the developer to successfully utilize the benefits of this servlet, and he realized the potential of taking the entire platform and putting it on the cloud environment.  No more would he need to defeat the obstacles of setting up his own server, buying his own hardware, and dealing with web hosting providers.  No more would he need to wait ages for his server to be set up and for his applications to deploy.  By hosting a platform on the cloud, all these hassles would be taken care of.  Thus, Airlift was born!
-
-Airlift was designed to meet the following goals:
-
-* It should be RESTful.  It should use the simplest approach towards creating web applications.  One should not have to spend time figuring out which modules are creating a particular page or what the actions were.  Creating a web application should be easy.
-* It should use JavaScript. JavaScript is dynamically typed, allowing for faster development, and capability to use closures for interesting applications.  When JavaScript is used on the both the client and server side, code can easily be moved back and forth.
-* It should be hosted on the cloud.  By taking advantages of what the cloud has to offer, it should do away with the frustrations of buying hardware, going to a web hosting provider, and waiting long periods of time while setting up a server.  Instead, it should be quickly and reliably scalable.
-
-<img src="/images/manual/Happy_Bedi_Web.png" style="float:right">
-
-Airlift, which satisfies the above specifications, is being successfully deployed today.  Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013.  Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine.  Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side.  Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
-
-
-# 1.3 Airlift Concepts
-
-Airlift is Lucid Technics’ open source rapid web development framework designed to work with cloud infrastructures.  Airlift can be used to rapidly build secure and scalable cloud applications.  Much of the software created using Airlift is generated from Dictation, Lucid Technics’ open source human readable business requirements language.
-
-Using Dictation with Airlift, Lucid Technics can generate software to deliver many modes of business functionality that are often coded by hand.  These include common application functionality such as data formatting, data conversion, and data validation.  They also include more challenging application functionality, such as automatic data auditing, robust data encryption, user action undo and redo, and role based security.
-
-This advanced code generation apparatus enables rapid deployment of web applications, thereby allowing one to spend less time on infrastructure code, and more time on business workflow requirements.
-
-## The Airlift Environment
-
-<img src="/images/manual/Airlift_Charts_Web.png" style="float:left">
-
-Airlift requires Java, Ant, and the App Engine SDK.  Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go.  Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScript.  Airlift incorporates [Rhino](https://developer.mozilla.org/en-US/docs/Rhino), an open source JavaScript engine, to convert JavaScript scripts into Java classes.  This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-Airlift makes the web development process simpler.  The developer only needs to write a dictation file describing business logic and the handlers.  The Airlift framework takes care of the rest.  When deploying a web app, the following steps are executed:
-
-1.  Ant acts as the orchestrator for the whole process.  It first calls [Dictation](http://www.lucidtechnics.com/projects/dictation.html), a language for describing business applications.
-2.  app.dic, a document describing the business logic in English, is parsed by Dictation.
-3.  Dictation converts the app.dic into a coding language and generates metadata: meta/r files, meta/a files, and AppProfile.java.
-4.  Ant starts Google App Engine, running a local server.
-5.  Google App Engine initializes Airlift,  a .jar file which contains a servlet called RestServlet.
-6.  Airlift deploys your web application, hosted on the cloud!
-
-The following diagram illustrates what the Airlift environment contains and how it deploys a web application.
-
-![](/images/manual/Airlift_Environment_Web.png)
-
-
-## JavaScript Functional Programming
-
-Why did Lucid Technics decide to build Airlift for JavaScript?  A simple answer is to enable web applications to use the same language on both the client and server side.  That limits the options to JavaScript -- an easy choice.  By using the same language on both sides, code can be moved back and forth with little to no editting.  Other advantages truly make JavaScript a strong choice.  JavaScript is dynamically typed, which allows for faster development and greater flexibility in polymorphism and interactive applications.  JavaScript supports functional programming, as its functions are first class objects.  This enables developers to exploit the many interesting applications of closures.  Google App Engine does not directly support JavaScript, but Lucid Technics believed in JavaScript for restful web applications.  Therefore, Lucid Technics made the decision to incorporate Rhino into Airlift to use JavaScript with Google App Engine.
-
-## REST
-
-As defined by Roy Fielding, Representational State Transfer (REST) is an "architectural style for distributed hypermedia systems" (2000).  Restful web applications feature scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems.  Rest-style architectures generally consist of clients and servers, where clients send request to the server and the server answers with a response.  Rest is a predominant web API design model.
-
-Airlift supports the development of restful web applications.  It implements the HTTP request methods, GET, POST, PUT, DELETE, and COLLECT, which are used for requests.  Requests and responses are built around the transfer of representations and resources.  Resources are addressable objects, like files and documents, and a resource's representation is documentation that captures the current or intended state of a resource.  Resources are the center of Airlift application development.  In Airlift, each resource is represented as a simple JavaScript object. Airlift provides many restful functions for manipulating these resources in the server side of web applications.
-
-## Conclusion
-
-Now the purposes and features of Airlift should be clear.  Airlift provides a restful JavaScript web application framework, designed to function with Google App Engine and cloud infrastructures.  If this sounds like the perfect tool for your web application development, or a framework that you would like to try, great!  We trust that Airlift will facilitate the rapid development of your scalable application on Google App Engine.  The following section will walk you through the installation process.
-
-
-# 1.4 Installation
+# 1.1 Installation
 
 Installing Airlift is simple.  You just need to copy the Airlift directory onto your local machine.  This should only take a few minutes.  But before you do that, be sure that your system meets the following requirements:
 
@@ -144,7 +39,7 @@ Now go into this folder from the command line and enter the following to complet
 That's it!  You should now have access to all that Airlift has to offer.  If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.
 
 
-# 1.5 Setting Up
+# 1.2 Setting Up
 
 The download button above provides a template hierarchy directory for a web application.  Inside the directory, many folders and files are already set up.  As the developer, you only need to worry about the business logic and the handlers.  In the dictation file app.dic (..src/doc/app.dic), you can use plain english to describe your business logic.  You may write your own restful handlers for each class, resource, or domain in war/WEB-INF/classes/handler.  
 
@@ -154,6 +49,126 @@ Once you have finished writing the business logic and handlers.  From the comman
 
 This will generate all the metadata that describes your resources, their attributes, and their security.  With Airlift rapidly generating and taking care of datastore functions, you can spend more time concentrating on the user interface and business side of your application.
 
-Now that Airlift is set up, you may go ahead and start fleshing out your web application.  In the next section, you will learn more about [airlift basics](/manual/airlift_basics) and how to go about writing an application.
+Now that Airlift is set up, you may go ahead and start fleshing out your web application.  In the next sections you will learn more about Airlift basics and how to go about writing a 'Hello World' application.
 
-If you'd like to see some examples for inspiration, head over to the [demos](/manual/demos).  If you are ready to start developing, please refer to our [API](/api) for a complete listing and description of Airlift functions.  You can learn more about creating a different context or environment in [customization](/manual/customization).  Using Airlift, you should be able to breeze through the development of your web application.
+
+# 1.3 The Airlift World
+
+Airlift provides a framework for web applications.  Many files and folders are already set up.
+
+<img src="/images/manual/Env_Hierarchy_Web.png" style="float:left">
+
+In the downloaded airlift folder, there are four JavaScript modules: dictate.js, hack.js, packages.js, and test.js.  airlift/dictate.js will help to translate your english-written business logic into code.
+
+In the build folder, there are five different types of build.  Whether the application is running on the desktop or in production mode, these build files can help to set up global variables and customize an environment.
+
+Within the src folder, the app.dic file, or dictation file, contains the business logic written in plain english.  This file can be found at src/doc/app.dic.  It describes the web application's resources and their attributes.
+
+For each resource described in the dictation file, the developer may write handlers in war/WEB-INF/classes/handler.  Each resource could have its own set of handlers.
+
+The metadata that is generated is put in the war/WEB-INF/classes/gen/meta folder.  For each resource described in the dictation file, the resource metadata is placed in the meta/r folder, and the attribute metadata can be found in the meta/a folder.  
+
+Now that you know the structure of an Airlift application, let's walk you through a hello world application.  The helloworld application will set the web content to 'Hello, World' when the URL is retrieved.  After downloading the Airlift directory or making a copy of it, rename the folder to helloworld. 
+
+
+# 1.4 Dictation
+
+Dictation is an open source english based domain specific language for describing business applications.  It parses through a dictation file and generates metadata.
+
+## app.dic
+
+Open src/doc/app.dic.  If no changes were made to this file, the example inside describes the attributes of four resources: a person, an order, an order line item, and a product.  We wont be needing this, so you can go ahead and delete everything in this document.  Instead, copy and paste the following text into your dictation file.
+
+     package example
+     
+     A Greeting
+     can be viewed or collected or created or updated by all
+
+In the helloworld dictation file, we describe one resource: a Greeting.  Following the declaration of a resource are descriptions of the resource's attributes.  What is great about dictation is that it is easy to read, write, and understand the various specifications about a resource.  We only need one resource for this helloworld application, but if you were to need multiple resources, all you would need to do is continue adding paragraph-like descritions of each resource.  Dictation files should have the following format:
+
+     A(n) [resource name 1]
+     [attribute description 1]
+     [attribute description 2]
+     [attribute description ...]
+     [attribute description n]
+
+     A(n) [resource name ...]
+     [attribute description 1]
+     [attribute description 2]
+     [attribute description ...]
+     [attribute description n]
+
+     A(n) [resource name n]
+     [attribute description 1]
+     [attribute description 2]
+     [attribute description ...]
+     [attribute description n]
+
+
+## Resources
+
+Resources are the targets of uniform resource locators (URLs); they are files, documents, images and other objects of the web that can be located and accessed through the Internet.  
+
+A dictation file lists all the resources of an Airlift application and their attributes.  The only specified attribute of a Greeting is that anyone can retrieve, read, and write to it.  Resources could have fields or properties such as a name, date, or price.  Attributes can also specify security roles, or who has what access to which resources, relationships between resources, and whether the resource contains static of dynamically updated data.  Describing resources in your a file entails describing the basic building blocks of a restful web application.
+
+
+# 1.5 Handlers
+
+A handler is a module that writes some data to the server response the when a request is made to a web application.
+
+Handlers process the request, compute data if necessary, and return a response to the client.  Airlift provides [rest modules](../api/#Rest) for basic functionality, but a developer may need to handle different resources in unique ways.  In a handler, a developer may define HTTP methods such as get, post, or delete.
+
+For the helloworld application, we will create a get handler.  Within war/WEB-INF/classes/handler, create a folder called greeting.  Inside the greeting folder, use a text editor to create GET.js.  Insert the following code into your handler:
+
+    exports.handle = function(_web)
+    {
+        _web.setContent("Hello, World"); 
+    }
+
+<img src="/images/manual/Handler_Web.png" style="float:left">
+
+The function inside the handler handles an HTTP get request.  When a Greeting resource is retrieved, the handler sets the web content to "Hello, World".  
+
+And that is all you need to write for a server-side hello world application!
+
+
+# 1.6 Hello World
+
+Now that everything is set up, simply open your command line, change directory into your helloworld folder, and enter `ant runserver`.
+
+![](/images/manual/Dave_Gen_Web.png)
+
+Metadata describing the greeting resource have been generated and placed into the war/WEB-INF/classes/gen/ meta/a and meta/r folders.  AppProfile.java, located at src/genjava/airlift/app has also been updated to describe the business logic.  The helloworld application is now hosted on localhost:8080.  To send a get request to a greeting resource, type the following into the address bar:
+
+[http://localhost:8080/a/greeting/id](http://localhost:8080/a/greeting/id)
+
+You should see a blank HTML page and the text, "Hello, World".
+
+<img src="/images/manual/HelloWorld_Screenshot_Web.png" width="800">
+
+
+# 1.7 Playing Around
+
+At this point, feel free to play around and get a feel for Airlift.  In order to see small edits quickly, start the server with the following line:
+
+     ant -Dairlift.env=desktop runserver
+
+The desktop environment sets the cache to null, so you can immediately see all of your changes.
+
+## Another quick example
+
+In this example, we will retrieve the resource's id from the web and display it on the page.
+
+In the helloworld application, we accessed a greeting resource with URL, http://localhost:8080/a/greeting/id.  We programmed the handler to set the web content to "Hello, World" when a greeting resource is requested.  That means any greeting resource produces this output.  Instead of having 'id' at the end of the URI, you could replace it with any identifier, such as 'monkey' or 'purple', and you would still see "Hello, World".  
+
+Let's customize the response.  In the greeting get handler (war/WEB-INF/classes/handler/greeting/GET.js), replace the line \_web.setContent("Hello, World"); with the following:
+
+    _web.setContent(_web.getId());
+
+This updated handler will retrieve the id of the web resource by parsing its URL.  It then sets the web content to display the id.
+
+Now, http://localhost:8080/a/greeting/monkey will display "monkey" and http://localhost:8080/a/greeting/purple will display "purple".
+
+## Other resources
+
+If you'd like to see some examples for inspiration, head over to the [demos](/manual/demos.html), or check out the [screencasts](/manual/screencasts.html).  If you are ready to start developing, please refer to our [API](/api) for a complete listing and description of Airlift functions.  Using Airlift, you should be able to breeze through the development of your web application.  Now go ahead and play on!
