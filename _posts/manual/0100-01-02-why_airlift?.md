@@ -14,7 +14,7 @@ published: true
 # 1.0 Introduction
 
 
-Airlift is an open web framework for building restful web applications using functional JavaScript.  To understand what this means, we will begin by explaining some background on cloud computing.  Then we'll explore what goals the developers wanted Airlift to achieve.  The inner workings of Airlift will be detailed with a diagram.  At the end of this page you should understand what Airlift is capable of, why you should use it,
+Airlift is an open web framework for building restful web applications using functional JavaScript.  To understand what this means, we will begin by explaining some background on cloud computing.  Then we'll explore what goals the developers wanted Airlift to achieve.  The inner workings of Airlift will be detailed with a diagram.  At the end of this page you should understand what Airlift is capable of, and why you should use it.
 
 # 1.1 Cloud Computing
 

@@ -12,7 +12,7 @@ published: true
 
 # 1.0 Introduction
 
-This page will cover how to get Airlift up and running on your system.  Once setup, we will walk you through the steps of starting and finishing an Airlift application.  We'll explain more about what's inside the Airlift environment and how it all works together.  This page will describe how to write your business logic in the app.dic file and your handlers, which are the only two documents that you need to worry about for the server side.  After the developer's part is written, we can move on to deploying your first Airlift hello world application.
+This page will cover how to get Airlift up and running on your system.  Once setup, we will walk you through the steps of starting and finishing an Airlift application.  We'll explain more about what's inside the Airlift environment and how it all works together.  You will learn how to write your business logic in the app.dic file and your handlers, which are the only two documents that you need to worry about for the server side.  After the developer's part is written, we can move on to deploying your first Airlift hello world application.
 
 
 # 1.1 Installation
