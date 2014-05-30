@@ -74,7 +74,7 @@ Now that you know the structure of an Airlift application, let's walk you throug
 
 # 1.4 Dictation
 
-Dictation is an open source english based domain specific language for describing business applications.  It parses through a dictation file and generates metadata.
+Dictation is an open source English-based domain-specific language for describing business applications.  It parses through a dictation file and generates metadata.
 
 ## app.dic
 
@@ -115,7 +115,7 @@ A dictation file lists all the resources of an Airlift application and their att
 
 # 1.5 Handlers
 
-A handler is a module that writes some data to the server response the when a request is made to a web application.
+A handler is a module that writes some data to the server response when a request is made to a web application.
 
 Handlers process the request, compute data if necessary, and return a response to the client.  Airlift provides [rest modules](../api/#Rest) for basic functionality, but a developer may need to handle different resources in unique ways.  In a handler, a developer may define HTTP methods such as get, post, or delete.
 

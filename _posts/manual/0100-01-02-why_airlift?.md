@@ -8,7 +8,7 @@ categories: manual
 published: true
 ---
 
-| [Introduction](#20_introduction) | [Cloud Computing](#21_cloud_computing) | [A Brief History](#22_a_brief_history) | [Airlift Concepts](#23_airlift_concepts) 
+| [Introduction](#20_introduction) | [Cloud Computing](#21_cloud_computing) | [A Brief History](#22_a_brief_history) | [Airlift Concepts](#23_airlift_concepts) |
 
 
 # 1.0 Introduction
@@ -69,7 +69,7 @@ Airlift was designed to meet the following goals:
 
 <img src="/images/manual/Happy_Bedi_Web.png" style="float:right">
 
-Airlift, which satisfies the above specifications, is being successfully deployed today. Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 by the end of 2013. Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine. Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side. Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
+Airlift, which satisfies the above specifications, is being successfully deployed today. Lucid Technics is currently building and adding to Airlift, expecting to release version 2.0 before the end of 2014. Future developments include making Dictation more robust and feature-rich, and continuing the tight integration to Google App Engine. Any developer interested in rapidly putting together scalable applications on Google App Engine should definitely check out Airlift, especially if they are interested in using JavaScript on server side. Lucid Technics aspires to make Airlift useful, reliable, and helpful to developers around the global network.
 
 
 # 1.3 Airlift Concepts
@@ -86,8 +86,6 @@ This advanced code generation apparatus enables rapid deployment of web applicat
 
 Airlift requires Java, Ant, and the App Engine SDK. Google App Engine supports apps written in several languages, but it only provides runtime environments for four: Java, Python, PHP, and Go. Google App Engine allows apps to be built in any JVM-based interpreter or compiler, such as JavaScript. Airlift incorporates [Rhino](https://developer.mozilla.org/en-US/docs/Rhino), an open source JavaScript engine, to convert JavaScript scripts into Java classes. This way, any apps built with Airlift can be easily hosted and deployed on Google App Engine.
 
-<br>
-<br>
 <br>
 <br>
 <br>
