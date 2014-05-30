@@ -30,7 +30,6 @@ All set?  Go ahead and download the zip file, and unzip it into whichever direct
 <a class="download" href="https://github.com/LucidTechnics/Airlift/blob/airlift_2.0_development/downloads/airlift-beta-0.70_rc_108_734-env.zip?raw=true">Download Airlift</a>
 
 <br>
-<br>
 
 Now go into this folder from the command line and enter the following to complete the set up.
 
