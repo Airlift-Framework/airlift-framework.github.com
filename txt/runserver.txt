@@ -1,0 +1,285 @@
+Buildfile: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/build.xml
+     [echo] Here is the environment: build/desktop.airlift.build
+
+copyjars:
+     [copy] Copying 3 files to /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib
+
+init:
+
+createRootPackageDirProperty:
+
+createPackageStructure:
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/genjava/com/analytics-web
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/java/com/analytics-web
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/java/com/analytics-web/util
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/java/com/analytics-web/exception
+
+clean-war:
+
+clean-generated:
+
+clean:
+
+dictate:
+     [echo] /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/classes:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/airlift-beta-0.70_rc_108_734-core.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/antlr-2.7.7.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/antlr-3.2.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/appengine-api-1.0-sdk-1.8.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/appengine-api-labs-1.8.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/appengine-jsr107cache-1.8.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-beanutils-1.8.3.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-codec-1.3.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-dbcp-1.2.2.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-dbutils-1.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-httpclient-3.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-io-2.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-lang-2.4.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-logging-1.1.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-pool-1.4.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/dictation-1.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/js.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/jsr107cache-1.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/stringtemplate-3.2.1.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/appengine-local-runtime-shared.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/el-api.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp-api.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-ant-1.7.1.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-ant-launcher-1.7.1.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-jasper-6.0.29.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-jasper-el-6.0.29.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-tomcat-juli-6.0.29.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/servlet-api.jar
+   [script] Starting parsing
+   [script] line 1:8 mismatched input 'airlift' expecting set null
+   [script] Parsing completed
+   [script] 
+   [script] **************************************************************************
+   [script] REGISTRATION resource meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] exports.create = function()
+   [script] {
+   [script] 	var metadata = require('airlift/ResourceMetadata').create({ persistable:true, securable:true, presentable:true });
+   [script] 
+   [script] 	metadata.name = 'registration';
+   [script] 	metadata.attributes = ['fullName', 'emailAddress', 'mobilePhoneNumber', 'password', 'auditPostDate', 'auditPutDate', 'auditUserId', 'auditRequestId', 'id'];
+   [script]     metadata.foreignKeys = {};
+   [script]     metadata.indexedProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.searchProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.encryptedProperties = {};
+   [script] 
+   [script] 	return metadata;
+   [script] }
+   [script] 
+   [script] REGISTRATION attributes meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] var MetaData = function()
+   [script] {
+   [script] 	this.resourceName = 'registration';
+   [script] 	this.attributes = {};
+   [script] 
+   [script] 	var metadata = require('airlift/AttributeMetadata');
+   [script] 	this.attributes['fullName'] = metadata.create({ name:"fullName", type:"java.lang.String", displayOrder:10, label:"full name" }); 
+   [script] 	this.attributes['emailAddress'] = metadata.create({ name:"emailAddress", type:"java.lang.String", displayOrder:20, label:"email address" }); 
+   [script] 	this.attributes['mobilePhoneNumber'] = metadata.create({ name:"mobilePhoneNumber", type:"java.lang.String", required:false, displayOrder:30, label:"mobile phone number" }); 
+   [script] 	this.attributes['password'] = metadata.create({ name:"password", type:"java.lang.String", displayOrder:40, label:"password" }); 
+   [script] 	this.attributes['auditPostDate'] = metadata.create({ name:"auditPostDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record created date" }); 
+   [script] 	this.attributes['auditPutDate'] = metadata.create({ name:"auditPutDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record updated date" }); 
+   [script] 	this.attributes['auditUserId'] = metadata.create({ name:"auditUserId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"changed by user id", isPresentable:false }); 
+   [script] 	this.attributes['auditRequestId'] = metadata.create({ name:"auditRequestId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"web request id", isPresentable:false }); 
+   [script] 	this.attributes['id'] = metadata.create({ name:"id", type:"java.lang.String", isSearchable:false, isPrimaryKey:true, isIndexable:false, required:false, displayOrder:0, label:"record id" }); 
+   [script] }
+   [script] 
+   [script] exports.create = function()
+   [script] {
+   [script] 	return new MetaData();
+   [script] };
+   [script] 
+   [script] **************************************************************************
+   [script] PRODUCT resource meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] exports.create = function()
+   [script] {
+   [script] 	var metadata = require('airlift/ResourceMetadata').create({ persistable:true, securable:true, presentable:true });
+   [script] 
+   [script] 	metadata.name = 'product';
+   [script] 	metadata.attributes = ['name', 'cost', 'auditPostDate', 'auditPutDate', 'auditUserId', 'auditRequestId', 'id'];
+   [script]     metadata.foreignKeys = {};
+   [script]     metadata.indexedProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.searchProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.encryptedProperties = {};
+   [script] 
+   [script] 	return metadata;
+   [script] }
+   [script] 
+   [script] PRODUCT attributes meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] var MetaData = function()
+   [script] {
+   [script] 	this.resourceName = 'product';
+   [script] 	this.attributes = {};
+   [script] 
+   [script] 	var metadata = require('airlift/AttributeMetadata');
+   [script] 	this.attributes['name'] = metadata.create({ name:"name", type:"java.lang.String", displayOrder:10, label:"name" }); 
+   [script] 	this.attributes['cost'] = metadata.create({ name:"cost", type:"java.lang.Double", displayOrder:20, label:"cost" }); 
+   [script] 	this.attributes['auditPostDate'] = metadata.create({ name:"auditPostDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record created date" }); 
+   [script] 	this.attributes['auditPutDate'] = metadata.create({ name:"auditPutDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record updated date" }); 
+   [script] 	this.attributes['auditUserId'] = metadata.create({ name:"auditUserId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"changed by user id", isPresentable:false }); 
+   [script] 	this.attributes['auditRequestId'] = metadata.create({ name:"auditRequestId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"web request id", isPresentable:false }); 
+   [script] 	this.attributes['id'] = metadata.create({ name:"id", type:"java.lang.String", isSearchable:false, isPrimaryKey:true, isIndexable:false, required:false, displayOrder:0, label:"record id" }); 
+   [script] }
+   [script] 
+   [script] exports.create = function()
+   [script] {
+   [script] 	return new MetaData();
+   [script] };
+   [script] 
+   [script] **************************************************************************
+   [script] ORDERLINEITEM resource meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] exports.create = function()
+   [script] {
+   [script] 	var metadata = require('airlift/ResourceMetadata').create({ persistable:true, securable:true, presentable:true });
+   [script] 
+   [script] 	metadata.name = 'orderlineitem';
+   [script] 	metadata.attributes = ['sku', 'price', 'order', 'auditPostDate', 'product', 'auditPutDate', 'auditUserId', 'auditRequestId', 'id'];
+   [script]     metadata.foreignKeys = {"order": 1,"product": 1};
+   [script]     metadata.indexedProperties = {"order": 1,"auditPostDate": 1,"product": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.searchProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.encryptedProperties = {};
+   [script] 
+   [script] 	return metadata;
+   [script] }
+   [script] 
+   [script] ORDERLINEITEM attributes meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] var MetaData = function()
+   [script] {
+   [script] 	this.resourceName = 'orderlineitem';
+   [script] 	this.attributes = {};
+   [script] 
+   [script] 	var metadata = require('airlift/AttributeMetadata');
+   [script] 	this.attributes['sku'] = metadata.create({ name:"sku", type:"java.lang.String", displayOrder:10, label:"sku" }); 
+   [script] 	this.attributes['price'] = metadata.create({ name:"price", type:"java.lang.Double", displayOrder:20, label:"price" }); 
+   [script] 	this.attributes['order'] = metadata.create({ name:"order", type:"java.lang.String", mapTo:"order", isIndexable:true, displayOrder:30, label:"order" }); 
+   [script] 	this.attributes['auditPostDate'] = metadata.create({ name:"auditPostDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record created date" }); 
+   [script] 	this.attributes['product'] = metadata.create({ name:"product", type:"java.lang.String", mapTo:"product", isIndexable:true, displayOrder:40, label:"product" }); 
+   [script] 	this.attributes['auditPutDate'] = metadata.create({ name:"auditPutDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record updated date" }); 
+   [script] 	this.attributes['auditUserId'] = metadata.create({ name:"auditUserId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"changed by user id", isPresentable:false }); 
+   [script] 	this.attributes['auditRequestId'] = metadata.create({ name:"auditRequestId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"web request id", isPresentable:false }); 
+   [script] 	this.attributes['id'] = metadata.create({ name:"id", type:"java.lang.String", isSearchable:false, isPrimaryKey:true, isIndexable:false, required:false, displayOrder:0, label:"record id" }); 
+   [script] }
+   [script] 
+   [script] exports.create = function()
+   [script] {
+   [script] 	return new MetaData();
+   [script] };
+   [script] 
+   [script] **************************************************************************
+   [script] ORDER resource meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] exports.create = function()
+   [script] {
+   [script] 	var metadata = require('airlift/ResourceMetadata').create({ persistable:true, securable:true, presentable:true });
+   [script] 
+   [script] 	metadata.name = 'order';
+   [script] 	metadata.attributes = ['orderLineItem', 'person', 'auditPostDate', 'auditPutDate', 'auditUserId', 'auditRequestId', 'id'];
+   [script]     metadata.foreignKeys = {"orderLineItem": 1,"person": 1};
+   [script]     metadata.indexedProperties = {"orderLineItem": 1,"person": 1,"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.searchProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.encryptedProperties = {};
+   [script] 
+   [script] 	return metadata;
+   [script] }
+   [script] 
+   [script] ORDER attributes meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] var MetaData = function()
+   [script] {
+   [script] 	this.resourceName = 'order';
+   [script] 	this.attributes = {};
+   [script] 
+   [script] 	var metadata = require('airlift/AttributeMetadata');
+   [script] 	this.attributes['orderLineItem'] = metadata.create({ name:"orderLineItem", type:"java.util.ArrayList", isIndexable:true, mapToMany:"orderlineitem", displayOrder:10, label:"order line item" }); 
+   [script] 	this.attributes['person'] = metadata.create({ name:"person", type:"java.lang.String", mapTo:"person", isIndexable:true, displayOrder:20, label:"person" }); 
+   [script] 	this.attributes['auditPostDate'] = metadata.create({ name:"auditPostDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record created date" }); 
+   [script] 	this.attributes['auditPutDate'] = metadata.create({ name:"auditPutDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record updated date" }); 
+   [script] 	this.attributes['auditUserId'] = metadata.create({ name:"auditUserId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"changed by user id", isPresentable:false }); 
+   [script] 	this.attributes['auditRequestId'] = metadata.create({ name:"auditRequestId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"web request id", isPresentable:false }); 
+   [script] 	this.attributes['id'] = metadata.create({ name:"id", type:"java.lang.String", isSearchable:false, isPrimaryKey:true, isIndexable:false, required:false, displayOrder:0, label:"record id" }); 
+   [script] }
+   [script] 
+   [script] exports.create = function()
+   [script] {
+   [script] 	return new MetaData();
+   [script] };
+   [script] 
+   [script] **************************************************************************
+   [script] PERSON resource meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] exports.create = function()
+   [script] {
+   [script] 	var metadata = require('airlift/ResourceMetadata').create({ persistable:true, securable:true, presentable:true });
+   [script] 
+   [script] 	metadata.name = 'person';
+   [script] 	metadata.attributes = ['firstName', 'familyName', 'nickName', 'birthDate', 'auditPostDate', 'auditPutDate', 'auditUserId', 'auditRequestId', 'id'];
+   [script]     metadata.foreignKeys = {};
+   [script]     metadata.indexedProperties = {"familyName": 1,"birthDate": 1,"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.searchProperties = {"auditPostDate": 1,"auditPutDate": 1,"auditUserId": 1,"auditRequestId": 1};
+   [script]     metadata.encryptedProperties = {};
+   [script] 
+   [script] 	return metadata;
+   [script] }
+   [script] 
+   [script] PERSON attributes meta data ...
+   [script] --------------------------------------------------------------------------
+   [script] var MetaData = function()
+   [script] {
+   [script] 	this.resourceName = 'person';
+   [script] 	this.attributes = {};
+   [script] 
+   [script] 	var metadata = require('airlift/AttributeMetadata');
+   [script] 	this.attributes['firstName'] = metadata.create({ name:"firstName", type:"java.lang.String", displayOrder:10, label:"first name" }); 
+   [script] 	this.attributes['familyName'] = metadata.create({ name:"familyName", type:"java.lang.String", isIndexable:true, displayOrder:20, label:"family name" }); 
+   [script] 	this.attributes['nickName'] = metadata.create({ name:"nickName", type:"java.lang.String", displayOrder:30, label:"nick name" }); 
+   [script] 	this.attributes['birthDate'] = metadata.create({ name:"birthDate", type:"java.util.Date", isIndexable:true, displayOrder:40, label:"birth date" }); 
+   [script] 	this.attributes['auditPostDate'] = metadata.create({ name:"auditPostDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record created date" }); 
+   [script] 	this.attributes['auditPutDate'] = metadata.create({ name:"auditPutDate", type:"java.util.Date", isSearchable:true, isIndexable:true, required:false, label:"record updated date" }); 
+   [script] 	this.attributes['auditUserId'] = metadata.create({ name:"auditUserId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"changed by user id", isPresentable:false }); 
+   [script] 	this.attributes['auditRequestId'] = metadata.create({ name:"auditRequestId", type:"java.lang.String", isSearchable:true, isIndexable:true, required:false, label:"web request id", isPresentable:false }); 
+   [script] 	this.attributes['id'] = metadata.create({ name:"id", type:"java.lang.String", isSearchable:false, isPrimaryKey:true, isIndexable:false, required:false, displayOrder:0, label:"record id" }); 
+   [script] }
+   [script] 
+   [script] exports.create = function()
+   [script] {
+   [script] 	return new MetaData();
+   [script] };
+
+generate:
+     [copy] Copying 3 files to /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF
+
+prepareSource:
+
+compile:
+    [javac] Compiling 1 source file to /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/classes
+    [javac] warning: Supported source version 'RELEASE_6' from annotation processor 'com.google.appengine.tools.compilation.DatastoreCallbacksProcessor' less than -source '1.7'
+    [javac] 1 warning
+
+discoverNodeModules:
+     [echo] /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/classes:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/airlift-beta-0.70_rc_108_734-core.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/antlr-2.7.7.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/antlr-3.2.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/appengine-api-1.0-sdk-1.8.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/appengine-api-labs-1.8.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/appengine-jsr107cache-1.8.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-beanutils-1.8.3.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-codec-1.3.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-dbcp-1.2.2.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-dbutils-1.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-httpclient-3.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-io-2.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-lang-2.4.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-logging-1.1.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/commons-pool-1.4.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/dictation-1.0.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/js.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/jsr107cache-1.1.jar:/Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/lib/stringtemplate-3.2.1.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/appengine-local-runtime-shared.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/el-api.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp-api.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-ant-1.7.1.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-ant-launcher-1.7.1.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-jasper-6.0.29.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-jasper-el-6.0.29.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/jsp/repackaged-appengine-tomcat-juli-6.0.29.jar:/Users/Serena/apps/appengine/appengine-java-sdk-1.8.0/lib/shared/servlet-api.jar
+   [script] Looking for node_modules in /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/classes
+   [script] Done looking for node_modules ...
+
+test-jar:
+      [jar] Building jar: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/dist/lib/analytics-web-test.jar
+      [jar] Updating jar: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/dist/lib/analytics-web-test.jar
+      [jar] Updating jar: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/dist/lib/analytics-web-test.jar
+
+runserver:
+     [java] ********************************************************
+     [java] There is a new version of the SDK available.
+     [java] -----------
+     [java] Latest SDK:
+     [java] Release: 1.9.5
+     [java] Timestamp: Wed Apr 30 21:55:22 EDT 2014
+     [java] API versions: [1.0]
+     [java] 
+     [java] -----------
+     [java] Your SDK:
+     [java] Release: 1.8.0
+     [java] Timestamp: Mon May 06 14:51:19 EDT 2013
+     [java] API versions: [1.0]
+     [java] 
+     [java] -----------
+     [java] Please visit https://developers.google.com/appengine/downloads for the latest SDK.
+     [java] ********************************************************
+     [java] May 30, 2014 12:57:52 PM com.google.apphosting.utils.config.AppEngineWebXmlReader readAppEngineWebXml
+     [java] INFO: Successfully processed /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/appengine-web.xml
+     [java] May 30, 2014 12:57:52 PM com.google.apphosting.utils.config.AbstractConfigXmlReader readConfigXml
+     [java] INFO: Successfully processed /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/web.xml
+     [java] May 30, 2014 12:57:52 PM com.google.apphosting.utils.config.AbstractConfigXmlReader readConfigXml
+     [java] INFO: Successfully processed /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/backends.xml
+     [java] May 30, 2014 4:57:52 PM com.google.apphosting.utils.jetty.JettyLogger info
+     [java] INFO: Logging to JettyLogger(null) via com.google.apphosting.utils.jetty.JettyLogger
+     [java] May 30, 2014 4:57:52 PM com.google.apphosting.utils.jetty.JettyLogger info
+     [java] INFO: jetty-6.1.x
+     [java] May 30, 2014 4:57:53 PM com.google.apphosting.utils.jetty.JettyLogger info
+     [java] INFO: Started SelectChannelConnector@localhost:8080
+     [java] May 30, 2014 4:57:53 PM com.google.appengine.tools.development.AbstractServer startup
+     [java] INFO: Server default is running at http://localhost:8080/
+     [java] May 30, 2014 4:57:53 PM com.google.appengine.tools.development.AbstractServer startup
+     [java] INFO: The admin console is running at http://localhost:8080/_ah/admin
+     [java] May 30, 2014 4:57:53 PM com.google.appengine.tools.development.DevAppServerImpl start
+     [java] INFO: Dev App Server is now running

@@ -1,0 +1,20 @@
+Buildfile: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/build.xml
+     [echo] Here is the environment: build/desktop.airlift.build
+
+init:
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/shl
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/java
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/test/airlift/test
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/test/airlift/test/unit
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/test/airlift/test/smoke
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/test/airlift/test/integration
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/genjava
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/src/genjava/airlift/app
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/classes/gen/meta/r
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/WEB-INF/classes/gen/meta/a
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/war/gen/javascript/validation
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/dist
+    [mkdir] Created dir: /Users/Serena/Desktop/airlift-beta-0.70_rc_108_734-env/dist/lib
+
+BUILD SUCCESSFUL
+Total time: 0 seconds

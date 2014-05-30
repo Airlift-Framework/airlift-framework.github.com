@@ -36,18 +36,20 @@ Now go into this folder from the command line and enter the following to complet
 
      ant init
 
+This command creates multiple directories needed for an Airlift application.  For your reference, here is the [terminal output for ant init](/txt/init.txt).
+
 That's it!  You should now have access to all that Airlift has to offer.  If you have any trouble downloading Airlift, please contact us at info@lucidtechnics.com so we can help troubleshoot the problem.
 
 
 # 1.2 Setting Up
 
-The download button above provides a template hierarchy directory for a web application.  Inside the directory, many folders and files are already set up.  As the developer, you only need to worry about the business logic and the handlers.  In the dictation file app.dic (..src/doc/app.dic), you can use plain english to describe your business logic.  You may write your own restful handlers for each class, resource, or domain in war/WEB-INF/classes/handler.  
+The download button above provides a template hierarchy directory for a web application.  Inside the directory, many folders and files are already set up.  As the developer, you only need to worry about the business logic and the handlers.  In the dictation file app.dic (src/doc/app.dic), you can use plain english to describe your business logic.  You may write your own restful handlers for each class, resource, or domain in war/WEB-INF/classes/handler.  
 
 Once you have finished writing the business logic and handlers.  From the command line, go into your web application directory and call:
 
      ant runserver
 
-This will generate all the metadata that describes your resources, their attributes, and their security.  With Airlift rapidly generating and taking care of datastore functions, you can spend more time concentrating on the user interface and business side of your application.
+This will generate all the metadata that describes your resources, their attributes, and their security.  Here is an example [terminal output for ant runserver](/txt/runserver.txt).  With Airlift rapidly generating and taking care of datastore functions, you can spend more time concentrating on the user interface and business side of your application.
 
 Now that Airlift is set up, you may go ahead and start fleshing out your web application.  In the next sections you will learn more about Airlift basics and how to go about writing a 'Hello World' application.
 
@@ -68,7 +70,7 @@ For each resource described in the dictation file, the developer may write handl
 
 The metadata that is generated is put in the war/WEB-INF/classes/gen/meta folder.  For each resource described in the dictation file, the resource metadata is placed in the meta/r folder, and the attribute metadata can be found in the meta/a folder.  
 
-Now that you know the structure of an Airlift application, let's walk you through a hello world application.  The helloworld application will set the web content to 'Hello, World' when the URL is retrieved.  After downloading the Airlift directory or making a copy of it, rename the folder to helloworld. 
+Now that you know the structure of an Airlift application, let's walk you through a hello world application.  The helloworld application will set the web content to 'Hello, World' when the URL is retrieved.  After downloading the Airlift directory or making a copy of it, rename the folder to helloworld.  
 
 
 # 1.4 Dictation
